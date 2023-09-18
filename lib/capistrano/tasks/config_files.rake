@@ -7,6 +7,7 @@ namespace :config_files do
         upload! StringIO.new(File.read('config/database.yml')), "#{shared_path}/config/database.yml"
         upload! StringIO.new(File.read('config/application.rb')), "#{shared_path}/config/application.rb"
         upload! StringIO.new(File.read('config/master.key')), "#{shared_path}/config/master.key"
+        upload! StringIO.new(File.read('config/credentials.yml.enc')), "#{shared_path}/config/credentials.yml.enc"
       end
     end
   end
