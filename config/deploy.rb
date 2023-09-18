@@ -3,12 +3,14 @@ lock "~> 3.17.3"
 
 set :application, "app"
 set :repo_url, "git@github.com:RogerioLira/app.git"
+set :branch, "main"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Deploy to the user's home directory
 set :deploy_to, "/home/deploy/#{fetch :application}"
+
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
