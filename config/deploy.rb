@@ -4,6 +4,7 @@ lock "~> 3.17.3"
 set :application, "app"
 set :repo_url, "git@github.com:RogerioLira/app.git"
 set :branch, "main"
+set :rbenv_ruby, "3.2.2"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
