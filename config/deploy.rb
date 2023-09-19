@@ -8,9 +8,9 @@ set :branch, "main"
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
-# Default deploy_to directory is /var/www/my_app_name
- #set :deploy_to, "/var/www/app"
- set :deploy_to, "/home/deploy/#{fetch :application}"
+# Deploy to the user's home directory
+set :deploy_to, "/home/deploy/#{fetch :application}"
+
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
@@ -23,28 +23,26 @@ set :branch, "main"
 # set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, %w[config/application.rb config/database.yml config/master.key]
+#append :linked_files, "config/database.yml"#, 'config/master.key'
+append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
+#set :linked_files, %w[config/application.yml config/database.yml config/master.key]
+
 
 # Default value for linked_dirs is []
-set :linked_dirs, %w[log tmp/pids tmp/cache tmp/sockets vendor/bundle .bundle public/system public/uploads node_modules]
+# append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "tmp/webpacker", "public/system", "vendor", "storage"
 
-# Skip migration if files in db/migrate were not modified
-# Defaults to false
-set :conditionally_migrate, true
+# Default value for default_env is {}
+# set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
-# ================================================
-# ============ From Custom Rake Tasks ============
-# ================================================
-# ===== See Inside: lib/capistrano/tasks =========
-# ================================================
+# Default value for local_user is ENV['USER']
+# set :local_user, -> { `git config user.name`.chomp }
+
+# Default value for keep_releases is 5
+set :keep_releases, 5
+
+# Uncomment the following to require manually verifying the host key before first deploy.
+# set :ssh_options, verify_host_key: :secure
+set :ssh_options, verify_host_key: :never
 
 # upload configuration files
 before 'deploy:starting', 'config_files:upload'
-
-set :initial, true
-
-# run only if app is being deployed for the very first time, should update "set :initial, true" above to run this
-before 'deploy:migrate', 'database:create' if fetch(:initial)
-
-# reload application after successful deploy
-after 'deploy:publishing', 'application:reload'
