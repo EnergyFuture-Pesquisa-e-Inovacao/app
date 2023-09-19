@@ -12,8 +12,12 @@ set :rbenv_rails, "7.0.8"
 
 # Default deploy_to directory is /var/www/my_app_name
  #set :deploy_to, "/var/www/app"
- set :deploy_to, "/home/deploy/#{fetch :application}"
+ #set :deploy_to, "/home/deploy/#{fetch :application}"
  set :repo_url, "git@github.com:RogerioLira/app.git"
+ set :stage,           :production
+ set :deploy_via,      :remote_cache
+ set :deploy_to,       "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
+
  set :branch, "main"
 
 # Default value for :format is :airbrussh.
