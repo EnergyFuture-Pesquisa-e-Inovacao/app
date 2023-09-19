@@ -23,7 +23,7 @@ set :branch, "main"
 # set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, %w[config/application.rb config/database.yml config/master.key]
+#set :linked_files, %w[config/application.rb config/database.yml config/master.key]
 
 # Default value for linked_dirs is []
 set :linked_dirs, %w[log tmp/pids tmp/cache tmp/sockets vendor/bundle .bundle public/system public/uploads node_modules]
