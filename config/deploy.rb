@@ -41,7 +41,7 @@ set :conditionally_migrate, true
 # ================================================
 
 # upload configuration files
-#before 'deploy:starting', 'config_files:upload'
+before 'deploy:starting', 'config_files:upload'
 
 set :initial, true
 
