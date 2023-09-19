@@ -62,7 +62,8 @@
 
 #server ENV['deploy_server_ip'], user: 'deploy', roles: %w[app db web], primary: 'true'
 server '157.230.80.226', user: 'deploy', roles: %w{app db web}
-set :deploy_to, 'home/deploy/app'
+#set :deploy_to, 'home/deploy/app'
+set :deploy_to, 'app'
 set :branch, 'main'
 set :stage, :production
 set :rails_env, :production
