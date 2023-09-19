@@ -60,7 +60,8 @@
 #     # password: "please use keys"
 #   }
 
-server ENV['deploy_server_ip'], user: 'deploy', roles: %w[app db web], primary: 'true'
+#server ENV['deploy_server_ip'], user: 'deploy', roles: %w[app db web], primary: 'true'
+server '157.230.80.226', user: 'deploy', roles: %w{app db web}
 set :deploy_to, 'path to the folder where app should be deployed e.g. /home/deploy/contract-template-editor/api'
 set :branch, 'main'
 set :stage, :production
