@@ -3,7 +3,7 @@ lock "~> 3.17.3"
 
 set :application, "app"
 
-set :branch, "main"
+
 set :rbenv_ruby, "3.2.2"
 set :rbenv_rails, "7.0.8"
 
@@ -14,6 +14,7 @@ set :rbenv_rails, "7.0.8"
  #set :deploy_to, "/var/www/app"
  set :deploy_to, "/home/deploy/#{fetch :application}"
  set :repo_url, "git@github.com:RogerioLira/app.git"
+ set :branch, "main"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
