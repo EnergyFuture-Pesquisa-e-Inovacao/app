@@ -59,9 +59,3 @@
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
-
-server ENV['deploy_server_ip'], user: 'deploy', roles: %w[app db web], primary: 'true'
-set :deploy_to, 'path to the folder where app should be deployed e.g. /home/deploy/contract-template-editor/api'
-set :branch, 'main'
-set :stage, :production
-set :rails_env, :production
