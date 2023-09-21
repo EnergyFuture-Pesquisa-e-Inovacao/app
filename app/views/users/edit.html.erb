@@ -1,0 +1,24 @@
+<%= render "shared/header-new"%>
+  <!-- CONTENT GRID -->
+  <div class="content-grid">
+    <!-- SECTION BANNER -->
+    <div class="section-banner">
+      <!-- SECTION BANNER ICON -->
+      <%= image_tag('/assets/banner/accounthub-icon.png',alt:"accounthub-icon",class:"section-banner-icon") %>
+      <!-- /SECTION BANNER ICON -->
+  
+      <!-- SECTION BANNER TITLE -->
+      <p class="section-banner-title">Conta Hub</p>
+      <!-- /SECTION BANNER TITLE -->
+  
+      <!-- SECTION BANNER TEXT -->
+      <p class="section-banner-text">Informações de perfil</p>
+      <!-- /SECTION BANNER TEXT -->
+    </div>
+    <!-- /SECTION BANNER -->
+     <%= render "form", user: @user %>
+      </div>
+  <!-- /CONTENT GRID -->
+  
+<%= render "shared/footer-new"%>
+
