@@ -1,0 +1,58 @@
+<%= form_with(model: programasetorial) do |form| %>
+  <% if programasetorial.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(programasetorial.errors.count, "error") %> prohibited this programasetorial from being saved:</h2>
+
+      <ul>
+        <% programasetorial.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :descricao, style: "display: block" %>
+    <%= form.text_field :descricao %>
+  </div>
+
+  <div>
+    <%= form.label :fotomaior, style: "display: block" %>
+    <%= form.text_field :fotomaior %>
+  </div>
+
+  <div>
+    <%= form.label :fotomenor, style: "display: block" %>
+    <%= form.text_field :fotomenor %>
+  </div>
+
+  <div>
+    <%= form.label :"quantidade empresas", style: "display: block" %>
+    <%= form.text_field :quantempresas %>
+  </div>
+
+  <div>
+    <%= form.label :"quantidade inscrições", style: "display: block" %>
+    <%= form.text_field :quantinscricoes %>
+  </div>
+
+  <div>
+    <%= form.label :"quantidade engajamento", style: "display: block" %>
+    <%= form.text_field :quantengajamento %>
+  </div>
+
+  <div>
+    <%= form.label :status, style: "display: block" %>
+    <%= form.select(:status, Programasetorial.statuses.keys.map {|status| [status.titleize,status]}, :class => 'form-control' )%>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+
