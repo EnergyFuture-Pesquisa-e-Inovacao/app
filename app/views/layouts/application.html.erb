@@ -1,51 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>EnergyFuture</title>
+    <title>App</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-
-    <%= stylesheet_link_tag "/assets/vendor/bootstrap.min.css"  %>
-
-    <%= stylesheet_link_tag "/assets/styles.min.css"  %>
   
   </head>
-    <style>
-    .landing {
-      width: 100%;
-      height: 100%;
-      background-image: url('/assets/Design_site_energyfuture_1.png');
-      background-size: cover;
-    }
-    
-    .icon-logo-vikinger {
-    
-    
-    }
-    
-    .icon-logo-vikinger.small {
-    
-    }
-    
-    .secondary, .checkbox-wrap input[type=checkbox]:checked+.checkbox-box, .checkbox-wrap input[type=radio]:checked+.checkbox-box, .primary{ background-color: #804aff!important; }
-    input[type=password]:focus, input[type=text]:focus, select:focus, textarea:focus {
-      border-color: #804aff!important;
-    }
-    
-    </style>  
+
   <body>
     <%= yield %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
   </body>
 </html>
-<script src="/assets/utils/app.js"></script>
-
-<script src="/assets/vendor/xm_plugins.min.js"></script>
-
-<script src= "/assets/form/form.utils.js" ></script>
-
-<script src= "/assets/landing/landing.tabs.js" ></script>

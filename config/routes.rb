@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   #resources :equipes
   #resources :empresas
   #resources :programasetorials
-  resources :agendas
+  #resources :agendas
   #resources :academies
-  resources :planos
-  resources :icps
+  #resources :planos
+  #resources :icps
   #resources :eventos
   resources :posts
   
@@ -35,7 +35,7 @@ Rails.application.routes.draw do
 
 
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
-  devise_for :admins, controllers: { sessions: 'admins/sessions' }
+  #devise_for :admins, controllers: { sessions: 'admins/sessions' }
   resources :users
 
   match '*unmatched', to: 'application#not_found_method', via: :all
@@ -55,9 +55,9 @@ Rails.application.routes.draw do
   authenticated :user do
     root 'home#agenda', as: :authenticated_user_root
   end
-  authenticated :admin do
-    root 'homea#index', as: :authenticated_admin_root
-  end
+  #authenticated :admin do
+  #  root 'homea#index', as: :authenticated_admin_root
+  #end
 
   unauthenticated do
     #root "home#index"
