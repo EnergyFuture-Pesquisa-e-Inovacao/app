@@ -1,0 +1,181 @@
+<%= render "shared/header-new"%>
+  <!-- CONTENT GRID -->
+  <div class="content-grid">
+    <!-- SECTION BANNER -->
+    <div class="section-banner">
+      <!-- SECTION BANNER ICON -->
+      <%= image_tag('/assets/banner/accounthub-icon.png',alt:"accounthub-icon",class:"section-banner-icon") %>
+      <!-- /SECTION BANNER ICON -->
+  
+      <!-- SECTION BANNER TITLE -->
+      <p class="section-banner-title">Meu Perfil</p>
+      <!-- /SECTION BANNER TITLE -->
+  
+      <!-- SECTION BANNER TEXT -->
+      <p class="section-banner-text">Informações de perfil</p>
+      <!-- /SECTION BANNER TEXT -->
+    </div>
+    <!-- /SECTION BANNER -->
+
+    <!-- GRID -->
+    <div class="grid grid-3-9 medium-space">
+      <!-- GRID COLUMN -->
+      <div class="account-hub-sidebar">
+        <!-- SIDEBAR BOX -->
+        <div class="sidebar-box no-padding">
+          <!-- SIDEBAR MENU -->
+          <div class="sidebar-menu">
+            <!-- SIDEBAR MENU ITEM -->
+            <!-- /SIDEBAR MENU ITEM -->
+
+              <!-- /SIDEBAR MENU HEADER -->
+
+              <!-- SIDEBAR MENU BODY -->
+              <div class="sidebar-menu-body accordion-content-linked">
+                <!-- SIDEBAR MENU LINK -->
+                <a class="sidebar-menu-link" href="/users/<%=current_user.id%>">Informações do Meu Perfil</a>
+                <!-- /SIDEBAR MENU LINK -->
+
+                <!-- SIDEBAR MENU LINK -->
+                <a class="sidebar-menu-link active" href="/users/hubaccountpassword">Alterar Senha</a>
+                <!-- /SIDEBAR MENU LINK -->
+              </div>
+              <!-- /SIDEBAR MENU BODY -->
+            </div>
+            <!-- /SIDEBAR MENU ITEM -->
+
+          </div>
+          <!-- /SIDEBAR MENU -->
+        </div>
+        <!-- /SIDEBAR BOX -->
+      </div>
+      <!-- /GRID COLUMN -->
+
+      <!-- GRID COLUMN -->
+      <div class="account-hub-content">
+        <!-- SECTION HEADER -->
+        <div class="section-header">
+          <!-- SECTION HEADER INFO -->
+          <div class="section-header-info">
+            <!-- SECTION PRETITLE -->
+            <p class="section-pretitle">Meu Perfil</p>
+            <!-- /SECTION PRETITLE -->
+
+            <!-- SECTION TITLE -->
+            <h2 class="section-title">Informações do Perfil</h2>
+            <!-- /SECTION TITLE -->
+          </div>
+          <!-- /SECTION HEADER INFO -->
+        </div>
+        <!-- /SECTION HEADER -->
+
+
+          <!-- WIDGET BOX -->
+          <div class="widget-box">
+            <!-- WIDGET BOX TITLE -->
+            <p class="widget-box-title">Sobre Seu Perfil</p>
+            <!-- /WIDGET BOX TITLE -->
+        
+            <!-- WIDGET BOX CONTENT -->
+            <div class="widget-box-content">
+              <!-- FORM -->
+              <div class="form">
+                <!-- FORM ROW -->
+                <div class="form-row split">
+                  <!-- FORM ITEM -->
+                  <div class="form-item">
+                    <!-- FORM INPUT -->
+                    <div class="form-input small active">
+                      <label for="profile-email">Email do Perfil</label>
+                      <input type="text" id="profile-email" name="profile_email" value=<%= current_user.email %>>
+                    </div>
+                    <!-- /FORM INPUT -->
+                  </div>
+                  <!-- /FORM ITEM -->
+
+                  <!-- FORM ITEM -->
+                  <div class="form-item">
+                    <!-- FORM INPUT -->
+                    <div class="form-input small active">
+                      <label for="profile-name">Nome do Perfil</label>
+                      <input type="text" id="profile-name" name="profile_name" value=<%= current_user.name %>>
+                    </div>
+                    <!-- /FORM INPUT -->
+                  </div>
+                  <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+
+                <!-- FORM ROW -->
+                <div class="form-row split">
+                  <!-- FORM ITEM -->
+                  <div class="form-item">
+                    <!-- FORM INPUT DECORATED -->
+                    <div class="form-input-decorated">
+                      <!-- FORM INPUT -->
+                      <div class="form-input small active">
+                        <label for="profile-plano">Plano</label>
+                        <input type="text" id="profile-plano" name="profile_plano" value=<%= @plano.name %>>
+                      </div>
+                      <!-- /FORM INPUT -->
+                    </div>
+                    <!-- /FORM INPUT DECORATED -->
+                  </div>
+                  <!-- /FORM ITEM -->
+
+                  <!-- FORM ITEM -->
+                  <div class="form-item">
+                    <!-- FORM INPUT -->
+                    <div class="form-input small active">
+                      <label for="profile-phone">Telefone</label>
+                      <input type="text" id="profile-phone" name="profile_phone" value=<%= @user.phone %>>
+                    </div>
+                    <!-- /FORM INPUT -->
+                  </div>
+                  <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+
+
+                <!-- FORM ROW -->
+                <div class="form-row split">
+                  <!-- FORM ITEM -->
+                  <div class="form-item">
+                    <!-- FORM INPUT DECORATED -->
+                    <div class="form-input-decorated">
+                      <!-- FORM INPUT -->
+                      <div class="form-input small active">
+                        <label for="profile-status">Status</label>
+                        <input type="text" id="profile-status" name="profile_status" value=<%= @user.status %>>
+                      </div>
+                      <!-- /FORM INPUT -->
+                    </div>
+                    <!-- /FORM INPUT DECORATED -->
+                  </div>
+                  <!-- /FORM ITEM -->
+
+                  <!-- FORM ITEM -->
+                  <div class="form-item">
+                    <!-- FORM INPUT -->
+                    <div class="form-input small active">
+                      <label for="profile-perfil">Perfil</label>
+                      <input type="text" id="profile-perfil" name="profile_perfil" value=<%= @icp.name %>>
+                    </div>
+                    <!-- /FORM INPUT -->
+                  </div>
+                  <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+
+              </div>
+              <!-- /FORM -->
+            </div>
+
+            <!-- WIDGET BOX CONTENT -->
+          </div>
+          <!-- /WIDGET BOX -->
+  
+    <!-- /GRID -->
+  </div>
+  <!-- /CONTENT GRID -->
+<%= render "shared/footer-new"%>

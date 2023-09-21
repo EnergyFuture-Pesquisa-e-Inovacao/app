@@ -1,0 +1,81 @@
+<%= form_with(model: agenda) do |form| %>
+  <% if agenda.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(agenda.errors.count, "error") %> prohibited this agenda from being saved:</h2>
+
+      <ul>
+        <% agenda.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% evento=Evento.where(tipoobjeto:"Agenda").where(idobjeto:@agenda.id)%>
+  <% @evento=Evento.find(evento[0].id)%>
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name , value:@evento.name %>
+  </div>
+
+  <div>
+    <%= form.label :descricao, style: "display: block" %>
+    <%= form.text_field :descricao , value:@evento.descricao %>
+  </div>
+
+  <div>
+    <%= form.label :fotomaior, style: "display: block" %>
+    <%= form.text_field :fotomaior %>
+  </div>
+
+  <div>
+    <%= form.label :fotomenor, style: "display: block" %>
+    <%= form.text_field :fotomenor %>
+  </div>
+
+  <div>
+    <%= form.label :datainicio, style: "display: block" %>
+    <%= form.date_field :datainicio, value:@evento.datainicio %>
+  </div>
+
+    <div>
+    <%= form.label :datafim, style: "display: block" %>
+    <%= form.date_field :datafim, value:@evento.datafim %>
+  </div>
+
+  <div>
+    <%= form.label :horainicio, style: "display: block" %>
+    <%thi = @evento.horainicio %>
+    <%= form.time_field :horainicio, value:thi.strftime('%H:%M') %>
+  </div>
+
+  <div>
+    <%= form.label :horafim, style: "display: block" %>
+    <%thf = @evento.horafim %>
+    <%= form.time_field :horafim, value:thf.strftime('%H:%M') %>
+  </div>  
+
+   <div>
+    <%= form.label :link, style: "display: block" %>
+    <%= form.text_field :linkevento , value:@evento.linkevento %>
+  </div>
+
+  <div>
+    <%= form.label :status, style: "display: block" %>
+    <%= form.select(:status, Agenda.statuses.keys.map {|status| [status.titleize,status]}, :class => 'form-control' )%>
+  </div>
+
+  <div>
+    <%= form.label :tipoevento, style: "display: block" %>
+    <%= form.select(:tipoevento, Agenda.tipoeventos.keys.map {|tipoevento| [tipoevento.titleize,tipoevento]}, :class => 'form-control' )%>
+  </div>
+
+    <div>
+    <%= form.label :"Enviar para participante?", style: "display: block" %>
+    <%= form.select(:enviarparaparticipante, [['Sim', true], ['Não', false]], value:@evento.enviarparaparticipante, :class => 'form-control' )%>
+  </div>
+
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
