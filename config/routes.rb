@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :empresas
   resources :programasetorials
   resources :agendas
-  resources :academies
+  #resources :academies
   resources :planos
   resources :icps
   resources :eventos
