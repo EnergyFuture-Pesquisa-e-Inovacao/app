@@ -1,0 +1,87 @@
+<style>
+    .landing {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+    }
+
+    .logo img, .page-loader-decoration img  {
+        width: 48px;
+        height: 48px;
+    }
+    .header .header-brand .logo {
+        margin-left: 22px!important;
+    }
+
+    .secondary, .checkbox-wrap input[type=checkbox]:checked+.checkbox-box, .checkbox-wrap input[type=radio]:checked+.checkbox-box, .primary{ background-color: #804aff!important; }
+    input[type=password]:focus, input[type=text]:focus, select:focus, textarea:focus {
+        border-color: #804aff!important;
+    }
+
+    .menu .menu-item.active .menu-item-link, .menu .menu-item.active .menu-item-link:hover,
+    .header {
+        background-color: #804aff!important;
+    }
+
+    .sidebar.navigation-widget.closed {
+        padding-top: 0px!important;
+    }
+
+
+    .content-grid {
+        width:100%!important;
+        padding:115px 25px 0px 105px!important;
+    }
+
+    @media screen and (max-width: 1500px){
+        .content-grid {
+            width:99%!important;
+        }
+    }
+
+    .grid.grid-3-3-3, .grid.grid-3-3-3-3 {
+        grid-template-columns: repeat(auto-fit,240px)!important;
+    }
+
+</style>
+<script>
+    var z = document.getElementById("{$menu_ativo}");
+    z.classList.add('active');
+</script>
+
+<!-- app -->
+<%= javascript_include_tag "https://hub.energyfuture.com.br/js/utils/app.js" %>
+<!-- page loader -->
+<%= javascript_include_tag "https://hub.energyfuture.com.br/js/utils/page-loader.js" %>
+<!-- simplebar -->
+<%= javascript_include_tag "https://hub.energyfuture.com.br/js/vendor/simplebar.min.js" %>
+<!-- liquidify -->
+<%= javascript_include_tag "https://hub.energyfuture.com.br/js/utils/liquidify.js" %>
+<!-- XM_Plugins -->
+<%= javascript_include_tag "https://hub.energyfuture.com.br/js/vendor/xm_plugins.min.js" %>
+<!-- tiny-slider -->
+<script src="/assets/vendor/tiny-slider.min.js"></script>
+<!-- chartJS -->
+<%= javascript_include_tag "https://hub.energyfuture.com.br/js/vendor/Chart.bundle.min.js" %>
+<!-- global.hexagons -->
+<%= javascript_include_tag "https://hub.energyfuture.com.br/js/global/global.hexagons.js" %>
+<!-- global.tooltips -->
+<%= javascript_include_tag "https://hub.energyfuture.com.br/js/global/global.tooltips.js" %>
+<!-- global.popups -->
+<%= javascript_include_tag "https://hub.energyfuture.com.br/js/global/global.popups.js" %>
+<!-- global.charts -->
+<%= javascript_include_tag "https://hub.energyfuture.com.br/js/global/global.charts.js" %>
+<!-- header -->
+<%= javascript_include_tag "https://hub.energyfuture.com.br/js/header/header.js" %>
+<!-- sidebar -->
+<%= javascript_include_tag "https://hub.energyfuture.com.br/js/sidebar/sidebar.js" %>
+<!-- content -->
+<%= javascript_include_tag "https://hub.energyfuture.com.br/js/content/content.js" %>
+<!-- form.utils -->
+<%= javascript_include_tag "https://hub.energyfuture.com.br/js/form/form.utils.js" %>
+<!-- SVG icons -->
+<%= javascript_include_tag "https://hub.energyfuture.com.br/js/utils/svg-loader.js" %>
+</body>
+</html>
+
+
