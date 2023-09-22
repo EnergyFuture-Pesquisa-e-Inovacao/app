@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Planos</h1>
+
+<div id="planos">
+  <% @planos.each do |plano| %>
+    <%= render plano %>
+    <p>
+      <%= link_to "Show this plano", plano %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New plano", new_plano_path %>
+<%= link_to "Home", "homea/index" %>

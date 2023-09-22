@@ -1,0 +1,74 @@
+<p style="color: green"><%= notice %></p>
+</br>
+<div class="grid grid-3-3-3-3 centered">
+                <!-- EVENT PREVIEW -->
+                <div class="event-preview">
+                    <figure class="event-preview-cover liquid" style="background: url(&quot;/assets/cover/40.jpg&quot;) center center / cover no-repeat;">
+                        <%= image_tag(@programasetorial.fotomaior, alt: "cover-40") %>
+                    </figure>
+                    <div class="event-preview-info">
+                        <div class="event-preview-info-top">
+                          <p class="event-preview-text"><span class="bold"><%="Nome: "+@programasetorial.name%></span></p>  
+                          <p class="event-preview-text"><span class="bold"><%="Status: "+@programasetorial.status%></span></p>  
+                          <p class="event-preview-text"><span class="bold"><%="Quant Empresas  : #{@programasetorial.quantempresas}"%></span></p>
+                          <p class="event-preview-text"><span class="bold"><%="Engajamento     : #{@programasetorial.quantengajamento}"%></span></p>
+                          <p class="event-preview-text"><span class="bold"><%="Quant Inscriçoes: #{@programasetorial.quantinscricoes}"%></span></p>
+                          <p class="event-preview-text"><%= @programasetorial.descricao %></p>                          
+
+                        </div>
+                        <div class="event-preview-info-bottom">
+                            <div class="decorated-text">
+                                <svg class="decorated-text-icon icon-pin">
+                                    <use xlink:href="#svg-pin"></use>
+                                </svg>
+                            </div>
+                            <!-- /DECORATED TEXT -->
+
+                            <!-- META LINE -->
+
+                            <p class="button white white-tertiary"><%= link_to "Editar o Programa", edit_programasetorial_path(@programasetorial) %> </p>
+                            <p class="button white white-tertiary"><%= link_to "Adicionar Eventos", "/homea/adicionareventops?:id=#{@programasetorial.id}"%></p>
+
+                            
+                        </div>
+                    </div>
+                </div>
+                <!-- /EVENT PREVIEW -->
+
+            </div>
+<%@eventos=Evento.where(tipoobjeto:"Programa Setorial",idobjeto:@programasetorial.id)%>
+<%ideventos=@eventos.select(:id)%>
+<%@timelines=Timeline.where(tipoobjeto:"Eventos PG").where("idobjeto IN (?)",ideventos)%>
+
+
+
+              <% @eventos.each do |evento| %>
+               <%@timeline=Timeline.where(tipoobjeto:"Eventos PG").where(idobjeto: evento.id)%>
+        
+                
+                        <%= "Evento: #{evento.idobjeto}"   %></p>
+                        <%= "Evento: " + evento.tipoobjeto %></p>
+                        <%= "Data início: " + evento.datainicio.strftime("%d/%m/%Y") %></p>
+                        <%= "Duração: " + evento.duration %></p>
+                        <%= "Timeline: #{@timeline[0].idobjeto}"  %></p>
+                        <%= "Timeline: " + @timeline[0].tipoobjeto %></p>
+                        <%= "Timeline: " + @timeline[0].datahora.strftime("%H:%M %d/%m/%Y") %></p>
+                        <%="Status: " + evento.status%></p>
+                        <%= link_to "Editar este Evento", edit_evento_path(evento) %></p>  
+
+
+                <% end %>
+         
+
+         
+
+
+
+
+
+
+
+<div>
+  <%= link_to "Home", "/homea/index" %>|
+  <%= link_to "Back to programas", programasetorials_path %>
+</div>
