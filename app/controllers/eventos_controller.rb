@@ -86,6 +86,19 @@ class EventosController < ApplicationController
   end
 
 
+  def destroy
+    if @timeline.present?
+      @timeline.destroy
+    end  
+    @evento.destroy
+    respond_to do |format|
+      format.html { redirect_to agendas_url, notice: "Agenda was successfully destroyed." }
+      format.json { head :no_content }
+    end
+  end
+
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

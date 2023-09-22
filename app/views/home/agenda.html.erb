@@ -77,6 +77,8 @@
                            <%else%>
                                <p class="button white white-tertiary"><%= link_to "Link", "//#{evento.linkevento}"%></p>
                            <%end%> 
+                        <%else%>
+                          <%= button_to "Destroy this Evento", evento, method: :delete %>
                         <%end%>   
                         </div>
                     </div>
