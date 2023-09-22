@@ -72,14 +72,14 @@ class AgendasController < ApplicationController
         evento.duration="%.2f" % delta_time       
         evento.save!
         evento=Evento.last
-        #timeline=Timeline.new
-        #timeline.idobjeto=evento.id
-        #timeline.tipoobjeto="Eventos Agenda" 
+        timeline=Timeline.new
+        timeline.idobjeto=evento.id
+        timeline.tipoobjeto="Eventos Agenda" 
         #thdi = evento.datainicio
         #thi = evento.horainicio
         #timeline.datahora=thdi.strftime("%d/%m/%Y")+" "+thi.strftime('%H:%M') 
         #timeline.status=agenda.status 
-        #timeline.save!    
+        timeline.save!    
 
         #create_agendaz
         format.html { redirect_to agenda_url(@agenda), notice: "Evento da Agenda was successfully created." }

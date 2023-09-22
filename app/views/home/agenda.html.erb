@@ -34,7 +34,7 @@
               <% @eventos.each do |evento| %>
               
               <%@agenda=Agenda.find(evento.idobjeto)%>
-              <%timeline=Timeline.where(idobjeto:evento.id,tipoobjeto:"Eventos Agenda",user_id:current_user.id)%>
+              <%timeline=Timeline.where(idobjeto:evento.id,tipoobjeto:"Eventos Agenda")%>
                 <!-- EVENT PREVIEW -->
                 <div class="event-preview">
                     <figure class="event-preview-cover liquid" style="background: url(&quot;/assets/cover/40.jpg&quot;) center center / cover no-repeat;">
