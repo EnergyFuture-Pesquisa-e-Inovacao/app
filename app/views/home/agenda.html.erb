@@ -54,7 +54,15 @@
                         </div>
                         <div class="event-preview-info-bottom">
                             <!-- /DECORATED TEXT -->
-
+                             <%if agenda[0].tipoevento.eql?"On Line"%>
+                              <%if timeline[0].present?%>
+                               <p class="button white white-tertiary"><%= link_to "Fale Conosco", "//www.energyfuture.com.br/contato"%></p>
+                              <%else%>
+                               <p class="button white white-tertiary"><%= link_to "Participar Evento", "/home/participarevento?id=#{evento.id}&idobjeto=#{evento.idobjeto}&tipoobjeto=#{evento.tipoobjeto}"%></p>
+                              <%end%> 
+                             <%else%>
+                               <p class="button white white-tertiary"><%= link_to "Link", "//#{evento.linkevento}"%></p>
+                             <%end%>  
                         </div>
                     </div>
                 </div>
