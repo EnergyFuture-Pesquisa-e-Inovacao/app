@@ -2,12 +2,12 @@ Rails.application.routes.draw do
   #resources :userequipes
   #resources :equipes
   #resources :empresas
-  #resources :programasetorials
-  #resources :agendas
+  resources :programasetorials
+  resources :agendas
   #resources :academies
-  #resources :planos
-  #resources :icps
-  #resources :eventos
+  resources :planos
+  resources :icps
+  resources :eventos
   resources :posts
   
   get 'home/agenda'
