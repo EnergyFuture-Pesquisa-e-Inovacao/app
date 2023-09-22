@@ -32,8 +32,10 @@
             
             <div class="grid grid-3-3-3-3 centered">
               <% @eventos.each do |evento| %>
-              <%agenda=Agenda.where(id:evento.idobjeto)%>
-              <%timeline=Timeline.where(idobjeto:evento.id,tipoobjeto:"Eventos Agenda")%>
+                <%agenda=Agenda.where(id:evento.idobjeto)%>
+                <%@agenda=Agenda.find_by(id: agenda[0].id)%>
+                <%timeline=Timeline.where(idobjeto:evento.id,tipoobjeto:"Eventos Agenda")%>
+                <%@timeline=Timeline.find_by(id:evento.id)%> 
                 <!-- EVENT PREVIEW -->
                 <div class="event-preview">
                     <figure class="event-preview-cover liquid" style="background: url(&quot;/assets/cover/40.jpg&quot;) center center / cover no-repeat;">
@@ -50,12 +52,12 @@
                           <p class="event-preview-title popup-event-information-trigger"><%= evento.name %></p>
                           <p class="event-preview-timestamp"><span class="bold"><%=th.strftime('%H:%M')%></span></p>
                           <p class="event-preview-text"><%= evento.descricao.slice! 0, 195 %></p>
-
+                          <p class="event-preview-text"><%= @agenda.tipoevento%></p>
                         </div>
                         <div class="event-preview-info-bottom">
                             <!-- /DECORATED TEXT -->
-                             <%if agenda[0].tipoevento.eql?"On Line"%>
-                              <%if timeline[0].present?%>
+                             <%if @agenda.tipoevento.eql?"On Line"%>
+                              <%if @timeline.present?%>
                                <p class="button white white-tertiary"><%= link_to "Fale Conosco", "//www.energyfuture.com.br/contato"%></p>
                               <%else%>
                                <p class="button white white-tertiary"><%= link_to "Participar Evento", "/home/participarevento?id=#{evento.id}&idobjeto=#{evento.idobjeto}&tipoobjeto=#{evento.tipoobjeto}"%></p>
