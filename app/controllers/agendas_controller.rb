@@ -122,6 +122,16 @@ class AgendasController < ApplicationController
 
   # DELETE /agendas/1 or /agendas/1.json
   def destroy
+    evento=Evento.where(tipoobjeto:"Agenda").where(idobjeto:@agenda.id)
+     if evento[0].present?
+      @evento=Evento.find(evento[0].id) 
+      timeline=Timeline.where(tipoobjeto:"Eventos Agenda",idobjeto:evento[0].id)    
+       if timeline[0].present?
+        @timeline=Timeline.find(timeline[0].id)
+        @timeline.destroy
+       end 
+       @evento.destroy
+      end  
     @agenda.destroy
     respond_to do |format|
       format.html { redirect_to agendas_url, notice: "Agenda was successfully destroyed." }
