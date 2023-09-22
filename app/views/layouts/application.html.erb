@@ -8,9 +8,9 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 
-    <%= stylesheet_link_tag "/assets/vendor/bootstrap.min.css"  %>
+    <%= stylesheet_link_tag "https://hub.energyfuture.com.br/css/vendor/bootstrap.min.css" %>
 
-    <%= stylesheet_link_tag "/assets/styles.min.css"  %>
+    <%= stylesheet_link_tag "https://hub.energyfuture.com.br/css/styles.min.css" %>
   
   </head>
     <style>
@@ -42,10 +42,11 @@
     <p class="alert"><%= alert %></p>
   </body>
 </html>
-<script src="/assets/utils/app.js"></script>
 
-<script src="/assets/vendor/xm_plugins.min.js"></script>
+<%= javascript_include_tag "https://hub.energyfuture.com.br/js/utils/app.js" %>
 
-<script src= "/assets/form/form.utils.js" ></script>
+<%= javascript_include_tag "https://hub.energyfuture.com.br/js/vendor/xm_plugins.min.js" %>
 
-<script src= "/assets/landing/landing.tabs.js" ></script>
+<%= javascript_include_tag "https://hub.energyfuture.com.br/js/form/form.utils.js" %>
+
+<%= javascript_include_tag "https://hub.energyfuture.com.br/js/landing/landing.tabs.js" %>
