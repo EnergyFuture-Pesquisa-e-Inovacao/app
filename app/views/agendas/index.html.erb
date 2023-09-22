@@ -38,6 +38,7 @@
             <div class="grid grid-3-3-3-3 centered">
               <% @agendas.each do |agenda| %>
               <% evento=Evento.where(tipoobjeto:"Agenda",idobjeto:agenda.id)%>
+              <% timeline=Timeline.where(tipoobjeto:"Eventos Agenda",idobjeto:evento[0].id)%>
                 <!-- EVENT PREVIEW -->
                 <div class="event-preview">
                     <figure class="event-preview-cover liquid" style="background: url(&quot;/assets/cover/40.jpg&quot;) center center / cover no-repeat;">
@@ -56,6 +57,9 @@
                           <p class="event-preview-text"><%= evento[0].descricao.slice! 0, 195 %></p>
                           <p class="event-preview-text"><%= evento[0].linkevento %></p>
                           <p class="event-preview-text"><%= agenda.tipoevento %></p>
+                          <p class="event-preview-text"><%= agenda.id %></p>
+                          <p class="event-preview-text"><%= evento[0].id %></p>
+                          <p class="event-preview-text"><%= timeline[0].id %></p>
                         </div>
                         <div class="event-preview-info-bottom">
                             <p class="button white white-tertiary"><%= link_to "Show Este Evento", agenda %></p>
