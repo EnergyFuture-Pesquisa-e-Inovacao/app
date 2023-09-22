@@ -35,7 +35,7 @@
                 <%agenda=Agenda.where(id:evento.idobjeto)%>
                 <%@agenda=Agenda.find(agenda[0].id)%>
                 <%timeline=Timeline.where(idobjeto:evento.id,tipoobjeto:"Eventos Agenda")%>
-                <%@timeline=Timeline.find(evento.id)%> 
+                <%@timeline=Timeline.find(timeline[0].id)%> 
                 <!-- EVENT PREVIEW -->
                 <div class="event-preview">
                     <figure class="event-preview-cover liquid" style="background: url(&quot;/assets/cover/40.jpg&quot;) center center / cover no-repeat;">
@@ -53,11 +53,13 @@
                           <p class="event-preview-timestamp"><span class="bold"><%=th.strftime('%H:%M')%></span></p>
                           <p class="event-preview-text"><%= evento.descricao.slice! 0, 195 %></p>
                           <p class="event-preview-text"><%= @agenda.tipoevento%></p>
+                          <p class="event-preview-text"><%= @agenda.id%></p>
                           <p class="event-preview-text"><%= evento.idobjeto%></p>
+                          <p class="event-preview-text"><%= @timeline.id%></p>
                         </div>
                         <div class="event-preview-info-bottom">
                             <!-- /DECORATED TEXT -->
- 
+
                         </div>
                     </div>
                 </div>
