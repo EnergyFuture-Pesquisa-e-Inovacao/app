@@ -106,7 +106,9 @@ class EventosController < ApplicationController
       if params[:id]!="adicionareventops"
       @evento = Evento.find(params[:id])
       timeline = Timeline.where(tipoobjeto:"Eventos",idobjeto:@evento.id)
-      @timeline = Timeline.find(timeline[0].id)
+       if timeline[0].present?
+        @timeline = Timeline.find(timeline[0].id)
+       end 
       end
     end
 
