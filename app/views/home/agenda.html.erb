@@ -35,6 +35,7 @@
               <%agenda=Agenda.where(id:evento.idobjeto)%>
               <%@agenda=Agenda.find(agenda[0].id)%>
               <%timeline=Timeline.where(idobjeto:evento.id,tipoobjeto:"Eventos Agenda")%>
+              <%@timeline=Timeline.find(timeline[0].id)%>
                 <!-- EVENT PREVIEW -->
                 <div class="event-preview">
                     <figure class="event-preview-cover liquid" style="background: url(&quot;/assets/cover/40.jpg&quot;) center center / cover no-repeat;">
@@ -55,8 +56,8 @@
                         </div>
                         <div class="event-preview-info-bottom">
                             <!-- /DECORATED TEXT -->
-                             <%if evento.tipoevento=="On Line"%>
-                              <%if timeline.present?%>
+                             <%if @agenda.tipoevento=="On Line"%>
+                              <%if @timeline.present?%>
                                <p class="button white white-tertiary"><%= link_to "Fale Conosco", "//www.energyfuture.com.br/contato"%></p>
                               <%else%>
                                <p class="button white white-tertiary"><%= link_to "Participar Evento", "/home/participarevento?id=#{evento.id}&idobjeto=#{evento.idobjeto}&tipoobjeto=#{evento.tipoobjeto}"%></p>
