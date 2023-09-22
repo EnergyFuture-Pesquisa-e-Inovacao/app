@@ -32,8 +32,8 @@
             
             <div class="grid grid-3-3-3-3 centered">
               <% @eventos.each do |evento| %>
-              
-              <%@agenda=Agenda.find(evento.idobjeto)%>
+              <%agenda=Agenda.where(id:evento.idobjeto)%>
+              <%@agenda=Agenda.find(agenda[0].id)%>
               <%timeline=Timeline.where(idobjeto:evento.id,tipoobjeto:"Eventos Agenda")%>
                 <!-- EVENT PREVIEW -->
                 <div class="event-preview">
@@ -55,7 +55,7 @@
                         </div>
                         <div class="event-preview-info-bottom">
                             <!-- /DECORATED TEXT -->
-                             <%if @agenda.tipoevento=="On Line"%>
+                             <%if evento.tipoevento=="On Line"%>
                               <%if timeline.present?%>
                                <p class="button white white-tertiary"><%= link_to "Fale Conosco", "//www.energyfuture.com.br/contato"%></p>
                               <%else%>
