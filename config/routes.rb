@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  #resources :userequipes
-  #resources :equipes
-  #resources :empresas
+  resources :userequipes
+  resources :equipes
+  resources :empresas
   resources :programasetorials
   resources :agendas
   #resources :academies
