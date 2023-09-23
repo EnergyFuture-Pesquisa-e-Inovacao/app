@@ -58,16 +58,10 @@
                           <p class="event-preview-text"><%= evento.descricao.slice! 0, 195 %></p>
                           <%if agenda[0].present?%>
                            <p class="event-preview-text"><%= @agenda.tipoevento%></p>
-                           <p class="event-preview-text"><%= @agenda.id%></p>
-                          <%end%> 
-                          <p class="event-preview-text"><%= evento.idobjeto%></p>
-                          <%if timeline[0].present?%>
-                           <p class="event-preview-text"><%= @timeline.id%></p>
                           <%end%> 
                         </div>
                         <div class="event-preview-info-bottom">
-                            <!-- /DECORATED TEXT -->
-                        <%if agenda[0].present?%>    
+                            <!-- /DECORATED TEXT -->  
                            <%if @agenda.tipoevento.eql?"On Line"%>
                               <%if @timeline.present?%>
                                <p class="button white white-tertiary"><%= link_to "Fale Conosco", "//www.energyfuture.com.br/contato"%></p>
@@ -76,10 +70,7 @@
                               <%end%> 
                            <%else%>
                                <p class="button white white-tertiary"><%= link_to "Link", "//#{evento.linkevento}"%></p>
-                           <%end%> 
-                        <%else%>
-                          <%= button_to "Destroy this Evento", evento, method: :delete %>
-                        <%end%>   
+                           <%end%>   
                         </div>
                     </div>
                 </div>
