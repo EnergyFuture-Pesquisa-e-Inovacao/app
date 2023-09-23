@@ -11,6 +11,7 @@ gem 'maskedinput-rails', '~> 1.4', '>= 1.4.1.0'
 
 #gem 'aws-sdk-s3', '~> 1.134'
 #gem 'aws-sdk-s3', '~> 1.135'
+gem "aws-sdk-s3", require: false
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.8"
@@ -20,7 +21,7 @@ gem "sprockets-rails"
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.5.3"
-#gem 'sqlite3', '~> 1.6', '>= 1.6.3'
+
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
@@ -54,7 +55,7 @@ gem "bootsnap", require: false
 # gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.2"
 
 
 group :development, :test do
