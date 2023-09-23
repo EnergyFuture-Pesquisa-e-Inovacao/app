@@ -162,7 +162,7 @@ class AgendasController < ApplicationController
       params.require(:agenda).permit(
       :name, 
       :descricao,
-      :fotomaior, 
+      :main_image, 
       :fotomenor, 
       :datainicio, 
       :datafim,

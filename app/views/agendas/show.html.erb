@@ -3,9 +3,6 @@
 <div class="grid grid-3-3-3-3 centered">
                 <!-- EVENT PREVIEW -->
                 <div class="event-preview">
-                    <figure class="event-preview-cover liquid" style="background: url(&quot;/assets/cover/40.jpg&quot;) center center / cover no-repeat;">
-                        <%= image_tag @agenda.fotomaior %>
-                    </figure>
                     <% evento=Evento.where(tipoobjeto:"Agenda").where(idobjeto:@agenda.id)%>
                     <% @evento=Evento.find(evento[0].id)%>
                     <div class="event-preview-info">

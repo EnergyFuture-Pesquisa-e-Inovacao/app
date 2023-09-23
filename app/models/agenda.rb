@@ -1,7 +1,7 @@
 class Agenda < ApplicationRecord
-    
-    has_one_attached :fotomaior
-    has_one_attached :fotomenor
+    has_one_attached :main_image
+    #has_one_attached :main_image, service: :s3
+    #has_one_attached :fotomenor
 
     enum status: { ativo:0, inativo:1 }   
     #enum category: { "Hub de Inovação":0, "Cyber":1 }  
