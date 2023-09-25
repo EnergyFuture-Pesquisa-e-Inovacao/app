@@ -12,6 +12,7 @@ gem 'maskedinput-rails', '~> 1.4', '>= 1.4.1.0'
 #gem 'aws-sdk-s3', '~> 1.134'
 #gem 'aws-sdk-s3', '~> 1.135'
 gem "aws-sdk-s3", require: false
+gem 'image_processing'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.8"
@@ -55,7 +56,7 @@ gem "bootsnap", require: false
 # gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-gem "image_processing", "~> 1.2"
+#gem "image_processing", "~> 1.2"
 
 
 group :development, :test do

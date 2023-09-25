@@ -27,11 +27,6 @@
   </div>
 
   <div>
-    <%= form.label :fotomenor, style: "display: block" %>
-    <%= form.text_field :fotomenor %>
-  </div>
-
-  <div>
     <%= form.label :datainicio, style: "display: block" %>
     <%= form.date_field :datainicio %>
   </div>
@@ -70,6 +65,7 @@
     <%= form.label :"Enviar para participante?", style: "display: block" %>
     <%= form.select(:enviarparaparticipante, [['Sim', true], ['Não', false]], :class => 'form-control' )%>
   </div>
+
 
 
   <div>

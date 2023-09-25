@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   devise_for :admins, controllers: { sessions: 'admins/sessions' }
   resources :users
 
-  match '*unmatched', to: 'application#not_found_method', via: :all
+  #match '*unmatched', to: 'application#not_found_method', via: :all
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

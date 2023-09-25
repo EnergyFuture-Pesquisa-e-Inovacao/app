@@ -1,7 +1,18 @@
 class Agenda < ApplicationRecord
     has_one_attached :main_image
-    #has_one_attached :main_image, service: :s3
-    #has_one_attached :fotomenor
+    #has_one_attached :menor_image
+    #has_one_attached :photo
+
+    #has_one_attached :photo do |photo|
+    #    photo.variant :thumb, resize_to_limit: [100, 100]
+    #    photo.variant :medium, resize_to_limit: [400, 400]
+    #end
+
+    #has_one_attached :main_image do |attachable|
+    #    attachable.variant :thumb, resize: "100x100"
+   #     attachable.variant :medium, resize: "300x300"
+        #monochrome: true
+   # end
 
     enum status: { ativo:0, inativo:1 }   
     #enum category: { "Hub de Inovação":0, "Cyber":1 }  
