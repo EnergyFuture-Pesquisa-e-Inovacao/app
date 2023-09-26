@@ -42,9 +42,6 @@
                 <%end%> 
                 <!-- EVENT PREVIEW -->
                 <div class="event-preview">
-                    <figure class="event-preview-cover liquid" style="background: url(&quot;https://hub.energyfuture.com.br/img/cover/40.jpg&quot;) center center / cover no-repeat;">
-                    
-                    </figure>
                     <div class="event-preview-info">
                         <div class="event-preview-info-top">
                             <div class="date-sticker">
@@ -52,13 +49,23 @@
                             <p class="date-sticker-day"><%=td.strftime('%d')%></p>
                             <p class="date-sticker-month"><%=td.strftime('%m')%></p>
                             </div>
+                          <% if  @agenda.main_image.attached? %>
+                            <figure class="event-preview-cover liquid">
+                             <%= image_tag(@agenda.main_image) %>
+                            </figure>
+                         <% end %>      
                           <%th = evento.horainicio %>
+                          </br>
                           <p class="event-preview-title popup-event-information-trigger"><%= evento.name %></p>
                           <p class="event-preview-timestamp"><span class="bold"><%=th.strftime('%H:%M')%></span></p>
-                          <p class="event-preview-text"><%= evento.descricao.slice! 0, 195 %></p>
                           <%if agenda[0].present?%>
                            <p class="event-preview-text"><%= @agenda.tipoevento%></p>
                           <%end%> 
+                          <div class="chat-widget-speaker right">
+                           <!-- CHAT WIDGET SPEAKER MESSAGE -->
+                           <p class="chat-widget-speaker-message"><%= evento.descricao.slice! 0, 80  %></p>
+                           <!-- /CHAT WIDGET SPEAKER MESSAGE -->
+                          </div>                           
                         </div>
                         <div class="event-preview-info-bottom">
                             <!-- /DECORATED TEXT -->  

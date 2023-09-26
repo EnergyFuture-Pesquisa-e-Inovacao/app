@@ -11,7 +11,7 @@
         <!-- /SECTION BANNER TITLE -->
 
         <!-- SECTION BANNER TEXT -->
-        <p class="section-banner-text">Confira os Programas que movimentam o setor </p>
+        <p class="section-banner-text">Confira os eventos que movimentam o setor </p>
         <!-- /SECTION BANNER TEXT -->
     </div>
     <!-- /SECTION BANNER -->
@@ -38,28 +38,33 @@
             <div class="grid grid-3-3-3-3 centered">
               <% @programasetorials.each do |programasetorial| %>
                 <!-- EVENT PREVIEW -->
-                <div class="event-preview">
-                    <figure class="event-preview-cover liquid" style="background: url(&quot;https://hub.energyfuture.com.br/img/cover/40.jpg&quot;) center center / cover no-repeat;">
-                        <%= image_tag(programasetorial.fotomaior, alt: "cover-40") %>
-                    </figure>
-                    <div class="event-preview-info">
-                        <div class="event-preview-info-top">
-                          <p class="event-preview-title popup-event-information-trigger"><%= programasetorial.name %></p>
-                          <p class="event-preview-text"><%= programasetorial.descricao %></p>
-
-                        </div>
+               <div class="event-preview"> 
+                    <div class="event-preview-info">             
+                      <div class="event-preview-info-top">
+                        <% if  programasetorial.main_imagepg.attached? %>
+                            <figure class="event-preview-cover liquid">
+                             <%= image_tag(programasetorial.main_imagepg) %>
+                            </figure>
+                         <% end %>                            
+                          <p class="event-preview-text"><span class="bold"><%="Ano: "+programasetorial.ano%></span></p> 
+                          <p class="event-preview-text"><span class="bold"><%="Nome: "+programasetorial.name%></span></p>  
+                          <p class="event-preview-text"><span class="bold"><%="Status: "+programasetorial.status%></span></p>  
+                          <p class="event-preview-text"><span class="bold"><%="Quant Empresas  : #{programasetorial.quantempresas}"%></span></p>
+                          <p class="event-preview-text"><span class="bold"><%="Engajamento     : #{programasetorial.quantengajamento}"%></span></p>
+                          <p class="event-preview-text"><span class="bold"><%="Quant Inscriçoes: #{programasetorial.quantinscricoes}"%></span></p>
+                          <div class="chat-widget-speaker right">
+                           <!-- CHAT WIDGET SPEAKER MESSAGE -->
+                           <p class="chat-widget-speaker-message"><%= programasetorial.descricao.slice! 0, 80 %></p>
+                           <!-- /CHAT WIDGET SPEAKER MESSAGE -->
+                          </div>
                         <div class="event-preview-info-bottom">
-                            <!-- /DECORATED TEXT -->
-
-                            <!-- META LINE -->
-                            <%="Status: " + programasetorial.status%>
                             <p class="button white white-tertiary"><%= link_to "Show Este Programa", programasetorial %></p>
                         </div>
+                      </div>  
                     </div>
                 </div>
-                <% end %>
                 <!-- /EVENT PREVIEW -->
-
-            </div>
+            <% end %>     
+    </div>
  </div>
 <%= render "shared/footer-new"%>

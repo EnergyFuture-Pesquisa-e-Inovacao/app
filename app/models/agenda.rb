@@ -3,9 +3,9 @@ class Agenda < ApplicationRecord
     #has_one_attached :menor_image
     #has_one_attached :photo
 
-    #has_one_attached :photo do |photo|
-    #    photo.variant :thumb, resize_to_limit: [100, 100]
-    #    photo.variant :medium, resize_to_limit: [400, 400]
+   # has_one_attached :main_image do |main_image|
+    #    main_image.variant :thumb, resize_to_limit: [100, 100]
+    #    main_image.variant :medium, resize_to_limit: [400, 400]
     #end
 
     #has_one_attached :main_image do |attachable|

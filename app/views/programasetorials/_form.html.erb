@@ -23,12 +23,7 @@
 
   <div>
     <%= form.label :fotomaior, style: "display: block" %>
-    <%= form.text_field :fotomaior %>
-  </div>
-
-  <div>
-    <%= form.label :fotomenor, style: "display: block" %>
-    <%= form.text_field :fotomenor %>
+    <%= form.file_field :main_imagepg %>
   </div>
 
   <div>
@@ -45,7 +40,10 @@
     <%= form.label :"quantidade engajamento", style: "display: block" %>
     <%= form.text_field :quantengajamento %>
   </div>
-
+  <div>
+    <%= form.label :"Ano", style: "display: block" %>
+    <%= form.text_field :ano %>
+  </div>
   <div>
     <%= form.label :status, style: "display: block" %>
     <%= form.select(:status, Programasetorial.statuses.keys.map {|status| [status.titleize,status]}, :class => 'form-control' )%>

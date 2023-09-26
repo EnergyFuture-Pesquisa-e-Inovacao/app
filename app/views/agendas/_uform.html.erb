@@ -21,25 +21,12 @@
     <%= form.label :descricao, style: "display: block" %>
     <%= form.text_area :descricao , value:@evento.descricao %>
   </div>
-
   <div>
     <%= form.label :fotomaior, style: "display: block" %>
     <%= form.file_field :main_image %>
   </div>
+  
 
-  <% if  agenda.main_image.attached? %>
-     <%= image_tag agenda.main_image %>
-  <% end %>
-
-  <div class="rounded-2xl border-gray-200 mb-4 w-full border-[1px] p-2 text-gray-500">
-    <%= form.label :photo %>
-    <%= form.file_field :photo %>
-  </div>
-
-   <div>
-    <%= form.label :fotomenor, style: "display: block" %>
-    <%= form.file_field :menor_image %>
-  </div>
 
   <div>
     <%= form.label :datainicio, style: "display: block" %>

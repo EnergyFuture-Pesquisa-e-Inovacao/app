@@ -27,7 +27,7 @@
                     <!-- /SECTION PRETITLE -->
 
                     <!-- SECTION TITLE -->
-                    <h2 class="section-title">Próximos Eventos</h2>
+                    <h2 class="section-title">Eventos da Agenda</h2>
                     <!-- /SECTION TITLE -->
                     
                 </div>
@@ -41,31 +41,43 @@
               <% timeline=Timeline.where(tipoobjeto:"Eventos Agenda",idobjeto:evento[0].id)%>
                 <!-- EVENT PREVIEW -->
                 <div class="event-preview">
-
                     <div class="event-preview-info">
                         <div class="event-preview-info-top">
+                          <% if  agenda.main_image.attached? %>
+                            <figure class="event-preview-cover liquid">
+                             <%= image_tag(agenda.main_image) %>
+                            </figure>
+                         <% end %>  
+
                             <div class="date-sticker">
                             <%td = evento[0].datainicio %>
                             <p class="date-sticker-day"><%=td.strftime('%d')%></p>
                             <p class="date-sticker-month"><%=td.strftime('%m')%></p>
                             </div>
                           <%th = evento[0].horainicio %>
+                          </br>
                           <p class="event-preview-title popup-event-information-trigger"><%= evento[0].name %></p>
                           <p class="event-preview-timestamp"><span class="bold"><%=th.strftime('%H:%M')%></span></p>
-                          <p class="event-preview-text"><%= evento[0].descricao.slice! 0, 195 %></p>
                           <p class="event-preview-text"><%= evento[0].linkevento %></p>
                           <p class="event-preview-text"><%= agenda.tipoevento %></p>
-                          <p class="event-preview-text"><%= agenda.id %></p>
-                          <p class="event-preview-text"><%= evento[0].id %></p>
-                          <p class="event-preview-text"><%= timeline[0].id %></p>
-                        </div>
-                        <div class="event-preview-info-bottom">
-                            <p class="button white white-tertiary"><%= link_to "Show Este Evento", agenda %></p>
-                        </div>
+                          <div class="chat-widget-speaker right">
+                           <!-- CHAT WIDGET SPEAKER MESSAGE -->
+                           <p class="chat-widget-speaker-message"><%= evento[0].descricao.slice! 0, 80  %></p>
+                           <!-- /CHAT WIDGET SPEAKER MESSAGE -->
+                          </div>             
+                          <p class="event-preview-timestamp"><span class="bold"><%="duração: "+evento[0].duration+" minutos"%></span></p>
+                                                    
+                          <div class="event-preview-info-bottom">
+                            <p class="button white white-tertiary"><%= link_to "Show Esse Evento", agenda_path(agenda) %> </p>             
+                          </div>
+                        </div>    
                     </div>
                 </div>
-                <% end %>
                 <!-- /EVENT PREVIEW -->
+
+
+            <% end %>
+                
 
             </div>
  </div>

@@ -1,84 +1,142 @@
-<%= render "shared/header-new"%>
+<%= render "shared/header-new",title:"O hub de inovação do setor elétrico"%>
+  <!-- CONTENT GRID -->
+  <div class="content-grid">
 
-<!-- CONTENT GRID -->
-<div class="content-grid">
-    <!-- SECTION BANNER -->
-    <div class="section-banner">
-        <%= image_tag('/assets/banner/overview-icon.png', alt: "overview-icon",class:"section-banner-icon") %>
+  <!-- SECTION BANNER -->
+        <div class="section-banner">
+            <%= image_tag('https://hub.energyfuture.com.br/img/banner/groups-icon.png',class:"section-banner-icon",alt:"groups-icon") %>
+            <!-- SECTION BANNER TITLE -->
+            <p class="section-banner-title">Programas Setoriais</p>
+            <!-- /SECTION BANNER TITLE -->
+    
+            <!-- SECTION BANNER TEXT -->
+            <p class="section-banner-text">Confira os Programas que movimenta o setor</p>
+            <!-- /SECTION BANNER TEXT -->
+        </div></br>
+         <!-- /SECTION BANNER -->
+          <%icp=Icp.find(current_user.icp_id)%>
+          <%plano=Plano.find(current_user.plano_id)%>    
 
-        <!-- SECTION BANNER TITLE -->
-        <p class="section-banner-title">Programas Setoriais</p>
-        <!-- /SECTION BANNER TITLE -->
+    <!-- GRID -->
+    <div class="grid grid-3-3-3-3 centered">
+     <% @programasetorials.each do |programasetorial| %>
+     <%agenda=Agenda.where(tipoevento: "Programa Setorial",idevento:programasetorial.id)%>
+      <!-- USER PREVIEW -->
+      <div class="user-preview">
+        <!-- USER PREVIEW COVER -->
+          <% if  programasetorial.main_imagepg.attached? %>
+            <figure class="event-preview-cover liquid">
+              <%= image_tag(programasetorial.main_imagepg) %>
+            </figure>
+          <% end %>  
+        <!-- /USER PREVIEW COVER -->
+    
+        <!-- USER PREVIEW INFO -->
+        <div class="user-preview-info">
 
-        <!-- SECTION BANNER TEXT -->
-        <p class="section-banner-text">Confira os Programas que movimentam o setor </p>
-        <!-- /SECTION BANNER TEXT -->
+    
+          <!-- USER SHORT DESCRIPTION -->
+          <div class="user-short-description">
+            <!-- USER SHORT DESCRIPTION AVATAR -->
+
+      
+            <!-- USER SHORT DESCRIPTION TITLE -->
+            <p class="user-short-description-title"><a href="group-timeline.html"><%= programasetorial.name %></a></p>
+            <!-- /USER SHORT DESCRIPTION TITLE -->
+      
+            <!-- USER SHORT DESCRIPTION TEXT -->
+            <p class="user-short-description-text">Ano: <%= programasetorial.ano %></p>
+            <!-- /USER SHORT DESCRIPTION TEXT -->
+          </div>
+          <!-- /USER SHORT DESCRIPTION -->
+    
+          <!-- USER STATS -->
+          <div class="user-stats">
+            <!-- USER STAT -->
+            <div class="user-stat">
+              <!-- USER STAT TITLE -->
+              <p class="user-stat-title"><%=programasetorial.quantempresas%></p>
+              <!-- /USER STAT TITLE -->
+      
+              <!-- USER STAT TEXT -->
+              <p class="user-stat-text">Empresas</p>
+              <!-- /USER STAT TEXT -->
+            </div>
+            <!-- /USER STAT -->
+      
+            <!-- USER STAT -->
+            <div class="user-stat">
+              <!-- USER STAT TITLE -->
+              <p class="user-stat-title"><%=programasetorial.quantengajamento%></p>
+              <!-- /USER STAT TITLE -->
+      
+              <!-- USER STAT TEXT -->
+              <p class="user-stat-text">Engajam.</p>
+              <!-- /USER STAT TEXT -->
+            </div>
+            <!-- /USER STAT -->
+      
+            <!-- USER STAT -->
+            <div class="user-stat">
+              <!-- USER STAT TITLE -->
+              <p class="user-stat-title"><%=programasetorial.quantinscricoes%></p>
+              <!-- /USER STAT TITLE -->
+      
+              <!-- USER STAT TEXT -->
+              <p class="user-stat-text">Inscritos</p>
+              <!-- /USER STAT TEXT -->
+            </div>
+            <!-- /USER STAT -->
+          </div>
+          <!-- /USER STATS -->
+    
+          <!-- USER AVATAR LIST -->
+          <div class="user-avatar-list medium reverse centered">
+            <!-- USER AVATAR -->
+            <div class="user-avatar smaller no-stats">
+              <!-- USER AVATAR BORDER -->
+              <div class="user-avatar-border">
+                <!-- HEXAGON -->
+                <div class="hexagon-34-36"></div>
+                <!-- /HEXAGON -->
+              </div>
+              <!-- /USER AVATAR BORDER -->
+          
+              <!-- USER AVATAR CONTENT -->
+              <div class="user-avatar-content">
+                <!-- HEXAGON -->
+                <div class="hexagon-image-30-32" data-src="img/avatar/03.jpg"></div>
+                <!-- /HEXAGON -->
+              </div>
+              <!-- /USER AVATAR CONTENT -->
+            </div>
+            <!-- /USER AVATAR -->
+
+          </div>
+          <!-- /USER AVATAR LIST -->
+          <!-- USER PREVIEW ACTIONS -->
+          <div class="user-preview-actions">
+            <!-- BUTTON -->
+          <%if !(plano.name.eql?"Free") and icp.name.eql?"Empresas de Energia" %>  
+          <p class="button white white-tertiary"><%= link_to "Ver o Programa", "/home/profiletimeline?id=#{programasetorial.id}"%></p>
+          <%elsif !(plano.name.eql?"Free") and icp.name.eql?"Indústrias e Consultorias" %>  
+          <p class="button white white-tertiary"><%= link_to "Ver o Programa", "/home/profiletimeline?id=#{programasetorial.id}"%></p>
+          <%elsif plano.name.eql?"Free" %>  
+          <p class="button white white-tertiary"><%= link_to "Fale Conosco", "//www.energyfuture.com.br/contato"%></p>
+          <%elsif icp.name.eql?"Startups, ICTs e Inovadores" %>  
+          <p class="button white white-tertiary"><%= link_to "Fale Conosco", "//www.energyfuture.com.br/contato"%></p>
+          <%end%> 
+            <!-- /BUTTON -->
+          </div>
+          <!-- /USER PREVIEW ACTIONS -->
+        </div>
+        <!-- /USER PREVIEW INFO -->
+      </div>
+      <!-- /USER PREVIEW -->
+      <% end %>
     </div>
-    <!-- /SECTION BANNER -->
-            <div class="section-header">
-                <!-- SECTION HEADER INFO -->
-                <div class="section-header-info">
-                    <!-- SECTION PRETITLE -->
-                    <p class="section-pretitle"><%= link_to "Home", "/home/agenda" %> </p>
-                    
-                    <p class="section-pretitle">Veja o que vem a seguir!</p>
-                    <!-- /SECTION PRETITLE -->
+    <!-- /GRID -->
+  </div>
+  <!-- /CONTENT GRID -->
 
-                    <!-- SECTION TITLE -->
-                    <h2 class="section-title">Próximos Programas</h2>
-                    <!-- /SECTION TITLE -->
-                    
-                </div>
-                <!-- /SECTION HEADER INFO -->
-                 
-            </div>
-
-            <div class="grid grid-3-3-3-3 centered">
-              <% @programasetorials.each do |programasetorial| %>
-              <%agenda=Agenda.where(tipoevento: "Programa Setorial",idevento:programasetorial.id)%>
-                <!-- EVENT PREVIEW -->
-                <div class="event-preview">
-                    <figure class="event-preview-cover liquid" style="background: url(&quot;https://hub.energyfuture.com.br/img/cover/40.jpg&quot;) center center / cover no-repeat;">
-                        <%= image_tag(agenda[0].fotomaior, alt: "cover-40") %>
-                    </figure>
-                    <div class="event-preview-info">
-                        <div class="event-preview-info-top">
-                            <div class="date-sticker">
-                            <%td = agenda[0].datainiciom1 %>
-                            <p class="date-sticker-day"><%=td.strftime('%d')%></p>
-                            <p class="date-sticker-month"><%=td.strftime('%m')%></p>
-                            </div>
-                          <%th = agenda[0].horainicio %>
-                          <p class="event-preview-title popup-event-information-trigger"><%= programasetorial.name %></p>
-                          <p class="event-preview-timestamp"><span class="bold"><%=th.strftime('%H:%M')%></span></p>
-                          <p class="event-preview-text"><%= programasetorial.descricao %></p>
-
-                        </div>
-                        <div class="event-preview-info-bottom">
-                            <div class="decorated-text">
-                                <svg class="decorated-text-icon icon-pin">
-                                    <use xlink:href="#svg-pin"></use>
-                                </svg>
-                                <p class="decorated-text-content"><%=agenda[0].category%></p>
-                            </div>
-                            <!-- /DECORATED TEXT -->
-
-                            <!-- META LINE -->
-                            <div class="meta-line">
-                                <p class="meta-line-text">+17 will assist</p>
-                            </div>
-                            <%programasparticipante=Programasparticipante.where(user_id:current_user.id).where(programasetorial_id:programasetorial.id)%>
-                            <%if !programasparticipante.present?%>
-                             <p class="button white white-tertiary"><%= link_to "Participar", "/home/participarprogramasetorial?id=#{programasetorial.id}"%></p>
-                            <%else%>
-                             <p class="button white white-tertiary"><%= link_to "já Participo", "/home/participarprogramasetorial?id=#{programasetorial.id}"%></p>
-                            <%end%>
-                        </div>
-                    </div>
-                </div>
-                <% end %>
-                <!-- /EVENT PREVIEW -->
-
-            </div>
- </div>
 <%= render "shared/footer-new"%>

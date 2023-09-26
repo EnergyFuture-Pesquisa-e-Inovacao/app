@@ -21,117 +21,44 @@
     <div class="grid grid-3-3-3-3 centered">
      <% @programasetorials.each do |programasetorial| %>
      <%agenda=Agenda.where(tipoevento: "Programa Setorial",idevento:programasetorial.id)%>
-      <!-- USER PREVIEW -->
-      <div class="user-preview">
-        <!-- USER PREVIEW COVER -->
-        <figure class="user-preview-cover liquid">
-          <%= image_tag("/assets/cover/29.jpg", alt: "cover-40") %>
-        </figure>
-        <!-- /USER PREVIEW COVER -->
-    
-        <!-- USER PREVIEW INFO -->
-        <div class="user-preview-info">
-
-    
-          <!-- USER SHORT DESCRIPTION -->
-          <div class="user-short-description">
-            <!-- USER SHORT DESCRIPTION AVATAR -->
-
-      
-            <!-- USER SHORT DESCRIPTION TITLE -->
-            <p class="user-short-description-title"><a href="group-timeline.html"><%= programasetorial.name %></a></p>
-            <!-- /USER SHORT DESCRIPTION TITLE -->
-      
-            <!-- USER SHORT DESCRIPTION TEXT -->
-            <p class="user-short-description-text">Ano: <%= programasetorial.ano %></p>
-            <!-- /USER SHORT DESCRIPTION TEXT -->
-          </div>
-          <!-- /USER SHORT DESCRIPTION -->
-    
-          <!-- USER STATS -->
-          <div class="user-stats">
-            <!-- USER STAT -->
-            <div class="user-stat">
-              <!-- USER STAT TITLE -->
-              <p class="user-stat-title"><%=programasetorial.quantempresas%></p>
-              <!-- /USER STAT TITLE -->
-      
-              <!-- USER STAT TEXT -->
-              <p class="user-stat-text">Empresas</p>
-              <!-- /USER STAT TEXT -->
-            </div>
-            <!-- /USER STAT -->
-      
-            <!-- USER STAT -->
-            <div class="user-stat">
-              <!-- USER STAT TITLE -->
-              <p class="user-stat-title"><%=programasetorial.quantengajamento%></p>
-              <!-- /USER STAT TITLE -->
-      
-              <!-- USER STAT TEXT -->
-              <p class="user-stat-text">Engajam.</p>
-              <!-- /USER STAT TEXT -->
-            </div>
-            <!-- /USER STAT -->
-      
-            <!-- USER STAT -->
-            <div class="user-stat">
-              <!-- USER STAT TITLE -->
-              <p class="user-stat-title"><%=programasetorial.quantinscricoes%></p>
-              <!-- /USER STAT TITLE -->
-      
-              <!-- USER STAT TEXT -->
-              <p class="user-stat-text">Inscritos</p>
-              <!-- /USER STAT TEXT -->
-            </div>
-            <!-- /USER STAT -->
-          </div>
-          <!-- /USER STATS -->
-    
-          <!-- USER AVATAR LIST -->
-          <div class="user-avatar-list medium reverse centered">
-            <!-- USER AVATAR -->
-            <div class="user-avatar smaller no-stats">
-              <!-- USER AVATAR BORDER -->
-              <div class="user-avatar-border">
-                <!-- HEXAGON -->
-                <div class="hexagon-34-36"></div>
-                <!-- /HEXAGON -->
-              </div>
-              <!-- /USER AVATAR BORDER -->
-          
-              <!-- USER AVATAR CONTENT -->
-              <div class="user-avatar-content">
-                <!-- HEXAGON -->
-                <div class="hexagon-image-30-32" data-src="img/avatar/03.jpg"></div>
-                <!-- /HEXAGON -->
-              </div>
-              <!-- /USER AVATAR CONTENT -->
-            </div>
-            <!-- /USER AVATAR -->
-
-          </div>
-          <!-- /USER AVATAR LIST -->
-          <!-- USER PREVIEW ACTIONS -->
-          <div class="user-preview-actions">
-            <!-- BUTTON -->
-          <%if !(plano.name.eql?"Free") and icp.name.eql?"Empresas de Energia" %>  
-          <p class="button white white-tertiary"><%= link_to "Ver o Programa", "/home/profiletimeline?id=#{programasetorial.id}"%></p>
-          <%elsif !(plano.name.eql?"Free") and icp.name.eql?"Indústrias e Consultorias" %>  
-          <p class="button white white-tertiary"><%= link_to "Ver o Programa", "/home/profiletimeline?id=#{programasetorial.id}"%></p>
-          <%elsif plano.name.eql?"Free" %>  
-          <p class="button white white-tertiary"><%= link_to "Fale Conosco", "//www.energyfuture.com.br/contato"%></p>
-          <%elsif icp.name.eql?"Startups, ICTs e Inovadores" %>  
-          <p class="button white white-tertiary"><%= link_to "Fale Conosco", "//www.energyfuture.com.br/contato"%></p>
-          <%end%> 
-            <!-- /BUTTON -->
-          </div>
-          <!-- /USER PREVIEW ACTIONS -->
-        </div>
-        <!-- /USER PREVIEW INFO -->
-      </div>
-      <!-- /USER PREVIEW -->
-      <% end %>
+  <!-- EVENT PREVIEW -->
+                <div class="event-preview">
+                          <% if  programasetorial.main_imagepg.attached? %>
+                            <figure class="event-preview-cover liquid">
+                             <%= image_tag(programasetorial.main_imagepg) %>
+                            </figure>
+                         <% end %>  
+                    <div class="event-preview-info">
+                        <div class="event-preview-info-top">
+                          <p class="event-preview-text"><span class="bold"><%="Ano: "+programasetorial.ano%></span></p> 
+                          <p class="event-preview-title popup-event-information-trigger"><%= programasetorial.name %></p>
+                          <p class="event-preview-text"><%="Empresas: "+programasetorial.quantempresas%></p>
+                          <p class="event-preview-text"><%="Engajamento: "+programasetorial.quantengajamento%></p>
+                          <p class="event-preview-text"><%="Inscritos: "+programasetorial.quantinscricoes%></p>
+                          <div class="chat-widget-speaker right">
+                           <!-- CHAT WIDGET SPEAKER MESSAGE -->
+                           <p class="chat-widget-speaker-message"><%= programasetorial.descricao.slice! 0, 80  %></p>
+                           <!-- /CHAT WIDGET SPEAKER MESSAGE -->
+                          </div>                
+                        </div>
+                        <div class="event-preview-info-bottom">
+                          <!-- BUTTON -->
+                          <%if !(plano.name.eql?"Free") and icp.name.eql?"Empresas de Energia" %>  
+                           <p class="button white white-tertiary"><%= link_to "Ver o Programa", "/home/profiletimeline?id=#{programasetorial.id}"%></p>
+                          <%elsif !(plano.name.eql?"Free") and icp.name.eql?"Indústrias e Consultorias" %>  
+                           <p class="button white white-tertiary"><%= link_to "Ver o Programa", "/home/profiletimeline?id=#{programasetorial.id}"%></p>
+                          <%elsif plano.name.eql?"Free" %>  
+                           <p class="button white white-tertiary"><%= link_to "Fale Conosco", "//www.energyfuture.com.br/contato"%></p>
+                          <%elsif icp.name.eql?"Startups, ICTs e Inovadores" %>  
+                           <p class="button white white-tertiary"><%= link_to "Fale Conosco", "//www.energyfuture.com.br/contato"%></p>
+                          <%end%> 
+                           <!-- /BUTTON -->          
+                        </div>
+                    </div>
+                </div>
+        <% end %>
+        <!-- /EVENT PREVIEW -->
+     
     </div>
     <!-- /GRID -->
   </div>
