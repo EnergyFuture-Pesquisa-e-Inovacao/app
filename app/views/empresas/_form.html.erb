@@ -1,0 +1,37 @@
+<%= form_with(model: empresa) do |form| %>
+  <% if empresa.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(empresa.errors.count, "error") %> prohibited this empresa from being saved:</h2>
+
+      <ul>
+        <% empresa.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :razaosocial, style: "display: block" %>
+    <%= form.text_field :razaosocial %>
+  </div>
+
+  <div>
+    <%= form.label :nomefantasia, style: "display: block" %>
+    <%= form.text_field :nomefantasia %>
+  </div>
+
+  <div>
+    <%= form.label :status, style: "display: block" %>
+    <%= form.select(:status, Empresa.statuses.keys.map {|status| [status.titleize,status]}, :class => 'form-control' )%>
+  </div>
+
+    <div>
+     <%= form.label :planos, style: "display: block" %>
+     <%= form.select(:plano_id, planos_for_select, :prompt => 'Select') %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

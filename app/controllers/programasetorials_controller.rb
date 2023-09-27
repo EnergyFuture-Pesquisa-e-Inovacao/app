@@ -119,7 +119,9 @@ class ProgramasetorialsController < ApplicationController
       :quantengajamento,
       :quantinscricoes,
       :quantempresas,
-      :ano)
+      :ano,
+      :empresa,
+      :parceiro)
     end
 
 

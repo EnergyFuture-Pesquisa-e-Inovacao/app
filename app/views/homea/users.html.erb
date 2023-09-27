@@ -8,21 +8,19 @@
       <tr>
         <th scope="col">Id</th>
         <th scope="col">Nome</th>
-        <th scope="col">CPF</th>
         <th scope="col">Celular</th>
         <th scope="col">Email</th>
         <th scope="col">Status</th>
         <th scope="col">Perfil</th>
         <th scope="col">Plano</th>
         <th scope="col">Empresa</th>
-        <th scope="col"></th>
+        <th scope="col">Show</th>
       </tr>
     <tbody>
       <% @users.each do |user| %>
       <tr>
        <td><%= user.id %></td>    
        <td><%= user.name %></td>
-       <td><%= user.cpf %></td>
        <td><%= user.phone %></td>
        <td><%= user.email %></td>
        <td><%= user.status %></td>
@@ -38,6 +36,7 @@
   <%empresa=Empresa.find(user.empresa_id)%>
   <td><%= empresa.nomefantasia %></td>
   <%end%>
+  <td><%= link_to "show", "/users/#{user.id}" %></td>
   </tr>
   <% end %>
     </tbody>

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
-  before_action :update_userz, only: %i[ update ]
+  #before_action :update_userz, only: %i[ update ]
   before_action :authenticate_user!, only: %i[ show edit update destroy ]
 
   # GET /users or /users.json

@@ -41,9 +41,11 @@
                           <p class="event-preview-text"><span class="bold"><%="Quant Empresas  : #{@programasetorial.quantempresas}"%></span></p>
                           <p class="event-preview-text"><span class="bold"><%="Engajamento     : #{@programasetorial.quantengajamento}"%></span></p>
                           <p class="event-preview-text"><span class="bold"><%="Quant Inscriçoes: #{@programasetorial.quantinscricoes}"%></span></p>
+                          <p class="event-preview-text"><span class="bold"><%="Empresas: #{@programasetorial.empresa}"%></span></p>
+                          <p class="event-preview-text"><span class="bold"><%="Parceiros: #{@programasetorial.parceiro}"%></span></p>
                           <div class="chat-widget-speaker right">
                            <!-- CHAT WIDGET SPEAKER MESSAGE -->
-                           <p class="chat-widget-speaker-message"><%= @programasetorial.descricao.slice! 0, 195  %></p>
+                           <p class="chat-widget-speaker-message"><%="Descrição: #{@programasetorial.descricao.slice! 0, 80}"  %></p>
                            <!-- /CHAT WIDGET SPEAKER MESSAGE -->
                           </div>
 
