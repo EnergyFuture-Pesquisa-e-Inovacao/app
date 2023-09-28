@@ -9,8 +9,8 @@ gem 'zapier_ruby'
 
 gem 'maskedinput-rails', '~> 1.4', '>= 1.4.1.0'
 
-#gem 'aws-sdk-s3', '~> 1.134'
-#gem 'aws-sdk-s3', '~> 1.135'
+gem 'sib-api-v3-sdk', '~> 9.1'
+# gem Brevo
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.8"

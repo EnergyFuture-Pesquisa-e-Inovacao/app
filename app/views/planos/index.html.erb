@@ -1,15 +1,31 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Planos</h1>
-
-<div id="planos">
-  <% @planos.each do |plano| %>
-    <%= render plano %>
-    <p>
-      <%= link_to "Show this plano", plano %>
-    </p>
-  <% end %>
+<div class="d-flex justify-content-between align-items-center">
+  <h4>Planos</h4>
 </div>
 
-<%= link_to "New plano", new_plano_path %>
-<%= link_to "Home", "homea/index" %>
+<div id="planos">
+  <table class="table">
+    <thead class="table-light">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Status</th>
+        <th scope="col">Show</th>
+      </tr>
+    <tbody>
+      <% @planos.each do |plano| %>
+      <tr>
+       <td><%= plano.id %></td>    
+       <td><%= plano.name %></td>
+       <td><%= plano.status %></td>
+  <td><%=link_to "Show this plano", plano %></td>
+  </tr>
+  <% end %>
+    </tbody>
+  </table>
+</div>
+<%= link_to "New plano", new_plano_path %></br>
+<%= link_to "Home", "/homea/index" %>
+
+ <style>
+   body { margin: 2%; }
+</style>

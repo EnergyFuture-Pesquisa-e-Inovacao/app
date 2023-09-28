@@ -36,10 +36,15 @@
   <%empresa=Empresa.find(user.empresa_id)%>
   <td><%= empresa.nomefantasia %></td>
   <%end%>
-  <td><%= link_to "show", "/users/#{user.id}" %></td>
+  <td><%= link_to "show", "/homea/showusers/?id=#{user.id}" %></td>
+  <td><%= link_to "edit", "/homea/edituser/?id=#{user.id}" %></td>
   </tr>
   <% end %>
     </tbody>
   </table>
 </div>
 <%= link_to "Home", "/homea/index" %>
+
+ <style>
+   body { margin: 2%; }
+</style>

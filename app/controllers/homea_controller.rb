@@ -1,4 +1,5 @@
 class HomeaController < ApplicationController
+  before_action :set_user, only: [:showusers, :edituser]
   before_action :authenticate_user!, only: [:show]
 
   # GET /icps or /icps.json
@@ -24,7 +25,25 @@ class HomeaController < ApplicationController
      end   
   end  
 
-  
+  def showusers  
+    if verificauser and !verificaadmin
+      redirect_to '/users/sign_in'
+    elsif !verificauser and verificaadmin
+     
+    elsif !verificauser and !verificaadmin
+      redirect_to '/users/sign_in'
+    end   
+  end
+
+  def editusers  
+    if verificauser and !verificaadmin
+      redirect_to '/users/sign_in'
+    elsif !verificauser and verificaadmin
+     
+    elsif !verificauser and !verificaadmin
+      redirect_to '/users/sign_in'
+    end   
+  end
 
   def users
     if verificauser and !verificaadmin
@@ -35,6 +54,10 @@ class HomeaController < ApplicationController
   end
 
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 
     def verificauser
       if current_user.present?

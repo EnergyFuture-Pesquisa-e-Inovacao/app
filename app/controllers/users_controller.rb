@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :set_user, only: %i[ show edit update destroy]
   #before_action :update_userz, only: %i[ update ]
   before_action :authenticate_user!, only: %i[ show edit update destroy ]
 
@@ -34,7 +34,9 @@ class UsersController < ApplicationController
         @icp=Icp.find(@user.icp_id)
        end      
     end
-  # POST /users or /users.json
+
+
+    # POST /users or /users.json
   def create
     @user = User.new(user_params)
 

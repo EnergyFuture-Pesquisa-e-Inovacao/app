@@ -24,12 +24,15 @@ Rails.application.routes.draw do
  
   get 'homea/index'
   get 'homea/users'
+  get 'homea/showusers'
+  get 'homea/edituser'
+  get 'homea/adicionareventops'
 
   get 'home/participarprogramasetorial'
   get 'home/participarevento'
   get 'home/profiletimeline'
   get 'home/participaracademy'
-  get 'homea/adicionareventops'
+  
   
   
 

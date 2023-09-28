@@ -1,15 +1,31 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Perfis</h1>
-
-<div id="icps">
-  <% @icps.each do |icp| %>
-    <%= render icp %>
-    <p>
-      <%= link_to "Show this icp", icp %>
-    </p>
-  <% end %>
+<div class="d-flex justify-content-between align-items-center">
+  <h4>Perfils</h4>
 </div>
 
-<%= link_to "New icp", new_icp_path %>
-<%= link_to "Home", "homea/index" %>
+<div id="icps">
+  <table class="table">
+    <thead class="table-light">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Status</th>
+        <th scope="col">Show</th>
+      </tr>
+    <tbody>
+      <% @icps.each do |icp| %>
+      <tr>
+       <td><%= icp.id %></td>    
+       <td><%= icp.name %></td>
+       <td><%= icp.status %></td>
+  <td><%=link_to "Show this icp", icp %></td>
+  </tr>
+  <% end %>
+    </tbody>
+  </table>
+</div>
+<%= link_to "New Perfil", new_icp_path %></br>
+<%= link_to "Home", "/homea/index" %>
+
+ <style>
+   body { margin: 2%; }
+</style>
