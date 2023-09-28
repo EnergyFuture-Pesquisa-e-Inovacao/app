@@ -59,6 +59,7 @@ class AgendasController < ApplicationController
         evento=Evento.new
         evento.name=@agenda.name
         evento.descricao=@agenda.descricao
+        evento.descricaocurta=@agenda.descricaocurta
         evento.linkevento=@agenda.linkevento        
         evento.idobjeto=agenda.id
         evento.tipoobjeto="Agenda"
@@ -102,6 +103,7 @@ class AgendasController < ApplicationController
         @evento.datainicio=@agenda.datainicio
         @evento.name=@agenda.name
         @evento.descricao=@agenda.descricao
+        @evento.descricaocurta=@agenda.descricaocurta
         @evento.linkevento=@agenda.linkevento
         @evento.datafim=@agenda.datafim
         @evento.horainicio=@agenda.horainicio
@@ -162,6 +164,7 @@ class AgendasController < ApplicationController
       params.require(:agenda).permit(
       :name, 
       :descricao,
+      :descricaocurta,
       :main_image,
       :datainicio, 
       :datafim,

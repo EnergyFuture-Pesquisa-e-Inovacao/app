@@ -62,7 +62,9 @@
                           <p class="event-preview-text"><%= agenda.tipoevento %></p>
                           <div class="chat-widget-speaker right">
                            <!-- CHAT WIDGET SPEAKER MESSAGE -->
-                           <p class="chat-widget-speaker-message"><%= evento[0].descricao.slice! 0, 80  %></p>
+                           <% if evento[0].descricaocurta.present?%>
+                           <p class="chat-widget-speaker-message"><%= evento[0].descricaocurta.slice! 0, 80  %></p>
+                           <% end %>
                            <!-- /CHAT WIDGET SPEAKER MESSAGE -->
                           </div>             
                           <p class="event-preview-timestamp"><span class="bold"><%="duração: "+evento[0].duration+" minutos"%></span></p>

@@ -54,7 +54,9 @@
                           <p class="event-preview-text"><span class="bold"><%="Quant Inscriçoes: #{programasetorial.quantinscricoes}"%></span></p>
                           <div class="chat-widget-speaker right">
                            <!-- CHAT WIDGET SPEAKER MESSAGE -->
-                           <p class="chat-widget-speaker-message"><%= programasetorial.descricao.slice! 0, 80 %></p>
+                           <% if programasetorial.descricaocurta.present?%>
+                           <p class="chat-widget-speaker-message"><%= programasetorial.descricaocurta.slice! 0, 80 %></p>
+                           <% end %>
                            <!-- /CHAT WIDGET SPEAKER MESSAGE -->
                           </div>
                         <div class="event-preview-info-bottom">

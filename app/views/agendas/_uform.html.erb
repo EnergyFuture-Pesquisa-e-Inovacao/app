@@ -21,6 +21,10 @@
     <%= form.label :descricao, style: "display: block" %>
     <%= form.text_area :descricao , value:@evento.descricao %>
   </div>
+      <div>
+    <%= form.label :descricaocurta, style: "display: block" %>
+    <%= form.text_field :descricaocurta , value:@evento.descricaocurta %>
+  </div>
   <div>
     <%= form.label :fotomaior, style: "display: block" %>
     <%= form.file_field :main_image %>

@@ -63,7 +63,9 @@
                           <%end%> 
                           <div class="chat-widget-speaker right">
                            <!-- CHAT WIDGET SPEAKER MESSAGE -->
-                           <p class="chat-widget-speaker-message"><%= evento.descricao.slice! 0, 80  %></p>
+                           <% if evento.descricaocurta.present?%>
+                           <p class="chat-widget-speaker-message"><%= evento.descricaocurta.slice! 0, 80  %></p>
+                           <%end%>
                            <!-- /CHAT WIDGET SPEAKER MESSAGE -->
                           </div>                           
                         </div>

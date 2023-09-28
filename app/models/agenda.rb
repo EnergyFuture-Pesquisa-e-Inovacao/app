@@ -20,6 +20,7 @@ class Agenda < ApplicationRecord
     #attr_accessor :evento
     attr_accessor :name,
     :descricao,
+    :descricaocurta,
     :linkevento,
     :datainicio,
     :datafim,

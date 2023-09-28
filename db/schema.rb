@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_25_171500) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_28_211125) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,8 +55,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_25_171500) do
   end
 
   create_table "agendas", force: :cascade do |t|
-    t.string "fotomaior"
-    t.string "fotomenor"
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -109,6 +107,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_25_171500) do
     t.string "name"
     t.string "descricao"
     t.string "linkevento"
+    t.string "descricaocurta"
   end
 
   create_table "icps", force: :cascade do |t|
@@ -135,8 +134,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_25_171500) do
   create_table "programasetorials", force: :cascade do |t|
     t.string "name"
     t.string "descricao"
-    t.string "fotomaior"
-    t.string "fotomenor"
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -146,6 +143,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_25_171500) do
     t.string "quantempresas"
     t.string "quantengajamento"
     t.string "quantinscricoes"
+    t.string "descricaocurta"
   end
 
   create_table "programasusers", force: :cascade do |t|

@@ -50,7 +50,9 @@
                           </br>
                           <p class="event-preview-title popup-event-information-trigger"><%= @evento.name %><%= @agenda.tipoevento %></p>
                           <p class="event-preview-timestamp"><span class="bold"><%=th.strftime('%H:%M')%></span></p>
-                          <p class="event-preview-text"><%= @evento.descricao.slice! 0, 195 %></p>
+                          <% if @evento.descricaocurta.present?%>
+                          <p class="event-preview-text"><%= @evento.descricaocurta.slice! 0, 195 %></p>
+                          <%end%>
                           <p class="event-preview-text"><%= @evento.linkevento %></p>
                           <p class="event-preview-timestamp"><span class="bold"><%="duração: "+@evento.duration+" minutos"%></span></p>
                           <%if @evento.enviarparaparticipante%>

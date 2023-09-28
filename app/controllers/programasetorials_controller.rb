@@ -114,6 +114,7 @@ class ProgramasetorialsController < ApplicationController
       params.require(:programasetorial).permit(
       :name, 
       :descricao,
+      :descricaocurta,
       :main_imagepg,  
       :status,
       :quantengajamento,
