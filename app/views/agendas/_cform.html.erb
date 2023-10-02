@@ -70,7 +70,11 @@
     <%= form.label :"Enviar para participante?", style: "display: block" %>
     <%= form.select(:enviarparaparticipante, [['Sim', true], ['Não', false]], :class => 'form-control' )%>
   </div>
-
+  <div>
+    <%= form.label :tipoparticipanteconvite, style: "display: block" %>
+    <%= form.select(:tipoparticipanteconvite, Agenda.tipoparticipanteconvites.keys.map {|tipoparticipanteconvite| [tipoparticipanteconvite.titleize,tipoparticipanteconvite]}, 
+    :class => 'form-control' )%>
+  </div>
 
 
   <div>

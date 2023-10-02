@@ -29,11 +29,6 @@
   </div>
 
   <div>
-    <%= form.label :fotomenor, style: "display: block" %>
-    <%= form.text_field :fotomenor, value:agenda.fotomenor%>
-  </div>
-
-  <div>
     <%= form.label :datainicio, style: "display: block" %>
     <%= form.date_field :datainiciom1, value:agenda.datainiciom1%>
   </div>
@@ -57,12 +52,6 @@
     <%= form.label :status, style: "display: block" %>
     <%= form.select(:status, Agenda.statuses.keys.map {|status| [status.titleize,status]},:selected => agenda.status, :class => 'form-control' )%>
   </div>
-
-  <div>
-    <%= form.label :category, style: "display: block" %>
-    <%= form.select(:category, Agenda.categories.keys.map {|category| [category.titleize,category]},:selected => agenda.category, :class => 'form-control' )%>
-  </div>
-
     <div>
     <%= form.label :"Enviar para participante?", style: "display: block" %>
     <%= form.select(:enviarparaparticipante, [['Sim', true], ['Não', false]],:selected => agenda.enviarparaparticipante, :class => 'form-control' )%>

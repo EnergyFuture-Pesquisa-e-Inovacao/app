@@ -68,7 +68,8 @@ class AgendasController < ApplicationController
         evento.horainicio=@agenda.horainicio
         evento.horafim=@agenda.horafim     
         evento.enviarparaparticipante=@agenda.enviarparaparticipante   
-        evento.status=agenda.status
+        evento.status=@agenda.status
+        evento.tipoparticipanteconvite=@agenda.tipoparticipanteconvite
         delta_time = (evento.horafim - evento.horainicio)/60
         evento.duration="%.2f" % delta_time       
         evento.save!
@@ -109,7 +110,8 @@ class AgendasController < ApplicationController
         @evento.horainicio=@agenda.horainicio
         @evento.horafim=@agenda.horafim       
         @evento.status=@agenda.status
-        @evento.enviarparaparticipante=@agenda.enviarparaparticipante  
+        @evento.enviarparaparticipante=@agenda.enviarparaparticipante 
+        @evento.tipoparticipanteconvite=@agenda.tipoparticipanteconvite 
         delta_time = (@evento.horafim - @evento.horainicio)/60
         @evento.duration="%.2f" % delta_time   
         @evento.save!
@@ -174,6 +176,7 @@ class AgendasController < ApplicationController
       :status,
       :category,
       :enviarparaparticipante,
+      :tipoparticipanteconvite,
       :linkevento,
       :tipoevento)
     end

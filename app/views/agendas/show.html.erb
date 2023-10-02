@@ -59,7 +59,7 @@
                            <p class="event-preview-timestamp"><span class="bold"><%="Enviar para participante? Sim"%></span></p>
                           <%elsif !@evento.enviarparaparticipante%>
                            <p class="event-preview-timestamp"><span class="bold"><%="Enviar para participante? Não"%></span></p>                         
-                         <%end%>                           
+                         <%end%>
                          <div class="event-preview-info-bottom">
                             <p class="button white white-tertiary"><%= link_to "Editar Esse Evento", edit_agenda_path(@agenda) %> </p>             
                             <p class="button white white-tertiary"><%= link_to "Destroy this agenda", @agenda, method: :delete %> </p>                        

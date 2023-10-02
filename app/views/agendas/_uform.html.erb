@@ -66,15 +66,17 @@
 
   <div>
     <%= form.label :tipoevento, style: "display: block" %>
-    <%= form.select(:tipoevento, Agenda.tipoeventos.keys.map {|tipoevento| [tipoevento.titleize,tipoevento]}, :class => 'form-control' )%>
+    <%= form.select(:tipoevento, Agenda.tipoeventos.keys.map {|tipoevento| [tipoevento.titleize,tipoevento]},value:@agenda.tipoevento, :class => 'form-control' )%>
   </div>
 
     <div>
     <%= form.label :"Enviar para participante?", style: "display: block" %>
-    <%= form.select(:enviarparaparticipante, [['Sim', true], ['Não', false]], value:@evento.enviarparaparticipante, :class => 'form-control' )%>
+    <%= form.select(:enviarparaparticipante, [['Sim', true], ['Não', false]], value:@agenda.enviarparaparticipante, :class => 'form-control' )%>
   </div>
-
-
+    <div>
+    <%= form.label :tipoparticipanteconvite, style: "display: block" %>
+    <%= form.select(:tipoparticipanteconvite, Agenda.tipoparticipanteconvites.keys.map {|tipoparticipanteconvite| [tipoparticipanteconvite.titleize,tipoparticipanteconvite]},value:@agenda.tipoparticipanteconvite, :class => 'form-control' )%>
+  </div>
   <div>
     <%= form.submit %>
   </div>
