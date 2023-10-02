@@ -14,16 +14,23 @@ class HomeaController < ApplicationController
   end
 
   def adicionareventops
-    p=params[":id"]
-     programasetorial=Programasetorial.where(id:p)
-     @programasetorial=Programasetorial.find(programasetorial[0].id)
-     evento=Evento.new
-     evento.tipoobjeto="Programa Setorial"
-     evento.idobjeto=@programasetorial.id
-     respond_to do |format|
-      format.html { redirect_to "/eventos/new", notice: "." }
-     end   
+    p=params[:idpg]
+     @programasetorial=Programasetorial.find(p)
+     @evento=Evento.new
+     @evento.tipoobjeto="Programa Setorial"
+     @evento.idobjeto=@programasetorial.id 
   end  
+
+    # GET /icps or /icps.json
+    def indexeventosps
+      if verificauser and !verificaadmin
+        redirect_to '/users/sign_in'
+      elsif !verificauser and verificaadmin
+       @eventos=Evento.where(tipoobjeto:"Programa Setorial")
+      elsif !verificauser and !verificaadmin
+        redirect_to '/users/sign_in'
+      end   
+    end
 
   def showusers  
     if verificauser and !verificaadmin

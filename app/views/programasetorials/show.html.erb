@@ -56,7 +56,10 @@
 
 
                             <p class="button white white-tertiary"><%= link_to "Editar o Programa", edit_programasetorial_path(@programasetorial) %> </p>
-                            <p class="button white white-tertiary"><%= link_to "Adicionar Eventos", "/homea/adicionareventops?:id=#{@programasetorial.id}"%></p>
+                            <p class="button white white-tertiary"><%= link_to "Adicionar Eventos", "/homea/adicionareventops?idpg=#{@programasetorial.id}"%></p>
+                            <p class="button white white-tertiary"><%= link_to "Adicionar Arquivos", "/homea/adicionararquivops?idpg=#{@programasetorial.id}"%></p>
+                                                                                                                             
+                            
 
                             
                         </div>
@@ -65,9 +68,11 @@
                 <!-- /EVENT PREVIEW -->
 
             </div>
+<%=@eventos.count%>
 <%@eventos=Evento.where(tipoobjeto:"Programa Setorial",idobjeto:@programasetorial.id)%>
 <%ideventos=@eventos.select(:id)%>
 <%@timelines=Timeline.where(tipoobjeto:"Eventos PG").where("idobjeto IN (?)",ideventos)%>
+<%=@eventos.count%>
 
 
 

@@ -1,9 +1,4 @@
 <%= form_with(model: evento) do |form| %>
- <div>
-    <%= form.label :idobjeto, style: "display: block" %>
-    <%= form.text_field :idobjeto, value: @evento.idobjeto %>
-  </div>
-
   <div>
     <%= form.label :datainicio, style: "display: block" %>
     <%= form.date_field :datainicio %>
@@ -32,14 +27,11 @@
     <%= form.label :"Enviar para participante?", style: "display: block" %>
     <%= form.select(:enviarparaparticipante, [['Sim', true], ['Não', false]], :class => 'form-control' )%>
 
-  <div>
-    <%= form.label :tipoparticipanteconvite, style: "display: block" %>
-    <%= form.select(:tipoparticipanteconvite, Evento.tipoparticipanteconvites.keys.map {|tipoparticipanteconvite| [tipoparticipanteconvite.titleize,tipoparticipanteconvite]}, 
-    :class => 'form-control' )%>
-  </div>
-
   </div>
   <div>
     <%= form.submit %>
   </div>
 <% end %>
+ <style>
+   body { margin: 2%; }
+</style>

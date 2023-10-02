@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   get 'homea/showusers'
   get 'homea/edituser'
   get 'homea/adicionareventops'
+  #get 'evento/newevps'
+  get 'homea/indexeventosps'
 
   get 'home/participarprogramasetorial'
   get 'home/participarevento'

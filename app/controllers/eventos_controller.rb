@@ -33,11 +33,13 @@ class EventosController < ApplicationController
   end
 
   # GET /icps/new
-  #def new
-  #  if verificauser and !verificaadmin
+  #def newevps
+   #if verificauser and !verificaadmin
   #    redirect_to '/users/sign_in'
   #  elsif !verificauser and verificaadmin
- 
+  #    respond_to do |format|
+  #      format.html { redirect_to "/eventos/newevps", notice: "." }
+  #     end     
   #  elsif !verificauser and !verificaadmin
   #    redirect_to '/users/sign_in' 
   #  end   
@@ -59,6 +61,7 @@ class EventosController < ApplicationController
     @evento = Evento.new(evento_params)
     respond_to do |format|
       if @evento.save!
+        
         format.html { redirect_to programasetorial_url(@programasetorial), notice: "Evento was successfully criado." }
         format.json { render :show, status: :ok, location: @evento }
       else
@@ -103,7 +106,7 @@ class EventosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_evento
-      if params[:id]!="adicionareventops"
+      if params[:id]!="newevps"
       @evento = Evento.find(params[:id])
       timeline = Timeline.where(tipoobjeto:"Eventos",idobjeto:@evento.id)
        if timeline[0].present?
@@ -115,7 +118,8 @@ class EventosController < ApplicationController
     # Only allow a list of trusted parameters through.
     def evento_params
       params.require(:evento).permit(:datainicio,:datafim,:horainicio,:horafim,
-       :status,:enviarparaparticipante,:duration)
+       :status,:enviarparaparticipante,:duration,:tipoobjeto,:idobjeto,:linkevento,
+       :descricaocurta)
     end
 
     def verificauser

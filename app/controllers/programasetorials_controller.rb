@@ -22,9 +22,9 @@ class ProgramasetorialsController < ApplicationController
   # GET /programasetorials/1 or /programasetorials/1.json
   def show
     if verificauser and !verificaadmin
-
+      redirect_to '/users/sign_in'
     elsif !verificauser and verificaadmin   
-     
+      @eventos=Evento.where(tipoobjeto:"Programa Setorial").order(Arel.sql('datainicio ASC'))
     elsif !verificauser and !verificaadmin
       redirect_to '/users/sign_in'
     end     
