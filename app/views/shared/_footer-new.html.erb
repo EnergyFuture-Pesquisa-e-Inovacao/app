@@ -48,39 +48,38 @@
     var z = document.getElementById("{$menu_ativo}");
     z.classList.add('active');
 </script>
-
 <!-- app -->
-<%= javascript_include_tag "https://hub.energyfuture.com.br/js/utils/app.js" %>
+<%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/utils/app.js" %>
 <!-- page loader -->
-<%= javascript_include_tag "https://hub.energyfuture.com.br/js/utils/page-loader.js" %>
+<%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/utils/page-loader.js" %>
 <!-- simplebar -->
-<%= javascript_include_tag "https://hub.energyfuture.com.br/js/vendor/simplebar.min.js" %>
+<%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/vendor/simplebar.min.js" %>
 <!-- liquidify -->
-<%= javascript_include_tag "https://hub.energyfuture.com.br/js/utils/liquidify.js" %>
+<%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/utils/liquidify.js" %>
 <!-- XM_Plugins -->
-<%= javascript_include_tag "https://hub.energyfuture.com.br/js/vendor/xm_plugins.min.js" %>
+<%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/vendor/xm_plugins.min.js" %>
 <!-- tiny-slider -->
-<%= javascript_include_tag "https://hub.energyfuture.com.br/js/vendor/tiny-slider.min.js"%>
+<%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/vendor/tiny-slider.min.js"%>
 <!-- chartJS -->
-<%= javascript_include_tag "https://hub.energyfuture.com.br/js/vendor/Chart.bundle.min.js" %>
+<%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/vendor/Chart.bundle.min.js" %>
 <!-- global.hexagons -->
-<%= javascript_include_tag "https://hub.energyfuture.com.br/js/global/global.hexagons.js" %>
+<%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/global/global.hexagons.js" %>
 <!-- global.tooltips -->
-<%= javascript_include_tag "https://hub.energyfuture.com.br/js/global/global.tooltips.js" %>
+<%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/global/global.tooltips.js" %>
 <!-- global.popups -->
-<%= javascript_include_tag "https://hub.energyfuture.com.br/js/global/global.popups.js" %>
+<%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/global/global.popups.js" %>
 <!-- global.charts -->
-<%= javascript_include_tag "https://hub.energyfuture.com.br/js/global/global.charts.js" %>
+<%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/global/global.charts.js" %>
 <!-- header -->
-<%= javascript_include_tag "https://hub.energyfuture.com.br/js/header/header.js" %>
+<%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/header/header.js" %>
 <!-- sidebar -->
-<%= javascript_include_tag "https://hub.energyfuture.com.br/js/sidebar/sidebar.js" %>
+<%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/sidebar/sidebar.js" %>
 <!-- content -->
-<%= javascript_include_tag "https://hub.energyfuture.com.br/js/content/content.js" %>
+<%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/content/content.js" %>
 <!-- form.utils -->
-<%= javascript_include_tag "https://hub.energyfuture.com.br/js/form/form.utils.js" %>
+<%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/form/form.utils.js" %>
 <!-- SVG icons -->
-<%= javascript_include_tag "https://hub.energyfuture.com.br/js/utils/svg-loader.js" %>
+<%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/utils/svg-loader.js" %>
 </body>
 </html>
 

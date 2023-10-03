@@ -1,6 +1,6 @@
 <div class="form-box login-register-form-element">
         <!-- FORM BOX DECORATION -->
-        <%= image_tag('https://hub.energyfuture.com.br/img/landing/rocket.png', alt: "rocket", class:"form-box-decoration overflowing") %>
+        <%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/landing/rocket.png", alt: "rocket", class:"form-box-decoration overflowing") %>
         <!-- /FORM BOX DECORATION -->
 
         <!-- FORM BOX TITLE -->

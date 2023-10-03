@@ -6,7 +6,7 @@
  
       <!-- SECTION BANNER -->
     <div class="section-banner">
-        <%= image_tag('https://hub.energyfuture.com.br/img/banner/overview-icon.png', alt: "overview-icon",class:"section-banner-icon") %>
+        <%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/banner/overview-icon.png", alt: "overview-icon",class:"section-banner-icon") %>
 
         <!-- SECTION BANNER TITLE -->
         <p class="section-banner-title">Programa Setorial</p>
@@ -41,7 +41,7 @@
             <!-- USER AVATAR CONTENT -->
             <div class="user-avatar-content">
               <!-- HEXAGON -->
-              <%= image_tag('https://hub.energyfuture.com.br/img/avatar/01.jpg',class:"hexagon-image-82-90") %>
+              <%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/avatar/01.jpg",class:"hexagon-image-82-90") %>
               <!-- /HEXAGON -->
             </div>
             <!-- /USER AVATAR CONTENT -->
@@ -979,7 +979,7 @@
                   <!-- USER AVATAR CONTENT -->
                   <div class="user-avatar-content">
                     <!-- HEXAGON -->
-                    <%= image_tag('https://hub.energyfuture.com.br/img/avatar/01.jpg',class:"hexagon-image-30-32") %>
+                    <%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/avatar/01.jpg",class:"hexagon-image-30-32") %>
                     <!-- /HEXAGON -->
                   </div>
                   <!-- /USER AVATAR CONTENT -->
@@ -2161,7 +2161,7 @@
           <!-- USER AVATAR CONTENT -->
           <div class="user-avatar-content">
             <!-- HEXAGON -->
-            <%= image_tag('https://hub.energyfuture.com.br/img/avatar/01.jpg',class:"hexagon-image-30-32") %>
+            <%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/avatar/01.jpg",class:"hexagon-image-30-32") %>
             <!-- /HEXAGON -->
           </div>
           <!-- /USER AVATAR CONTENT -->

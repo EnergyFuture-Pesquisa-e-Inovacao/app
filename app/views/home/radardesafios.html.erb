@@ -3,7 +3,7 @@
     <div class="content-grid">
         <!-- SECTION BANNER -->
         <div class="section-banner">
-            <%= image_tag('https://hub.energyfuture.com.br/img/banner/groups-icon.png',class:"section-banner-icon",alt:"groups-icon") %>
+            <%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/banner/groups-icon.png",class:"section-banner-icon",alt:"groups-icon") %>
             <!-- SECTION BANNER TITLE -->
             <p class="section-banner-title">Radar de Desafios</p>
             <!-- /SECTION BANNER TITLE -->

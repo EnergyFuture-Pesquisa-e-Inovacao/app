@@ -9,16 +9,16 @@
 
   
 
-    <%= stylesheet_link_tag "https://hub.energyfuture.com.br/css/vendor/bootstrap.min.css" %>
+    <%= stylesheet_link_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/css/vendor/bootstrap.min.css" %>
 
-    <%= stylesheet_link_tag "https://hub.energyfuture.com.br/css/styles.min.css" %>
+    <%= stylesheet_link_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/css/styles.min.css" %>
   
   </head>
     <style>
     .landing {
       width: 100%;
       height: 100%;
-      background-image: url('https://hub.energyfuture.com.br/img/Design_site_energyfuture_1.png');
+      background-image: url(<%="#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/Design_site_energyfuture_1.png"%>);
       background-size: cover;
     }
     
@@ -44,10 +44,10 @@
   </body>
 </html>
 
-<%= javascript_include_tag "https://hub.energyfuture.com.br/js/utils/app.js" %>
+<%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/utils/app.js" %>
 
-<%= javascript_include_tag "https://hub.energyfuture.com.br/js/vendor/xm_plugins.min.js" %>
+<%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/vendor/xm_plugins.min.js" %>
 
-<%= javascript_include_tag "https://hub.energyfuture.com.br/js/form/form.utils.js" %>
+<%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/form/form.utils.js" %>
 
-<%= javascript_include_tag "https://hub.energyfuture.com.br/js/landing/landing.tabs.js" %>
+<%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/landing/landing.tabs.js" %>

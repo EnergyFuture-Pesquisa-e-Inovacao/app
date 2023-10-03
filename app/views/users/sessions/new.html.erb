@@ -1,23 +1,23 @@
 <!-- bootstrap 4.3.1 -->
-  <%= stylesheet_link_tag "https://hub.energyfuture.com.br/css/vendor/bootstrap.min.css" %>
+  <%= stylesheet_link_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/css/vendor/bootstrap.min.css" %>
   <!-- styles -->
   
 <!-- app -->
 
 <!-- XM_Plugins -->
-<%= javascript_include_tag "https://hub.energyfuture.com.br/js/vendor/xm_plugins.min.js" %>
+<%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/vendor/xm_plugins.min.js" %>
 
 <!-- form.utils -->
 
 <!-- landing.tabs -->
 
 <!-- SVG icons -->
-<%= javascript_include_tag "https://hub.energyfuture.com.br/js/utils/svg-loader_controller.js" %>
+<%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/utils/svg-loader_controller.js" %>
   <style>
     .landing {
       width: 100%;
       height: 100%;
-      background-image: url('https://hub.energyfuture.com.br/img/Design_site_energyfuture_1.png');
+      background-image: url(<%="#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/Design_site_energyfuture_1.png"%>);
       background-size: cover;
     }
 
@@ -48,7 +48,7 @@
       <!-- LOGO -->
       <div class="logo">
         <!-- ICON LOGO VIKINGER -->
-        <%= image_tag('https://hub.energyfuture.com.br/img/Design_site_energyfuture_1.svg', alt: "Energy Future Logo") %>
+        <%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/Design_site_energyfuture_1.svg", alt: "Energy Future Logo") %>
         <!-- /ICON LOGO VIKINGER -->
       </div>
       <!-- /LOGO -->

@@ -11,6 +11,7 @@ class AgendasController < ApplicationController
     if verificauser and !verificaadmin
       redirect_to '/users/sign_in'
     elsif !verificauser and verificaadmin
+      puts Rails.application.credentials.config[:var][:var_url_remoto]
       @agendas = Agenda.all   
     elsif !verificauser and !verificaadmin
       redirect_to '/users/sign_in'
