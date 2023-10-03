@@ -98,12 +98,12 @@ class ProgramasetorialsController < ApplicationController
   end
 
 
-  def create_programasetorialz
-    ZapierRuby.configure do |c|
+  #def create_programasetorialz
+  #  ZapierRuby.configure do |c|
       #c.web_hooks = { create_programasetorialz: "10142775/39nn3pn" }
-    end  
-    ZapierRuby::Zapper.new(:create_programasetorialz).zap(@programasetorial.attributes)
-  end
+  #  end  
+  #  ZapierRuby::Zapper.new(:create_programasetorialz).zap(@programasetorial.attributes)
+  #end
     # Use callbacks to share common setup or constraints between actions.
     def set_programasetorial
       @programasetorial = Programasetorial.find(params[:id])

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
-    # before_action :configure_sign_in_params, only: [:create]
-    after_action :user_logou, only: [:create ] 
+  
+    #after_action :user_logou, only: [:create ] 
     # GET /resource/sign_in
     def new
        super
@@ -30,12 +30,12 @@ class Users::SessionsController < Devise::SessionsController
     #  @devise_mapping ||= Devise.mappings[:user]
     #end
 
-    def user_logou
-      ZapierRuby.configure do |c|
-       c.web_hooks = {user_logou: "10142775/39vrf61"}
-      end 
-      ZapierRuby::Zapper.new(:user_logou).zap(@user)
-    end
+    #def user_logou
+    #  ZapierRuby.configure do |c|
+    #   c.web_hooks = {user_logou: "10142775/39vrf61"}
+    #  end 
+    #  ZapierRuby::Zapper.new(:user_logou).zap(@user)
+    #end
     # protected
   
     # If you have extra params to permit, append them to the sanitizer.

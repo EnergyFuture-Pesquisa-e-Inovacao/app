@@ -90,19 +90,19 @@ class EmpresasController < ApplicationController
   end
 
   private
-  def create_empresaz
-    ZapierRuby.configure do |c|
-      c.web_hooks = { create_empresaz: "10142775/39v17q5" }
-    end  
-    ZapierRuby::Zapper.new(:create_empresaz).zap(@empresa.attributes)
-  end
+  #def create_empresaz
+  #  ZapierRuby.configure do |c|
+  #    c.web_hooks = { create_empresaz: "10142775/39v17q5" }
+  #  end  
+  #  ZapierRuby::Zapper.new(:create_empresaz).zap(@empresa.attributes)
+  #end
 
-  def update_userz
-    ZapierRuby.configure do |c|
-      c.web_hooks = { update_userz: "10142775/39nn3b0" }
-    end  
-    ZapierRuby::Zapper.new(:update_userz).zap(@user.attributes)
-  end
+  #def update_userz
+  #  ZapierRuby.configure do |c|
+  #    c.web_hooks = { update_userz: "10142775/39nn3b0" }
+  #  end  
+  #  ZapierRuby::Zapper.new(:update_userz).zap(@user.attributes)
+  #end
     # Use callbacks to share common setup or constraints between actions.
     def set_empresa
       @empresa = Empresa.find(params[:id])

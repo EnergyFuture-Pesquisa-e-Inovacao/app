@@ -5,7 +5,7 @@ ruby "3.2.2"
 
 gem 'devise', '~> 4.9', '>= 4.9.2'
 
-gem 'zapier_ruby'
+#gem 'zapier_ruby'
 
 gem 'maskedinput-rails', '~> 1.4', '>= 1.4.1.0'
 

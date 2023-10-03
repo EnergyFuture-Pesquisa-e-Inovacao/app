@@ -57,7 +57,7 @@ class UsersController < ApplicationController
       if @user.update(user_params)
         format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
-        update_userz
+        #update_userz
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -76,12 +76,12 @@ class UsersController < ApplicationController
   end
 
   private
-  def update_userz
-    ZapierRuby.configure do |c|
-      c.web_hooks = { update_userz: "10142775/39nn3b0" }
-    end  
-    ZapierRuby::Zapper.new(:update_userz).zap(@user.attributes)
-  end
+  #def update_userz
+  #  ZapierRuby.configure do |c|
+  #    c.web_hooks = { update_userz: "10142775/39nn3b0" }
+  #  end  
+  #  ZapierRuby::Zapper.new(:update_userz).zap(@user.attributes)
+  #end
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])

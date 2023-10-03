@@ -151,12 +151,12 @@ class AgendasController < ApplicationController
   end
 
 
-  def create_agendaz
-    ZapierRuby.configure do |c|
-      c.web_hooks = { create_agendaz: "10142775/39nn3pn" }
-    end  
-    ZapierRuby::Zapper.new(:create_agendaz).zap(@agenda.attributes)
-  end
+  #def create_agendaz
+  #  ZapierRuby.configure do |c|
+  #    c.web_hooks = { create_agendaz: "10142775/39nn3pn" }
+  #  end  
+  #  ZapierRuby::Zapper.new(:create_agendaz).zap(@agenda.attributes)
+  #end
     # Use callbacks to share common setup or constraints between actions.
     def set_agenda
       @agenda = Agenda.find(params[:id])

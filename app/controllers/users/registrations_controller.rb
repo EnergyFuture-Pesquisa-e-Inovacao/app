@@ -40,13 +40,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
     #   super
     # end
 
-    def welcome_new_user
-      ZapierRuby.configure do |c|
-        c.web_hooks = { welcome_new_user: "10142775/39wjls8"}
-      end     
-      ZapierRuby::Zapper.new(:welcome_new_user).zap(@user)
-      poscreate
-    end
+    #def welcome_new_user
+    #  ZapierRuby.configure do |c|
+    #    c.web_hooks = { welcome_new_user: "10142775/39wjls8"}
+    #  end     
+    #  ZapierRuby::Zapper.new(:welcome_new_user).zap(@user)
+    #  poscreate
+    #end
 
  
 
@@ -55,16 +55,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
       plano=Plano.find_by(name: 'Free')
       @user.plano_id=plano.id
       if @user.save
-        update_userz
+        #update_userz
       end  
     end 
 
-    def update_userz
-      ZapierRuby.configure do |c|
-        c.web_hooks = { update_userz: "10142775/39nn3b0" }
-      end  
-      ZapierRuby::Zapper.new(:update_userz).zap(@user)
-    end
+    #def update_userz
+    #  ZapierRuby.configure do |c|
+    #    c.web_hooks = { update_userz: "10142775/39nn3b0" }
+    #  end  
+    #  ZapierRuby::Zapper.new(:update_userz).zap(@user)
+    #end
   
     # protected
   
