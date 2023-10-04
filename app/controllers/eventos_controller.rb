@@ -32,18 +32,6 @@ class EventosController < ApplicationController
     end     
   end
 
-  # GET /icps/new
-  #def newevps
-   #if verificauser and !verificaadmin
-  #    redirect_to '/users/sign_in'
-  #  elsif !verificauser and verificaadmin
-  #    respond_to do |format|
-  #      format.html { redirect_to "/eventos/newevps", notice: "." }
-  #     end     
-  #  elsif !verificauser and !verificaadmin
-  #    redirect_to '/users/sign_in' 
-  #  end   
-  #end
 
   # GET /icps/1/edit
   def edit
@@ -59,8 +47,17 @@ class EventosController < ApplicationController
   # POST /icps or /icps.json
   def create
     @evento = Evento.new(evento_params)
+    @programasetorial=Programasetorial.find(@evento.idobjeto)
+    delta_time = (@evento.horafim.to_i- @evento.horainicio.to_i)/60
+    @evento.duration="%.2f" % delta_time    
     respond_to do |format|
       if @evento.save!
+        evento=Evento.last
+        timeline=Timeline.new
+        timeline.idobjeto=evento.id
+        timeline.tipoobjeto="Eventos PG"
+        timeline.status=evento.status
+        timeline.save 
         
         format.html { redirect_to programasetorial_url(@programasetorial), notice: "Evento was successfully criado." }
         format.json { render :show, status: :ok, location: @evento }

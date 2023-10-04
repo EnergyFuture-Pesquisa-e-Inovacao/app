@@ -16,7 +16,7 @@ class HomeaController < ApplicationController
   def adicionareventops
     p=params[:idpg]
      @programasetorial=Programasetorial.find(p)
-     @evento=Evento.new
+     @evento = Evento.new
      @evento.tipoobjeto="Programa Setorial"
      @evento.idobjeto=@programasetorial.id 
   end  
@@ -61,6 +61,8 @@ class HomeaController < ApplicationController
   end
 
   private
+
+
 
   def set_user
     @user = User.find(params[:id])
