@@ -4,6 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable
 
+  after_create :notify_registration
+
+  def notify_registration
+    Integromat::Webhook.new(:appsignupuser).trigger(email: email)
+  end
+
   #belongs_to :empresa
 
   enum status: { ativo:0, 

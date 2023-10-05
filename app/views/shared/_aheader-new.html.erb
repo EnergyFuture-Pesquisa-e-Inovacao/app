@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="icon" href="../assets/favicon.ico">
+  <link rel="icon" href="#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/favicon.ico">
   <title>Energy Future | {$title}</title>
   <%= stylesheet_link_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/css/vendor/bootstrap.min.css" %>
   <%= stylesheet_link_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/css/styles.min.css" %>
