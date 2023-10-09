@@ -68,30 +68,42 @@
                 <!-- /EVENT PREVIEW -->
 
             </div>
-<%=@eventos.count%>
+
 <%@eventos=Evento.where(tipoobjeto:"Programa Setorial",idobjeto:@programasetorial.id)%>
 <%ideventos=@eventos.select(:id)%>
 <%@timelines=Timeline.where(tipoobjeto:"Eventos PG").where("idobjeto IN (?)",ideventos)%>
-<%=@eventos.count%>
+</br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> 
+  <table class="table">
+    <thead class="table-light">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">DataInicio</th>
+        <th scope="col">Duração</th>
+        <th scope="col">Status</th>
+        <th scope="col">Show</th>
+        <th scope="col">Editar</th>
+      </tr>
+    <tbody>
+      <% @eventos.each do |evento| %>
+      <%@timeline=Timeline.where(tipoobjeto:"Eventos PG").where(idobjeto: evento.id)%>
+      <tr>
+       <td><%= evento.id %></td>    
+       <td><%= evento.tipoobjeto %></td>
+       <td><%= evento.datainicio.strftime("%d/%m/%Y") %></td>
+       <td><%= evento.duration %></td>
+       <td><%= evento.status%></td>
+       <td><%=link_to "Show ", evento %></td>
+       <td><%=link_to "Editar", edit_evento_path(evento) %></td>
+  </tr>
+  <% end %>
+    </tbody>
+  </table>
 
 
 
-              <% @eventos.each do |evento| %>
-               <%@timeline=Timeline.where(tipoobjeto:"Eventos PG").where(idobjeto: evento.id)%>
+
         
-                
-                        <%= "Evento: #{evento.idobjeto}"   %></p>
-                        <%= "Evento: " + evento.tipoobjeto %></p>
-                        <%= "Data início: " + evento.datainicio.strftime("%d/%m/%Y") %></p>
-                        <%= "Duração: " + evento.duration %></p>
-                        <%= "Timeline: #{@timeline[0].idobjeto}"  %></p>
-                        <%= "Timeline: " + @timeline[0].tipoobjeto %></p>
-                        <%="Status: " + evento.status%></p>
-                        <%= link_to "Editar este Evento", edit_evento_path(evento) %></p>  
-
-
-                <% end %>
-         
 
         
  </div>
