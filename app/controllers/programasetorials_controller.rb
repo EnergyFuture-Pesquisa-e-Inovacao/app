@@ -58,7 +58,7 @@ class ProgramasetorialsController < ApplicationController
     @programasetorial = Programasetorial.new(programasetorial_params)
     respond_to do |format|
       if @programasetorial.save!     
-         notify_registrationprogsetcr
+         notify_registrationprogset("create")
          format.html { redirect_to programasetorial_url(@programasetorial), notice: "Programasetorial was successfully created." }
          format.json { render :show, status: :created, location: @programasetorial }
         else
@@ -72,7 +72,7 @@ class ProgramasetorialsController < ApplicationController
   def update
     respond_to do |format|
       if @programasetorial.update(programasetorial_params)
-          notify_registrationprogsetup     
+          notify_registrationprogset("update")     
           format.html { redirect_to programasetorial_url(@programasetorial), notice: "Programasetorial was successfully updated." }
           format.json { render :show, status: :ok, location: @programasetorial } 
       else

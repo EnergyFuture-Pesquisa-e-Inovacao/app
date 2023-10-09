@@ -59,7 +59,7 @@ class EventosController < ApplicationController
         @timeline.tipoobjeto="Eventos PG"
         @timeline.status=evento.status
         @timeline.save 
-        notify_registrationeventoaddprogramasetorial  
+        notify_registrationeventoprogramasetorial("add")  
         format.html { redirect_to programasetorial_url(@programasetorial), notice: "Evento was successfully criado." }
         format.json { render :show, status: :ok, location: @evento }
       else
@@ -77,7 +77,7 @@ class EventosController < ApplicationController
         @evento.duration="%.2f" % delta_time  
         @evento.save!
         @programasetorial=Programasetorial.find(@evento.idobjeto)
-        notify_registrationeventoupprogramasetorial
+        notify_registrationeventoprogramasetorial("up")
         format.html { redirect_to programasetorial_url(@programasetorial), notice: "Evento was successfully updated." }
         format.json { render :show, status: :ok, location: @evento }
       else

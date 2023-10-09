@@ -56,7 +56,7 @@ class PlanosController < ApplicationController
     @plano = Plano.new(plano_params)
     respond_to do |format|
       if @plano.save
-        notify_registrationplancr
+        notify_registrationplan("create")
         format.html { redirect_to plano_url(@plano), notice: "Plano was successfully created." }
         format.json { render :show, status: :created, location: @Plano }
       else
@@ -70,7 +70,7 @@ class PlanosController < ApplicationController
   def update
     respond_to do |format|
       if @plano.update(plano_params)
-        notify_registrationplanup
+        notify_registrationplan("update")
         format.html { redirect_to plano_url(@plano), notice: "Plano was successfully updated." }
         format.json { render :show, status: :ok, location: @Plano }
       else

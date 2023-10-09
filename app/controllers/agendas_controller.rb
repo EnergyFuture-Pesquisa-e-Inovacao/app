@@ -84,7 +84,7 @@ class AgendasController < ApplicationController
         #timeline.datahora=thdi.strftime("%d/%m/%Y")+" "+thi.strftime('%H:%M') 
         #timeline.status=agenda.status 
         @timeline.save!    
-        notify_registrationagendacr
+        notify_registrationagenda("create")
         format.html { redirect_to agenda_url(@agenda), notice: "Evento da Agenda was successfully created." }
         format.json { render :show, status: :created, location: @agenda }
       else
@@ -116,7 +116,7 @@ class AgendasController < ApplicationController
         delta_time = (@evento.horafim - @evento.horainicio)/60
         @evento.duration="%.2f" % delta_time   
         @evento.save!
-        notify_registrationagendaup
+        notify_registrationagenda("update")
         format.html { redirect_to agenda_url(@agenda), notice: "Evento da Agenda was successfully updated." }
         format.json { render :show, status: :ok, location: @agenda }
       else
