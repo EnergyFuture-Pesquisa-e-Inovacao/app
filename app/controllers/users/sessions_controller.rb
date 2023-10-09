@@ -10,6 +10,8 @@ class Users::SessionsController < Devise::SessionsController
   
     # POST /resource/sign_in
     def create
+      puts "creaateeee  TTTTTTT"
+      registrationlogin
       super
     end
   
@@ -46,6 +48,18 @@ class Users::SessionsController < Devise::SessionsController
       #root_path
       '/home/agenda'
     end
-
+    
+    def registrationlogin
+      Integromat.configure do |clogin|
+        clogin.web_hooks = { appv3login: "8wslib9amp5yokykmfgkpilsl6k41q8m"}
+        
+         # Override the base URI
+        clogin.base_uri = "https://hook.us1.make.com/"
+      end 
+      Integromat::Webhook.new(:appv3login).trigger(id: current_user.id,
+                                                   email: current_user.email,
+                                                   datahora:DateTime.current - 3.hours,
+                                                  "tipoacao": "login")
+    end
     
   end

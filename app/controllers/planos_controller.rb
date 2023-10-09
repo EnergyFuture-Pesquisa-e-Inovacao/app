@@ -1,4 +1,5 @@
 class PlanosController < ApplicationController
+  include PlanosHelper
   before_action :set_plano, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: [:teste]
   before_action :authenticate_admin!
@@ -22,13 +23,7 @@ class PlanosController < ApplicationController
     if verificauser and !verificaadmin
 
     elsif !verificauser and verificaadmin 
-    #  s3 = Aws::S3::Client.new({
-    #    region:            'sa-east-1',
-    #    access_key_id:     Rails.application.credentials.dig(:aws, :access_key_id),
-    #    secret_access_key: Rails.application.credentials.dig(:aws, :secret_access_key)
-    #})
-    #resp = s3.get_object(bucket: 'ef-plataforma', key: 'secret')
-    #resp = s3.list_objects(bucket: 'ef-plataforma', max_keys: 1)
+
     elsif !verificauser and !verificaadmin
       redirect_to '/users/sign_in'
     end     
@@ -61,6 +56,7 @@ class PlanosController < ApplicationController
     @plano = Plano.new(plano_params)
     respond_to do |format|
       if @plano.save
+        notify_registrationplancr
         format.html { redirect_to plano_url(@plano), notice: "Plano was successfully created." }
         format.json { render :show, status: :created, location: @Plano }
       else
@@ -74,6 +70,7 @@ class PlanosController < ApplicationController
   def update
     respond_to do |format|
       if @plano.update(plano_params)
+        notify_registrationplanup
         format.html { redirect_to plano_url(@plano), notice: "Plano was successfully updated." }
         format.json { render :show, status: :ok, location: @Plano }
       else

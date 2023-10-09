@@ -1,4 +1,5 @@
 class IcpsController < ApplicationController
+  include IcpsHelper
   before_action :set_icp, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: [:teste]
   before_action :authenticate_admin!
@@ -55,6 +56,7 @@ class IcpsController < ApplicationController
     @icp = Icp.new(icp_params)
     respond_to do |format|
       if @icp.save
+        notify_registrationicpcr
         format.html { redirect_to icp_url(@icp), notice: "Icp was successfully created." }
         format.json { render :show, status: :created, location: @icp }
       else
@@ -68,6 +70,7 @@ class IcpsController < ApplicationController
   def update
     respond_to do |format|
       if @icp.update(icp_params)
+        notify_registrationicpup
         format.html { redirect_to icp_url(@icp), notice: "Icp was successfully updated." }
         format.json { render :show, status: :ok, location: @icp }
       else

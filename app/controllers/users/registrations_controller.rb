@@ -40,13 +40,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     #   super
     # end
 
-    #def welcome_new_user
-    #  ZapierRuby.configure do |c|
-    #    c.web_hooks = { welcome_new_user: "10142775/39wjls8"}
-    #  end     
-    #  ZapierRuby::Zapper.new(:welcome_new_user).zap(@user)
-    #  poscreate
-    #end
+
 
  
 
@@ -55,16 +49,37 @@ class Users::RegistrationsController < Devise::RegistrationsController
       plano=Plano.find_by(name: 'Free')
       @user.plano_id=plano.id
       if @user.save
-        #update_userz
+        registrationsignup
       end  
     end 
 
-    #def update_userz
-    #  ZapierRuby.configure do |c|
-    #    c.web_hooks = { update_userz: "10142775/39nn3b0" }
-    #  end  
-    #  ZapierRuby::Zapper.new(:update_userz).zap(@user)
-    #end
+    def registrationsignup
+      Integromat.configure do |csignup|
+        csignup.web_hooks = { appv3signup: "t8x4aetsad16zlbhifl96029t28tnktb"}
+        
+         # Override the base URI
+        csignup.base_uri = "https://hook.us1.make.com/"
+      end 
+      Integromat::Webhook.new(:appv3signup).trigger(id:@user.id
+                                                   email: @user.email,
+                                                   name: @user.name,
+                                                   phone: @user.phone,
+                                                   birthdate: @user.birthdate,
+                                                   newsletter: @user.newsletter,
+                                                   status: @user.status,
+                                                   plano:getnameplano(@user.plano_id),
+                                                   icp:getnameicp(@user.icp_id),                                                   
+                                                   created_at: @user.created_at,
+                                                  "tipoacao": "signup")
+    end
+    def getnameplano(id)
+      plano=Plano.find(id)
+      plano.name
+    end 
+    def getnameicp(id)
+      icp=Icp.find(id)
+      icp.name
+    end 
   
     # protected
   
