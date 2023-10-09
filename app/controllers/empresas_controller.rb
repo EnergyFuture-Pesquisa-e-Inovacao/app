@@ -1,4 +1,5 @@
 class EmpresasController < ApplicationController
+  include EmpresasHelper
   before_action :authenticate_admin!
   before_action :authenticate_user!, only: [:teste]
   before_action :set_empresa, only: %i[ show edit update destroy ]
@@ -55,7 +56,7 @@ class EmpresasController < ApplicationController
     @empresa = Empresa.new(empresa_params)
     respond_to do |format|
       if @empresa.save
-          #create_empresaz
+          notify_registrationempcr
           format.html { redirect_to empresa_url(@empresa), notice: "Empresa was successfully created." }
           format.json { render :show, status: :created, location: @empresa }
       else
@@ -70,6 +71,7 @@ class EmpresasController < ApplicationController
   def update
     respond_to do |format|
       if @empresa.update(empresa_params)
+        notify_registrationempup
         format.html { redirect_to empresa_url(@empresa), notice: "Empresa was successfully updated." }
         format.json { render :show, status: :ok, location: @empresa }
       else
@@ -90,19 +92,7 @@ class EmpresasController < ApplicationController
   end
 
   private
-  #def create_empresaz
-  #  ZapierRuby.configure do |c|
-  #    c.web_hooks = { create_empresaz: "10142775/39v17q5" }
-  #  end  
-  #  ZapierRuby::Zapper.new(:create_empresaz).zap(@empresa.attributes)
-  #end
 
-  #def update_userz
-  #  ZapierRuby.configure do |c|
-  #    c.web_hooks = { update_userz: "10142775/39nn3b0" }
-  #  end  
-  #  ZapierRuby::Zapper.new(:update_userz).zap(@user.attributes)
-  #end
     # Use callbacks to share common setup or constraints between actions.
     def set_empresa
       @empresa = Empresa.find(params[:id])

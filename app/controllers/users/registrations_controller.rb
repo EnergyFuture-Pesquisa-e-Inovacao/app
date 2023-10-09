@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  include UsersHelper
     #before_action :configure_sign_up_params, only: [:create]
     # before_action :configure_account_update_params, only: [:update]
     #after_action :welcome_new_user, only: [:create]
@@ -41,9 +42,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # end
 
 
-
- 
-
     def poscreate
       @user.status='ativo'
       plano=Plano.find_by(name: 'Free')
@@ -53,33 +51,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       end  
     end 
 
-    def registrationsignup
-      Integromat.configure do |csignup|
-        csignup.web_hooks = { appv3signup: "t8x4aetsad16zlbhifl96029t28tnktb"}
-        
-         # Override the base URI
-        csignup.base_uri = "https://hook.us1.make.com/"
-      end 
-      Integromat::Webhook.new(:appv3signup).trigger(id:@user.id,
-                                                   email: @user.email,
-                                                   name: @user.name,
-                                                   phone: @user.phone,
-                                                   birthdate: @user.birthdate,
-                                                   newsletter: @user.newsletter,
-                                                   status: @user.status,
-                                                   plano:getnameplano(@user.plano_id),
-                                                   icp:getnameicp(@user.icp_id),                                                   
-                                                   created_at: @user.created_at,
-                                                  "tipoacao": "signup")
-    end
-    def getnameplano(id)
-      plano=Plano.find(id)
-      plano.name
-    end 
-    def getnameicp(id)
-      icp=Icp.find(id)
-      icp.name
-    end 
   
     # protected
   

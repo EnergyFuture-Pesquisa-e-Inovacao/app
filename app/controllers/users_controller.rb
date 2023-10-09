@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy]
-  #before_action :update_userz, only: %i[ update ]
   before_action :authenticate_user!, only: %i[ show edit update destroy ]
 
   # GET /users or /users.json
@@ -76,12 +75,6 @@ class UsersController < ApplicationController
   end
 
   private
-  #def update_userz
-  #  ZapierRuby.configure do |c|
-  #    c.web_hooks = { update_userz: "10142775/39nn3b0" }
-  #  end  
-  #  ZapierRuby::Zapper.new(:update_userz).zap(@user.attributes)
-  #end
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
