@@ -60,7 +60,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
          # Override the base URI
         csignup.base_uri = "https://hook.us1.make.com/"
       end 
-      Integromat::Webhook.new(:appv3signup).trigger(id:@user.id
+      Integromat::Webhook.new(:appv3signup).trigger(id:@user.id,
                                                    email: @user.email,
                                                    name: @user.name,
                                                    phone: @user.phone,
