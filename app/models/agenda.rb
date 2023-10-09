@@ -14,52 +14,7 @@ class Agenda < ApplicationRecord
     :horafim,
     :duration,
     :enviarparaparticipante
-
-
-    after_create :notify_registrationagendacr
-
-    after_update :notify_registrationagendaup
                 
-    def notify_registrationagendacr
-      Integromat.configure do |cagenda|
-       cagenda.web_hooks = { appv3agenda: "seyvmdff1b56zcse9lq81dqvahuloj3d"}
-       cagenda.base_uri = "https://hook.us1.make.com/"
-      end 
-      Integromat::Webhook.new(:appv3agenda).trigger(id: id,
-                                                     name: name,
-                                                     descricao: descricao,
-                                                     descricaocurta: descricaocurta,
-                                                     status: status,
-                                                     ano: ano,
-                                                     empresa: empresa,
-                                                     parceiro: parceiro,
-                                                     quantempresas: quantempresas,
-                                                     quantengajamento: quantengajamento,
-                                                     quantinscricoes: quantinscricoes,
-                                                     descricaocurta: descricaocurta,
-                                                     created_at: created_at,
-                                                    "tipoacao": "create")
-    end
-                
-    def notify_registrationagendaup
-      Integromat.configure do |cagenda|
-       cagenda.web_hooks = { appv3agenda: "seyvmdff1b56zcse9lq81dqvahuloj3d"}
-       cagenda.base_uri = "https://hook.us1.make.com/"
-      end 
-      Integromat::Webhook.new(:appv3agenda).trigger(id: id,
-                                                     name: name,
-                                                     descricao: descricao,
-                                                     descricaocurta: descricaocurta,
-                                                     status: status,
-                                                     ano: ano,
-                                                     empresa: empresa,
-                                                     parceiro: parceiro,
-                                                     quantempresas: quantempresas,
-                                                     quantengajamento: quantengajamento,
-                                                     quantinscricoes: quantinscricoes,
-                                                     descricaocurta: descricaocurta,
-                                                     updated_at: updated_at,
-                                                     "tipoacao": "update")
-    end    
+  
 
 end

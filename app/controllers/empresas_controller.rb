@@ -56,7 +56,7 @@ class EmpresasController < ApplicationController
     @empresa = Empresa.new(empresa_params)
     respond_to do |format|
       if @empresa.save
-          notify_registrationempcr
+          notify_registrationemp("create")
           format.html { redirect_to empresa_url(@empresa), notice: "Empresa was successfully created." }
           format.json { render :show, status: :created, location: @empresa }
       else
@@ -71,7 +71,7 @@ class EmpresasController < ApplicationController
   def update
     respond_to do |format|
       if @empresa.update(empresa_params)
-        notify_registrationempup
+        notify_registrationemp("update")
         format.html { redirect_to empresa_url(@empresa), notice: "Empresa was successfully updated." }
         format.json { render :show, status: :ok, location: @empresa }
       else

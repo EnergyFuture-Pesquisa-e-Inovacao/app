@@ -56,7 +56,7 @@ class IcpsController < ApplicationController
     @icp = Icp.new(icp_params)
     respond_to do |format|
       if @icp.save
-        notify_registrationicpcr
+        notify_registrationicp("create")
         format.html { redirect_to icp_url(@icp), notice: "Icp was successfully created." }
         format.json { render :show, status: :created, location: @icp }
       else
@@ -70,7 +70,7 @@ class IcpsController < ApplicationController
   def update
     respond_to do |format|
       if @icp.update(icp_params)
-        notify_registrationicpup
+        notify_registrationicp("update")
         format.html { redirect_to icp_url(@icp), notice: "Icp was successfully updated." }
         format.json { render :show, status: :ok, location: @icp }
       else
