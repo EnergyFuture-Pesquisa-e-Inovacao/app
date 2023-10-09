@@ -1,4 +1,5 @@
 class EventosController < ApplicationController
+  include EventosHelper
   before_action :set_evento, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: [:teste]
   before_action :authenticate_admin!
@@ -10,7 +11,7 @@ class EventosController < ApplicationController
 
 
 
-  # GET /icps or /icps.json
+  # GET /eventos or /eventos.json
   def index
     if verificauser and !verificaadmin
       redirect_to '/users/sign_in'
@@ -21,7 +22,7 @@ class EventosController < ApplicationController
     end   
   end
 
-  # GET /icps/1 or /icps/1.json
+  # GET /eventos/1 or /eventos/1.json
   def show
     if verificauser and !verificaadmin
 
@@ -33,7 +34,7 @@ class EventosController < ApplicationController
   end
 
 
-  # GET /icps/1/edit
+  # GET /eventos/1/edit
   def edit
     if verificauser and !verificaadmin
       redirect_to '/users/sign_in'
@@ -44,7 +45,7 @@ class EventosController < ApplicationController
     end  
   end
 
-  # POST /icps or /icps.json
+  # POST /eventos or /eventos.json
   def create
     @evento = Evento.new(evento_params)
     @programasetorial=Programasetorial.find(@evento.idobjeto)
@@ -53,12 +54,12 @@ class EventosController < ApplicationController
     respond_to do |format|
       if @evento.save!
         evento=Evento.last
-        timeline=Timeline.new
-        timeline.idobjeto=evento.id
-        timeline.tipoobjeto="Eventos PG"
-        timeline.status=evento.status
-        timeline.save 
-        
+        @timeline=Timeline.new
+        @timeline.idobjeto=evento.id
+        @timeline.tipoobjeto="Eventos PG"
+        @timeline.status=evento.status
+        @timeline.save 
+        notify_registrationeventoaddprogramasetorial  
         format.html { redirect_to programasetorial_url(@programasetorial), notice: "Evento was successfully criado." }
         format.json { render :show, status: :ok, location: @evento }
       else
@@ -76,6 +77,7 @@ class EventosController < ApplicationController
         @evento.duration="%.2f" % delta_time  
         @evento.save!
         @programasetorial=Programasetorial.find(@evento.idobjeto)
+        notify_registrationeventoupprogramasetorial
         format.html { redirect_to programasetorial_url(@programasetorial), notice: "Evento was successfully updated." }
         format.json { render :show, status: :ok, location: @evento }
       else

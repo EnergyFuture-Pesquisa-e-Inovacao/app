@@ -3,10 +3,4 @@ class Empresa < ApplicationRecord
   enum status: { ativo:0, 
   inativo:1 }
 
-  #after_create :notify_registrationempcr
-
-  #after_update :notify_registrationempup
-
-
- 
 end

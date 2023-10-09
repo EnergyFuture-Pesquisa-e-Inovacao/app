@@ -1,4 +1,5 @@
 class ProgramasetorialsController < ApplicationController
+  include ProgramasetorialsHelper
   before_action :set_programasetorial, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: [:teste]
   before_action :authenticate_admin!
@@ -57,7 +58,7 @@ class ProgramasetorialsController < ApplicationController
     @programasetorial = Programasetorial.new(programasetorial_params)
     respond_to do |format|
       if @programasetorial.save!     
-         #create_programasetorialz
+         notify_registrationprogsetcr
          format.html { redirect_to programasetorial_url(@programasetorial), notice: "Programasetorial was successfully created." }
          format.json { render :show, status: :created, location: @programasetorial }
         else
@@ -70,7 +71,8 @@ class ProgramasetorialsController < ApplicationController
   # PATCH/PUT /programasetorials/1 or /programasetorials/1.json
   def update
     respond_to do |format|
-      if @programasetorial.update(programasetorial_params)     
+      if @programasetorial.update(programasetorial_params)
+          notify_registrationprogsetup     
           format.html { redirect_to programasetorial_url(@programasetorial), notice: "Programasetorial was successfully updated." }
           format.json { render :show, status: :ok, location: @programasetorial } 
       else
@@ -97,13 +99,6 @@ class ProgramasetorialsController < ApplicationController
     date.strfdate('mm/dd/yyyy') unless date.blank?
   end
 
-
-  #def create_programasetorialz
-  #  ZapierRuby.configure do |c|
-      #c.web_hooks = { create_programasetorialz: "10142775/39nn3pn" }
-  #  end  
-  #  ZapierRuby::Zapper.new(:create_programasetorialz).zap(@programasetorial.attributes)
-  #end
     # Use callbacks to share common setup or constraints between actions.
     def set_programasetorial
       @programasetorial = Programasetorial.find(params[:id])
