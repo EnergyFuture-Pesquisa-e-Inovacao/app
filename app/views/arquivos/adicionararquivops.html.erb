@@ -1,0 +1,62 @@
+<%= form_with(model: arquivo)do |form| %>
+  <% if programasetorial.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(programasetorial.errors.count, "error") %> prohibited this programasetorial from being saved:</h2>
+
+      <ul>
+        <% programasetorial.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :descricao, style: "display: block" %>
+    <%= form.text_field :descricao %>
+  </div>
+
+  <div>
+    <%= form.label :fotomaior, style: "display: block" %>
+    <%= form.text_field :fotomaior, value:agenda.fotomaior %>
+  </div>
+
+  <div>
+    <%= form.label :datainicio, style: "display: block" %>
+    <%= form.date_field :datainiciom1, value:agenda.datainiciom1%>
+  </div>
+
+    <div>
+    <%= form.label :datafim, style: "display: block" %>
+    <%= form.date_field :datafimm1, value:agenda.datafimm1%>
+  </div>
+
+  <div>
+    <%= form.label :horainicio, style: "display: block" %>
+    <%= form.time_field :horainicio, value:time_format(agenda.horainicio) %>
+  </div>
+
+  <div>
+    <%= form.label :horafim, style: "display: block" %>
+    <%= form.time_field :horafim, value:time_format(agenda.horafim) %>
+  </div>  
+
+  <div>
+    <%= form.label :status, style: "display: block" %>
+    <%= form.select(:status, Agenda.statuses.keys.map {|status| [status.titleize,status]},:selected => agenda.status, :class => 'form-control' )%>
+  </div>
+    <div>
+    <%= form.label :"Enviar para participante?", style: "display: block" %>
+    <%= form.select(:enviarparaparticipante, [['Sim', true], ['Não', false]],:selected => agenda.enviarparaparticipante, :class => 'form-control' )%>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+

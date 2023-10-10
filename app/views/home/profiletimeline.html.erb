@@ -567,7 +567,7 @@
               <!-- WIDGET BOX STATUS TEXT -->
               <%@eventos=Evento.where(tipoobjeto:"Programa Setorial",idobjeto:@programasetorial.id,status:"ativo")%>
               <% @eventos.each do |evento| %>
-              <%timeline=Timeline.where(idobjeto:evento.id,tipoobjeto:"Eventos PG",user_id:current_user.id)%>
+              <%timeline=Timeline.where(idobjeto:evento.id,tipoobjeto:"Eventos PG")%>
                 <!-- USER STATUS TEXT -->
                 <%thdi=evento.datainicio%>
                 </br><p class="user-status-text small">Data Início: <%=thdi.strftime("%d/%m/%Y")%></p></br>

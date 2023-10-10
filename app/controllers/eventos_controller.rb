@@ -8,15 +8,12 @@ class EventosController < ApplicationController
   
   end  
 
-
-
-
   # GET /eventos or /eventos.json
   def index
     if verificauser and !verificaadmin
       redirect_to '/users/sign_in'
     elsif !verificauser and verificaadmin
-      @icps = Icp.all
+      @eventos = Evento.all
     elsif !verificauser and !verificaadmin
       redirect_to '/users/sign_in'
     end   
@@ -64,7 +61,7 @@ class EventosController < ApplicationController
         format.json { render :show, status: :ok, location: @evento }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @icp.errors, status: :unprocessable_entity }
+        format.json { render json: @evento.errors, status: :unprocessable_entity }
       end
     end
   end
