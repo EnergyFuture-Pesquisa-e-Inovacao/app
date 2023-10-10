@@ -54,7 +54,7 @@ class ArquivosController < ApplicationController
         @timeline.tipoobjeto="Arquivos PG"
         @timeline.status=arquivo.status
         @timeline.save 
-        notify_registrationarquivoprogramasetorial("add")  
+        #notify_registrationarquivoprogramasetorial("add")  
         format.html { redirect_to programasetorial_url(@programasetorial), notice: "Arquivo was successfully criado." }
         format.json { render :show, status: :ok, location: @arquivo }
       else
@@ -70,7 +70,7 @@ class ArquivosController < ApplicationController
       if @arquivo.update(arquivo_params)
         @arquivo.save!
         @programasetorial=Programasetorial.find(@arquivo.idobjeto)
-        notify_registrationarquivoprogramasetorial("up")
+        #notify_registrationarquivoprogramasetorial("up")
         format.html { redirect_to programasetorial_url(@programasetorial), notice: "Arquivo was successfully updated." }
         format.json { render :show, status: :ok, location: @arquivo }
       else
