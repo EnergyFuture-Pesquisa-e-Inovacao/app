@@ -2,7 +2,7 @@ module ProgramasetorialsHelper
 
 def notify_registrationprogset(tipo)
   Integromat.configure do |cprogset|
-    cprogset.web_hooks = { appv3programasetorial: "sj3td7a4iact5qfe9oy2edc5nv49s4lw"}
+    cprogset.web_hooks = { appv3programasetorial: "ogu2esvqze7quy6weld5rpaa67al35te"}
     cprogset.base_uri = "https://hook.us1.make.com/"
   end 
   if tipo=="create"
