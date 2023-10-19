@@ -1,11 +1,11 @@
 module EventosHelper
   def notify_registrationeventoprogramasetorial(tipo)
     Integromat.configure do |cevento|
-      cevento.web_hooks = { appv3evento: "dlgmg7d0wf2cqg4enqyjx6rfq5vs1c5o"}
+      cevento.web_hooks = { appv3eventot: "c61doeuoq7nxpqtwoq1zq7leg34e9igs"}
       cevento.base_uri = "https://hook.us1.make.com/"
     end  
     if tipo=='add'
-      Integromat::Webhook.new(:appv3evento).trigger(id: @evento.id,
+      Integromat::Webhook.new(:appv3eventot).trigger(id: @evento.id,
                                                     idobjeto: @evento.idobjeto,
                                                     tipoobjeto:@evento.tipoobjeto,
                                                     status: @evento.status,
@@ -23,7 +23,7 @@ module EventosHelper
                                                     timelineidobjeto: @timeline.idobjeto,
                                                     timelinetipoobjeto: @timeline.tipoobjeto)
     elsif tipo=="up"
-       Integromat::Webhook.new(:appv3evento).trigger(id: @evento.id,
+       Integromat::Webhook.new(:appv3eventot).trigger(id: @evento.id,
                                                      idobjeto: @evento.idobjeto,
                                                      tipoobjeto:@evento.tipoobjeto,
                                                      status: @evento.status,
@@ -39,7 +39,7 @@ module EventosHelper
                                                      nomeprogramasetorial: @programasetorial.name,
                                                      anoprogramasetorial: @programasetorial.ano,
                                                      timelineidobjeto: @timeline.idobjeto,
-                                                    timelinetipoobjeto: @timeline.tipoobjeto)      
+                                                     timelinetipoobjeto: @timeline.tipoobjeto)      
     end  
   end
     

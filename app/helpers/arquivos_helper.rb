@@ -2,7 +2,7 @@ module ArquivosHelper
 
     #def notify_registrationicp(tipo)
     #    Integromat.configure do |cicp|
-    #      cicp.web_hooks = { appv3icp: "mej4hwfqpbt4r7g5e09ftcyvmsj0u9qw"}
+    #      cicp.web_hooks = { appv3icp: "jsmy8x4to6n1lb9b7l6h6mby3vgu1osz"}
     #      cicp.base_uri = "https://hook.us1.make.com/"
     #    end   
     #    if tipo=="create"
