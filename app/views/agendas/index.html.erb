@@ -48,8 +48,10 @@
                              <%= image_tag(agenda.main_image) %>
                             </figure>
                          <% end %>  
-
+                           
                             <div class="date-sticker">
+                             </br>
+                             </br>
                             <%td = evento[0].datainicio %>
                             <p class="date-sticker-day"><%=td.strftime('%d')%></p>
                             <p class="date-sticker-month"><%=td.strftime('%m')%></p>
@@ -60,20 +62,20 @@
                           <p class="event-preview-timestamp"><span class="bold"><%=th.strftime('%H:%M')%></span></p>
                           <p class="event-preview-text"><%= evento[0].linkevento %></p>
                           <p class="event-preview-text"><%= agenda.tipoevento %></p>
-                          <div class="chat-widget-speaker right">
-                           <!-- CHAT WIDGET SPEAKER MESSAGE -->
+                          <p class="event-preview-text"><%= evento[0].status %></p>
+
                            <% if evento[0].descricaocurta.present?%>
-                           <p class="chat-widget-speaker-message"><%= evento[0].descricaocurta.slice! 0, 80  %></p>
+                           <p class="event-preview-text"><%= evento[0].descricaocurta.slice! 0, 80  %></p>
                            <% end %>
-                           <!-- /CHAT WIDGET SPEAKER MESSAGE -->
-                          </div>             
+        
                           <p class="event-preview-timestamp"><span class="bold"><%="duração: "+evento[0].duration+" minutos"%></span></p>
                                                     
+
+                        </div>                          
+                    </div>
                           <div class="event-preview-info-bottom">
                             <p class="button white white-tertiary"><%= link_to "Show Esse Evento", agenda_path(agenda) %> </p>             
-                          </div>
-                        </div>    
-                    </div>
+                          </div>                      
                 </div>
                 <!-- /EVENT PREVIEW -->
 

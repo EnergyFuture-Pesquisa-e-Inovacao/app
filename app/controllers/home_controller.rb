@@ -26,7 +26,8 @@ class HomeController < ApplicationController
   end
 
   def agenda
-    @eventos=Evento.where(tipoobjeto:"Agenda").order(Arel.sql('datainicio ASC'))
+    @eventosrec=Evento.where(tipoobjeto:"Agenda",status:"ativo").limit(8).order(Arel.sql('datainicio ASC'))
+    @eventosant=Evento.where(tipoobjeto:"Agenda",status:"inativo").limit(4).order(Arel.sql('datainicio ASC'))
   end
 
 #  def participaracademy

@@ -29,9 +29,9 @@
                 </div>
                 <!-- /SECTION HEADER INFO -->
             </div>
-        
+            </br>
             <div class="grid grid-3-3-3-3 centered">
-              <% @eventosrec.each do |evento| %>
+              <% @eventos.each do |evento| %>
                 <%agenda=Agenda.where(id:evento.idobjeto)%>
                 <%if agenda[0].present?%>
                  <%@agenda=Agenda.find(agenda[0].id)%>
@@ -45,8 +45,6 @@
                     <div class="event-preview-info">
                         <div class="event-preview-info-top">
                             <div class="date-sticker">
-                            </br>
-                            </br>
                             <%td = evento.datainicio %>
                             <p class="date-sticker-day"><%=td.strftime('%d')%></p>
                             <p class="date-sticker-month"><%=td.strftime('%m')%></p>
@@ -63,14 +61,16 @@
                           <%if agenda[0].present?%>
                            <p class="event-preview-text"><%= @agenda.tipoevento%></p>
                           <%end%> 
-                         
+                          <div class="chat-widget-speaker right">
+                           <!-- CHAT WIDGET SPEAKER MESSAGE -->
                            <% if evento.descricaocurta.present?%>
-                           <p class="event-preview-text"><%= evento.descricaocurta.slice! 0, 80  %></p>
+                           <p class="chat-widget-speaker-message"><%= evento.descricaocurta.slice! 0, 80  %></p>
                            <%end%>
-                                                 
+                           <!-- /CHAT WIDGET SPEAKER MESSAGE -->
+                          </div>                           
                         </div>
-                    </div>
                         <div class="event-preview-info-bottom">
+                            <!-- /DECORATED TEXT -->  
                            <%if @agenda.tipoevento.eql?"On Line"%>
                               <%if @timeline.present?%>
                                <p class="button white white-tertiary"><%= link_to "Fale Conosco", "//www.energyfuture.com.br/contato"%></p>
@@ -79,71 +79,7 @@
                               <%end%> 
                            <%else%>
                                <p class="button white white-tertiary"><%= link_to "Link", "//#{evento.linkevento}"%></p>
-                           <%end%> 
-                          
-                        </div>
-                    </br> 
-                </div>
-                <% end %>
-                <!-- /EVENT PREVIEW -->
-            </div>
-
-
-        <% if @eventosant.count>0 %> 
-            <div class="section-header">
-                <!-- SECTION HEADER INFO -->
-                <div class="section-header-info">
-                    <!-- SECTION PRETITLE -->
-                    <p class="section-pretitle">Veja o aconteceu recentemente!</p>
-                    <!-- /SECTION PRETITLE -->
-
-                    <!-- SECTION TITLE -->
-                    <h2 class="section-title">Eventos Recentes</h2>
-                    <!-- /SECTION TITLE -->
-                </div>
-                <!-- /SECTION HEADER INFO -->
-            </div>
-            </br>
-            <div class="grid grid-3-3-3-3 centered">
-              <% @eventosant.each do |evento| %>
-                <%agenda=Agenda.where(id:evento.idobjeto)%>
-                <%if agenda[0].present?%>
-                 <%@agenda=Agenda.find(agenda[0].id)%>
-                <%end%> 
-                <%timeline=Timeline.where(idobjeto:evento.id,tipoobjeto:"Eventos Agenda")%>
-                <%if timeline[0].present?%>
-                 <%@timeline=Timeline.find(timeline[0].id)%> 
-                <%end%> 
-                <!-- EVENT PREVIEW -->
-                <div class="event-preview">
-                    <div class="event-preview-info">
-                        <div class="event-preview-info-top">
-                            <div class="date-sticker">
-                            <%td = evento.datainicio %>
-                            </br>
-                            </br>
-                            <p class="date-sticker-day"><%=td.strftime('%d')%></p>
-                            <p class="date-sticker-month"><%=td.strftime('%m')%></p>
-                            </div>
-                          <% if  @agenda.main_image.attached? %>
-                            <figure class="event-preview-cover liquid">
-                             <%= image_tag(@agenda.main_image) %>
-                            </figure>
-                         <% end %>      
-                          <%th = evento.horainicio %>
-                          </br>
-                          <p class="event-preview-title popup-event-information-trigger"><%= evento.name %></p>
-                          <p class="event-preview-timestamp"><span class="bold"><%=th.strftime('%H:%M')%></span></p>
-                          <%if agenda[0].present?%>
-                           <p class="event-preview-text"><%= @agenda.tipoevento%></p>
-                          <%end%> 
-                    
-                         
-                           <% if evento.descricaocurta.present?%>
-                           <p class="event-preview-text"><%= evento.descricaocurta.slice! 0, 80  %></p>
-                           <%end%>
-                         
-                          </div>                           
+                           <%end%>   
                         </div>
                     </div>
                 </div>
@@ -151,7 +87,5 @@
                 <!-- /EVENT PREVIEW -->
 
             </div>
-        <%end%>    
-
  </div>
 <%= render "shared/footer-new"%>

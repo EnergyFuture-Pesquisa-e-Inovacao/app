@@ -12,7 +12,7 @@ class AgendasController < ApplicationController
     if verificauser and !verificaadmin
       redirect_to '/users/sign_in'
     elsif !verificauser and verificaadmin
-      puts Rails.application.credentials.config[:var][:var_url_remoto]
+      #puts Rails.application.credentials.config[:var][:var_url_remoto]
       @agendas = Agenda.all   
     elsif !verificauser and !verificaadmin
       redirect_to '/users/sign_in'
@@ -63,7 +63,7 @@ class AgendasController < ApplicationController
         @evento.descricao=@agenda.descricao
         @evento.descricaocurta=@agenda.descricaocurta
         @evento.linkevento=@agenda.linkevento        
-        @evento.idobjeto=agenda.id
+        @evento.idobjeto=@agenda.id
         @evento.tipoobjeto="Agenda"
         @evento.datainicio=@agenda.datainicio
         @evento.datafim=@agenda.datafim
@@ -77,7 +77,7 @@ class AgendasController < ApplicationController
         @evento.save!
         @evento=Evento.last
         @timeline=Timeline.new
-        @timeline.idobjeto=evento.id
+        @timeline.idobjeto=@evento.id
         @timeline.tipoobjeto="Eventos Agenda" 
         #thdi = evento.datainicio
         #thi = evento.horainicio
