@@ -56,9 +56,19 @@ class EmpresasController < ApplicationController
     @empresa = Empresa.new(empresa_params)
     respond_to do |format|
       if @empresa.save
+        #empresa=Empresa.last
+        #@equipe=Equipe.new 
+        #@equipe.name="Equipe A" 
+        #@equipe.empresa_id=empresa.id
+        #@equipe.status="ativo"
+        if @equipe.save 
           notify_registrationemp("create")
           format.html { redirect_to empresa_url(@empresa), notice: "Empresa was successfully created." }
           format.json { render :show, status: :created, location: @empresa }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @empresa.errors, status: :unprocessable_entity }
+        end   
       else
           format.html { render :new, status: :unprocessable_entity }
           format.json { render json: @empresa.errors, status: :unprocessable_entity }

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :userequipes
-  resources :equipes
+  #resources :userequipes
+  #resources :equipes
   resources :empresas
   resources :programasetorials
   resources :agendas
@@ -24,8 +24,10 @@ Rails.application.routes.draw do
  
   get 'homea/index'
   get 'homea/users'
-  get 'homea/showusers'
-  get 'homea/edituser'
+  #get 'homea/showusers'
+  #get 'homea/edituser'
+  get 'users/aedit'
+  get 'users/ashowusers'
   get 'homea/adicionareventops'
   #get 'evento/newevps'
   get 'homea/indexeventosps'
@@ -41,7 +43,11 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
   devise_for :admins, controllers: { sessions: 'admins/sessions' }
+  #get '/users/:user_id/users' to: 'users#show'
+  #resources :users, only: [:create,:show]
   resources :users
+
+  #match "homea/users/:id", controller: "homea", action: "update", as: "update", via: :put
 
   #match '*unmatched', to: 'application#not_found_method', via: :all
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

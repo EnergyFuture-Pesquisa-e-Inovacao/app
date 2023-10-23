@@ -14,7 +14,7 @@
         <th scope="col">Perfil</th>
         <th scope="col">Plano</th>
         <th scope="col">Empresa</th>
-        <th scope="col">Show</th>
+        <th scope="col">Ações</th>
       </tr>
     <tbody>
       <% @users.each do |user| %>
@@ -26,15 +26,21 @@
        <td><%= user.status %></td>
     <%if user.icp_id?%>
     <%icp=Icp.find(user.icp_id)%>
-  <td><%= icp.name %></td>
-  <%end%>
+    <td><%= icp.name %></td>
+    <%else%>
+    <td></td>
+    <%end%>
   <%if user.plano_id?%>
-  <%plano=Plano.find(user.plano_id)%>
-  <td><%= plano.name %></td>
+   <%plano=Plano.find(user.plano_id)%>
+   <td><%= plano.name %></td>
+  <%else%>
+    <td></td>
   <%end%>  
   <%if user.empresa_id?%>
   <%empresa=Empresa.find(user.empresa_id)%>
   <td><%= empresa.nomefantasia %></td>
+  <%else%>
+  <td></td>
   <%end%>
   <td><%= link_to "show", "/homea/showusers/?id=#{user.id}" %></td>
   <td><%= link_to "edit", "/homea/edituser/?id=#{user.id}" %></td>

@@ -1,0 +1,50 @@
+<%= form_with(model: user) do |form| %>
+  <% if user.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this icp from being saved:</h2>
+
+      <ul>
+        <% user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :phone, style: "display: block" %>
+    <%= form.text_field :phone %>
+  </div>
+
+   <div>
+     <%= form.label :planos, style: "display: block" %>
+     <%= form.select(:plano_id, planos_for_select, :prompt => 'Select') %>
+  </div>
+
+  <div>
+     <%= form.label :icps, style: "display: block" %>
+     <%= form.select(:icp_id, icps_for_select, :prompt => 'Select') %>
+  </div>
+
+   <div>
+     <%= form.label :empresas, style: "display: block" %>
+     <%= form.select(:empresa_id, empresas_for_select, :prompt => 'Select') %>
+  </div>
+
+  <div>
+    <%= form.label :status, style: "display: block" %>
+    <%= form.select(:status, User.statuses.keys.map {|status| [status.titleize,status]}, :class => 'form-control' )%>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+ <style>
+   body { margin: 2%; }
+</style>

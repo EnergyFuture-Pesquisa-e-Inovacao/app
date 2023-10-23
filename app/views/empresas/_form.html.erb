@@ -26,7 +26,7 @@
     <%= form.select(:status, Empresa.statuses.keys.map {|status| [status.titleize,status]}, :class => 'form-control' )%>
   </div>
 
-    <div>
+  <div>
      <%= form.label :planos, style: "display: block" %>
      <%= form.select(:plano_id, planos_for_select, :prompt => 'Select') %>
   </div>
