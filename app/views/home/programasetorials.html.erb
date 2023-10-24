@@ -30,18 +30,16 @@
                          <% end %>  
                     <div class="event-preview-info">
                         <div class="event-preview-info-top">
-                          <p class="event-preview-text"><span class="bold"><%="Ano: "+programasetorial.ano%></span></p> 
-                          <p class="event-preview-title popup-event-information-trigger"><%= programasetorial.name %></p>
+                          <p class="event-preview-text"><span class="bold"><%=programasetorial.ano%></span></p> 
+                          <p class="event-preview-text"><%= programasetorial.name %></p>
                           <p class="event-preview-text"><%="Empresas: "+programasetorial.quantempresas%></p>
                           <p class="event-preview-text"><%="Engajamento: "+programasetorial.quantengajamento%></p>
                           <p class="event-preview-text"><%="Inscritos: "+programasetorial.quantinscricoes%></p>
-                          <div class="chat-widget-speaker right">
-                           <!-- CHAT WIDGET SPEAKER MESSAGE -->
                            <% if programasetorial.descricaocurta.present?%>
-                           <p class="chat-widget-speaker-message"><%= programasetorial.descricaocurta.slice! 0, 80  %></p>
+                           <p class="event-preview-text"><%= programasetorial.descricaocurta.slice! 0, 80  %></p>
                            <% end %>
-                           <!-- /CHAT WIDGET SPEAKER MESSAGE -->
-                          </div>                
+               
+                        </div>
                         </div>
                         <div class="event-preview-info-bottom">
                           <!-- BUTTON -->
@@ -55,8 +53,8 @@
                            <p class="button white white-tertiary"><%= link_to "Fale Conosco", "//www.energyfuture.com.br/contato"%></p>
                           <%end%> 
                            <!-- /BUTTON -->          
-                        </div>
-                    </div>
+                         </div>
+                         </br>
                 </div>
         <% end %>
         <!-- /EVENT PREVIEW -->

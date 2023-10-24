@@ -250,14 +250,14 @@
           <!-- /WIDGET BOX CONTENT -->
         </div>
         <!-- /WIDGET BOX -->
-
+      <% if current_user.empresa_id.present? %>
         <!-- WIDGET BOX -->
         <div class="widget-box">
       
           <!-- WIDGET BOX TITLE -->
           <p class="widget-box-title">Participantes do Programa</span></p>
           <!-- /WIDGET BOX TITLE -->
-      
+          <%empresa=Empresa.find(current_user.empresa_id)%>
           <!-- WIDGET BOX CONTENT -->
           <div class="widget-box-content">
             <!-- USER STATUS LIST -->
@@ -279,7 +279,7 @@
           <!-- WIDGET BOX CONTENT -->
         </div>
         <!-- /WIDGET BOX -->
-
+      <%end%>   
         <!-- WIDGET BOX -->
         <div class="widget-box">
 
