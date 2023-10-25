@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     if verificauser and !verificaadmin
       redirect_to '/users/sign_in'
     elsif !verificauser and verificaadmin
-      @users = User.all
+      @users = User.all.order(:name)
     elsif !verificauser and !verificaadmin
       redirect_to '/users/sign_in'
     end   
@@ -62,20 +62,22 @@ class UsersController < ApplicationController
       end  
     end
 
-  # POST /users or /users.json
-  #def create
-  #  @user = User.new(user_params)
-  #  respond_to do |format|
-  #    if @user.save
-        #notify_registrationuser("create")
-  #      format.html { redirect_to user_url(@user), notice: "User was successfully created." }
-  #      format.json { render :show, status: :created, location: @user }
- #     else
-  #      format.html { render :new, status: :unprocessable_entity }
-  #      format.json { render json: @user.errors, status: :unprocessable_entity }
-  #    end
-  #  end
-  #end
+    def adicionarprogramasetorialuser
+      pidpg=params[:idpg]
+      piduser=params[:iduser]
+      programasetorial=Programasetorial.find(pidpg)
+      user=User.find(piduser)
+      @programasuser=Programasuser.new
+      @programasuser.programasetorial_id=programasetorial.id
+      @programasuser.user_id=user.id
+      respond_to do |format|
+       if @programasuser.save  
+        format.html {redirect_to "/users/ashowusers?id=#{user.id}", notice: "User was successfully updated."}
+       else
+        format.html { redirect_to "/users/ashowusers?id=#{user.id}", status: :unprocessable_entity }
+       end 
+     end
+    end 
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
@@ -110,6 +112,9 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:email,:name,:phone,:empresa_id,:icp_id,:plano_id,:status)
     end
+    def programasuser_params
+      params.require(:programasuser).permit(:programasetorial_id,:user_id)
+    end  
 
     def verificauser
       if current_user.present?

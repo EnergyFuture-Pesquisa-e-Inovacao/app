@@ -10,12 +10,58 @@
     <%= @user.email %>
   </p>
 
+  <p>
+    <strong>Plano:</strong>
+    <%= getnameplano(@user.plano_id) %>
+  </p>
+
+  <p>
+    <strong>Perfil:</strong>
+    <%= getnameicp(@user.icp_id) %>
+  </p>
+
 <div>
   <%= link_to "Edit this user", edit_user_path(@user) %> |
   <%= link_to "Back to users", "/users" %>
 
   
 </div>
+<%@programasetorials=Programasetorial.where(status:"ativo",ano:"2023")%>
+</br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> 
+  <table class="table">
+    <thead class="table-light">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Status</th>
+        <th scope="col">Eventos</th>
+        <th scope="col">Ações</th>
+      </tr>
+    <tbody>
+      <% @programasetorials.each do |programasetorial| %>
+      <tr>
+       <%eventosc=Evento.where(tipoobjeto: "Programa Setorial",idobjeto:programasetorial.id,status:"ativo")%>
+       <%programasusers=Programasuser.where(programasetorial_id:programasetorial.id,user_id:@user.id)%>
+       <td><%= programasetorial.id %></td>    
+       <td><%= programasetorial.name %></td>
+       <td><%= programasetorial.status %></td>
+       <td><%= eventosc.count %></td>
+       <% if programasusers.present?%>
+       <td>"Participo do Programa"</td>
+       <% else %>
+       <td><%= link_to "Participar do Programa", "/users/adicionarprogramasetorialuser?idpg=#{programasetorial.id}&iduser=#{@user.id}"%></p></td>
+       <% end %>
+
+  </tr>
+  <% end %>
+    </tbody>
+  </table>
+
+
+
+
+
+
  <style>
    body { margin: 2%; }
 </style>

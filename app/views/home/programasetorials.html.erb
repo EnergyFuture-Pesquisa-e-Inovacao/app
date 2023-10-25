@@ -20,7 +20,6 @@
     <!-- GRID -->
     <div class="grid grid-3-3-3-3 centered">
      <% @programasetorials.each do |programasetorial| %>
-     <%agenda=Agenda.where(tipoevento: "Programa Setorial",idevento:programasetorial.id)%>
   <!-- EVENT PREVIEW -->
                 <div class="event-preview">
                           <% if  programasetorial.main_imagepg.attached? %>

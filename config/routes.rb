@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   resources :empresas
   resources :programasetorials
   resources :agendas
-  #resources :academies
   resources :planos
   resources :icps
   resources :eventos
@@ -28,6 +27,7 @@ Rails.application.routes.draw do
   #get 'homea/edituser'
   get 'users/aedit'
   get 'users/ashowusers'
+  get 'users/adicionarprogramasetorialuser'
   get 'homea/adicionareventops'
   #get 'evento/newevps'
   get 'homea/indexeventosps'

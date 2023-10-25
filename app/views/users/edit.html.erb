@@ -1,4 +1,5 @@
-<%= render "shared/header-new"%>
+<%if current_user.present?%>
+  <%= render "shared/header-new"%>
   <!-- CONTENT GRID -->
   <div class="content-grid">
     <!-- SECTION BANNER -->
@@ -20,5 +21,19 @@
       </div>
   <!-- /CONTENT GRID -->
   
-<%= render "shared/footer-new"%>
+  <%= render "shared/footer-new"%>
+<%else%>  
+<h1>Editing User</h1>
+
+<%= render "aform", user: @user %>
+
+<br>
+
+<div>
+  <%= link_to "Show this perfil", "/ashowusers/?id=#{@user.id}" %> |
+  <%= link_to "Back to perfils", "/users" %>
+</div>
+
+
+<%end%>
 

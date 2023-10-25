@@ -61,12 +61,16 @@ module UsersHelper
                                                 "tipoacao": "update")
   end
   def getnameplano(id)
-    plano=Plano.find(id)
-    plano.name
+    if id.present?
+      plano=Plano.find(id)
+      plano.name
+    end  
   end 
   def getnameicp(id)
-    icp=Icp.find(id)
-    icp.name
+    if id.present?
+      icp=Icp.find(id)
+      icp.name
+    end  
   end  
 
   def getnameempresa(id)
