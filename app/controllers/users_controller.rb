@@ -63,6 +63,7 @@ class UsersController < ApplicationController
     end
 
     def adicionarprogramasetorialuser
+      counteventos=0
       pidpg=params[:idpg]
       piduser=params[:iduser]
       programasetorial=Programasetorial.find(pidpg)
@@ -70,13 +71,28 @@ class UsersController < ApplicationController
       @programasuser=Programasuser.new
       @programasuser.programasetorial_id=programasetorial.id
       @programasuser.user_id=user.id
+      eventos=Evento.where(idobjeto:programasetorial.id,tipoobjeto:"Programa Setorial",status:"ativo")
       respond_to do |format|
-       if @programasuser.save  
-        format.html {redirect_to "/users/ashowusers?id=#{user.id}", notice: "User was successfully updated."}
-       else
-        format.html { redirect_to "/users/ashowusers?id=#{user.id}", status: :unprocessable_entity }
-       end 
-     end
+       if @programasuser.save 
+         eventos.each do |evento|
+          eventosusers=Eventosuser.new
+          eventosusers.evento_id=evento.id
+          eventosusers.user_id=@programasuser.user_id
+          if eventosusers.save
+           counteventos=counteventos+1
+          end 
+         end 
+         if eventos.count==counteventos
+          format.html {redirect_to "/users/ashowusers?id=#{user.id}", notice: "User was successfully updated."}
+         else
+          eventosusers.each do |eventosuser|
+           eventosuser.destroy
+          end  
+          @programasuser.destroy
+          format.html { redirect_to "/users/ashowusers?id=#{user.id}", status: :unprocessable_entity }
+         end 
+        end 
+      end
     end 
 
   # PATCH/PUT /users/1 or /users/1.json
