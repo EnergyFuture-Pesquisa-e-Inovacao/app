@@ -7,6 +7,10 @@ module ApplicationHelper
         datetime.strftime('%H:%M') unless datetime.blank?
     end
 
+    def date_formatnormal(datetime)
+        date.strfdate('dd/mm/yyyy') unless date.blank?
+    end
+
     #def date_formatinvertida(date)
     #    date.strfdate('mm/dd/yyyy') unless date.blank?
     #end

@@ -95,6 +95,25 @@ class UsersController < ApplicationController
       end
     end 
 
+    def adicionaragendaeventouser
+      pidag=params[:idag]
+      piduser=params[:iduser]
+      agenda=Agenda.find(pidag)
+      user=User.find(piduser)
+      evento=Evento.where(idobjeto:agenda.id,tipoobjeto:"Agenda",status:"ativo")
+      respond_to do |format|
+        eventosusers=Eventosuser.new
+        eventosusers.evento_id=evento[0].id
+        eventosusers.user_id=user.id
+         if eventosusers.save
+          format.html {redirect_to "/users/ashowusers?id=#{user.id}", notice: "User was successfully updated."}
+         else
+          format.html { redirect_to "/users/ashowusers?id=#{user.id}", status: :unprocessable_entity }
+         end
+      end
+    end 
+
+
   # PATCH/PUT /users/1 or /users/1.json
   def update
     respond_to do |format|

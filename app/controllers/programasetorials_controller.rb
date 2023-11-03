@@ -91,8 +91,6 @@ class ProgramasetorialsController < ApplicationController
     end
   end
 
-
-
   private
 
   def date_formatinvertida(date)

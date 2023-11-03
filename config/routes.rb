@@ -36,6 +36,8 @@ Rails.application.routes.draw do
   get 'home/participarevento'
   get 'home/profiletimeline'
   get 'home/participaracademy'
+
+  get 'home/ctaprogramasetorial1'
   
   
   

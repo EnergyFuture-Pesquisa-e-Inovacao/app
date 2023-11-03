@@ -69,6 +69,15 @@ class HomeController < ApplicationController
   #  @academies = Academy.where(id:@agendasid)
   #end
 
+  def ctaprogramasetorial1
+    puts "LINK FUNCIONOU"
+    puts params[:id]
+    respond_to do |format|
+      format.html { redirect_to "/home/programasetorials", notice: "Participando do Programa." }
+      format.json { head :no_content }
+     end    
+  end  
+
   def participarprogramasetorial
     programasetorial = Programasetorial.find(params[:id])
     eventos = Evento.where(idobjeto:programasetorial.id,tipoobjeto:"Programa Setorial")
