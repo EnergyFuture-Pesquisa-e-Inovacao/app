@@ -41,15 +41,18 @@
                         </div>
                         </div>
                         <div class="event-preview-info-bottom">
+    
                           <!-- BUTTON -->
-                          <%if (plano.name.eql?"ICP 1") %>  
+                          <%if !(plano.name.eql?"Free") and icp.name.eql?"Empresas de Energia" %>  
                            <p class="button white white-tertiary"><%= link_to "Ver o Programa", "/home/profiletimeline?id=#{programasetorial.id}"%></p>
-                          <%elsif (plano.name.eql?"ICP 2") %>  
+                          <%elsif !(plano.name.eql?"Free") and icp.name.eql?"Indústrias e Consultorias" %>  
                            <p class="button white white-tertiary"><%= link_to "Ver o Programa", "/home/profiletimeline?id=#{programasetorial.id}"%></p>
-                          <%elsif plano.name.eql?"ICP 3" %>  
+                          <%elsif plano.name.eql?"Free" %>  
+                           <p class="button white white-tertiary"><%= link_to "Receber Informações do Programa", "/home/ctaprogramasetorial1?id=#{programasetorial.id}"%></p>
+                          <%elsif icp.name.eql?"Startups, ICTs e Inovadores" %>  
                            <p class="button white white-tertiary"><%= link_to "Receber Informações do Programa", "/home/ctaprogramasetorial1?id=#{programasetorial.id}"%></p>
                           <%end%> 
-                           <!-- /BUTTON -->          
+                           <!-- /BUTTON -->
                          </div>
                          </br>
                 </div>

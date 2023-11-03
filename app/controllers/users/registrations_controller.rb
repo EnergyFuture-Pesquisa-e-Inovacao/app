@@ -44,7 +44,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     def poscreate
       @user.status='ativo'
-      plano=Plano.find_by(name: 'ICP 3')
+      plano=Plano.find_by(name: 'Free')
       @user.plano_id=plano.id
       if @user.save
         registrationsignup
