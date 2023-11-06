@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   #before_action :authenticated!
+  include HomeHelper
   def index
   end
 
@@ -10,11 +11,19 @@ class HomeController < ApplicationController
   end
 
   def respostapropdi
-    puts params
+    notify_registrationresppropdi(current_user.id,current_user.name,getresppropdi(params[:id]))
+    respond_to do |format|
+      format.html { redirect_to "/home/propdi", notice: "Muito obrigado pela sua resposta." }
+      format.json { head :no_content }
+    end  
   end
 
   def respostaacademy
-    puts params
+    notify_registrationrespacademy(current_user.id,current_user.name,getrespacademy(params[:id]))
+    respond_to do |format|
+      format.html { redirect_to "/home/academy", notice: "Muito obrigado pela sua resposta." }
+      format.json { head :no_content }
+    end  
   end
 
   def respostafeedinovacao
