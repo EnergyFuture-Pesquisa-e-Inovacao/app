@@ -17,7 +17,6 @@ def notify_registrationprogset(tipo)
                                                    quantempresas: @programasetorial.quantempresas,
                                                    quantengajamento: @programasetorial.quantengajamento,
                                                    quantinscricoes: @programasetorial.quantinscricoes,
-                                                   descricaocurta: @programasetorial.descricaocurta,
                                                    created_at: @programasetorial.created_at,
                                                   "tipoacao": "create")
   elsif tipo=="update"
@@ -32,7 +31,6 @@ def notify_registrationprogset(tipo)
                                                    quantempresas: @programasetorial.quantempresas,
                                                    quantengajamento: @programasetorial.quantengajamento,
                                                    quantinscricoes: @programasetorial.quantinscricoes,
-                                                   descricaocurta: @programasetorial.descricaocurta,
                                                    updated_at: @programasetorial.updated_at,
                                                    "tipoacao": "update")    
   end  
