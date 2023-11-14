@@ -2,7 +2,7 @@ class AgendasController < ApplicationController
   include AgendasHelper
   before_action :set_agenda, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: [:teste]
-  before_action :authenticate_admin!
+  #before_action :authenticate_admin!
 
   def teste
   
@@ -11,8 +11,7 @@ class AgendasController < ApplicationController
   def index
     if verificauser and !verificaadmin
       redirect_to '/users/sign_in'
-    elsif !verificauser and verificaadmin
-      #puts Rails.application.credentials.config[:var][:var_url_remoto]
+    elsif !verificauser and verificaadmin 
       @agendas = Agenda.all   
     elsif !verificauser and !verificaadmin
       redirect_to '/users/sign_in'
