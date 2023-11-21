@@ -14,8 +14,12 @@
             <!-- /SECTION BANNER TEXT -->
         </div></br>
          <!-- /SECTION BANNER -->
-          <%icp=Icp.find(current_user.icp_id)%>
-          <%plano=Plano.find(current_user.plano_id)%>    
+         <%if current_user.icp_id.present?%> 
+           <%icp=Icp.find(current_user.icp_id)%>
+         <%end%>  
+          <%if current_user.plano_id.present?%>
+           <%plano=Plano.find(current_user.plano_id)%> 
+          <%end%>    
 
     <!-- GRID -->
     <div class="grid grid-3-3-3-3 centered">
@@ -40,8 +44,8 @@
                
                         </div>
                         </div>
-                        <div class="event-preview-info-bottom">
-    
+                        <%if (current_user.icp_id.present?)and(current_user.plano_id.present?)%>
+                         <div class="event-preview-info-bottom">
                           <!-- BUTTON -->
                           <%if !(plano.name.eql?"Free") and icp.name.eql?"Empresas de Energia" %>  
                            <p class="button white white-tertiary"><%= link_to "Ver o Programa", "/home/profiletimeline?id=#{programasetorial.id}"%></p>
@@ -53,8 +57,9 @@
                            <p class="button white white-tertiary"><%= link_to "Receber Informações do Programa", "/home/ctaprogramasetorial1?id=#{programasetorial.id}"%></p>
                           <%end%> 
                            <!-- /BUTTON -->
-                         </div>
+                          </div>
                          </br>
+                        <%end%> 
                 </div>
         <% end %>
         <!-- /EVENT PREVIEW -->
