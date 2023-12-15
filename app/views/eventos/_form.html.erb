@@ -1,0 +1,69 @@
+<%= form_with(model: evento)do |form| %>
+
+  <% if @programasetorial.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@programasetorial.errors.count, "error") %> prohibited this programasetorial from being saved:</h2>
+
+      <ul>
+        <% @programasetorial.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%evento = Evento.find(@evento.id)%>
+  <%delta_time = (evento.horafim - evento.horainicio)/60%>
+  <%duration="%.2f" % delta_time %>
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :descricao, style: "display: block" %>
+    <%= form.text_field :descricao %>
+  </div>
+
+  <%
+=begin%>
+ <div>
+    <%= form.label :fotomaior, style: "display: block" %>
+    <%= form.text_field :fotomaior, value:evento.fotomaior %>
+  </div> 
+<%
+=end%>
+
+  <div>
+    <%= form.label :datainicio, style: "display: block" %>
+    <%= form.date_field :datainicio, value:evento.datainicio%>
+  </div>
+
+    <div>
+    <%= form.label :datafim, style: "display: block" %>
+    <%= form.date_field :datafim, value:evento.datafim%>
+  </div>
+
+  <div>
+    <%= form.label :horainicio, style: "display: block" %>
+    <%= form.time_field :horainicio, value:time_format(evento.horainicio) %>
+  </div>
+
+  <div>
+    <%= form.label :horafim, style: "display: block" %>
+    <%= form.time_field :horafim, value:time_format(evento.horafim) %>
+  </div>  
+
+  <div>
+    <%= form.label :status, style: "display: block" %>
+    <%= form.select(:status, Evento.statuses.keys.map {|status| [status.titleize,status]},:selected => evento.status, :class => 'form-control' )%>
+  </div>
+    <div>
+    <%= form.label :"Enviar para participante?", style: "display: block" %>
+    <%= form.select(:enviarparaparticipante, [['Sim', true], ['Não', false]],:selected => evento.enviarparaparticipante, :class => 'form-control' )%>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+

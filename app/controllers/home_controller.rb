@@ -146,7 +146,37 @@ class HomeController < ApplicationController
     
   end
 
-  def profiletimeline
+  def programatimeline
+    @programasetorial = Programasetorial.find(params[:id])
+    @eventos = Evento.where(idobjeto:@programasetorial.id,tipoobjeto:"Programa Setorial")
+    @programausers=Programasuser.where(programasetorial_id:@programasetorial.id)
+  end  
+
+  def programainfo
+    @programasetorial = Programasetorial.find(params[:id])
+    @eventos = Evento.where(idobjeto:@programasetorial.id,tipoobjeto:"Programa Setorial")
+    @programausers=Programasuser.where(programasetorial_id:@programasetorial.id)
+  end  
+
+  def programaparticipantes
+    @programasetorial = Programasetorial.find(params[:id])
+    @eventos = Evento.where(idobjeto:@programasetorial.id,tipoobjeto:"Programa Setorial")
+    @programausers=Programasuser.where(programasetorial_id:@programasetorial.id)
+  end  
+
+  def programaeventos
+    @programasetorial = Programasetorial.find(params[:id])
+    @eventos = Evento.where(idobjeto:@programasetorial.id,tipoobjeto:"Programa Setorial")
+    @programausers=Programasuser.where(programasetorial_id:@programasetorial.id)
+  end  
+
+  def programaarquivos
+    @programasetorial = Programasetorial.find(params[:id])
+    @eventos = Evento.where(idobjeto:@programasetorial.id,tipoobjeto:"Programa Setorial")
+    @programausers=Programasuser.where(programasetorial_id:@programasetorial.id)
+  end  
+
+  def programapropostas
     @programasetorial = Programasetorial.find(params[:id])
     @eventos = Evento.where(idobjeto:@programasetorial.id,tipoobjeto:"Programa Setorial")
     @programausers=Programasuser.where(programasetorial_id:@programasetorial.id)
@@ -178,7 +208,7 @@ class HomeController < ApplicationController
             end
           elsif params[:tipoobjeto]=="Programa Setorial"
             respond_to do |format|
-              format.html { redirect_to "/home/profiletimeline/?id=#{evento[0].idobjeto}", notice: "Estou Participando do Evento." }
+              format.html { redirect_to "/home/programatimeline/?id=#{evento[0].idobjeto}", notice: "Estou Participando do Evento." }
               format.json { head :no_content }
             end
           end  

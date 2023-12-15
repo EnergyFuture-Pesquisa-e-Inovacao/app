@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :icps
   resources :eventos
   resources :posts
-  
+
   get 'home/agenda'
   get 'home/academy'
   get 'home/programasetorials'
@@ -34,7 +34,12 @@ Rails.application.routes.draw do
 
   get 'home/participarprogramasetorial'
   get 'home/participarevento'
-  get 'home/profiletimeline'
+  get 'home/programatimeline'
+  get 'home/programainfo'
+  get 'home/programaparticipantes'
+  get 'home/programaeventos'
+  get 'home/programaarquivos'
+  get 'home/programapropostas'
   get 'home/participaracademy'
 
   get 'home/ctaprogramasetorial1'

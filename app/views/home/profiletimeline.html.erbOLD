@@ -16,8 +16,6 @@
         <p class="section-banner-text"><%=@programasetorial.name%> </p>
         <p class="section-banner-text"><%=@programasetorial.ano%> </p>
         <!-- /SECTION BANNER TEXT -->
-
-        
     </div>
     <!-- /SECTION BANNER -->
       <!-- PROFILE HEADER INFO -->

@@ -1,31 +1,119 @@
-<%= render "shared/header-new",title:"O hub de inovação do setor elétrico"%>
+<%= render "shared/header-new" ,title:"O hub de inovação do setor elétrico"%>
     <!-- CONTENT GRID -->
     <div class="content-grid">
         <!-- SECTION BANNER -->
         <div class="section-banner">
+            <%= image_tag("#{Rails.application.credentials.dig(:var,
+                :var_url_remoto)}/img/banner/groups-icon.png",class:"section-banner-icon",alt:"groups-icon") %>
+                <!-- SECTION BANNER TITLE -->
+                <p class="section-banner-title">Feed de Inovação</p>
+                <!-- /SECTION BANNER TITLE -->
 
-            <%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/banner/groups-icon.png",class:"section-banner-icon",alt:"groups-icon") %>
-            <!-- SECTION BANNER TITLE -->
-            <p class="section-banner-title">Feed de Inovação</p>
-            <!-- /SECTION BANNER TITLE -->
-    
-            <!-- SECTION BANNER TEXT -->
-            <p class="section-banner-text">A principal trilha de conhecimento em inovação do setor elétrico</p>
-            <!-- /SECTION BANNER TEXT -->
+                <!-- SECTION BANNER TEXT -->
+                <p class="section-banner-text">
+                    A principal trilha de conhecimento em inovação do setor elétrico
+                </p>
+                <!-- /SECTION BANNER TEXT -->
         </div>
         <!-- /SECTION BANNER -->
-    
+
         <!-- GRID -->
-        <div class="grid grid-3-6-3 mobile-prefer-content">
+        <div class="grid grid-12 mobile-prefer-content">
             <!-- GRID COLUMN -->
             <div class="grid-column">
-    
-    
+                <!-- WIDGET BOX -->
+                <div class="widget-box">
+                    <!-- WIDGET BOX TITLE -->
+                    <!-- <p class="widget-box-title">Twitter Feed</p> -->
+                    <!-- /WIDGET BOX TITLE -->
+
+                    <!-- WIDGET BOX CONTENT -->
+                    <div class="widget-box-content">
+                        <!-- SWITCH OPTION -->
+                        <div class="switch-option">
+                            <!-- SWITCH OPTION TITLE -->
+                            <p class="switch-option-title">Inscreva-se no feed</p>
+                            <!-- /SWITCH OPTION TITLE -->
+
+                            <!-- SWITCH OPTION TEXT -->
+                            <p class="switch-option-text">
+                                Assinantes do nosso feed recebem 1 e-mail por semana, onde
+                                apresentamos as oportunidades abertas no mercado
+                            </p>
+                            <!-- /SWITCH OPTION TEXT -->
+
+                            <!-- FORM SWITCH -->
+                            <div class="form-switch active">
+                                <!-- FORM SWITCH BUTTON -->
+                                <div class="form-switch-button"></div>
+                                <!-- /FORM SWITCH BUTTON -->
+                            </div>
+                            <!-- /FORM SWITCH -->
+
+                            <!-- BUTTON -->
+                            <a class="button" href="#" style="width: 350px">
+                                <!-- BUTTON ICON -->
+                                <svg class="button-icon spaced icon-newsfeed">
+                                    <use xlink:href="#svg-newsfeed"></use>
+                                </svg>
+                                <!-- /BUTTON ICON -->
+                                Quero receber a última atualização do feed
+                            </a>
+                            <!-- /BUTTON -->
+
+                            <!-- SWITCH OPTION META -->
+                            <p class="switch-option-meta">
+                                O e-mail da sua conta é:
+                                <span class="bold">
+                                    <%=current_user.email%>
+                                </span>
+                            </p>
+                            <!-- /SWITCH OPTION META -->
+                        </div>
+                        <!-- /SWITCH OPTION -->
+                    </div>
+                    <!-- WIDGET BOX CONTENT -->
+                </div>
+                <!-- /WIDGET BOX -->
+                <!-- WIDGET BOX -->
+                <div class="widget-box">
+                    <!-- WIDGET BOX TITLE -->
+                    <p class="widget-box-title">O que é o radar de desafios?</p>
+                    <!-- /WIDGET BOX TITLE -->
+
+                    <!-- WIDGET BOX CONTENT -->
+                    <div class="widget-box-content">
+                        <!-- GRID -->
+                        <div class="grid grid-8-4 mobile-prefer-content">
+                            <!-- GRID COLUMN -->
+                            <div class="grid-column">
+                                <b><p>Sua curadoria semanal de inovação para o setor elétrico</p></b>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            </div>
+                            <!-- /GRID COLUMN -->
+                            <!-- GRID COLUMN -->
+                            <div class="grid-column">
+                                <div class="user-stats">
+                                    <div class="user-stat big">
+                                        <div class="user-stat-title">+3000</div>
+                                        <div class="user-stat-text">Assinantes mensais</div>
+                                    </div>
+                                    <div class="user-stat big">
+                                        <div class="user-stat-title">XX</div>
+                                        <div class="user-stat-text">Oportunidades divulgadas</div>
+                                    </div>
+                                </div>
+                                <%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/cover/31.jpg", alt: "events-icon",class:"section-banner-icon",width:"100%") %>
+                            </div>
+                            <!-- /GRID COLUMN -->
+                        </div>
+                        <!-- /GRID -->
+                    </div>
+                    <!-- /WIDGET BOX CONTENT -->
+                </div>
+                <!-- /WIDGET BOX -->
             </div>
-    
         </div>
-    
     </div>
-    
-    <%= render "shared/footer-new"%>
- 
+
+    <%= render "shared/footer-new" %>

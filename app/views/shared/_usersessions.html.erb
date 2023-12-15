@@ -14,9 +14,9 @@
             <!-- FORM ITEM -->
             <div class="form-item">
               <!-- FORM INPUT -->
-              <div class="form-input">
+              <div class="form-input small">
                 <label for="email">E-mail</label>
-                <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control",id:"login-email"  %>
+                <%= f.text_field :email, autofocus: true, autocomplete: "email", id:"login-email"  %>
               </div>
               <!-- /FORM INPUT -->
             </div>
@@ -29,7 +29,7 @@
             <!-- FORM ITEM -->
             <div class="form-item">
               <!-- FORM INPUT -->
-              <div class="form-input">
+              <div class="form-input small">
                 <label for="login-password">Senha</label>
                 <%= f.password_field :password, autocomplete: "current-password", class:"form-control",id:"login-password" %>
               </div>
@@ -76,7 +76,7 @@
             <!-- FORM ITEM -->
             <div class="form-item">
               <!-- BUTTON -->
-              <%= f.submit 'Acessar minha conta!', name:"acessar",class:"btn bg-primary btn-lg btn-block text-white"%>
+              <%= f.submit 'Acessar minha conta!', name:"acessar",class:"button full secondary"%>
               <!-- /BUTTON -->
             </div>
             <!-- /FORM ITEM -->

@@ -21,16 +21,6 @@
       background-size: cover;
     }
 
-    .icon-logo-vikinger {
-
-
-    }
-
-    .icon-logo-vikinger.small {
-
-    }
-
-    .secondary, .checkbox-wrap input[type=checkbox]:checked+.checkbox-box, .checkbox-wrap input[type=radio]:checked+.checkbox-box, .primary{ background-color: #804aff!important; }
     input[type=password]:focus, input[type=text]:focus, select:focus, textarea:focus {
       border-color: #804aff!important;
     }

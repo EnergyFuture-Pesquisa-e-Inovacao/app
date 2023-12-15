@@ -8,13 +8,13 @@
 
 Admin.create!(email: 'apololira+admin@gmail.com', password: '1313sjm')
 
-Icp.create(name:'Indústrias e Consultorias',status:ativo)
-Icp.create(name:'Startups, ICTs e Inovadores',status:ativo)
-Icp.create(name:'Empresas de Energia',status:ativo)
+Icp.create(name:'Indústrias e Consultorias',status:"ativo")
+Icp.create(name:'Startups, ICTs e Inovadores',status:"ativo")
+Icp.create(name:'Empresas de Energia',status:"ativo")
 
-Plano.create(name:'Free',status:ativo)
-Plano.create(name:'ICP 1 - Pago',status:ativo)
-Plano.create(name:'ICP 2 - Pago',status:ativo)
+Plano.create(name:'Free',status:"ativo")
+Plano.create(name:'ICP 1 - Pago',status:"ativo")
+Plano.create(name:'ICP 2 - Pago',status:"ativo")
 
 Empresa.create(plano_id: 1, status: "ativo", razaosocial: "Empresa 1", nomefantasia: "Empresa 1")
 

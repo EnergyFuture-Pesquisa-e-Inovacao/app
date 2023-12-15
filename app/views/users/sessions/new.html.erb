@@ -12,7 +12,7 @@
 <!-- landing.tabs -->
 
 <!-- SVG icons -->
-<%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/utils/svg-loader_controller.js" %>
+<%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/utils/svg-loader.js" %>
   <style>
     .landing {
       width: 100%;
@@ -21,16 +21,6 @@
       background-size: cover;
     }
 
-    .icon-logo-vikinger {
-
-
-    }
-
-    .icon-logo-vikinger.small {
-
-    }
-
-    .secondary, .checkbox-wrap input[type=checkbox]:checked+.checkbox-box, .checkbox-wrap input[type=radio]:checked+.checkbox-box, .primary{ background-color: #804aff!important; }
     input[type=password]:focus, input[type=text]:focus, select:focus, textarea:focus {
       border-color: #804aff!important;
     }

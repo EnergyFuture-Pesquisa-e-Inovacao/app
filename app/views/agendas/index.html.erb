@@ -4,7 +4,7 @@
 <div class="content-grid">
     <!-- SECTION BANNER -->
     <div class="section-banner">
-        <%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/banner/overview-icon.png", alt: "overview-icon",class:"section-banner-icon") %>
+        <%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/banner/events-icon.png", alt: "events-icon",class:"section-banner-icon") %>
 
         <!-- SECTION BANNER TITLE -->
         <p class="section-banner-title">Agenda do Hub</p>
@@ -41,23 +41,19 @@
               <% timeline=Timeline.where(tipoobjeto:"Eventos Agenda",idobjeto:evento[0].id)%>
                 <!-- EVENT PREVIEW -->
                 <div class="event-preview">
+					<% if  agenda.main_image.attached? %>
+						<figure class="event-preview-cover liquid">
+							<%= image_tag(agenda.main_image) %>
+						</figure>
+					<% end %>  
                     <div class="event-preview-info">
                         <div class="event-preview-info-top">
-                          <% if  agenda.main_image.attached? %>
-                            <figure class="event-preview-cover liquid">
-                             <%= image_tag(agenda.main_image) %>
-                            </figure>
-                         <% end %>  
-                           
                             <div class="date-sticker">
-                             </br>
-                             </br>
                             <%td = evento[0].datainicio %>
                             <p class="date-sticker-day"><%=td.strftime('%d')%></p>
                             <p class="date-sticker-month"><%=td.strftime('%m')%></p>
                             </div>
                           <%th = evento[0].horainicio %>
-                          </br>
                           <p class="event-preview-title popup-event-information-trigger"><%= evento[0].name %></p>
                           <p class="event-preview-timestamp"><span class="bold"><%=th.strftime('%H:%M')%></span></p>
                           <p class="event-preview-text"><%= evento[0].linkevento %></p>
@@ -72,13 +68,12 @@
                                                     
 
                         </div>                          
+						<div class="event-preview-info-bottom">
+							<p class="button white" style="margin-top: 0px;"><%= link_to "Show Esse Evento", agenda_path(agenda) %> </p>             
+						</div>                      
                     </div>
-                          <div class="event-preview-info-bottom">
-                            <p class="button white white-tertiary"><%= link_to "Show Esse Evento", agenda_path(agenda) %> </p>             
-                          </div>                      
                 </div>
                 <!-- /EVENT PREVIEW -->
-
 
             <% end %>
                 

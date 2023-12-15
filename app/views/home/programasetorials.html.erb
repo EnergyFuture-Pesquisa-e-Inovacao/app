@@ -1,36 +1,178 @@
 <%= render "shared/header-new",title:"O hub de inovação do setor elétrico"%>
-  <!-- CONTENT GRID -->
   <div class="content-grid">
 
-  <!-- SECTION BANNER -->
-        <div class="section-banner">
-            <%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/banner/groups-icon.png",class:"section-banner-icon",alt:"groups-icon") %>
-            <!-- SECTION BANNER TITLE -->
-            <p class="section-banner-title">Programas Setoriais</p>
-            <!-- /SECTION BANNER TITLE -->
-    
-            <!-- SECTION BANNER TEXT -->
-            <p class="section-banner-text">Confira os Programas que movimenta o setor</p>
-            <!-- /SECTION BANNER TEXT -->
-        </div></br>
-         <!-- /SECTION BANNER -->
-         <%if current_user.icp_id.present?%> 
-           <%icp=Icp.find(current_user.icp_id)%>
-         <%end%>  
-          <%if current_user.plano_id.present?%>
-           <%plano=Plano.find(current_user.plano_id)%> 
-          <%end%>    
+    <div class="section-banner">
+        <%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/banner/groups-icon.png",class:"section-banner-icon",alt:"groups-icon") %>
+        <p class="section-banner-title">Programas Setoriais</p>
 
-    <!-- GRID -->
-    <div class="grid grid-3-3-3-3 centered">
+        <p class="section-banner-text">Confira os Programas que movimenta o setor</p>
+        <!-- /SECTION BANNER TEXT -->
+    </div>
+    <!-- /SECTION BANNER -->
+    <%if current_user.icp_id.present?%> 
+      <%icp=Icp.find(current_user.icp_id)%>
+    <%end%>  
+    <%if current_user.plano_id.present?%>
+      <%plano=Plano.find(current_user.plano_id)%> 
+    <%end%>
+    <div class="grid grid-4-4-4">
      <% @programasetorials.each do |programasetorial| %>
-  <!-- EVENT PREVIEW -->
-                <div class="event-preview">
-                          <% if  programasetorial.main_imagepg.attached? %>
-                            <figure class="event-preview-cover liquid">
-                             <%= image_tag(programasetorial.main_imagepg) %>
-                            </figure>
-                         <% end %>  
+      <div class="user-preview">
+        <% if  programasetorial.main_imagepg.attached? %>
+          <figure class="user-preview-cover liquid"  style="background: url(&quot;<%=programasetorial.main_imagepg%>&quot;) center center / cover no-repeat;">
+            <%= image_tag(programasetorial.main_imagepg) %>
+          </figure>
+        <% end %>
+    
+        <div class="user-preview-info">
+          <div class="user-short-description">
+            <div class="user-short-description-avatar user-avatar medium no-stats">
+              <div class="user-avatar-border">
+                <div class="hexagon-120-130" style="width: 120px; height: 130px; position: relative;"><canvas width="120" height="130" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+              </div>
+    
+              <div class="user-avatar-content">
+                <div class="hexagon-image-100-110" data-src="<%= "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/avatar/24.jpg"%>" style="width: 100px; height: 110px; position: relative;"><canvas width="100" height="110" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+              </div>
+            </div>
+      
+            <p class="user-short-description-title"><%=programasetorial.name%></p>
+      
+            <p class="user-short-description-text"><%=programasetorial.ano%></p>
+          </div>
+    
+          <div class="user-stats">
+            <div class="user-stat">
+              <p class="user-stat-title">139</p>
+      
+              <p class="user-stat-text">participantes</p>
+            </div>
+      
+            <div class="user-stat">
+              <p class="user-stat-title">105</p>
+      
+              <p class="user-stat-text">horas de reunião</p>
+            </div>
+      
+            <div class="user-stat">
+              <p class="user-stat-title">0</p>
+      
+              <p class="user-stat-text">propostas de inovação</p>
+            </div>
+          </div>
+    
+          <%
+=begin%>
+ <div class="user-avatar-list medium reverse centered">
+            <div class="user-avatar smaller no-stats">
+              <div class="user-avatar-border">
+                <div class="hexagon-34-36" style="width: 34px; height: 36px; position: relative;"><canvas width="34" height="36" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+              </div>
+          
+              <div class="user-avatar-content">
+                <div class="hexagon-image-30-32" data-src="img/avatar/03.jpg" style="width: 30px; height: 32px; position: relative;"><canvas width="30" height="32" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+              </div>
+            </div>
+            
+            <div class="user-avatar smaller no-stats">
+              <div class="user-avatar-border">
+                <div class="hexagon-34-36" style="width: 34px; height: 36px; position: relative;"><canvas width="34" height="36" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+              </div>
+          
+              <div class="user-avatar-content">
+                <div class="hexagon-image-30-32" data-src="img/avatar/05.jpg" style="width: 30px; height: 32px; position: relative;"><canvas width="30" height="32" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+              </div>
+            </div>
+    
+            <div class="user-avatar smaller no-stats">
+              <div class="user-avatar-border">
+                <div class="hexagon-34-36" style="width: 34px; height: 36px; position: relative;"><canvas width="34" height="36" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+              </div>
+          
+              <div class="user-avatar-content">
+                <div class="hexagon-image-30-32" data-src="img/avatar/10.jpg" style="width: 30px; height: 32px; position: relative;"><canvas width="30" height="32" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+              </div>
+            </div>
+    
+            <div class="user-avatar smaller no-stats">
+              <div class="user-avatar-border">
+                <div class="hexagon-34-36" style="width: 34px; height: 36px; position: relative;"><canvas width="34" height="36" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+              </div>
+          
+              <div class="user-avatar-content">
+                <div class="hexagon-image-30-32" data-src="img/avatar/02.jpg" style="width: 30px; height: 32px; position: relative;"><canvas width="30" height="32" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+              </div>
+            </div>
+    
+            <div class="user-avatar smaller no-stats">
+              <div class="user-avatar-border">
+                <div class="hexagon-34-36" style="width: 34px; height: 36px; position: relative;"><canvas width="34" height="36" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+              </div>
+          
+              <div class="user-avatar-content">
+                <div class="hexagon-image-30-32" data-src="img/avatar/06.jpg" style="width: 30px; height: 32px; position: relative;"><canvas width="30" height="32" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+              </div>
+            </div>
+    
+            <a class="user-avatar smaller no-stats" href="group-members.html">
+              <div class="user-avatar-border">
+                <div class="hexagon-34-36" style="width: 34px; height: 36px; position: relative;"><canvas width="34" height="36" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+              </div>
+          
+              <div class="user-avatar-content">
+                <div class="hexagon-image-30-32" data-src="img/avatar/23.jpg" style="width: 30px; height: 32px; position: relative;"><canvas width="30" height="32" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+              </div>
+          
+              <div class="user-avatar-overlay">
+                <div class="hexagon-overlay-30-32" style="width: 30px; height: 32px; position: relative;"><canvas width="30" height="32" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+              </div>
+          
+              <div class="user-avatar-overlay-content">
+                <p class="user-avatar-overlay-content-text">+132</p>
+              </div>
+            </a>
+          </div> 
+<%
+=end%>
+    
+          <div class="user-preview-actions">
+            <%if (current_user.icp_id.present?)and(current_user.plano_id.present?)%>
+              <%if !(plano.name.eql?"Free") and icp.name.eql?"Empresas de Energia" %>  
+                <a class="button secondary full" href="/home/programatimeline?id=<%=programasetorial.id%>">
+                  <svg class="button-icon icon-join-group">
+                    <use xlink:href="#svg-join-group"></use>
+                  </svg>
+                  Ver o Programa
+                </a>
+              <%elsif !(plano.name.eql?"Free") and icp.name.eql?"Indústrias e Consultorias" %>  
+                <a class="button secondary full" href="/home/programatimeline?id=<%=programasetorial.id%>">
+                  <svg class="button-icon icon-join-group">
+                    <use xlink:href="#svg-join-group"></use>
+                  </svg>
+                  Ver o Programa
+                </a>
+              <%elsif plano.name.eql?"Free" %>  
+                <a class="button secondary full" href="/home/ctaprogramasetorial1?id=<%=programasetorial.id%>">
+                  <svg class="button-icon icon-join-group">
+                    <use xlink:href="#svg-join-group"></use>
+                  </svg>
+                  Receber Informações do Programa
+                </a>
+              <%elsif icp.name.eql?"Startups, ICTs e Inovadores" %>  
+                <a class="button secondary full" href="/home/ctaprogramasetorial1?id=<%=programasetorial.id%>">
+                  <svg class="button-icon icon-join-group">
+                    <use xlink:href="#svg-join-group"></use>
+                  </svg>
+                  Receber Informações do Programa
+                </a>
+              <%end%> 
+            <%end%>  
+          </div>
+        </div>
+      </div>
+
+                <!--<div class="event-preview">
+                          
                     <div class="event-preview-info">
                         <div class="event-preview-info-top">
                           <p class="event-preview-text"><span class="bold"><%=programasetorial.ano%></span></p> 
@@ -44,29 +186,10 @@
                
                         </div>
                         </div>
-                        <%if (current_user.icp_id.present?)and(current_user.plano_id.present?)%>
-                         <div class="event-preview-info-bottom">
-                          <!-- BUTTON -->
-                          <%if !(plano.name.eql?"Free") and icp.name.eql?"Empresas de Energia" %>  
-                           <p class="button white white-tertiary"><%= link_to "Ver o Programa", "/home/profiletimeline?id=#{programasetorial.id}"%></p>
-                          <%elsif !(plano.name.eql?"Free") and icp.name.eql?"Indústrias e Consultorias" %>  
-                           <p class="button white white-tertiary"><%= link_to "Ver o Programa", "/home/profiletimeline?id=#{programasetorial.id}"%></p>
-                          <%elsif plano.name.eql?"Free" %>  
-                           <p class="button white white-tertiary"><%= link_to "Receber Informações do Programa", "/home/ctaprogramasetorial1?id=#{programasetorial.id}"%></p>
-                          <%elsif icp.name.eql?"Startups, ICTs e Inovadores" %>  
-                           <p class="button white white-tertiary"><%= link_to "Receber Informações do Programa", "/home/ctaprogramasetorial1?id=#{programasetorial.id}"%></p>
-                          <%end%> 
-                           <!-- /BUTTON -->
-                          </div>
-                         </br>
-                        <%end%> 
-                </div>
+                </div>-->
         <% end %>
-        <!-- /EVENT PREVIEW -->
      
     </div>
-    <!-- /GRID -->
   </div>
-  <!-- /CONTENT GRID -->
 
 <%= render "shared/footer-new"%>
