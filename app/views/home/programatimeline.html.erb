@@ -283,7 +283,7 @@
                     <p class="event-preview-title popup-event-information-trigger">[Nome do Evento]</p>
                     <p class="event-preview-timestamp"><%=thi.strftime('%H:%M')%> - <%= thf.strftime('%H:%M') %></p>
                     <p class="event-preview-text"></p>
-                    <!--<p class="event-preview-timestamp">Duração: <%= (Float(evento.duration) / 60.0).floor%><%= (Float(evento.duration)%60).floor == 0 ? "" : ":" + (Float(evento.duration)%60).floor %> horas</p>-->
+                    <p class="event-preview-timestamp">Duração: <%= preparahoras(evento.duration) %></p>
                     <%timeline=Timeline.where(idobjeto:evento.id,tipoobjeto:"Eventos PG")%>
                     <div class="form-item mt-3">
                       <div class="form-select">

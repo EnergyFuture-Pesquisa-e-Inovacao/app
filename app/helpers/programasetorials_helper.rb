@@ -49,6 +49,14 @@ def notify_registrationappv3ctaprogramasetorial1
                                                    user_id: @user.id,
                                                    user_name: @user.name)
 end
-              
 
-end  
+ def preparahoras(tempo)
+  #tempo em minutos
+  if tempo.to_f<60
+    tempo=tempo+ " minutos"
+  else
+    #tempo=(tempo.to_f)+ " minutos"
+  end 
+end              
+
+end
