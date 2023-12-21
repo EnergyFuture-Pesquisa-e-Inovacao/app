@@ -48,13 +48,13 @@
     
             <p class="user-stat-text"><%=@programasetorial.status%></p>
           </div>-->
-
+         <% if current_user.empresa_id.present? %>
           <div class="user-stat big">
             <p class="user-stat-title"><%=@programasusers.count%></p>
     
             <p class="user-stat-text"><%=@programasusers.count == 1 ? "participante" : "participantes"%></p>
           </div>
-    
+         <%end%>
           <div class="user-stat big">
             <p class="user-stat-title">XXXX</p>
     
