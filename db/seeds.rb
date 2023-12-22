@@ -18,7 +18,7 @@ Plano.create(name:'ICP 2 - Pago',status:"ativo")
 
 Empresa.create(plano_id: 1, status: "ativo", razaosocial: "Empresa 1", nomefantasia: "Empresa 1")
 
-User.create(name: "rgslirasuser1", phone: "767676766", email: "rgsliras+user1@gmail.com", cpf: nil, birthdate: nil, icp_id: 2, plano_id: 2, status: "ativo", newsletter: true, empresa_id: 1)
-User.create(name: "rgslirasuser2", phone: "5454545454", email: "rgsliras+user2@gmail.com", cpf: nil, birthdate: nil, icp_id: 1, plano_id: 2, status: "ativo", newsletter: true, empresa_id: 1)
-User.create(name: "rgslirasuser0", phone: "5454545", email: "rgsliras+user0@gmail.com", cpf: nil, birthdate: nil, icp_id: 3, plano_id: 2, status: "ativo", newsletter: true, empresa_id: 1)
+User.create!(name: "rgslirasuser1", phone: "767676766", email: "rgsliras+user1@gmail.com", cpf: nil, birthdate: nil, icp_id: 2, plano_id: 2, status: "ativo", newsletter: true, empresa_id: 1,password:"123456")
+User.create!(name: "rgslirasuser2", phone: "5454545454", email: "rgsliras+user2@gmail.com", cpf: nil, birthdate: nil, icp_id: 1, plano_id: 2, status: "ativo", newsletter: true, empresa_id: 1,password:"123456")
+User.create!(name: "rgslirasuser0", phone: "5454545", email: "rgsliras+user0@gmail.com", cpf: nil, birthdate: nil, icp_id: 3, plano_id: 2, status: "ativo", newsletter: true, empresa_id: 1,password:"123456")
 

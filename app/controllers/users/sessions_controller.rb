@@ -10,7 +10,9 @@ class Users::SessionsController < Devise::SessionsController
   
     # POST /resource/sign_in
     def create
-      registrationlogin
+      if current_user.present?
+       registrationlogin
+      end 
       super
     end
   

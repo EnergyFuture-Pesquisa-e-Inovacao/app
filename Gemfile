@@ -5,13 +5,13 @@ ruby "3.2.2"
 
 gem 'devise', '~> 4.9', '>= 4.9.2'
 
-#gem 'zapier_ruby'
 gem "integromat"
 
 gem 'maskedinput-rails', '~> 1.4', '>= 1.4.1.0'
 
-#gem 'sib-api-v3-sdk', '~> 9.1'
-# gem Brevo
+gem "ransack", "~> 3.2"
+
+gem 'will_paginate-bootstrap4'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.8"
