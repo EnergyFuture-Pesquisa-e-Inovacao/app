@@ -6,14 +6,14 @@ import { application } from "./application"
 
 import HelloController from "./hello_controller"
 import MasksController from "./masks_controller"
-import XmPluginsmin from "./vendor/xm_plugins.min_controller"
+
 import Landingtabs from "/landing/landing.tabs_controller"
 
 
 
 application.register("hello", HelloController)
 application.register("masks", MasksController)
-application.register("xmpluginsmin", XmPluginsmin)
+
 application.register("landingtabs", Landingtabs)
 
 
