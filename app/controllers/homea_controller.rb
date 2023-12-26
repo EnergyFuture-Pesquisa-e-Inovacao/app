@@ -4,11 +4,9 @@ class HomeaController < ApplicationController
 
   # GET /icps or /icps.json
   def index
-    if verificauser and !verificaadmin
-      redirect_to '/users/sign_in'
-    elsif !verificauser and verificaadmin
+    if verificaadminteste
      
-    elsif !verificauser and !verificaadmin
+    else
       redirect_to '/users/sign_in'
     end   
   end
@@ -23,40 +21,34 @@ class HomeaController < ApplicationController
 
     # GET /icps or /icps.json
     def indexeventosps
-      if verificauser and !verificaadmin
-        redirect_to '/users/sign_in'
-      elsif !verificauser and verificaadmin
+      if verificaadminteste
        @eventos=Evento.where(tipoobjeto:"Programa Setorial")
-      elsif !verificauser and !verificaadmin
+      else
         redirect_to '/users/sign_in'
       end   
     end
 
   def showusers  
-    if verificauser and !verificaadmin
-      redirect_to '/users/sign_in'
-    elsif !verificauser and verificaadmin
+    if verificaadminteste
      
-    elsif !verificauser and !verificaadmin
+    else
       redirect_to '/users/sign_in'
     end   
   end
 
   def editusers  
-    if verificauser and !verificaadmin
-      redirect_to '/users/sign_in'
-    elsif !verificauser and verificaadmin
+    if verificaadminteste
      
-    elsif !verificauser and !verificaadmin
+    else
       redirect_to '/users/sign_in'
     end   
   end
 
   def users
-    if verificauser and !verificaadmin
-      redirect_to '/users/sign_in'
-    elsif !verificauser and verificaadmin 
+    if verificaadminteste
       @users = User.all
+    else
+      redirect_to '/users/sign_in'
     end  
   end
 
@@ -84,19 +76,4 @@ class HomeaController < ApplicationController
     @user = User.find(params[:id])
   end
 
-    def verificauser
-      if current_user.present?
-        true
-      else
-        false
-      end  
-    end  
-
-    def verificaadmin
-      if current_admin.present?
-        true
-      else
-        false
-      end  
-    end      
 end

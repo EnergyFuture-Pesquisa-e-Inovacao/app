@@ -3,52 +3,43 @@ class ProgramasetorialsController < ApplicationController
   before_action :set_programasetorial, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: [:teste]
   before_action :authenticate_admin!
+  after_action :loginterno, only: %i[update create destroy]
 
   def teste
   
   end  
   # GET /programasetorials or /programasetorials.json
   def index
-    if verificauser and !verificaadmin
-      redirect_to '/users/sign_in'
-    elsif !verificauser and verificaadmin
-      #agendasid = Agenda.select(:idevento).where(tipoevento: "Programa Setorial").order(datainiciom1: :desc)
-      #@programasetorials = Programasetorial.where(id:agendasid)
+    if verificauser
       @programasetorials = Programasetorial.all
-    elsif !verificauser and !verificaadmin
+    else
       redirect_to '/users/sign_in'
     end   
   end
 
   # GET /programasetorials/1 or /programasetorials/1.json
   def show
-    if verificauser and !verificaadmin
-      redirect_to '/users/sign_in'
-    elsif !verificauser and verificaadmin   
+    if verificauser  
       @eventos=Evento.where(tipoobjeto:"Programa Setorial").order(Arel.sql('datainicio ASC'))
-    elsif !verificauser and !verificaadmin
+    else
       redirect_to '/users/sign_in'
     end     
   end
 
   # GET /programasetorials/new
   def new
-    if verificauser and !verificaadmin
-      redirect_to '/users/sign_in'
-    elsif !verificauser and verificaadmin
+    if verificauser
       @programasetorial = Programasetorial.new
-    elsif !verificauser and !verificaadmin
+    else
       redirect_to '/users/sign_in' 
     end   
   end
 
   # GET /programasetorials/1/edit
   def edit
-    if verificauser and !verificaadmin
-      redirect_to '/users/sign_in'
-    elsif !verificauser and verificaadmin
+    if verificauser
     
-    elsif !verificauser and !verificaadmin
+    else
       redirect_to '/users/sign_in' 
     end  
   end
@@ -119,19 +110,5 @@ class ProgramasetorialsController < ApplicationController
     end
 
 
-    def verificauser
-      if current_user.present?
-        true
-      else
-        false
-      end  
-    end  
-
-    def verificaadmin
-      if current_admin.present?
-        true
-      else
-        false
-      end  
-    end      
+ 
 end

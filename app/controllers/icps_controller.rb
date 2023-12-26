@@ -3,26 +3,23 @@ class IcpsController < ApplicationController
   before_action :set_icp, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: [:teste]
   before_action :authenticate_admin!
+  after_action :loginterno, only: %i[update create destroy]
 
   def teste
   
   end  
   # GET /icps or /icps.json
   def index
-    if verificauser and !verificaadmin
-      redirect_to '/users/sign_in'
-    elsif !verificauser and verificaadmin
+    if verificauser
       @icps = Icp.all
-    elsif !verificauser and !verificaadmin
+    else
       redirect_to '/users/sign_in'
     end   
   end
 
   # GET /icps/1 or /icps/1.json
   def show
-    if verificauser and !verificaadmin
-
-    elsif !verificauser and verificaadmin   
+    if verificauser   
       
     elsif !verificauser and !verificaadmin
       redirect_to '/users/sign_in'
@@ -31,22 +28,18 @@ class IcpsController < ApplicationController
 
   # GET /icps/new
   def new
-    if verificauser and !verificaadmin
-      redirect_to '/users/sign_in'
-    elsif !verificauser and verificaadmin
+    if verificauser
       @icp = Icp.new
-    elsif !verificauser and !verificaadmin
+    else
       redirect_to '/users/sign_in' 
     end   
   end
 
   # GET /icps/1/edit
   def edit
-    if verificauser and !verificaadmin
-      redirect_to '/users/sign_in'
-    elsif !verificauser and verificaadmin
+    if verificauser
 
-    elsif !verificauser and !verificaadmin
+    else
       redirect_to '/users/sign_in' 
     end  
   end
@@ -100,19 +93,5 @@ class IcpsController < ApplicationController
       params.require(:icp).permit(:name, :status)
     end
 
-    def verificauser
-      if current_user.present?
-        true
-      else
-        false
-      end  
-    end  
-
-    def verificaadmin
-      if current_admin.present?
-        true
-      else
-        false
-      end  
-    end      
+    
 end

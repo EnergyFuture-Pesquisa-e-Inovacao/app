@@ -17,18 +17,14 @@ class ApplicationController < ActionController::Base
       end 
          
     
-    def verificauser(tipouser)
+    def verificauser
       if current_user.present?
-        if tipouser==current_user.usertype
-          true
-        else
-          false
-        end  
+        true 
       elsif current_admin.present?
         true
       else  
         false
-       end  
+      end  
     end  
     
     def verificaadminteste

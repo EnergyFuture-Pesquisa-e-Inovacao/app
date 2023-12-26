@@ -3,6 +3,7 @@ class EventosController < ApplicationController
   before_action :set_evento, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: [:teste]
   before_action :authenticate_admin!
+  after_action :loginterno, only: %i[update create destroy]
 
   def teste
   
@@ -10,22 +11,18 @@ class EventosController < ApplicationController
 
   # GET /eventos or /eventos.json
   def index
-    if verificauser and !verificaadmin
-      redirect_to '/users/sign_in'
-    elsif !verificauser and verificaadmin
+    if verificauser
       @eventos = Evento.all
-    elsif !verificauser and !verificaadmin
+    else
       redirect_to '/users/sign_in'
     end   
   end
 
   # GET /eventos/1 or /eventos/1.json
   def show
-    if verificauser and !verificaadmin
-
-    elsif !verificauser and verificaadmin   
+    if verificauser 
       
-    elsif !verificauser and !verificaadmin
+    else
       redirect_to '/users/sign_in'
     end     
   end
@@ -33,11 +30,9 @@ class EventosController < ApplicationController
 
   # GET /eventos/1/edit
   def edit
-    if verificauser and !verificaadmin
-      redirect_to '/users/sign_in'
-    elsif !verificauser and verificaadmin
+    if verificauser
     
-    elsif !verificauser and !verificaadmin
+    else
       redirect_to '/users/sign_in' 
     end  
   end
@@ -117,20 +112,5 @@ class EventosController < ApplicationController
        :status,:enviarparaparticipante,:duration,:tipoobjeto,:idobjeto,:linkevento,
        :descricaocurta)
     end
-
-    def verificauser
-      if current_user.present?
-        true
-      else
-        false
-      end  
-    end  
-
-    def verificaadmin
-      if current_admin.present?
-        true
-      else
-        false
-      end  
-    end      
+   
 end

@@ -3,50 +3,43 @@ class EmpresasController < ApplicationController
   before_action :authenticate_admin!
   before_action :authenticate_user!, only: [:teste]
   before_action :set_empresa, only: %i[ show edit update destroy ]
+  after_action :loginterno, only: %i[update create destroy]
   
   def teste
   
   end  
   # GET /empresas or /empresas.json
   def index
-    if verificauser and !verificaadmin
-      redirect_to '/users/sign_in'
-    elsif !verificauser and verificaadmin
+    if verificauser
       @empresas = Empresa.all
-    elsif !verificauser and !verificaadmin
+    else
       redirect_to '/users/sign_in'
     end 
   end
 
   # GET /empresas/1 or /empresas/1.json
   def show
-    if verificauser and !verificaadmin
-
-    elsif !verificauser and verificaadmin   
+    if verificauser 
       
-    elsif !verificauser and !verificaadmin
+    else
       redirect_to '/users/sign_in'
     end    
   end
 
   # GET /empresas/new
   def new
-    if verificauser and !verificaadmin
-      redirect_to '/users/sign_in'
-    elsif !verificauser and verificaadmin
+    if verificauser
       @empresa = Empresa.new
-    elsif !verificauser and !verificaadmin
+    else
       redirect_to '/users/sign_in' 
     end  
   end
 
   # GET /empresas/1/edit
   def edit
-    if verificauser and !verificaadmin
-      redirect_to '/users/sign_in'
-    elsif !verificauser and verificaadmin
+    if verificauser
 
-    elsif !verificauser and !verificaadmin
+    else
       redirect_to '/users/sign_in' 
     end   
   end
@@ -112,20 +105,6 @@ class EmpresasController < ApplicationController
     def empresa_params
       params.require(:empresa).permit(:nomefantasia,:razaosocial,:cnpj, :plano_id, :status)
     end
-    def verificauser
-      if current_user.present?
-        true
-      else
-        false
-      end  
-    end  
 
-    def verificaadmin
-      if current_admin.present?
-        true
-      else
-        false
-      end  
-    end   
 
 end
