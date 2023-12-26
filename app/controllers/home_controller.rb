@@ -190,12 +190,11 @@ class HomeController < ApplicationController
      tipoevento="Eventos PG"
     end 
     if evento.present?
-      timeline=Timeline.where(idobjeto:evento[0].id,tipoobjeto:tipoevento,user_id:current_user.id)
+      timeline=Timeline.where(idobjeto:evento[0].id,tipoobjeto:tipoevento)
       if !timeline.present?
         timeline=Timeline.create
         timeline.tipoobjeto=tipoevento
         timeline.idobjeto=evento[0].id
-        timeline.user_id=current_user.id
         timeline.status=evento[0].status
         thdi = evento[0].datainicio
         thi = evento[0].horainicio
