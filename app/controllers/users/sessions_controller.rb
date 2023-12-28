@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
-  include UsersHelper
+  #include UsersHelper
 
     # GET /resource/sign_in
     def new
@@ -11,7 +11,8 @@ class Users::SessionsController < Devise::SessionsController
     # POST /resource/sign_in
     def create
       if current_user.present?
-       registrationlogin
+       #registrationlogin
+       NotifyRegistrationloginJob.set(wait: 3.seconds).perform_later(current_user)
       end 
       super
     end

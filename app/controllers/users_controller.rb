@@ -162,7 +162,8 @@ class UsersController < ApplicationController
    if current_admin.present? 
     respond_to do |format|
       if @user.update(user_params)
-        registrationupuser
+        #registrationupuser
+        NotifyRegistrationupuserJob.set(wait: 3.seconds).perform_later(@user)
          format.html {redirect_to "/users/ashowusers?id=#{@user.id}", notice: "User foi Editado com Sucesso!"}
          format.json { render :ashowusers, status: :ok, location: @user } 
       else
@@ -176,7 +177,8 @@ class UsersController < ApplicationController
         @user.primeirologin=false 
       end 
       if @user.update(user_params)
-        registrationupuser
+         #registrationupuser
+         NotifyRegistrationupuserJob.set(wait: 3.seconds).perform_later(@user)
          format.html {redirect_to "/home/agenda"} 
          format.json { render :ashowusers, status: :ok, location: @user } 
       else
