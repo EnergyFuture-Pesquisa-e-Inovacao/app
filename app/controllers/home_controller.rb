@@ -1,7 +1,14 @@
 class HomeController < ApplicationController
   #before_action :authenticated!
+  #before_action :authenticate_user!
   include HomeHelper
   def index
+   
+     #if current_user.primeirologin
+       #redirect_to "/users/editp/?id=#{current_user.id}", allow_other_host: true
+     #else  
+      # SalveloginJob.set(wait: 2.seconds).perform_later(current_user.id)
+     #end  
   end
 
   def propdi
@@ -35,8 +42,20 @@ class HomeController < ApplicationController
   end
 
   def agenda
-    @eventosrec=Evento.where(tipoobjeto:"Agenda",status:"ativo").limit(8).order(Arel.sql('datainicio ASC'))
-    @eventosant=Evento.where(tipoobjeto:"Agenda",status:"inativo").limit(4).order(Arel.sql('datainicio ASC'))
+    puts "Teste"
+    if verificauser
+     if current_user.present?
+      if current_user.primeirologin?
+       redirect_to "/users/editp/?id=#{current_user.id}", allow_other_host: true
+      else  
+       SalveloginJob.set(wait: 2.seconds).perform_later(current_user.id)
+       @eventosrec=Evento.where(tipoobjeto:"Agenda",status:"ativo").limit(8).order(Arel.sql('datainicio ASC'))
+       @eventosant=Evento.where(tipoobjeto:"Agenda",status:"inativo").limit(4).order(Arel.sql('datainicio ASC'))
+      end  
+     end 
+    else
+      redirect_to '/users/sign_in'
+    end  
   end
 
 #  def participaracademy

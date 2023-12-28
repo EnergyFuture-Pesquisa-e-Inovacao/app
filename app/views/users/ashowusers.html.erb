@@ -22,7 +22,9 @@
 
 <div>
   <%= link_to "Edit this user", edit_user_path(@user) %> |
+  <%= link_to "Reset Senha", "/users/resetpassword?id=#{@user.id}"%>&nbsp&nbsp
   <%= link_to "Back to users", "/users" %>
+
 
   
 </div>

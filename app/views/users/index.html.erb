@@ -14,13 +14,13 @@
         <th scope="col">Perfil</th>
         <th scope="col">Plano</th>
         <th scope="col">Empresa</th>
-        <th scope="col">Ações</th>
+        <th scope="col">Editar</th>
       </tr>
     <tbody>
       <% @users.each do |user| %>
       <tr>
        <td><%= user.id %></td>    
-       <td><%= user.name %></td>
+       <td><%= link_to user.name, "/users/ashowusers/?id=#{user.id}" %> </td>
        <td><%= user.phone %></td>
        <td><%= user.email %></td>
        <td><%= user.status %></td>
@@ -42,7 +42,6 @@
   <%else%>
   <td></td>
   <%end%>
-  <td><%= link_to "show", "/users/ashowusers/?id=#{user.id}" %></td>
   <td><%= link_to "edit", "/users/aedit/?id=#{user.id}" %></td>
   </tr>
   <% end %>

@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   include UsersHelper
-  before_action :set_user, only: %i[ show ashowusers edit aedit update destroy ]
-  before_action :authenticate_user!, only: [:teste]
-  before_action :authenticate_admin!
-  after_action :loginterno, only: %i[update create destroy]
+  before_action :set_user, only: %i[ show ashowusers edit aedit update destroy resetpassword editp]
+  #before_action :authenticate_user!, only: [:teste]
+  #before_action :authenticate_admin!
+  after_action :loginterno, only: %i[update create destroy resetpassword editp]
 
   def teste
   
@@ -104,19 +104,87 @@ class UsersController < ApplicationController
       end
     end 
 
+    def resetpassword
+      if verificaadminteste  
+        @user.password="441312"
+        @user.password_confirmation=@user.password
+        @user.primeirologin=true
+        respond_to do |format|     
+          if @user.save
+           format.html {redirect_to "/users/ashowusers?id=#{@user.id}", notice: "Password foi Alterado com Sucesso!"}
+           format.json { render :users, status: :ok, location: @user }
+          else
+           format.html { render :"/users/ashowusers?id=#{@user.id}", status: :unprocessable_entity }
+           format.json { render json: @user.errors, status: :unprocessable_entity }
+          end
+        end      
+      end
+    end 
+
+    # GET /users/1/editp
+    def editp
+
+      puts @user.id
+      puts "DENTRO EDITP"
+      #if verificauser and !verificaadmin
+        #if current_user.usertype=="rhuser"
+         
+        #else  
+        #  redirect_to '/users/sign_in'
+        #end 
+      #elsif !verificauser and verificaadmin
+  
+      #elsif !verificauser and !verificaadmin
+      #  redirect_to '/users/sign_in' 
+      #end  
+    end
 
   # PATCH/PUT /users/1 or /users/1.json
+  #def update
+  #  respond_to do |format|
+  #    if @user.update(user_params)
+  #      #registrationupuser
+  #      if current_admin.present?
+  #       format.html {redirect_to "/users/ashowusers?id=#{@user.id}", notice: "User foi Editado com Sucesso!"}
+  #       format.json { render :ashowusers, status: :ok, location: @user }
+  #      elsif current_user.present?
+  #       format.html {redirect_to "/home/agenda"}          
+  #      end  
+  #    else
+  #      format.html { render :edit, status: :unprocessable_entity }
+  #      format.json { render json: @user.errors, status: :unprocessable_entity }
+  #    end
+  #  end
+  #end
+
+
   def update
+   if current_admin.present? 
     respond_to do |format|
       if @user.update(user_params)
         registrationupuser
-        format.html {redirect_to "/users/ashowusers?id=#{@user.id}", notice: "User foi Editado com Sucesso!"}
-        format.json { render :ashowusers, status: :ok, location: @user }
+         format.html {redirect_to "/users/ashowusers?id=#{@user.id}", notice: "User foi Editado com Sucesso!"}
+         format.json { render :ashowusers, status: :ok, location: @user } 
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+   elsif current_user.present?
+    respond_to do |format|
+      if params[:commit]=="Alterar a Senha"
+        @user.primeirologin=false 
+      end 
+      if @user.update(user_params)
+        registrationupuser
+         format.html {redirect_to "/home/agenda"} 
+         format.json { render :ashowusers, status: :ok, location: @user } 
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end    
+   end  
   end
 
   # DELETE /users/1 or /users/1.json
@@ -136,7 +204,7 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:email,:name,:phone,:empresa_id,:icp_id,:plano_id,:status)
+      params.require(:user).permit(:email,:name,:phone,:empresa_id,:icp_id,:plano_id,:status,:password,:password_confirmation)
     end
     def programasuser_params
       params.require(:programasuser).permit(:programasetorial_id,:user_id)

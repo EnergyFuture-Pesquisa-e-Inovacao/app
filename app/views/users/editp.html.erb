@@ -1,0 +1,67 @@
+<!-- bootstrap 4.3.1 -->
+  <%= stylesheet_link_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/css/vendor/bootstrap.min.css" %>
+  <!-- styles -->
+  
+<!-- app -->
+
+<!-- XM_Plugins -->
+<%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/vendor/xm_plugins.min.js" %>
+
+<!-- form.utils -->
+
+<!-- landing.tabs -->
+
+<!-- SVG icons -->
+
+  <style>
+    .landing {
+      width: 100%;
+      height: 100%;
+      background-image: url(<%="#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/Design_site_energyfuture_1.png"%>);
+      background-size: cover;
+    }
+
+    .icon-logo-vikinger {
+
+
+    }
+
+    .icon-logo-vikinger.small {
+
+    }
+
+    .secondary, .checkbox-wrap input[type=checkbox]:checked+.checkbox-box, .checkbox-wrap input[type=radio]:checked+.checkbox-box, .primary{ background-color: #804aff!important; }
+    input[type=password]:focus, input[type=text]:focus, select:focus, textarea:focus {
+      border-color: #804aff!important;
+    }
+
+  </style>
+
+<!-- LANDING -->
+  <div class="landing">
+    <!-- LANDING DECORATION -->
+    <div class="landing-decoration"></div>
+    <!-- /LANDING DECORATION -->
+
+    <!-- LANDING INFO -->
+    <div class="landing-info">
+
+
+      <!-- LANDING INFO PRETITLE -->
+      <h2 class="landing-info-pretitle">Altere Sua Senha!</h2>
+      <!-- /LANDING INFO PRETITLE -->
+
+
+
+
+    </div>
+    <!-- /LANDING INFO -->
+
+    <!-- LANDING FORM -->
+    <div class="landing-form">
+      <!-- FORM BOX -->
+      <%= render "shared/useralterapassword"%> 
+    </div>
+      <!-- /FORM BOX -->
+
+</div>

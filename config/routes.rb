@@ -23,8 +23,8 @@ Rails.application.routes.draw do
  
   get 'homea/index'
   get 'homea/users'
-  #get 'homea/showusers'
-  #get 'homea/edituser'
+  get 'users/editp'
+  get 'users/resetpassword'
   get 'users/aedit'
   get 'users/ashowusers'
   get 'users/adicionarprogramasetorialuser'
