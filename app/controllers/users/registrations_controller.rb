@@ -47,7 +47,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       plano=Plano.find_by(name: 'Free')
       @user.plano_id=plano.id
       if @user.save
-        registrationsignup
+        #registrationsignup
+        NotifyRegistrationsignupJob.set(wait: 3.seconds).perform_later(@user)
       end  
     end 
 
