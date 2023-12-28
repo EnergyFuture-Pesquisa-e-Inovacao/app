@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
           permissuser=0
         end  
         CreateLoginternoJob.set(wait: 3.seconds).perform_later(adminuseid,permissuser,params[:controller]+"/"+params[:action])
-      end 
+    end 
          
     
     def verificauser

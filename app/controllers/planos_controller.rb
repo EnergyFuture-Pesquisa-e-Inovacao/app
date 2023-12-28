@@ -1,5 +1,5 @@
 class PlanosController < ApplicationController
-  include PlanosHelper
+  #include PlanosHelper
   before_action :set_plano, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: [:teste]
   before_action :authenticate_admin!
@@ -49,7 +49,8 @@ class PlanosController < ApplicationController
     @plano = Plano.new(plano_params)
     respond_to do |format|
       if @plano.save
-        notify_registrationplan("create")
+        #notify_registrationplan("create")
+        NotifyRegistrationplanJob.set(wait: 3.seconds).perform_later("create",@plano)
         format.html { redirect_to plano_url(@plano), notice: "Plano foi Criado com Sucesso!" }
         format.json { render :show, status: :created, location: @Plano }
       else
@@ -63,7 +64,8 @@ class PlanosController < ApplicationController
   def update
     respond_to do |format|
       if @plano.update(plano_params)
-        notify_registrationplan("update")
+        #notify_registrationplan("update")
+        NotifyRegistrationplanJob.set(wait: 3.seconds).perform_later("update",@plano)
         format.html { redirect_to plano_url(@plano), notice: "Plano foi Editado com Sucesso!" }
         format.json { render :show, status: :ok, location: @Plano }
       else
