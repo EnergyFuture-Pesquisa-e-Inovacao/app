@@ -1,5 +1,5 @@
 class EmpresasController < ApplicationController
-  include EmpresasHelper
+  #include EmpresasHelper
   before_action :authenticate_admin!
   before_action :authenticate_user!, only: [:teste]
   before_action :set_empresa, only: %i[ show edit update destroy ]
@@ -54,14 +54,15 @@ class EmpresasController < ApplicationController
         #@equipe.name="Equipe A" 
         #@equipe.empresa_id=empresa.id
         #@equipe.status="ativo"
-        if @equipe.save 
-          notify_registrationemp("create")
+        #if @equipe.save 
+          #notify_registrationemp("create")
+          NotifyRegistrationempresaJob.set(wait: 3.seconds).perform_later("create",@empresa)
           format.html { redirect_to empresa_url(@empresa), notice: "Empresa foi Criada com Sucesso!" }
           format.json { render :show, status: :created, location: @empresa }
-        else
-          format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @empresa.errors, status: :unprocessable_entity }
-        end   
+        #else
+          #format.html { render :new, status: :unprocessable_entity }
+          #format.json { render json: @empresa.errors, status: :unprocessable_entity }
+        #end   
       else
           format.html { render :new, status: :unprocessable_entity }
           format.json { render json: @empresa.errors, status: :unprocessable_entity }
@@ -74,7 +75,8 @@ class EmpresasController < ApplicationController
   def update
     respond_to do |format|
       if @empresa.update(empresa_params)
-        notify_registrationemp("update")
+        #notify_registrationemp("update")
+        NotifyRegistrationempresaJob.set(wait: 3.seconds).perform_later("update",@empresa)
         format.html { redirect_to empresa_url(@empresa), notice: "Empresa foi Editada com Sucesso!" }
         format.json { render :show, status: :ok, location: @empresa }
       else

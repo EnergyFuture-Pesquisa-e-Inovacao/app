@@ -1,5 +1,5 @@
 class AgendasController < ApplicationController
-  include AgendasHelper
+  #include AgendasHelper
   before_action :set_agenda, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: [:teste]
   #before_action :authenticate_admin!
@@ -28,7 +28,7 @@ class AgendasController < ApplicationController
 
   # GET /agendas/new
   def new
-    if verificauser
+    if verificaadminteste
       @agenda = Agenda.new
     else
       redirect_to '/users/sign_in' 
@@ -37,7 +37,7 @@ class AgendasController < ApplicationController
 
   # GET /agendas/1/edit
   def edit
-    if verificauser and verificaadmin
+    if verificaadminteste
 
     else
       redirect_to '/users/sign_in' 
@@ -76,7 +76,8 @@ class AgendasController < ApplicationController
         #timeline.datahora=thdi.strftime("%d/%m/%Y")+" "+thi.strftime('%H:%M') 
         #timeline.status=agenda.status 
         @timeline.save!    
-        notify_registrationagenda("create")
+        #notify_registrationagenda("create")
+        NotifyRegistrationagendaJob.set(wait: 3.seconds).perform_later("create",@agenda)
         format.html { redirect_to agenda_url(@agenda), notice: "Evento da Agenda foi Criado com Sucesso!" }
         format.json { render :show, status: :created, location: @agenda }
       else
@@ -108,7 +109,8 @@ class AgendasController < ApplicationController
         delta_time = (@evento.horafim - @evento.horainicio)/60
         @evento.duration="%.2f" % delta_time   
         @evento.save!
-        notify_registrationagenda("update")
+        #notify_registrationagenda("update")
+        NotifyRegistrationagendaJob.set(wait: 3.seconds).perform_later("update",@agenda)
         format.html { redirect_to agenda_url(@agenda), notice: "Evento da Agenda foi Editado com Sucesso!" }
         format.json { render :show, status: :ok, location: @agenda }
       else
