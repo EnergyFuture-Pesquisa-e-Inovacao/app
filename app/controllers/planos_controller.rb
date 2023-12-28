@@ -50,7 +50,7 @@ class PlanosController < ApplicationController
     respond_to do |format|
       if @plano.save
         notify_registrationplan("create")
-        format.html { redirect_to plano_url(@plano), notice: "Plano was successfully created." }
+        format.html { redirect_to plano_url(@plano), notice: "Plano foi Criado com Sucesso!" }
         format.json { render :show, status: :created, location: @Plano }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -64,7 +64,7 @@ class PlanosController < ApplicationController
     respond_to do |format|
       if @plano.update(plano_params)
         notify_registrationplan("update")
-        format.html { redirect_to plano_url(@plano), notice: "Plano was successfully updated." }
+        format.html { redirect_to plano_url(@plano), notice: "Plano foi Editado com Sucesso!" }
         format.json { render :show, status: :ok, location: @Plano }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -77,7 +77,7 @@ class PlanosController < ApplicationController
   def destroy
     @plano.destroy
     respond_to do |format|
-      format.html { redirect_to planos_url, notice: "Plano was successfully destroyed." }
+      format.html { redirect_to planos_url, notice: "Plano foi Destruído com Sucesso!" }
       format.json { head :no_content }
     end
   end

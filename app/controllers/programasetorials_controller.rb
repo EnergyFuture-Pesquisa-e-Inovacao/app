@@ -50,7 +50,7 @@ class ProgramasetorialsController < ApplicationController
     respond_to do |format|
       if @programasetorial.save!     
          notify_registrationprogset("create")
-         format.html { redirect_to programasetorial_url(@programasetorial), notice: "Programasetorial was successfully created." }
+         format.html { redirect_to programasetorial_url(@programasetorial), notice: "Programasetorial foi Criado com Sucesso!" }
          format.json { render :show, status: :created, location: @programasetorial }
         else
          format.html { render :new, status: :unprocessable_entity }
@@ -64,7 +64,7 @@ class ProgramasetorialsController < ApplicationController
     respond_to do |format|
       if @programasetorial.update(programasetorial_params)
           notify_registrationprogset("update")     
-          format.html { redirect_to programasetorial_url(@programasetorial), notice: "Programasetorial was successfully updated." }
+          format.html { redirect_to programasetorial_url(@programasetorial), notice: "Programasetorial wfoi Editado com Sucesso!" }
           format.json { render :show, status: :ok, location: @programasetorial } 
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -77,7 +77,7 @@ class ProgramasetorialsController < ApplicationController
   def destroy
     @programasetorial.destroy
     respond_to do |format|
-      format.html { redirect_to programasetorials_url, notice: "Programasetorial was successfully destroyed." }
+      format.html { redirect_to programasetorials_url, notice: "Programasetorial foi Destruído com Sucesso!" }
       format.json { head :no_content }
     end
   end

@@ -50,7 +50,7 @@ class IcpsController < ApplicationController
     respond_to do |format|
       if @icp.save
         notify_registrationicp("create")
-        format.html { redirect_to icp_url(@icp), notice: "Icp was successfully created." }
+        format.html { redirect_to icp_url(@icp), notice: "Icp foi Criado com Sucesso!" }
         format.json { render :show, status: :created, location: @icp }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -64,7 +64,7 @@ class IcpsController < ApplicationController
     respond_to do |format|
       if @icp.update(icp_params)
         notify_registrationicp("update")
-        format.html { redirect_to icp_url(@icp), notice: "Icp was successfully updated." }
+        format.html { redirect_to icp_url(@icp), notice: "Icp foi Editado com Sucesso!" }
         format.json { render :show, status: :ok, location: @icp }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -77,7 +77,7 @@ class IcpsController < ApplicationController
   def destroy
     @icp.destroy
     respond_to do |format|
-      format.html { redirect_to icps_url, notice: "Icp was successfully destroyed." }
+      format.html { redirect_to icps_url, notice: "Icp foi Destruído com Sucesso!" }
       format.json { head :no_content }
     end
   end

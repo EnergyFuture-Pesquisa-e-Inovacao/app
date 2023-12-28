@@ -52,7 +52,7 @@ class EventosController < ApplicationController
         @timeline.status=evento.status
         @timeline.save 
         notify_registrationeventoprogramasetorial("add")  
-        format.html { redirect_to programasetorial_url(@programasetorial), notice: "Evento was successfully criado." }
+        format.html { redirect_to programasetorial_url(@programasetorial), notice: "Evento foi Criado com Sucesso!" }
         format.json { render :show, status: :ok, location: @evento }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -70,7 +70,7 @@ class EventosController < ApplicationController
         @evento.save!
         @programasetorial=Programasetorial.find(@evento.idobjeto)
         notify_registrationeventoprogramasetorial("up")
-        format.html { redirect_to programasetorial_url(@programasetorial), notice: "Evento was successfully updated." }
+        format.html { redirect_to programasetorial_url(@programasetorial), notice: "Evento foi Editado com Sucesso!" }
         format.json { render :show, status: :ok, location: @evento }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -86,7 +86,7 @@ class EventosController < ApplicationController
     end  
     @evento.destroy
     respond_to do |format|
-      format.html { redirect_to agendas_url, notice: "Agenda was successfully destroyed." }
+      format.html { redirect_to agendas_url, notice: "Evento foi Destruído com Sucesso!" }
       format.json { head :no_content }
     end
   end

@@ -77,7 +77,7 @@ class AgendasController < ApplicationController
         #timeline.status=agenda.status 
         @timeline.save!    
         notify_registrationagenda("create")
-        format.html { redirect_to agenda_url(@agenda), notice: "Evento da Agenda was successfully created." }
+        format.html { redirect_to agenda_url(@agenda), notice: "Evento da Agenda foi Criado com Sucesso!" }
         format.json { render :show, status: :created, location: @agenda }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -109,7 +109,7 @@ class AgendasController < ApplicationController
         @evento.duration="%.2f" % delta_time   
         @evento.save!
         notify_registrationagenda("update")
-        format.html { redirect_to agenda_url(@agenda), notice: "Evento da Agenda was successfully updated." }
+        format.html { redirect_to agenda_url(@agenda), notice: "Evento da Agenda foi Editado com Sucesso!" }
         format.json { render :show, status: :ok, location: @agenda }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -132,7 +132,7 @@ class AgendasController < ApplicationController
       end  
     @agenda.destroy
     respond_to do |format|
-      format.html { redirect_to agendas_url, notice: "Agenda was successfully destroyed." }
+      format.html { redirect_to agendas_url, notice: "Agenda foi Destruído com Sucesso!" }
       format.json { head :no_content }
     end
   end

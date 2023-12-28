@@ -56,7 +56,7 @@ class EmpresasController < ApplicationController
         #@equipe.status="ativo"
         if @equipe.save 
           notify_registrationemp("create")
-          format.html { redirect_to empresa_url(@empresa), notice: "Empresa was successfully created." }
+          format.html { redirect_to empresa_url(@empresa), notice: "Empresa foi Criada com Sucesso!" }
           format.json { render :show, status: :created, location: @empresa }
         else
           format.html { render :new, status: :unprocessable_entity }
@@ -75,7 +75,7 @@ class EmpresasController < ApplicationController
     respond_to do |format|
       if @empresa.update(empresa_params)
         notify_registrationemp("update")
-        format.html { redirect_to empresa_url(@empresa), notice: "Empresa was successfully updated." }
+        format.html { redirect_to empresa_url(@empresa), notice: "Empresa foi Editada com Sucesso!" }
         format.json { render :show, status: :ok, location: @empresa }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -89,7 +89,7 @@ class EmpresasController < ApplicationController
     @empresa.destroy
 
     respond_to do |format|
-      format.html { redirect_to empresas_url, notice: "Empresa was successfully destroyed." }
+      format.html { redirect_to empresas_url, notice: "Empresa foi Destruída com Sucesso!" }
       format.json { head :no_content }
     end
   end
