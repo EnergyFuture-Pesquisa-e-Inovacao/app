@@ -169,7 +169,7 @@ input[type=password]:focus, input[type=text]:focus, select:focus, textarea:focus
   
 <div class="form-box login-register-form-element">
     <!-- FORM BOX DECORATION -->
-    <%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/landing/rocket.png", alt: "rocket", class:"form-box-decoration") %>
+    <%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/landing/rocket.png", alt: "rocket", class:"form-box-decoration") %>
     <!-- /FORM BOX DECORATION -->
 
     <!-- FORM BOX TITLE -->
@@ -306,6 +306,7 @@ input[type=password]:focus, input[type=text]:focus, select:focus, textarea:focus
   </div>
   <!-- /FORM BOX -->
 </div>
+<%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/utils/app.js" %>
 
 
 

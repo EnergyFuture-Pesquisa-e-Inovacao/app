@@ -43,10 +43,7 @@
     }
 
 </style>
-<script>
-    var z = document.getElementById("{$menu_ativo}");
-    z.classList.add('active');
-</script>
+
 
 <!-- app -->
 <%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/utils/app.js" %>

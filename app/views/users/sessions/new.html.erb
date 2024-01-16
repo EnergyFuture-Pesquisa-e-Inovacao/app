@@ -73,6 +73,7 @@
       <!-- /FORM BOX -->
 <%= render "shared/userregistrations"%> 
 </div>
+<%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/utils/app.js" %>
 
  
 
