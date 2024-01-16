@@ -1,3 +1,6 @@
+<%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" %>
+<%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/inputmask.js" %>
+
 <div class="form-box login-register-form-element" style="padding-bottom: 36px;">
 	<%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/landing/rocket.png", alt: "rocket", class:"form-box-decoration") %>
 	
@@ -24,7 +27,7 @@
 			<div class="form-item">
 				<div class="form-input">
 					<label for="register-phone">Telefone</label>
-					<%= f.text_field :'phone', data: { masks_target: 'phone' }, id: 'register-phone' %>
+					<%= f.text_field :phone, autocomplete: "phone", class: "mask-phone", placeholder: "(xx)xxxxx-xxxx", id: 'register-phone' %>
 				</div>
 			</div>
 		</div>
@@ -63,3 +66,12 @@
 	<p class="form-text">Você receberá um e-mail para confirmar o seu cadastro e
 		ativar sua conta. Caso tenha problemas, entre em <a href="/contato">contato conosco</a>! </p>
 </div>
+
+<script type="module">
+
+// MASK PHONE
+const element_phone = document.getElementsByClassName("mask-phone")
+const im_phone = new Inputmask("(99)99999-9999")
+im_phone.mask(element_phone)
+
+</script>

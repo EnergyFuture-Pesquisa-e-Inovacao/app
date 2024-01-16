@@ -1,3 +1,5 @@
+<%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" %>
+<%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/inputmask.js" %>
 <!-- bootstrap 4.3.1 -->
   <%= stylesheet_link_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/css/vendor/bootstrap.min.css" %>
   <!-- styles -->
@@ -209,6 +211,23 @@ input[type=password]:focus, input[type=text]:focus, select:focus, textarea:focus
       </div>
       <!-- /FORM ROW -->
 
+
+      <!-- FORM ROW -->
+      <div class="form-row">
+        <!-- FORM ITEM -->
+        <div class="form-item">
+          <!-- FORM INPUT -->
+          <div class="form-input">
+          <label for="register-phone">Telefone</label>
+					<%= f.text_field :phone, autocomplete: "phone", class: "mask-phone", placeholder: "(xx)xxxxx-xxxx", id: 'register-phone' %>
+          </div>
+          <!-- /FORM INPUT -->
+        </div>
+        <!-- /FORM ITEM -->
+      </div>
+      <!-- /FORM ROW -->
+
+
       <!-- FORM ROW -->
       <div class="form-row">
         <!-- FORM ITEM -->
@@ -307,6 +326,15 @@ input[type=password]:focus, input[type=text]:focus, select:focus, textarea:focus
   <!-- /FORM BOX -->
 </div>
 <%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/utils/app.js" %>
+
+<script type="module">
+
+// MASK PHONE
+const element_phone = document.getElementsByClassName("mask-phone")
+const im_phone = new Inputmask("(99)99999-9999")
+im_phone.mask(element_phone)
+
+</script>
 
 
 
