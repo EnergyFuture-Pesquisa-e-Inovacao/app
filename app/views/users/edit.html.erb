@@ -5,7 +5,7 @@
     <!-- SECTION BANNER -->
     <div class="section-banner">
       <!-- SECTION BANNER ICON -->
-      <%= image_tag('/assets/banner/accounthub-icon.png',alt:"accounthub-icon",class:"section-banner-icon") %>
+      <%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/banner/accounthub-icon.png", alt: "accounthub-icon",class:"section-banner-icon") %>
       <!-- /SECTION BANNER ICON -->
   
       <!-- SECTION BANNER TITLE -->
