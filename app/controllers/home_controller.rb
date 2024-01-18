@@ -199,40 +199,40 @@ class HomeController < ApplicationController
     @programasetorial = Programasetorial.find(params[:id])
     @eventos = Evento.where(idobjeto:@programasetorial.id,tipoobjeto:"Programa Setorial")
     @programausers=Programasuser.where(programasetorial_id:@programasetorial.id)
-  end  
-
+  end 
+  
   def participarevento
     evento=Evento.where(id:params[:id],tipoobjeto:params[:tipoobjeto])
     if params[:tipoobjeto]=="Agenda"
      tipoevento="Eventos Agenda"
     elsif params[:tipoobjeto]=="Programa Setorial"
      tipoevento="Eventos PG"
-    end 
-    if evento.present?
-      timeline=Timeline.where(idobjeto:evento[0].id,tipoobjeto:tipoevento)
-      if !timeline.present?
-        timeline=Timeline.create
-        timeline.tipoobjeto=tipoevento
-        timeline.idobjeto=evento[0].id
-        timeline.status=evento[0].status
-        thdi = evento[0].datainicio
-        thi = evento[0].horainicio
-        timeline.datahora=thdi.strftime("%d/%m/%Y")+" "+thi.strftime('%H:%M')
-        if timeline.save!
-          if params[:tipoobjeto]=="Agenda"
-            respond_to do |format|
-              format.html { redirect_to "/home/agenda", notice: "Estou Participando do Evento." }
-              format.json { head :no_content }
-            end
-          elsif params[:tipoobjeto]=="Programa Setorial"
-            respond_to do |format|
-              format.html { redirect_to "/home/programatimeline/?id=#{evento[0].idobjeto}", notice: "Estou Participando do Evento." }
-              format.json { head :no_content }
-            end
-          end  
-        end   
-      end  
     end
+    timeline=Timeline.where(idobjeto:evento[0].id,tipoobjeto:tipoevento)
+    eventosuser=Eventosuser.where(evento_id:evento[0].id,user_id:current_user.id,tipoobjeto:params[:tipoobjeto])
+    if !eventosuser.present? 
+      if criaeventouser(evento[0].id,params[:tipoobjeto],current_user.id) 
+        if tipoevento="Eventos Agenda"
+          respond_to do |format|
+            format.html { redirect_to "/home/agenda", notice: "Estou Participando do Evento." }
+            format.json { head :no_content }
+          end
+        elsif tipoevento="Eventos PG"
+          respond_to do |format|
+            format.html { redirect_to "/home/programatimeline/?id=#{evento[0].idobjeto}", notice: "Estou Participando do Evento." }
+            format.json { head :no_content }
+         end
+        end
+      end#falta resposta   
+    end#falta resposta    
+  end  
+ 
+  def criaeventouser(eventoid,ptipoobjeto,userid)
+    eventosuser=Eventosuser.new
+    eventosuser.evento_id=eventoid
+    eventosuser.tipoobjeto=ptipoobjeto
+    eventosuser.user_id=userid
+    eventosuser.save
   end  
 
   #def resource_name

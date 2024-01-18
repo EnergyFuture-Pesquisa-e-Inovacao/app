@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_19_092758) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_18_092758) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -119,6 +119,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_19_092758) do
     t.string "idcalendaruser"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "tipoobjeto"
   end
 
   create_table "icps", force: :cascade do |t|
@@ -199,9 +200,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_19_092758) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.bigint "icp_id"
     t.bigint "plano_id"
     t.integer "status"
+    t.bigint "icp_id"
     t.boolean "newsletter"
     t.bigint "empresa_id"
     t.date "dataprimeirologin"

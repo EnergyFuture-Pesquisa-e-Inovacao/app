@@ -68,6 +68,7 @@ class UsersController < ApplicationController
          eventos.each do |evento|
           eventosusers=Eventosuser.new
           eventosusers.evento_id=evento.id
+          eventosusers.tipoobjeto="Programa Setorial"
           eventosusers.user_id=@programasuser.user_id
           if eventosusers.save
            counteventos=counteventos+1

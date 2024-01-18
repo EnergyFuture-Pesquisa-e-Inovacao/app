@@ -78,14 +78,17 @@
                            <%end%>
                                                  
                         </div>
-                        <div class="event-preview-info-bottom">
-                           <%if @agenda.tipoevento.eql?"Energy Future"%>
-                             <p class="button white"  style="margin-top: 0px;"><%= link_to "PARTICIPAR", "/home/participarevento?id=#{evento.id}&idobjeto=#{evento.idobjeto}&tipoobjeto=#{evento.tipoobjeto}"%></p>
-                           <%elsif @agenda.tipoevento.eql?"Ecossistema"%>
-                             <p class="button white"  style="margin-top: 0px;"><%= link_to "ENTRAR NO EVENTO", "//#{evento.linkevento}"%></p>
-                           <%end%> 
-                          
-                        </div>
+                        <% eventouser=Eventosuser.where(evento_id:evento.id,user_id:current_user.id,tipoobjeto:"Agenda")%>
+                        <% if !eventouser.present? %>
+                         <div class="event-preview-info-bottom">
+                            <%if @agenda.tipoevento.eql?"Energy Future"%>
+                              <p class="button white"  style="margin-top: 0px;"><%= link_to "PARTICIPAR", "/home/participarevento?id=#{evento.id}&idobjeto=#{evento.idobjeto}&tipoobjeto=#{evento.tipoobjeto}"%></p>
+                            <%elsif @agenda.tipoevento.eql?"Ecossistema"%>
+                              <p class="button white"  style="margin-top: 0px;"><%= link_to "ENTRAR NO EVENTO", "//#{evento.linkevento}"%></p>
+                            <%end%> 
+                         </div>
+                         
+                         <%end%>
                     </div>
                 </div>
                 <% end %>
