@@ -212,12 +212,12 @@ class HomeController < ApplicationController
     eventosuser=Eventosuser.where(evento_id:evento[0].id,user_id:current_user.id,tipoobjeto:params[:tipoobjeto])
     if !eventosuser.present? 
       if criaeventouser(evento[0].id,params[:tipoobjeto],current_user.id) 
-        if tipoevento="Eventos Agenda"
+        if tipoevento=="Eventos Agenda"
           respond_to do |format|
             format.html { redirect_to "/home/agenda", notice: "Estou Participando do Evento." }
             format.json { head :no_content }
           end
-        elsif tipoevento="Eventos PG"
+        elsif tipoevento=="Eventos PG"
           respond_to do |format|
             format.html { redirect_to "/home/programatimeline/?id=#{evento[0].idobjeto}", notice: "Estou Participando do Evento." }
             format.json { head :no_content }
