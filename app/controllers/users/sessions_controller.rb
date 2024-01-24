@@ -4,14 +4,14 @@ class Users::SessionsController < Devise::SessionsController
   #include UsersHelper
 
     # GET /resource/sign_in
-    def new
-       super
-    end
+    #def new
+    #   puts "create session aqui tem que ficar notifysignin?????"
+    #   super
+    #end
   
     # POST /resource/sign_in
     def create
       if current_user.present?
-       #registrationlogin
        NotifyRegistrationloginJob.set(wait: 3.seconds).perform_later(current_user)
       end 
       super

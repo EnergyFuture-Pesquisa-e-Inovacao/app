@@ -8,12 +8,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
     before_action :configure_permitted_parameters
   
     # GET /resource/sign_up
-    def new
-      super
-    end
+    #def new
+    #  puts "create registration aqui tem que ficar notifysignin"
+    #  super
+    #end
   
     # POST /resource
     def create
+      #puts "create registration aqui tem que ficar notifysignup"
       super
     end
   
@@ -47,7 +49,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       plano=Plano.find_by(name: 'Free')
       @user.plano_id=plano.id
       if @user.save
-        #registrationsignup
         NotifyRegistrationsignupJob.set(wait: 3.seconds).perform_later(@user)
       end  
     end 
@@ -74,7 +75,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # The path used after sign up.
     def after_sign_up_path_for(_resource)
       #root_path
-       #poscreate
+       poscreate
       '/home/agenda'
     end
   
