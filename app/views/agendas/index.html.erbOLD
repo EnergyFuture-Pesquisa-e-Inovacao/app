@@ -1,0 +1,83 @@
+<%= render "shared/aheader-new"%>
+
+<!-- CONTENT GRID -->
+<div class="content-grid">
+    <!-- SECTION BANNER -->
+    <div class="section-banner">
+        <%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/banner/events-icon.png", alt: "events-icon",class:"section-banner-icon") %>
+
+        <!-- SECTION BANNER TITLE -->
+        <p class="section-banner-title">Agenda do Hub</p>
+        <!-- /SECTION BANNER TITLE -->
+
+        <!-- SECTION BANNER TEXT -->
+        <p class="section-banner-text">Confira os eventos que movimentam o setor </p>
+        <!-- /SECTION BANNER TEXT -->
+    </div>
+    <!-- /SECTION BANNER -->
+
+            <div class="section-header">
+                <!-- SECTION HEADER INFO -->
+                <div class="section-header-info">
+                    <!-- SECTION PRETITLE -->
+                    <p class="section-pretitle"><%= link_to "Home", "/homea/index" %> </p>
+                    <p class="section-pretitle"><%= link_to "New Evento", "/agendas/new" %> </p>
+                    
+                    <p class="section-pretitle">Veja o que vem a seguir!</p>
+                    <!-- /SECTION PRETITLE -->
+
+                    <!-- SECTION TITLE -->
+                    <h2 class="section-title">Eventos da Agenda</h2>
+                    <!-- /SECTION TITLE -->
+                    
+                </div>
+                <!-- /SECTION HEADER INFO -->
+                 
+            </div>
+             </br>   
+            <div class="grid grid-3-3-3-3 centered">
+              <% @agendas.each do |agenda| %>
+              <% evento=Evento.where(tipoobjeto:"Agenda",idobjeto:agenda.id)%>
+              <% timeline=Timeline.where(tipoobjeto:"Eventos Agenda",idobjeto:evento[0].id)%>
+                <!-- EVENT PREVIEW -->
+                <div class="event-preview">
+					<% if  agenda.main_image.attached? %>
+						<figure class="event-preview-cover liquid">
+							<%= image_tag(agenda.main_image) %>
+						</figure>
+					<% end %>  
+                    <div class="event-preview-info">
+                        <div class="event-preview-info-top">
+                            <div class="date-sticker">
+                            <%td = evento[0].datainicio %>
+                            <p class="date-sticker-day"><%=td.strftime('%d')%></p>
+                            <p class="date-sticker-month"><%=td.strftime('%m')%></p>
+                            </div>
+                          <%th = evento[0].horainicio %>
+                          <p class="event-preview-title popup-event-information-trigger"><%= evento[0].name %></p>
+                          <p class="event-preview-timestamp"><span class="bold"><%=th.strftime('%H:%M')%></span></p>
+                          <p class="event-preview-text"><%= evento[0].linkevento %></p>
+                          <p class="event-preview-text"><%= agenda.tipoevento %></p>
+                          <p class="event-preview-text"><%= evento[0].status %></p>
+
+                           <% if evento[0].descricaocurta.present?%>
+                           <p class="event-preview-text"><%= evento[0].descricaocurta.slice! 0, 80  %></p>
+                           <% end %>
+        
+                          <p class="event-preview-timestamp"><span class="bold"><%="duração: "+evento[0].duration+" minutos"%></span></p>
+                                                    
+
+                        </div>                          
+						<div class="event-preview-info-bottom">
+							<p class="button white" style="margin-top: 0px;"><%= link_to "Show Esse Evento", agenda_path(agenda) %> </p>             
+						</div>                      
+                    </div>
+                </div>
+                <!-- /EVENT PREVIEW -->
+
+            <% end %>
+                
+
+            </div>
+ </div>
+<%= render "shared/footer-new"%>
