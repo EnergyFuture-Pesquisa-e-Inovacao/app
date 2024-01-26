@@ -1,72 +1,36 @@
-<%= render "shared/aheader-new"%>
+<div class="d-flex justify-content-between align-items-center">
+  <h4>Programas Setoriais</h4>
+</div>
 
-<!-- CONTENT GRID -->
-<div class="content-grid">
-    <!-- SECTION BANNER -->
-    <div class="section-banner">
-        <%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/banner/overview-icon.png", alt: "overview-icon",class:"section-banner-icon") %>
-
-        <!-- SECTION BANNER TITLE -->
-        <p class="section-banner-title">Programas Setoriais</p>
-        <!-- /SECTION BANNER TITLE -->
-
-        <!-- SECTION BANNER TEXT -->
-        <p class="section-banner-text">Confira os eventos que movimentam o setor </p>
-        <!-- /SECTION BANNER TEXT -->
-    </div>
-    <!-- /SECTION BANNER -->
-
-            <div class="section-header">
-                <!-- SECTION HEADER INFO -->
-                <div class="section-header-info">
-                    <!-- SECTION PRETITLE -->
-                    <p class="section-pretitle"><%= link_to "Home", "/homea/index" %> </p>
-                    <p class="section-pretitle"><%= link_to "Novo Programa Setorial", "/programasetorials/new" %> </p>
-                    
-                    <p class="section-pretitle">Veja o que vem a seguir!</p>
-                    <!-- /SECTION PRETITLE -->
-
-                    <!-- SECTION TITLE -->
-                    <h2 class="section-title">Próximos Programas</h2>
-                    <!-- /SECTION TITLE -->
-                    
-                </div>
-                <!-- /SECTION HEADER INFO -->
-                 
-            </div>
-
-            <div class="grid grid-3-3-3-3 centered">
-              <% @programasetorials.each do |programasetorial| %>
-                <!-- EVENT PREVIEW -->
-               <div class="event-preview"> 
-                    <div class="event-preview-info">             
-                      <div class="event-preview-info-top">
-                        <% if  programasetorial.main_imagepg.attached? %>
-                            <figure class="event-preview-cover liquid">
-                             <%= image_tag(programasetorial.main_imagepg) %>
-                            </figure>
-                         <% end %>                            
-                          <p class="event-preview-text"><span class="bold"><%=programasetorial.ano%></span></p> 
-                          <p class="event-preview-text"><span class="bold"><%="Nome: "+programasetorial.name%></span></p>  
-                          <p class="event-preview-text"><span class="bold"><%="Status: "+programasetorial.status%></span></p>  
-                          <p class="event-preview-text"><span class="bold"><%="Quant Empresas  : #{programasetorial.quantempresas}"%></span></p>
-                          <p class="event-preview-text"><span class="bold"><%="Engajamento     : #{programasetorial.quantengajamento}"%></span></p>
-                          <p class="event-preview-text"><span class="bold"><%="Quant Inscriçoes: #{programasetorial.quantinscricoes}"%></span></p>
-                          <div class="chat-widget-speaker right">
-                           <!-- CHAT WIDGET SPEAKER MESSAGE -->
-                           <% if programasetorial.descricaocurta.present?%>
-                           <p class="chat-widget-speaker-message"><%= programasetorial.descricaocurta.slice! 0, 80 %></p>
-                           <% end %>
-                           <!-- /CHAT WIDGET SPEAKER MESSAGE -->
-                          </div>
-                        <div class="event-preview-info-bottom">
-                            <p class="button white white-tertiary"><%= link_to "Show Este Programa", programasetorial %></p>
-                        </div>
-                      </div>  
-                    </div>
-                </div>
-                <!-- /EVENT PREVIEW -->
-            <% end %>     
-    </div>
- </div>
-<%= render "shared/footer-new"%>
+<div id="programasetorials">
+  <table class="table">
+    <thead class="table-light">
+      <tr>
+        <th scope="col">Ano</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Status</th>
+        <th scope="col">Empresas</th>
+        <th scope="col">Engajamento</th>
+        <th scope="col">Inscrições</th>
+        <th scope="col">Show</th>
+      </tr>
+    <tbody>
+      <% @programasetorials.each do |programasetorial| %>
+      <tr>   
+       <td><%= programasetorial.ano %></td>
+       <td><%= programasetorial.name %></td>
+       <td><%=programasetorial.status%></td>
+       <td><%= programasetorial.quantempresas %></td>
+       <td><%= programasetorial.quantengajamento %></td>
+       <td><%=programasetorial.quantinscricoes%></td>
+       <td><%=link_to "Show", programasetorial %></td>
+  </tr>
+  <% end %>
+    </tbody>
+  </table>
+</div>
+<%= link_to "Novo Programa Setorial", "/programasetorials/new" %></br>
+<%= link_to "Home", "/homea/index" %>
+ <style>
+   body { margin: 2%; }
+</style>
