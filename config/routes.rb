@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :planos
   resources :icps
   resources :eventos
-  resources :posts
+  resources :arquivos
 
   get 'home/agenda'
   get 'home/academy'
@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   get 'homea/adicionareventops'
   #get 'evento/newevps'
   get 'homea/indexeventosps'
+  get 'homea/adicionararquivops'
+  get 'eventos/showp'
 
   get 'home/participarprogramasetorial'
   get 'home/participarevento'

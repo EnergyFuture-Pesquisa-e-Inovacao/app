@@ -21,7 +21,7 @@ class IcpsController < ApplicationController
   def show
     if verificauser   
       
-    elsif !verificauser and !verificaadmin
+    else
       redirect_to '/users/sign_in'
     end     
   end

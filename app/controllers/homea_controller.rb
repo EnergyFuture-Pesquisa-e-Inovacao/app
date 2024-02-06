@@ -19,6 +19,19 @@ class HomeaController < ApplicationController
      @evento.idobjeto=@programasetorial.id 
   end  
 
+  def adicionararquivops
+    puts "ENTREI dicionararquivops1"
+    p=params[:idpg]
+    puts p
+    puts "ENTREI dicionararquivops2"
+    @programasetorial=Programasetorial.find(p)
+    timeline = Timeline.where(tipoobjeto:"Eventos PG",idobjeto:@programasetorial.id)
+    @arquivo=Arquivo.new
+    @arquivo.tipoobjeto="Programa Setorial"
+    @arquivo.idobjeto=@programasetorial.id 
+    #@arquivo.status=ativo
+  end  
+
     # GET /icps or /icps.json
     def indexeventosps
       if verificaadminteste

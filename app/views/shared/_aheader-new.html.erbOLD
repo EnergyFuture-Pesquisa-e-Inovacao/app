@@ -69,20 +69,15 @@
           </svg>
         </a>
       </li>
-      <li class="menu-item" id="ma7">
-        <a class="menu-item-link text-tooltip-tfr" href="/academies" data-title="Academy">
-          <svg class="menu-item-link-icon icon-events-weekly">
-            <use xlink:href="#svg-events-weekly"></use>
+
+      <li class="menu-item" id="ma4">
+        <a class="menu-item-link text-tooltip-tfr" href="/home/basesetorial" data-title="Base setorial">
+          <svg class="menu-item-link-icon icon-quests">
+            <use xlink:href="#svg-quests"></use>
           </svg>
         </a>
-      </li>      
-      <li class="menu-item" id="ma7">
-        <a class="menu-item-link text-tooltip-tfr" href="/propdi" data-title="ProPDI">
-          <svg class="menu-item-link-icon icon-events-weekly">
-            <use xlink:href="#svg-events-weekly"></use>
-          </svg>
-        </a>
-      </li>        
+      </li>
+
       <li class="menu-item" id="ma6">
         <a class="menu-item-link text-tooltip-tfr" href="/home/feedinovacao" data-title="Feed de Inovação">
           <svg class="menu-item-link-icon icon-badges">
@@ -112,7 +107,7 @@
       <!-- MENU ITEM -->
       <li class="menu-item active">
         <!-- MENU ITEM LINK -->
-        <a class="menu-item-link" href="/home/agenda">
+        <a class="menu-item-link" href="/agendas">
           <!-- MENU ITEM LINK ICON -->
           <svg class="menu-item-link-icon icon-public">
             <use xlink:href="#svg-public"></use>
@@ -128,7 +123,7 @@
       <!-- MENU ITEM -->
       <li class="menu-item active">
         <!-- MENU ITEM LINK -->
-        <a class="menu-item-link" href="/home/agenda">
+        <a class="menu-item-link" href="/agendas">
           <!-- MENU ITEM LINK ICON -->
           <svg class="menu-item-link-icon icon-events-monthly">
             <use xlink:href="#svg-events-monthly"></use>
@@ -515,7 +510,7 @@
     <!-- /NAVIGATION WIDGET SECTION TITLE -->
 
     <!-- NAVIGATION WIDGET SECTION LINK -->
-    <a class="navigation-widget-section-link" href="/admins/<%=current_admin.id%>">Informações da Conta</a>
+    <a class="navigation-widget-section-link" href="/admins/<%=current_admin.id%>">Profile Info</a>
     <!-- /NAVIGATION WIDGET SECTION LINK -->
 
     <!-- NAVIGATION WIDGET SECTION LINK -->
@@ -543,7 +538,7 @@
     <!-- /NAVIGATION WIDGET SECTION LINK -->
 
     <!-- NAVIGATION WIDGET SECTION LINK -->
-    <a class="navigation-widget-section-link" href="#">Mudar Password</a>
+    <a class="navigation-widget-section-link" href="/users/editp">Mudar Password</a>
     <!-- /NAVIGATION WIDGET SECTION LINK -->
 
     <!-- NAVIGATION WIDGET SECTION LINK -->
@@ -606,7 +601,7 @@
         <!-- LOGO -->
         <div class="logo">
           <!-- ICON LOGO VIKINGER -->
-          <a href="/home/agenda"><%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/Logo-EF-Hub.png") %></a>
+          <a href="/agendas"><%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/Logo-EF-Hub.png") %></a>
           <!-- /ICON LOGO VIKINGER -->
         </div>
         <!-- /LOGO -->
@@ -674,11 +669,11 @@
           <!-- /DROPDOWN NAVIGATION CATEGORY -->
       
           <!-- DROPDOWN NAVIGATION LINK -->
-          <a class="dropdown-navigation-link" href= "#">Editar Perfil</a>
+          <a class="dropdown-navigation-link" href= "/admins/<%=current_admin.id%>/edit">Editar Perfil</a>
           <!-- /DROPDOWN NAVIGATION LINK -->
       
           <!-- DROPDOWN NAVIGATION LINK -->
-          <a class="dropdown-navigation-link" href="#">Alterar Senha</a>
+          <a class="dropdown-navigation-link" href="/users/hubaccountpassword">Alterar Senha</a>
           <!-- /DROPDOWN NAVIGATION LINK -->
 
           <!-- DROPDOWN NAVIGATION BUTTON -->

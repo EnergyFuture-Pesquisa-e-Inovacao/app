@@ -10,51 +10,61 @@ class ArquivosController < ApplicationController
 
   # GET /arquivos or /arquivos.json
   def index
-    if verificauser and !verificaadmin
-      redirect_to '/users/sign_in'
-    elsif !verificauser and verificaadmin
+    if verificauser
       @arquivos = Arquivo.all
-    elsif !verificauser and !verificaadmin
+    else
       redirect_to '/users/sign_in'
     end   
   end
 
   # GET /arquivos/1 or /arquivos/1.json
   def show
-    if verificauser and !verificaadmin
-
-    elsif !verificauser and verificaadmin   
-      
-    elsif !verificauser and !verificaadmin
-      redirect_to '/users/sign_in'
+    if verificauser   
+        
+    else
+        redirect_to '/users/sign_in'
     end     
+  end
+
+    # GET /arquivos/new
+  def new
+    if verificauser
+      @programasetorial=Programasetorial.find(params[:idpg])
+      @arquivo = Arquivo.new
+      @arquivo.idobjeto=@programasetorial.id
+      @arquivo.tipoobjeto="Programa Setorial"
+    else
+      redirect_to '/users/sign_in' 
+    end   
   end
 
 
   # GET /arquivos/1/edit
   def edit
-    if verificauser and !verificaadmin
-      redirect_to '/users/sign_in'
-    elsif !verificauser and verificaadmin
-    
-    elsif !verificauser and !verificaadmin
-      redirect_to '/users/sign_in' 
-    end  
+    if verificauser   
+        
+    else
+        redirect_to '/users/sign_in'
+    end 
   end
 
   # POST /arquivos or /arquivos.json
   def create
+    puts "ESTOU NO CREATE1"
+    puts "ESTOU NO CREATE2"
     @arquivo = Arquivo.new(arquivo_params)
-    @programasetorial=Programasetorial.find(@arquivo.idobjeto)  
+    #@programasetorial=Programasetorial.find(@arquivo.idobjeto)
+    #timeline=Timeline.where(idobjeto:@programasetorial,tipoobjeto:"Eventos PG")
+    #@timeline=Timeline.find(timeline[0].id)  
     respond_to do |format|
-      if @arquivo.save!
-        arquivo=Arquivo.last
-        @timeline=Timeline.new
-        @timeline.idobjeto=arquivo.id
-        @timeline.tipoobjeto="Arquivos PG"
-        @timeline.status=arquivo.status
-        @timeline.save 
-        #notify_registrationarquivoprogramasetorial("add")  
+      if @arquivo.save
+        #arquivo=Arquivo.last
+        #@timeline=Timeline.new
+        #@timeline.idobjeto=arquivo.id
+        #@timeline.tipoobjeto="Arquivos PG"
+        #@timeline.status=arquivo.status
+        #@timeline.save 
+        ###notify_registrationarquivoprogramasetorial("add")  
         format.html { redirect_to programasetorial_url(@programasetorial), notice: "Arquivo was successfully criado." }
         format.json { render :show, status: :ok, location: @arquivo }
       else
@@ -109,24 +119,8 @@ class ArquivosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def arquivo_params
-      params.require(:arquivo).permit(:datainicio,:datafim,:horainicio,:horafim,
-       :status,:enviarparaparticipante,:duration,:tipoobjeto,:idobjeto,:linkevento,
-       :descricaocurta)
+      params.require(:arquivo).permit(:name,:status,:idobjeto,:tipoobjeto,new_images:[])
     end
 
-    def verificauser
-      if current_user.present?
-        true
-      else
-        false
-      end  
-    end  
-
-    def verificaadmin
-      if current_admin.present?
-        true
-      else
-        false
-      end  
-    end      
+     
 end

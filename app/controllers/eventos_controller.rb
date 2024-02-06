@@ -1,6 +1,7 @@
 class EventosController < ApplicationController
   include EventosHelper
   before_action :set_evento, only: %i[ show edit update destroy ]
+  before_action :set_eventop, only: %i[ showp ]
   before_action :authenticate_user!, only: [:teste]
   before_action :authenticate_admin!
   after_action :loginterno, only: %i[update create destroy]
@@ -20,6 +21,17 @@ class EventosController < ApplicationController
 
   # GET /eventos/1 or /eventos/1.json
   def show
+    if verificauser 
+      
+    else
+      redirect_to '/users/sign_in'
+    end     
+  end
+
+  def showp
+    puts "TESTE showp1"
+    puts params[:idobjeto]
+    puts "TESTE showp2"
     if verificauser 
       
     else
@@ -97,14 +109,31 @@ class EventosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_evento
-      if params[:id]!="newevps"
+      if (params[:id]!="newevps")and(params[:id]!="showp")
       @evento = Evento.find(params[:id])
       timeline = Timeline.where(tipoobjeto:"Eventos",idobjeto:@evento.id)
        if timeline[0].present?
         @timeline = Timeline.find(timeline[0].id)
        end 
+      elsif params[:id]=="showp" 
+        evento = Evento.where(idobjeto:params[:idobjeto],tipoobjeto:"Programa Setorial")
+        @evento = Evento.find(evento[0].id)
+        @programasetorial=Programasetorial.find(params[:idobjeto])
+        timeline = Timeline.where(tipoobjeto:"Eventos",idobjeto:@evento.id)
+         if timeline[0].present?
+          @timeline = Timeline.find(timeline[0].id)
+         end        
       end
     end
+
+    def set_eventop
+      evento = Evento.where(idobjeto:params[:idobjeto],tipoobjeto:"Programa Setorial")
+      @evento = Evento.find(evento[0].id)
+      timeline = Timeline.where(tipoobjeto:"Eventos",idobjeto:@evento.id)
+       if timeline[0].present?
+        @timeline = Timeline.find(timeline[0].id)
+       end 
+    end    
 
     # Only allow a list of trusted parameters through.
     def evento_params

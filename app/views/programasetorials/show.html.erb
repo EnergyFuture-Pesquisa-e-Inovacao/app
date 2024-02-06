@@ -58,7 +58,7 @@
                             <p class="button white white-tertiary"><%= link_to "Editar o Programa", edit_programasetorial_path(@programasetorial) %> </p>
                             <p class="button white white-tertiary"><%= link_to "Adicionar Eventos", "/homea/adicionareventops?idpg=#{@programasetorial.id}"%></p>
                             <p class="button white white-tertiary"><%= link_to "Adicionar Arquivos", "/homea/adicionararquivops?idpg=#{@programasetorial.id}"%></p>
-                                                                                                                             
+                            <p class="button white white-tertiary"><%= link_to "Adicionar Arquivos2", "/arquivos/new?idpg=#{@programasetorial.id}"%></p>                                                                                                 
                             
 
                             
@@ -93,7 +93,7 @@
        <td><%= evento.datainicio.strftime("%d/%m/%Y") %></td>
        <td><%= evento.duration %></td>
        <td><%= evento.status%></td>
-       <td><%=link_to "Show ", evento %></td>
+       <td><%=link_to "Show ", "/eventos/showp/?idobjeto=#{evento.idobjeto}" %></td>
        <td><%=link_to "Editar", edit_evento_path(evento) %></td>
   </tr>
   <% end %>

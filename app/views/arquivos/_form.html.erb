@@ -1,0 +1,30 @@
+
+<div class="set-center flex-column form h-auto mt-3">
+  <div class="card shadow" style="width: 36rem;">
+    <div class="card-header">
+      <h3 class="text-center mt-2">Cadastro Arquivo</h3>
+    </div>
+    <div class="card-body">
+      <!-- Form Started Here -->
+      <%= form_with model: @arquivo do |f| %>
+        <br>
+        <span> Name :</span> 
+        <%= f.text_field :name, placeholder: "Name", class:"mb-2 form-control" %>
+        <br> 
+        <span> Status :</span> 
+        <%= f.select(:status, Arquivo.statuses.keys.map {|status| [status.titleize,status]}, :class => 'form-control' )%>
+        <br>
+        <span>Arquivo :</span>
+        <%= f.file_field :new_images, multiple: true, direct_upload: true %>
+        <br>
+        <br> 
+        <%= f.text_field :idobjeto, class:"mb-2 form-control" %>      
+        <%= f.hidden_field :tipoobjeto, class:"mb-2 form-control" %>
+        <br>      
+        <div class="d-flex justify-content-center">
+          <%= f.submit "Salvar Arquivo", class:"btn-secondary border-0 shadow py-2 px-5" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

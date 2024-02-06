@@ -1,0 +1,59 @@
+<!-- Bcurriculo Details Showing -->
+<div class="container">
+  <div class="flex-column set-center">
+    <h3 class="text-center">Detalhes Arquivos</h3>
+    <% if notice.present? %>
+      <h4><id="notice"><%= notice %></h4>
+    <% end %>
+    <div class="d-flex flex-column align-items-center">
+      <div class="card text-center" style="width: 30rem;">
+        <div class="card-body">
+          <h4 class="card-title"><%= @arquivo.name %> </h4>
+          <hr>
+          <p class="card-text"> <strong>Status : </strong> <%= @arquivo.status %> </p>
+          <p class="card-text"> <strong>Tipo de Arquivo : </strong> <%= @arquivo.tpimage %> </p>
+        </div>
+      </div>
+      <div class="d-flex">
+        <%= button_to "Editar" , edit_arquivo_path, method: :get ,class:"btn-success border-0 rounded-pill shadow p-2 m-2" %> &nbsp; &nbsp;
+        <%if current_admin.present? %> 
+          <%= button_to "Apagar", arquivo_path, method: :delete, form_class: "delete-alertbox" ,class:"btn-danger border-0 rounded-pill shadow p-2 m-2" %>&nbsp; &nbsp;
+        <%end%>
+        <%= button_to "Listar Currículos", arquivos_path,method: :get ,class:"btn-primary border-0 rounded-pill shadow p-2 m-2" %>&nbsp; &nbsp;
+        <%if current_admin.present? %>      
+         <%= button_to "Início", "/homea/index",method: :get ,class:"btn-primary border-0 rounded-pill shadow p-2 m-2" %>
+        <%end%> 
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="flex-column set-center">
+   <div class="d-flex flex-column align-items-center">
+    <div class="card text-center" style="height:70%; width: 60rem;">
+     <div class="card-body">  
+     <% if @bcurriculo.images.attached? %>
+      <% @bcurriculo.images.each do |pimage| %>
+        <p><span><%=pimage.filename%></span></p>
+        <%= link_to "Remover arquivo anexado", delete_an_image_url(attachment_id: pimage.id, arquivo_id: @arquivo.id),
+        data: {
+               turbo_method: :get,
+               turbo_confirm: "Você está certo disso?, operação sem retorno!"
+               }, class: "btn btn-xs btn-danger"%><br>        
+        <% if pimage.content_type == "image/jpeg" %>
+         <%= image_tag pimage, style: 'height:70%; width:80%;' %>
+        <% elsif pimage.content_type == "application/pdf" %> 
+        <br />
+        <iframe src=<%= url_for(pimage) %> width="600" height="780" style="border: none;"> </iframe>
+         <% end %>
+        <% end %>
+     <% end %> 
+     </div>
+    </div>
+   </div> 
+  </div>
+</div>
+
+
+
+
