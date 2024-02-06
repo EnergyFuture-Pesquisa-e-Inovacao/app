@@ -54,7 +54,7 @@ class ArquivosController < ApplicationController
     puts "ESTOU NO CREATE2"
     @arquivo = Arquivo.new(arquivo_params)
     #@programasetorial=Programasetorial.find(@arquivo.idobjeto)
-    #timeline=Timeline.where(idobjeto:@programasetorial,tipoobjeto:"Eventos PG")
+    #timeline=Timeline.where(idobjeto:@programasetorial,tipoobjeto:"Programa Setorial")
     #@timeline=Timeline.find(timeline[0].id)  
     respond_to do |format|
       if @arquivo.save

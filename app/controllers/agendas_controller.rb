@@ -70,7 +70,7 @@ class AgendasController < ApplicationController
         @evento=Evento.last
         @timeline=Timeline.new
         @timeline.idobjeto=@evento.id
-        @timeline.tipoobjeto="Eventos Agenda" 
+        @timeline.tipoobjeto="Agenda" 
         #thdi = evento.datainicio
         #thi = evento.horainicio
         #timeline.datahora=thdi.strftime("%d/%m/%Y")+" "+thi.strftime('%H:%M') 
@@ -91,7 +91,7 @@ class AgendasController < ApplicationController
   def update
     evento=Evento.where(tipoobjeto:"Agenda").where(idobjeto:@agenda.id)
     @evento=Evento.find(evento[0].id)
-    #timeline=Timeline.where(tipoobjeto:"Eventos Agenda",idobjeto:evento[0].id)
+    #timeline=Timeline.where(tipoobjeto:"Agenda",idobjeto:evento[0].id)
     #@timeline=Timeline.find(timeline[0].id)
     respond_to do |format|
       if @agenda.update(agenda_params)
@@ -125,7 +125,7 @@ class AgendasController < ApplicationController
     evento=Evento.where(tipoobjeto:"Agenda").where(idobjeto:@agenda.id)
      if evento[0].present?
       @evento=Evento.find(evento[0].id) 
-      timeline=Timeline.where(tipoobjeto:"Eventos Agenda",idobjeto:evento[0].id)    
+      timeline=Timeline.where(tipoobjeto:"Agenda",idobjeto:evento[0].id)    
        if timeline[0].present?
         @timeline=Timeline.find(timeline[0].id)
         @timeline.destroy

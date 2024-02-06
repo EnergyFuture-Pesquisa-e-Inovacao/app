@@ -204,20 +204,20 @@ class HomeController < ApplicationController
   def participarevento
     evento=Evento.where(id:params[:id],tipoobjeto:params[:tipoobjeto])
     if params[:tipoobjeto]=="Agenda"
-     tipoevento="Eventos Agenda"
+     tipoevento="Agenda"
     elsif params[:tipoobjeto]=="Programa Setorial"
-     tipoevento="Eventos PG"
+     tipoevento="Programa Setorial"
     end
     timeline=Timeline.where(idobjeto:evento[0].id,tipoobjeto:tipoevento)
     eventosuser=Eventosuser.where(evento_id:evento[0].id,user_id:current_user.id,tipoobjeto:params[:tipoobjeto])
     if !eventosuser.present? 
       if criaeventouser(evento[0].id,params[:tipoobjeto],current_user.id) 
-        if tipoevento=="Eventos Agenda"
+        if tipoevento=="Agenda"
           respond_to do |format|
             format.html { redirect_to "/home/agenda", notice: "Estou Participando do Evento." }
             format.json { head :no_content }
           end
-        elsif tipoevento=="Eventos PG"
+        elsif tipoevento=="Programa Setorial"
           respond_to do |format|
             format.html { redirect_to "/home/programatimeline/?id=#{evento[0].idobjeto}", notice: "Estou Participando do Evento." }
             format.json { head :no_content }

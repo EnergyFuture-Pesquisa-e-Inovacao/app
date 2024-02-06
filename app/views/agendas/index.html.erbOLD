@@ -38,7 +38,7 @@
             <div class="grid grid-3-3-3-3 centered">
               <% @agendas.each do |agenda| %>
               <% evento=Evento.where(tipoobjeto:"Agenda",idobjeto:agenda.id)%>
-              <% timeline=Timeline.where(tipoobjeto:"Eventos Agenda",idobjeto:evento[0].id)%>
+              <% timeline=Timeline.where(tipoobjeto:"Agenda",idobjeto:evento[0].id)%>
                 <!-- EVENT PREVIEW -->
                 <div class="event-preview">
 					<% if  agenda.main_image.attached? %>

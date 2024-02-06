@@ -60,7 +60,7 @@ class EventosController < ApplicationController
         evento=Evento.last
         @timeline=Timeline.new
         @timeline.idobjeto=evento.id
-        @timeline.tipoobjeto="Eventos PG"
+        @timeline.tipoobjeto="Programa Setorial"
         @timeline.status=evento.status
         @timeline.save 
         notify_registrationeventoprogramasetorial("add")  

@@ -71,7 +71,7 @@
 
 <%@eventos=Evento.where(tipoobjeto:"Programa Setorial",idobjeto:@programasetorial.id)%>
 <%ideventos=@eventos.select(:id)%>
-<%@timelines=Timeline.where(tipoobjeto:"Eventos PG").where("idobjeto IN (?)",ideventos)%>
+<%@timelines=Timeline.where(tipoobjeto:"Programa Setorial").where("idobjeto IN (?)",ideventos)%>
 </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> 
   <table class="table">
     <thead class="table-light">
@@ -86,7 +86,7 @@
       </tr>
     <tbody>
       <% @eventos.each do |evento| %>
-      <%@timeline=Timeline.where(tipoobjeto:"Eventos PG").where(idobjeto: evento.id)%>
+      <%@timeline=Timeline.where(tipoobjeto:"Programa Setorial").where(idobjeto: evento.id)%>
       <tr>
        <td><%= evento.id %></td>    
        <td><%= evento.tipoobjeto %></td>

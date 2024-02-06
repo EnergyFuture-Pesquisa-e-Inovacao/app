@@ -36,7 +36,7 @@
                 <%if agenda[0].present?%>
                  <%@agenda=Agenda.find(agenda[0].id)%>
                 <%end%> 
-                <%timeline=Timeline.where(idobjeto:evento.id,tipoobjeto:"Eventos Agenda")%>
+                <%timeline=Timeline.where(idobjeto:evento.id,tipoobjeto:"Agenda")%>
                 <%if timeline[0].present?%>
                  <%@timeline=Timeline.find(timeline[0].id)%> 
                 <%end%> 
@@ -117,7 +117,7 @@
                 <%if agenda[0].present?%>
                  <%@agenda=Agenda.find(agenda[0].id)%>
                 <%end%> 
-                <%timeline=Timeline.where(idobjeto:evento.id,tipoobjeto:"Eventos Agenda")%>
+                <%timeline=Timeline.where(idobjeto:evento.id,tipoobjeto:"Agenda")%>
                 <%if timeline[0].present?%>
                  <%@timeline=Timeline.find(timeline[0].id)%> 
                 <%end%> 

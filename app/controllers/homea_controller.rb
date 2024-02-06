@@ -25,7 +25,7 @@ class HomeaController < ApplicationController
     puts p
     puts "ENTREI dicionararquivops2"
     @programasetorial=Programasetorial.find(p)
-    timeline = Timeline.where(tipoobjeto:"Eventos PG",idobjeto:@programasetorial.id)
+    timeline = Timeline.where(tipoobjeto:"Programa Setorial",idobjeto:@programasetorial.id)
     @arquivo=Arquivo.new
     @arquivo.tipoobjeto="Programa Setorial"
     @arquivo.idobjeto=@programasetorial.id 

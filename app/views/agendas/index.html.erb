@@ -19,7 +19,7 @@
       <% @agendas.each do |agenda| %>
       <tr>
        <% evento=Evento.where(tipoobjeto:"Agenda",idobjeto:agenda.id)%>
-       <% timeline=Timeline.where(tipoobjeto:"Eventos Agenda",idobjeto:evento[0].id)%>
+       <% timeline=Timeline.where(tipoobjeto:"Agenda",idobjeto:evento[0].id)%>
        <%td = evento[0].datainicio %>
        <%th = evento[0].horainicio %>   
        <td><%= evento[0].name %></td>
