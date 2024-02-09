@@ -47,8 +47,15 @@ class ProgramasetorialsController < ApplicationController
   # POST /programasetorials or /programasetorials.json
   def create
     @programasetorial = Programasetorial.new(programasetorial_params)
+    @programasetorial.indicetm=1
     respond_to do |format|
-      if @programasetorial.save!     
+      if @programasetorial.save!   
+        @programasetorial=Programasetorial.last
+        timeline=Timeline.new
+        timeline.indiceobjetos=1
+        timeline.idobjeto=@programasetorial.id
+        timeline.tipoobjeto="Programa Setorial" 
+        timeline.save!  
          notify_registrationprogset("create")
          format.html { redirect_to programasetorial_url(@programasetorial), notice: "Programasetorial foi Criado com Sucesso!" }
          format.json { render :show, status: :created, location: @programasetorial }
@@ -64,7 +71,7 @@ class ProgramasetorialsController < ApplicationController
     respond_to do |format|
       if @programasetorial.update(programasetorial_params)
           notify_registrationprogset("update")     
-          format.html { redirect_to programasetorial_url(@programasetorial), notice: "Programasetorial wfoi Editado com Sucesso!" }
+          format.html { redirect_to programasetorial_url(@programasetorial), notice: "Programasetorial foi Editado com Sucesso!" }
           format.json { render :show, status: :ok, location: @programasetorial } 
       else
         format.html { render :edit, status: :unprocessable_entity }

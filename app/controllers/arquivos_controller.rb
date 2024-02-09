@@ -53,17 +53,16 @@ class ArquivosController < ApplicationController
     puts "ESTOU NO CREATE1"
     puts "ESTOU NO CREATE2"
     @arquivo = Arquivo.new(arquivo_params)
-    #@programasetorial=Programasetorial.find(@arquivo.idobjeto)
-    #timeline=Timeline.where(idobjeto:@programasetorial,tipoobjeto:"Programa Setorial")
-    #@timeline=Timeline.find(timeline[0].id)  
+    @programasetorial=Programasetorial.find(@arquivo.idobjeto)
+    data=DateTime.current - 3.hours
+    @arquivo.datahoraindice=data
+    timeline=Timeline.where(idobjeto:@programasetorial,tipoobjeto:"Programa Setorial")
+    @timeline=Timeline.find(timeline[0].id)  
+    @arquivo.indicetm=@timeline.indiceobjetos
     respond_to do |format|
       if @arquivo.save
-        #arquivo=Arquivo.last
-        #@timeline=Timeline.new
-        #@timeline.idobjeto=arquivo.id
-        #@timeline.tipoobjeto="Arquivos PG"
-        #@timeline.status=arquivo.status
-        #@timeline.save 
+        @timeline.indiceobjetos=@timeline.indiceobjetos+1
+        @timeline.save 
         ###notify_registrationarquivoprogramasetorial("add")  
         format.html { redirect_to programasetorial_url(@programasetorial), notice: "Arquivo was successfully criado." }
         format.json { render :show, status: :ok, location: @arquivo }
@@ -110,7 +109,7 @@ class ArquivosController < ApplicationController
     def set_arquivo
       if params[:id]!="newarps"
       @evento = Evento.find(params[:id])
-      timeline = Timeline.where(tipoobjeto:"Eventos",idobjeto:@arquivo.id)
+      timeline = Timeline.where(tipoobjeto:"Programa Setorial",idobjeto:@arquivo.id)
        if timeline[0].present?
         @timeline = Timeline.find(timeline[0].id)
        end 

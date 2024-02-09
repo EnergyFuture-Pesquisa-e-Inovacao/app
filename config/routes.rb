@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :icps
   resources :eventos
   resources :arquivos
+  resources :textos
 
   get 'home/agenda'
   get 'home/academy'

@@ -54,14 +54,21 @@ class EventosController < ApplicationController
     @evento = Evento.new(evento_params)
     @programasetorial=Programasetorial.find(@evento.idobjeto)
     delta_time = (@evento.horafim.to_i- @evento.horainicio.to_i)/60
-    @evento.duration="%.2f" % delta_time    
+    @evento.duration="%.2f" % delta_time  
+    timeline=Timeline.where(idobjeto:@evento.idobjeto,tipoobjeto:"Programa Setorial")
+    @timeline=Timeline.find(timeline[0].id)
+    @evento.indicetm=@timeline.indiceobjetos
+    @evento.timelineid=@timeline.id
+    thdi = @evento.datainicio
+    thi = @evento.horainicio
+    @evento.datahoraindice=thi.strftime('%H:%M')+" "+thdi.strftime("%d/%m/%Y") 
     respond_to do |format|
       if @evento.save!
-        evento=Evento.last
-        @timeline=Timeline.new
-        @timeline.idobjeto=evento.id
-        @timeline.tipoobjeto="Programa Setorial"
-        @timeline.status=evento.status
+        #evento=Evento.last
+        #@timeline.idobjeto=evento.id
+        #@timeline.tipoobjeto="Programa Setorial"
+        #@timeline.status=evento.status
+        @timeline.indiceobjetos=@timeline.indiceobjetos+1
         @timeline.save 
         notify_registrationeventoprogramasetorial("add")  
         format.html { redirect_to programasetorial_url(@programasetorial), notice: "Evento foi Criado com Sucesso!" }
@@ -111,7 +118,7 @@ class EventosController < ApplicationController
     def set_evento
       if (params[:id]!="newevps")and(params[:id]!="showp")
       @evento = Evento.find(params[:id])
-      timeline = Timeline.where(tipoobjeto:"Eventos",idobjeto:@evento.id)
+      timeline = Timeline.where(tipoobjeto:"Programa Setorial",idobjeto:@evento.id)
        if timeline[0].present?
         @timeline = Timeline.find(timeline[0].id)
        end 
@@ -119,7 +126,7 @@ class EventosController < ApplicationController
         evento = Evento.where(idobjeto:params[:idobjeto],tipoobjeto:"Programa Setorial")
         @evento = Evento.find(evento[0].id)
         @programasetorial=Programasetorial.find(params[:idobjeto])
-        timeline = Timeline.where(tipoobjeto:"Eventos",idobjeto:@evento.id)
+        timeline = Timeline.where(tipoobjeto:"Programa Setorial",idobjeto:@evento.id)
          if timeline[0].present?
           @timeline = Timeline.find(timeline[0].id)
          end        
@@ -129,7 +136,7 @@ class EventosController < ApplicationController
     def set_eventop
       evento = Evento.where(idobjeto:params[:idobjeto],tipoobjeto:"Programa Setorial")
       @evento = Evento.find(evento[0].id)
-      timeline = Timeline.where(tipoobjeto:"Eventos",idobjeto:@evento.id)
+      timeline = Timeline.where(tipoobjeto:"Programa Setorial",idobjeto:@evento.id)
        if timeline[0].present?
         @timeline = Timeline.find(timeline[0].id)
        end 

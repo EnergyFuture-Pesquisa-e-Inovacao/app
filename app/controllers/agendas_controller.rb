@@ -47,10 +47,18 @@ class AgendasController < ApplicationController
   # POST /agendas or /agendas.json
   def create
     @agenda = Agenda.new(agenda_params)
+    @agenda.indicetm=1
     respond_to do |format|
       if @agenda.save!
         agenda=Agenda.last
+        timeline=Timeline.new
+        timeline.indiceobjetos=1
+        timeline.idobjeto=@agenda.id
+        timeline.tipoobjeto="Agenda" 
+        timeline.save!
+        @timeline=Timeline.last
         @evento=Evento.new
+        @evento.indicetm=1
         @evento.name=@agenda.name
         @evento.descricao=@agenda.descricao
         @evento.descricaocurta=@agenda.descricaocurta
@@ -65,17 +73,17 @@ class AgendasController < ApplicationController
         @evento.status=@agenda.status
         @evento.tipoparticipanteconvite=@agenda.tipoparticipanteconvite
         delta_time = (@evento.horafim - @evento.horainicio)/60
-        @evento.duration="%.2f" % delta_time       
+        @evento.duration="%.2f" % delta_time 
+        @evento.timelineid=@timeline.id 
+        thdi = @evento.datainicio
+        thi = @evento.horainicio
+        @evento.datahoraindice=thi.strftime('%H:%M')+" "+thdi.strftime("%d/%m/%Y")     
         @evento.save!
         @evento=Evento.last
-        @timeline=Timeline.new
-        @timeline.idobjeto=@evento.id
-        @timeline.tipoobjeto="Agenda" 
-        #thdi = evento.datainicio
-        #thi = evento.horainicio
+
         #timeline.datahora=thdi.strftime("%d/%m/%Y")+" "+thi.strftime('%H:%M') 
         #timeline.status=agenda.status 
-        @timeline.save!    
+           
         #notify_registrationagenda("create")
         NotifyRegistrationagendaJob.set(wait: 3.seconds).perform_later("create",@agenda)
         format.html { redirect_to agenda_url(@agenda), notice: "Evento da Agenda foi Criado com Sucesso!" }
@@ -105,7 +113,10 @@ class AgendasController < ApplicationController
         @evento.horafim=@agenda.horafim       
         @evento.status=@agenda.status
         @evento.enviarparaparticipante=@agenda.enviarparaparticipante 
-        @evento.tipoparticipanteconvite=@agenda.tipoparticipanteconvite 
+        @evento.tipoparticipanteconvite=@agenda.tipoparticipanteconvite
+        thdi = @evento.datainicio
+        thi = @evento.horainicio
+        @evento.datahoraindice=thi.strftime('%H:%M')+" "+thdi.strftime("%d/%m/%Y")
         delta_time = (@evento.horafim - @evento.horainicio)/60
         @evento.duration="%.2f" % delta_time   
         @evento.save!

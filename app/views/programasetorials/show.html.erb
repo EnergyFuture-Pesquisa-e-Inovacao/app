@@ -57,7 +57,7 @@
 
                             <p class="button white white-tertiary"><%= link_to "Editar o Programa", edit_programasetorial_path(@programasetorial) %> </p>
                             <p class="button white white-tertiary"><%= link_to "Adicionar Eventos", "/homea/adicionareventops?idpg=#{@programasetorial.id}"%></p>
-                            <p class="button white white-tertiary"><%= link_to "Adicionar Arquivos", "/homea/adicionararquivops?idpg=#{@programasetorial.id}"%></p>
+                            <p class="button white white-tertiary"><%= link_to "Adicionar Textos", "/textos/new?idpg=#{@programasetorial.id}"%></p>
                             <p class="button white white-tertiary"><%= link_to "Adicionar Arquivos2", "/arquivos/new?idpg=#{@programasetorial.id}"%></p>                                                                                                 
                             
 
@@ -68,11 +68,11 @@
                 <!-- /EVENT PREVIEW -->
 
             </div>
-
 <%@eventos=Evento.where(tipoobjeto:"Programa Setorial",idobjeto:@programasetorial.id)%>
 <%ideventos=@eventos.select(:id)%>
 <%@timelines=Timeline.where(tipoobjeto:"Programa Setorial").where("idobjeto IN (?)",ideventos)%>
 </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> 
+<h5>Eventos</h5>
   <table class="table">
     <thead class="table-light">
       <tr>
@@ -102,9 +102,36 @@
 
 
 
+<%@timelines=Timeline.where(tipoobjeto:"Programa Setorial").where("idobjeto IN (?)",@programasetorial.id)%>
+<%@arquivos=Arquivo.where(tipoobjeto:"Programa Setorial",idobjeto:@programasetorial.id).order(:indicetm)%>
+<%@arquivos=@arquivos.select(:id,:indicetm,:datahoraindice,:status,:idobjeto)%>
+<%@eventos=Evento.where(tipoobjeto:"Programa Setorial",idobjeto:@programasetorial.id).order(:indicetm)%>
+<%@eventos=@eventos.select(:id,:indicetm,:datahoraindice,:status,:idobjeto)%>
+<%@textos=Texto.where(tipoobjeto:"Programa Setorial",idobjeto:@programasetorial.id).order(:indicetm)%>
+<%@textos=@textos.select(:id,:indicetm,:datahoraindice,:status,:idobjeto)%>
+<%json = { "timelines2" => [
+         {"tipoobjeto" => 0, "id" => 0},
+         {"tipoobjeto" => 0, "id" => 0}
+       ]}%>
+<% @arquivos.each do |arquivo| %>
+  <%json["timelines2"].push({"tipoobjeto" => "Arquivo", "id" => arquivo.id})%>
+<%end%>  
+<% @eventos.each do |evento| %>
+  <%json["timelines2"].push({"tipoobjeto" => "Evento", "id" => evento.id})%>
+<%end%>  
+<% @textos.each do |texto| %>
+  <%json["timelines2"].push({"tipoobjeto" => "Texto", "id" => texto.id})%>
+<%end%> 
 
-        
+<%=@timelines2%>
+  
 
-        
+</br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> 
+<h5>Timeline</h5>
+
+
+
+
+     
  </div>
 <%= render "shared/footer-new"%>

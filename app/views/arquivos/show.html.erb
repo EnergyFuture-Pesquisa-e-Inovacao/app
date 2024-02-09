@@ -1,4 +1,4 @@
-<!-- Bcurriculo Details Showing -->
+<!-- Arquivos Details Showing -->
 <div class="container">
   <div class="flex-column set-center">
     <h3 class="text-center">Detalhes Arquivos</h3>
@@ -32,8 +32,8 @@
    <div class="d-flex flex-column align-items-center">
     <div class="card text-center" style="height:70%; width: 60rem;">
      <div class="card-body">  
-     <% if @bcurriculo.images.attached? %>
-      <% @bcurriculo.images.each do |pimage| %>
+     <% if @arquivo.images.attached? %>
+      <% @arquivo.images.each do |pimage| %>
         <p><span><%=pimage.filename%></span></p>
         <%= link_to "Remover arquivo anexado", delete_an_image_url(attachment_id: pimage.id, arquivo_id: @arquivo.id),
         data: {

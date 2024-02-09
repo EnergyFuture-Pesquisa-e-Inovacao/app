@@ -1,0 +1,24 @@
+<br>
+<div>
+    <table class="table table-info table-striped">
+    <thead class="table-secondary">
+       <tr>
+         <th>título</th>
+         <th>status</th>
+         <th>Show</th>
+       </tr>
+     </thead>
+     <tbody>
+     <% @textos.each do |texto| %>
+       <tr>
+         <td><%= texto.title %></td>
+         <td><%= texto.status %></td>
+         <td><%= link_to 'Show', texto, data: { turbo_frame: "_top" } %></td>
+       </tr>
+     <% end %>
+     </tbody>
+   </table>
+    <br>    
+</div>
+
+

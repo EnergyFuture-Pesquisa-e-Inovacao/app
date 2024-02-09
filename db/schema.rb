@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_18_092758) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_08_092059) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -60,6 +60,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_18_092758) do
     t.datetime "updated_at", null: false
     t.integer "tipoevento"
     t.integer "tipoparticipanteconvite"
+    t.integer "indicetm"
   end
 
   create_table "arquivos", force: :cascade do |t|
@@ -71,6 +72,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_18_092758) do
     t.integer "tipoarquivo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "timelineid"
+    t.datetime "datahoraindice"
+    t.integer "indicetm"
   end
 
   create_table "empresas", force: :cascade do |t|
@@ -111,6 +115,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_18_092758) do
     t.string "descricaocurta"
     t.integer "tipoparticipanteconvite"
     t.string "idcalendar"
+    t.integer "timelineid"
+    t.datetime "datahoraindice"
+    t.integer "indicetm"
   end
 
   create_table "eventosusers", force: :cascade do |t|
@@ -171,12 +178,26 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_18_092758) do
     t.index ["user_id"], name: "index_programasusers_on_user_id"
   end
 
+  create_table "textos", force: :cascade do |t|
+    t.string "title"
+    t.string "conteudo"
+    t.integer "status"
+    t.integer "idobjeto"
+    t.integer "tipoobjeto"
+    t.integer "timelineid"
+    t.datetime "datahoraindice"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "indicetm"
+  end
+
   create_table "timelines", force: :cascade do |t|
     t.integer "idobjeto"
     t.integer "tipoobjeto"
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "indiceobjetos"
   end
 
   create_table "userequipes", force: :cascade do |t|
