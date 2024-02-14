@@ -51,214 +51,59 @@
   <!-- /PAGE LOADER -->
 
   <!-- NAVIGATION WIDGET -->
-  <nav id="navigation-widget-small" class="navigation-widget navigation-widget-desktop closed sidebar left delayed">
-
-    <!-- MENU -->
-    <ul class="menu small">
-      <li class="menu-item" id="ma1">
-        <a class="menu-item-link text-tooltip-tfr" href="/home/agenda" data-title="Agenda do Hub">
-          <svg class="menu-item-link-icon icon-events-monthly">
-            <use xlink:href="#svg-events-monthly"></use>
-          </svg>
-        </a>
-      </li>
-      <li class="menu-item" id="ma2">
-        <a class="menu-item-link text-tooltip-tfr" href="/home/programasetorials" data-title="Programas Setoriais">
-          <svg class="menu-item-link-icon icon-trophy">
-            <use xlink:href="#svg-trophy"></use>
-          </svg>
-        </a>
-      </li>
-      <li class="menu-item" id="ma7">
-        <a class="menu-item-link text-tooltip-tfr" href="/home/academy" data-title="Academy">
-          <svg class="menu-item-link-icon icon-events-weekly">
-            <use xlink:href="#svg-events-weekly"></use>
-          </svg>
-        </a>
-      </li>      
-      <li class="menu-item" id="ma7">
-        <a class="menu-item-link text-tooltip-tfr" href="/home/propdi" data-title="ProPDI">
-          <svg class="menu-item-link-icon icon-events-weekly">
-            <use xlink:href="#svg-events-weekly"></use>
-          </svg>
-        </a>
-      </li>        
-      <li class="menu-item" id="ma6">
-        <a class="menu-item-link text-tooltip-tfr" href="/home/feedinovacao" data-title="Feed de Inovação">
-          <svg class="menu-item-link-icon icon-badges">
-            <use xlink:href="#svg-badges"></use>
-          </svg>
-        </a>
-      </li>
-      <li class="menu-item" id="ma7">
-        <a class="menu-item-link text-tooltip-tfr" href="/home/radardesafios" data-title="Radar de Desafios">
-          <svg class="menu-item-link-icon icon-events-weekly">
-            <use xlink:href="#svg-events-weekly"></use>
-          </svg>
-        </a>
-      </li>
-
-    </ul>
-    <!-- /MENU -->
-  </nav>
-  <!-- /NAVIGATION WIDGET -->
-
-  <!-- NAVIGATION WIDGET -->
-  <nav id="navigation-widget" class="navigation-widget navigation-widget-desktop sidebar left hidden" data-simplebar>
+  <nav id="navigation-widget" class="navigation-widget navigation-widget-desktop sidebar left" data-simplebar>
 
     <!-- MENU -->
     <ul class="menu">
-
-      <!-- MENU ITEM -->
-      <li class="menu-item active">
-        <!-- MENU ITEM LINK -->
-        <a class="menu-item-link" href="/home/agenda">
-          <!-- MENU ITEM LINK ICON -->
-          <svg class="menu-item-link-icon icon-public">
-            <use xlink:href="#svg-public"></use>
-          </svg>
-          <!-- /MENU ITEM LINK ICON -->
-          Início
-        </a>
-        <!-- /MENU ITEM LINK -->
-      </li>
-      <!-- /MENU ITEM -->
-
-
-      <!-- MENU ITEM -->
-      <li class="menu-item active">
-        <!-- MENU ITEM LINK -->
-        <a class="menu-item-link" href="/home/agenda">
-          <!-- MENU ITEM LINK ICON -->
+      <li class="menu-item <%= 'active' if url_for(only_path: true) == '/home/agenda' %>">
+        <a class="menu-item-link text-tooltip-tfr" href="/home/agenda">
           <svg class="menu-item-link-icon icon-events-monthly">
             <use xlink:href="#svg-events-monthly"></use>
           </svg>
-          <!-- /MENU ITEM LINK ICON -->
           Agenda do Hub
         </a>
-        <!-- /MENU ITEM LINK -->
       </li>
-      <!-- /MENU ITEM -->
-
-      <!-- MENU ITEM -->
-      <li class="menu-item">
-        <!-- MENU ITEM LINK -->
-        <a class="menu-item-link" href="groups.html">
-          <!-- MENU ITEM LINK ICON -->
-          <svg class="menu-item-link-icon icon-group">
-            <use xlink:href="#svg-group"></use>
+      <li class="menu-item <%= 'active' if url_for(only_path: true) == '/home/programasetorials' %>">
+        <a class="menu-item-link text-tooltip-tfr" href="/home/programasetorials">
+          <svg class="menu-item-link-icon icon-trophy">
+            <use xlink:href="#svg-trophy"></use>
           </svg>
-          <!-- /MENU ITEM LINK ICON -->
-          Groups
+          Programas Setoriais
         </a>
-        <!-- /MENU ITEM LINK -->
       </li>
-      <!-- /MENU ITEM -->
-
-      <!-- MENU ITEM -->
-      <li class="menu-item">
-        <!-- MENU ITEM LINK -->
-        <a class="menu-item-link" href="members.html">
-          <!-- MENU ITEM LINK ICON -->
-          <svg class="menu-item-link-icon icon-members">
-            <use xlink:href="#svg-members"></use>
+      <li class="menu-item <%= 'active' if url_for(only_path: true) == '/home/academy' %>">
+        <a class="menu-item-link text-tooltip-tfr" href="/home/academy">
+          <svg class="menu-item-link-icon icon-events-weekly">
+            <use xlink:href="#svg-events-weekly"></use>
           </svg>
-          <!-- /MENU ITEM LINK ICON -->
-          Members
+          Academy
         </a>
-        <!-- /MENU ITEM LINK -->
-      </li>
-      <!-- /MENU ITEM -->
-
-      <!-- MENU ITEM -->
-      <li class="menu-item">
-        <!-- MENU ITEM LINK -->
-        <a class="menu-item-link" href="badges.html">
-          <!-- MENU ITEM LINK ICON -->
+      </li>      
+      <li class="menu-item <%= 'active' if url_for(only_path: true) == '/home/propdi' %>">
+        <a class="menu-item-link text-tooltip-tfr" href="/home/propdi">
+          <svg class="menu-item-link-icon icon-events-weekly">
+            <use xlink:href="#svg-events-weekly"></use>
+          </svg>
+          ProPDI
+        </a>
+      </li>        
+      <li class="menu-item <%= 'active' if url_for(only_path: true) == '/home/feedinovacao' %>">
+        <a class="menu-item-link text-tooltip-tfr" href="/home/feedinovacao">
           <svg class="menu-item-link-icon icon-badges">
             <use xlink:href="#svg-badges"></use>
           </svg>
-          <!-- /MENU ITEM LINK ICON -->
-          Badges
+          Feed de Inovação
         </a>
-        <!-- /MENU ITEM LINK -->
       </li>
-      <!-- /MENU ITEM -->
-
-      <!-- MENU ITEM -->
-      <li class="menu-item">
-        <!-- MENU ITEM LINK -->
-        <a class="menu-item-link" href="quests.html">
-          <!-- MENU ITEM LINK ICON -->
-          <svg class="menu-item-link-icon icon-quests">
-            <use xlink:href="#svg-quests"></use>
+      <li class="menu-item <%= 'active' if url_for(only_path: true) == '/home/radardesafios' %>">
+        <a class="menu-item-link text-tooltip-tfr" href="/home/radardesafios">
+          <svg class="menu-item-link-icon icon-events-weekly">
+            <use xlink:href="#svg-events-weekly"></use>
           </svg>
-          <!-- /MENU ITEM LINK ICON -->
-          Quests
+          Radar de Desafios
         </a>
-        <!-- /MENU ITEM LINK -->
       </li>
-      <!-- /MENU ITEM -->
 
-      <!-- MENU ITEM -->
-      <li class="menu-item">
-        <!-- MENU ITEM LINK -->
-        <a class="menu-item-link" href="streams.html">
-          <!-- MENU ITEM LINK ICON -->
-          <svg class="menu-item-link-icon icon-streams">
-            <use xlink:href="#svg-streams"></use>
-          </svg>
-          <!-- /MENU ITEM LINK ICON -->
-          Streams
-        </a>
-        <!-- /MENU ITEM LINK -->
-      </li>
-      <!-- /MENU ITEM -->
-
-      <!-- MENU ITEM -->
-      <li class="menu-item">
-        <!-- MENU ITEM LINK -->
-        <a class="menu-item-link" href="events.html">
-          <!-- MENU ITEM LINK ICON -->
-          <svg class="menu-item-link-icon icon-events">
-            <use xlink:href="#svg-events"></use>
-          </svg>
-          <!-- /MENU ITEM LINK ICON -->
-          Events
-        </a>
-        <!-- /MENU ITEM LINK -->
-      </li>
-      <!-- /MENU ITEM -->
-
-      <!-- MENU ITEM -->
-      <li class="menu-item">
-        <!-- MENU ITEM LINK -->
-        <a class="menu-item-link" href="forums.html">
-          <!-- MENU ITEM LINK ICON -->
-          <svg class="menu-item-link-icon icon-forums">
-            <use xlink:href="#svg-forums"></use>
-          </svg>
-          <!-- /MENU ITEM LINK ICON -->
-          Forums
-        </a>
-        <!-- /MENU ITEM LINK -->
-      </li>
-      <!-- /MENU ITEM -->
-
-      <!-- MENU ITEM -->
-      <li class="menu-item">
-        <!-- MENU ITEM LINK -->
-        <a class="menu-item-link" href="marketplace.html">
-          <!-- MENU ITEM LINK ICON -->
-          <svg class="menu-item-link-icon icon-marketplace">
-            <use xlink:href="#svg-marketplace"></use>
-          </svg>
-          <!-- /MENU ITEM LINK ICON -->
-          Marketplace
-        </a>
-        <!-- /MENU ITEM LINK -->
-      </li>
-      <!-- /MENU ITEM -->
     </ul>
     <!-- /MENU -->
   </nav>
@@ -347,7 +192,7 @@
       <!-- /NAVIGATION WIDGET INFO -->
 
       <!-- NAVIGATION WIDGET BUTTON -->
-      <p class="navigation-widget-info-button button small secondary">Sair</p>
+      <p class="button small secondary full">Sair</p>
       <!-- /NAVIGATION WIDGET BUTTON -->
     </div>
     <!-- /NAVIGATION WIDGET INFO WRAP -->
@@ -682,8 +527,7 @@
           <!-- /DROPDOWN NAVIGATION LINK -->
 
           <!-- DROPDOWN NAVIGATION BUTTON -->
-          <p class="dropdown-navigation-button button small secondary"> 
-          <%= link_to('Sair',  destroy_user_session_path)%></p>
+          <%= link_to('Sair',  destroy_user_session_path, :class => "button small secondary full mt-3")%>
           <!-- /DROPDOWN NAVIGATION BUTTON -->
         </div>
         <!-- /DROPDOWN NAVIGATION -->
