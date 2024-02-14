@@ -31,7 +31,9 @@
                 <!-- EVENT PREVIEW -->
                 <div class="event-preview">
                     <figure class="event-preview-cover liquid">
+                        <%if @programasetorial.main_imagepg.present?%>
                         <%= image_tag(@programasetorial.main_imagepg, alt: "cover-40") %>
+                        <%end%>
                     </figure>
                     <div class="event-preview-info">
                         <div class="event-preview-info-top">
@@ -109,27 +111,52 @@
 <%@eventos=@eventos.select(:id,:indicetm,:datahoraindice,:status,:idobjeto)%>
 <%@textos=Texto.where(tipoobjeto:"Programa Setorial",idobjeto:@programasetorial.id).order(:indicetm)%>
 <%@textos=@textos.select(:id,:indicetm,:datahoraindice,:status,:idobjeto)%>
-<%json = { "timelines2" => [
-         {"tipoobjeto" => 0, "id" => 0},
-         {"tipoobjeto" => 0, "id" => 0}
-       ]}%>
+<%json = { "timelines2" => []}%>
 <% @arquivos.each do |arquivo| %>
-  <%json["timelines2"].push({"tipoobjeto" => "Arquivo", "id" => arquivo.id})%>
+  <%json["timelines2"].push({"tipoobjeto" => "Arquivo", "id" => arquivo.id, 
+     "datahoraindice" => arquivo.datahoraindice,"indicetm" => arquivo.indicetm,
+     "status" => arquivo.status})%>
 <%end%>  
 <% @eventos.each do |evento| %>
-  <%json["timelines2"].push({"tipoobjeto" => "Evento", "id" => evento.id})%>
+  <%json["timelines2"].push({"tipoobjeto" => "Evento", "id" => evento.id, 
+  "datahoraindice" => evento.datahoraindice,"indicetm" => evento.indicetm,
+  "status" => evento.status})%>
 <%end%>  
 <% @textos.each do |texto| %>
-  <%json["timelines2"].push({"tipoobjeto" => "Texto", "id" => texto.id})%>
+  <%json["timelines2"].push({"tipoobjeto" => "Texto", "id" => texto.id, 
+  "datahoraindice" => texto.datahoraindice,"indicetm" => texto.indicetm,
+  "status" => texto.status})%>
 <%end%> 
 
-<%=@timelines2%>
+<%testeorder=json["timelines2"].sort_by { |hash| hash['indicetm'].to_i }%>
   
 
 </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> 
 <h5>Timeline</h5>
 
 
+
+  <table class="table">
+    <thead class="table-light">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">tipoobjeto</th>
+        <th scope="col">datahoraindice</th>
+        <th scope="col">indicetm</th>
+        <th scope="col">status</th>
+      </tr>
+    <tbody>
+      <% testeorder.each do |teste| %>
+      <tr>
+       <td><%= teste["id"] %></td>    
+       <td><%= teste["tipoobjeto"] %></td> 
+       <td><%= teste["datahoraindice"] %></td> 
+       <td><%= teste["indicetm"] %></td> 
+       <td><%= teste["status"]%>
+  </tr>
+  <% end %>
+    </tbody>
+  </table>
 
 
      
