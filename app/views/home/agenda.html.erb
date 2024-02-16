@@ -30,7 +30,7 @@
                 <!-- /SECTION HEADER INFO -->
             </div>
         
-            <div class="grid grid-3-3-3-3 centered">
+            <div class="row mt-5">
               <% @eventosrec.each do |evento| %>
                 <%agenda=Agenda.where(id:evento.idobjeto)%>
                 <%if agenda[0].present?%>
@@ -40,59 +40,61 @@
                 <%if timeline[0].present?%>
                  <%@timeline=Timeline.find(timeline[0].id)%> 
                 <%end%> 
-                <!-- EVENT PREVIEW -->
-                <div class="event-preview">
-                    <% if  @agenda.main_image.attached? %>
-                            <figure class="event-preview-cover liquid">
-                             <%= image_tag(@agenda.main_image) %>
-                            </figure>
-                    <% end %>    
-                    <div class="event-preview-info">
-                        <div class="event-preview-info-top">
-                          <div class="date-sticker">
-                            <%td = evento.datainicio %>
-                            <p class="date-sticker-day"><%=td.strftime('%d')%></p>
-                            <p class="date-sticker-month"><%=td.strftime('%b')%></p>
-                          </div>
-                          <%thi = evento.horainicio %>
-                          <%thf = evento.horafim %>
-                          <p class="event-preview-title popup-event-information-trigger"><%= evento.name %></p>
-                          <p class="event-preview-timestamp"><b><%=thi.strftime('%H:%M') + " - " + thf.strftime('%H:%M')%></b></p>
-                          <%if agenda[0].present?%>
-                           <p class="event-preview-text"></p>
-                            <div class="decorated-text">
-                                <!-- DECORATED TEXT ICON -->
-                                <svg class="decorated-text-icon icon-pin">
-                                    <use xlink:href="#svg-pin"></use>
-                                </svg>
-                                <!-- /DECORATED TEXT ICON -->
-                        
-                                <!-- DECORATED TEXT CONTENT -->
-                                <p class="decorated-text-content"><%= @agenda.tipoevento%></p>
-                                <!-- /DECORATED TEXT CONTENT -->
-                                </div>
-                          <%end%> 
-                         
-                           <% if evento.descricaocurta.present?%>
-                           <p class="event-preview-text"><%= evento.descricaocurta.slice! 0, 80  %></p>
-                           <%end%>
-                                                 
-                        </div>
-                        <% eventouser=Eventosuser.where(evento_id:evento.id,user_id:current_user.id,tipoobjeto:"Agenda")%>
-                        <% if !eventouser.present? %>
-                         <div class="event-preview-info-bottom">
-                            <%if @agenda.tipoevento.eql?"Energy Future"%>
-                              <p class="button white"  style="margin-top: 0px;"><%= link_to "PARTICIPAR", "/home/participarevento?id=#{evento.id}&idobjeto=#{evento.idobjeto}&tipoobjeto=#{evento.tipoobjeto}"%></p>
-                            <%elsif @agenda.tipoevento.eql?"Ecossistema"%>
-                              <p class="button white"  style="margin-top: 0px;"><%= link_to "ENTRAR NO EVENTO", "//#{evento.linkevento}"%></p>
+                <div class="col-lg-3 col-md-6 col-xs-12 mb-3">
+                    <!-- EVENT PREVIEW -->
+                    <div class="event-preview">
+                        <% if  @agenda.main_image.attached? %>
+                                <figure class="event-preview-cover liquid">
+                                <%= image_tag(@agenda.main_image) %>
+                                </figure>
+                        <% end %>    
+                        <div class="event-preview-info">
+                            <div class="event-preview-info-top">
+                            <div class="date-sticker">
+                                <%td = evento.datainicio %>
+                                <p class="date-sticker-day"><%=td.strftime('%d')%></p>
+                                <p class="date-sticker-month"><%=td.strftime('%b')%></p>
+                            </div>
+                            <%thi = evento.horainicio %>
+                            <%thf = evento.horafim %>
+                            <p class="event-preview-title popup-event-information-trigger"><%= evento.name %></p>
+                            <p class="event-preview-timestamp"><b><%=thi.strftime('%H:%M') + " - " + thf.strftime('%H:%M')%></b></p>
+                            <%if agenda[0].present?%>
+                            <p class="event-preview-text"></p>
+                                <div class="decorated-text">
+                                    <!-- DECORATED TEXT ICON -->
+                                    <svg class="decorated-text-icon icon-pin">
+                                        <use xlink:href="#svg-pin"></use>
+                                    </svg>
+                                    <!-- /DECORATED TEXT ICON -->
+                            
+                                    <!-- DECORATED TEXT CONTENT -->
+                                    <p class="decorated-text-content"><%= @agenda.tipoevento%></p>
+                                    <!-- /DECORATED TEXT CONTENT -->
+                                    </div>
                             <%end%> 
-                         </div>
-                         
-                         <%end%>
+                            
+                            <% if evento.descricaocurta.present?%>
+                            <p class="event-preview-text"><%= evento.descricaocurta.slice! 0, 80  %></p>
+                            <%end%>
+                                                    
+                            </div>
+                            <% eventouser=Eventosuser.where(evento_id:evento.id,user_id:current_user.id,tipoobjeto:"Agenda")%>
+                            <% if !eventouser.present? %>
+                            <div class="event-preview-info-bottom">
+                                <%if @agenda.tipoevento.eql?"Energy Future"%>
+                                <p class="button white"  style="margin-top: 0px;"><%= link_to "PARTICIPAR", "/home/participarevento?id=#{evento.id}&idobjeto=#{evento.idobjeto}&tipoobjeto=#{evento.tipoobjeto}"%></p>
+                                <%elsif @agenda.tipoevento.eql?"Ecossistema"%>
+                                <p class="button white"  style="margin-top: 0px;"><%= link_to "ENTRAR NO EVENTO", "//#{evento.linkevento}"%></p>
+                                <%end%> 
+                            </div>
+                            
+                            <%end%>
+                        </div>
                     </div>
                 </div>
-                <% end %>
                 <!-- /EVENT PREVIEW -->
+                <% end %>
             </div>
 
 

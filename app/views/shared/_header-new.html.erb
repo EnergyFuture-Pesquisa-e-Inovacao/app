@@ -55,7 +55,7 @@
 
     <!-- MENU -->
     <ul class="menu">
-      <li class="menu-item <%= 'active' if url_for(only_path: true) == '/home/agenda' %>">
+      <li class="menu-item <%= 'active' if url_for(only_path: true).include? '/home/agenda' %>">
         <a class="menu-item-link text-tooltip-tfr" href="/home/agenda">
           <svg class="menu-item-link-icon icon-events-monthly">
             <use xlink:href="#svg-events-monthly"></use>
@@ -63,7 +63,7 @@
           Agenda do Hub
         </a>
       </li>
-      <li class="menu-item <%= 'active' if url_for(only_path: true) == '/home/programasetorials' %>">
+      <li class="menu-item <%= 'active' if url_for(only_path: true).include? '/home/programasetorials' %> <%= 'active' if url_for(only_path: true).include? '/home/programatimeline' %>">
         <a class="menu-item-link text-tooltip-tfr" href="/home/programasetorials">
           <svg class="menu-item-link-icon icon-trophy">
             <use xlink:href="#svg-trophy"></use>
@@ -71,7 +71,7 @@
           Programas Setoriais
         </a>
       </li>
-      <li class="menu-item <%= 'active' if url_for(only_path: true) == '/home/academy' %>">
+      <li class="menu-item <%= 'active' if url_for(only_path: true).include? '/home/academy' %>">
         <a class="menu-item-link text-tooltip-tfr" href="/home/academy">
           <svg class="menu-item-link-icon icon-events-weekly">
             <use xlink:href="#svg-events-weekly"></use>
@@ -79,7 +79,7 @@
           Academy
         </a>
       </li>      
-      <li class="menu-item <%= 'active' if url_for(only_path: true) == '/home/propdi' %>">
+      <li class="menu-item <%= 'active' if url_for(only_path: true).include? '/home/propdi' %>">
         <a class="menu-item-link text-tooltip-tfr" href="/home/propdi">
           <svg class="menu-item-link-icon icon-events-weekly">
             <use xlink:href="#svg-events-weekly"></use>
@@ -87,7 +87,7 @@
           ProPDI
         </a>
       </li>        
-      <li class="menu-item <%= 'active' if url_for(only_path: true) == '/home/feedinovacao' %>">
+      <li class="menu-item <%= 'active' if url_for(only_path: true).include? '/home/feedinovacao' %>">
         <a class="menu-item-link text-tooltip-tfr" href="/home/feedinovacao">
           <svg class="menu-item-link-icon icon-badges">
             <use xlink:href="#svg-badges"></use>
@@ -95,7 +95,7 @@
           Feed de Inovação
         </a>
       </li>
-      <li class="menu-item <%= 'active' if url_for(only_path: true) == '/home/radardesafios' %>">
+      <li class="menu-item <%= 'active' if url_for(only_path: true).include? '/home/radardesafios' %>">
         <a class="menu-item-link text-tooltip-tfr" href="/home/radardesafios">
           <svg class="menu-item-link-icon icon-events-weekly">
             <use xlink:href="#svg-events-weekly"></use>

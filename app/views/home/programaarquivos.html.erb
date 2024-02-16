@@ -5,6 +5,13 @@
         <%= image_tag(@programasetorial.main_imagepg) %>
       </figure>
 
+      <% if current_user.empresa_id.present? %>
+        <%empresa=Empresa.find(current_user.empresa_id)%>
+        <%usersid=User.select(:id).where(empresa_id:current_user.empresa_id)%>
+        <%@programasusers=Programasuser.where(programasetorial_id:@programasetorial.id).where("user_id IN (?)",usersid)%>
+        <%@programaarquivos=Arquivo.where(idobjeto:@programasetorial.id).where(tipoobjeto:"Programa Setorial")%>
+      <%end%>
+
       <div class="profile-header-info">
         <div class="user-short-description big">
           <a class="user-short-description-avatar user-avatar big no-stats" href="group-timeline.html">
@@ -126,208 +133,34 @@
         </div>
       </div>
     </nav>
-
-    <div class="grid grid-3-6-3 mobile-prefer-content">
-      <div class="grid-column">
-        <div class="widget-box">
-          <p class="widget-box-title">Informações do Ciclo</p>
-
-          <div class="widget-box-content">
-            <p class="paragraph"><%=@programasetorial.descricaocurta%></p>
-
-            <div class="information-line-list">
-              <div class="information-line">
-                <p class="information-line-title">Ano</p>
-                <p class="information-line-text"><%=@programasetorial.ano%></p>
-              </div>
-
-              <div class="information-line">
-                <p class="information-line-title">E-mail</p>
-                <p class="information-line-text"><a href="mailto:setorial@enerfuture.com.br">Enviar e-mail</a></p>
-              </div>
-
-              <div class="information-line">
-                <p class="information-line-title">Site</p>
-                <p class="information-line-text"><a href="https://www.energyfuture.com.br/ciclo-esg" target="_blank">Acessar site</a></p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="widget-box">
-          <p class="widget-box-title">Participantes</p>
-
-          <div class="widget-box-content">
-            <div class="filters">
-              <p class="filter">Minha empresa</p>
-              <p class="filter active">Todos</p>
-            </div>
-
-            <div class="user-status-list">
-              <% if current_user.empresa_id.present? %>
-                <%empresa=Empresa.find(current_user.empresa_id)%>
-                <%usersid=User.select(:id).where(empresa_id:current_user.empresa_id)%>
-                <%@programasusers=Programasuser.where(programasetorial_id:@programasetorial.id).where("user_id IN (?)",usersid)%>
-                <%if @programasusers.present?%>
-                  <% @programasusers.each do |programasuser| %>
-                    <%user=User.find(programasuser.user_id)%>
-                    <div class="user-status request-small">
-                      <a class="user-status-avatar" href="#">
-                        <div class="user-avatar small no-outline">
-                          <div class="user-avatar-content">
-                            <div class="hexagon-image-30-32" data-src="<%= "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/avatar/15.jpg" %>"></div>
-                          </div>
-                        </div>
-                      </a>
-                      <p class="user-status-title"><span class="bold"><%=user.name%></span></p>
-                      <p class="user-status-text small">24.5K profile views</p>
-                  
-                      <div class="action-request-list">
-                        <div class="action-request accept">
-                          <svg class="action-request-icon icon-add-friend">
-                            <use xlink:href="#svg-add-friend"></use>
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                  <%end%>
-                <%end%>
-              <%end%>
-            </div>
-          </div>
+    <div class="grid grid-4-4-4 centered">
+      <div class="badge-item-preview">
+        <div class="badge-item-preview-image d-flex align-items-center justify-content-center">PDF</div>
+        <div class="badge-item-preview-info">
+          <p class="badge-item-preview-title">Arquivo.pdf</p>
+          <p class="badge-item-preview-timestamp">15/02/2024</p>
         </div>
       </div>
-
-      <div class="grid-column">
-        <div class="widget-box no-padding">
-          <div class="widget-box-status">
-
-            <div class="widget-box-status-content">
-              <div class="user-status">
-                <a class="user-status-avatar" href="profile-timeline.html">
-                  <div class="user-avatar small no-outline">
-                    <div class="user-avatar-content">
-                      <div class="hexagon-image-30-32" data-src="<%= "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/avatar/33.jpg" %>"></div>
-                    </div>
-                  </div>
-                </a>
-            
-                <p class="user-status-title medium"><a class="bold" href="profile-timeline.html">Luiz Felipe Pamplona</a></p>
-            
-                <p class="user-status-text small">2 weeks ago</p>
-              </div>
-      
-              <p class="widget-box-status-text">Atualização importante sobre o Ciclo: A data de envio das propostas para a chamada social foi adiada para o dia 24. Aproveitem para melhorar ainda mais suas propostas!</p>
-      
-              <a class="video-status" href="https://discordapp.com/" target="_blank">
-                <img class="video-status-image" src="<%= "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/cover/52.jpg" %>" alt="cover-52">
-      
-                <div class="video-status-info">
-                  <p class="video-status-meta">discordapp.com</p>
-      
-                  <p class="video-status-title"><span class="bold">Cosplayers of the World</span> on <span class="highlighted">Discord</span></p>
-      
-                  <p class="video-status-text">Let's talk about everything cosplay related!.</p>
-                </div>
-              </a>
-            </div>
-          </div>
+      <div class="badge-item-preview">
+        <div class="badge-item-preview-image d-flex align-items-center justify-content-center">PDF</div>
+        <div class="badge-item-preview-info">
+          <p class="badge-item-preview-title">Arquivo.pdf</p>
+          <p class="badge-item-preview-timestamp">15/02/2024</p>
         </div>
       </div>
-
-      <div class="grid-column">
-        <div class="widget-box">
-          <p class="widget-box-title">Organizadores</p>
-
-          <div class="widget-box-content">
-            <div class="user-status-list">
-              <div class="user-status">
-                <a class="user-status-avatar" href="profile-timeline.html">
-                  <div class="user-avatar small no-outline">
-                    <div class="user-avatar-content">
-                      <div class="hexagon-image-30-32" data-src="<%= "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/avatar/33.jpg" %>"></div>
-                    </div>
-                  </div>
-                </a>
-            
-                <p class="user-status-title"><a class="bold" href="profile-timeline.html">Luiz Felipe Pamplona</a></p>
-            
-                <p class="user-status-text small">Sócio do EnergyFuture</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="widget-box">
-          <p class="widget-box-title">Próximo(s) evento(s) <span class="highlighted">1</span></p>
-          <div class="widget-box-content mt-0">
-            <div class="event-preview-list">
-              <% @eventos = Evento.where(tipoobjeto:"Programa Setorial",idobjeto:@programasetorial.id,status:"ativo")%>
-              <% @eventos.each do |evento| %>
-                <div class="event-preview small">
-                  <!--<figure class="event-preview-cover liquid">
-                    <img src="<%= "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/cover/33.jpg" %>" alt="cover-33">
-                  </figure> -->
-                  <div class="event-preview-info">
-                    <%timeline=Timeline.where(idobjeto:evento.id,tipoobjeto:"Programa Setorial")%>
-                    <%thdi=evento.datainicio%>
-                    <!--<p class="user-status-text small">Data Início: <%=thdi.strftime("%d /%m/%Y")%></p>
-                    <p class="user-status-text small">Empresas: <%=@programasetorial.empresa%></p>
-                    <p class="user-status-text small">Parceiros: <%=@programasetorial.parceiro%></p> -->
-                    <%thi=evento.horainicio%>
-                    <%thf=evento.horafim%>
-                    <div class="date-sticker">
-                      <p class="date-sticker-day"><%=thdi.strftime("%d")%></p>
-                      <p class="date-sticker-month"><%=thdi.strftime("%b")%></p>
-                    </div>
-                    <p class="event-preview-title popup-event-information-trigger">[Nome do Evento]</p>
-                    <p class="event-preview-timestamp"><%=thi.strftime('%H:%M')%> - <%= thf.strftime('%H:%M') %></p>
-                    <p class="event-preview-text">Texto caso necessite</p>
-                    <!--<p class="event-preview-timestamp">Duração: <%= (Float(evento.duration) / 60.0).floor%><%= (Float(evento.duration)%60).floor == 0 ? "" : ":" + (Float(evento.duration)%60).floor %> horas</p>-->
-                    <%timeline=Timeline.where(idobjeto:evento.id,tipoobjeto:"Programa Setorial")%>
-                    <div class="form-item mt-3">
-                      <div class="form-select">
-                        <label for="rscp">Você vai?</label>
-                        <select name="rsvp" id="rsvp">
-                          <option value="sim">Sim</option>
-                          <option value="nao">Não</option>
-                        </select>
-                      </div>
-                    </div>
-                    <!-- <div class="d-flex align-items-center justify-content-between">
-                      <span class="wrap-text: nowrap;">Você vai?</span>
-                      <p class="button white small mt-2" style="width: 50%;">
-                        <%= link_to "Selecione", "/home/participarevento?id=#{evento.id}&idobjeto=#{evento.idobjeto}&tipoobjeto=#{evento.tipoobjeto}" %>
-                      </p>
-                    </div>
-                    <div class="grid grid-6-6 mobile-prefer-content">
-                      <%if !timeline.present?%>
-                        <p class="button white small mt-2">
-                          <%= link_to "Participar", "/home/participarevento?id=#{evento.id}&idobjeto=#{evento.idobjeto}&tipoobjeto=#{evento.tipoobjeto}" %>
-                        </p>
-                      <%else%>
-                        <div class="grid-column">
-                          <div class="action-request-list">
-                            <div class="action-request accept">
-                              <svg class="action-request-icon icon-add-friend">
-                                <use xlink:href="#svg-add-friend"></use>
-                              </svg>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="grid-column">
-                          <p class="button white small mt-2">
-                            <%= link_to "Não", "/home/participarevento?id=#{evento.id}&idobjeto=#{evento.idobjeto}&tipoobjeto=#{evento.tipoobjeto}" %>
-                          </p>
-                        </div>
-                      <%end%> 
-                    </div>-->
-                  </div>
-                </div>
-              <% end %>
-            </div>
-          </div>
+      <div class="badge-item-preview">
+        <div class="badge-item-preview-image d-flex align-items-center justify-content-center">PDF</div>
+        <div class="badge-item-preview-info">
+          <p class="badge-item-preview-title">Arquivo.pdf</p>
+          <p class="badge-item-preview-timestamp">15/02/2024</p>
         </div>
       </div>
-    </div>
+      <div class="badge-item-preview">
+        <div class="badge-item-preview-image d-flex align-items-center justify-content-center">PDF</div>
+        <div class="badge-item-preview-info">
+          <p class="badge-item-preview-title">Arquivo.pdf</p>
+          <p class="badge-item-preview-timestamp">15/02/2024</p>
+        </div>
+      </div>
   </div>
 <%= render "shared/footer-new" %>

@@ -163,10 +163,14 @@
           <p class="widget-box-title">Participantes</p>
 
           <div class="widget-box-content">
-            <div class="filters">
+            <%
+=begin%>
+ <div class="filters">
               <p class="filter">Minha empresa</p>
               <p class="filter active">Todos</p>
-            </div>
+            </div> 
+<%
+=end%>
 
             <div class="user-status-list">
                 <%if @programasusers.present?%>
