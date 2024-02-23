@@ -10,7 +10,10 @@
       </ul>
     </div>
   <% end %>
-
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
   <div>
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>

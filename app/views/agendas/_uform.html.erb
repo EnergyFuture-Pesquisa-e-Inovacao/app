@@ -13,10 +13,13 @@
   <% evento=Evento.where(tipoobjeto:"Agenda").where(idobjeto:@agenda.id)%>
   <% @evento=Evento.find(evento[0].id)%>
   <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title , value:@evento.title %>
+  </div>
+  <div>
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name , value:@evento.name %>
   </div>
-
   <div>
     <%= form.label :descricao, style: "display: block" %>
     <%= form.text_area :descricao , value:@evento.descricao %>

@@ -47,6 +47,7 @@
                             <p class="date-sticker-month"><%=td.strftime('%m')%></p>
                             </div>
                           <%th = @evento.horainicio %>
+                          <p class="event-preview-title popup-event-information-trigger"><%= @evento.title %></p>
                           <p class="event-preview-title popup-event-information-trigger"><%= @evento.name %></p>
                           <p class="event-preview-title popup-event-information-trigger"><%= @agenda.tipoevento %></p>
                           <p class="event-preview-timestamp"><span class="bold"><%=th.strftime('%H:%M')%></span></p>

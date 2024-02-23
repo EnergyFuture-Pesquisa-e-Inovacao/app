@@ -15,6 +15,10 @@
   <%delta_time = (evento.horafim - evento.horainicio)/60%>
   <%duration="%.2f" % delta_time %>
   <div>
+  <%= form.label :title, style: "display: block" %>
+  <%= form.text_field :title %>
+  </div>
+  <div>
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
   </div>

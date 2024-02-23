@@ -5,6 +5,7 @@ class Agenda < ApplicationRecord
     enum tipoparticipanteconvite: { "Free":0, "ICP 1 - Pago":1 , "ICP 2 - Pago":2,
     "Todos":3,"Nenhum":4 }   
     attr_accessor :name,
+    :title,
     :descricao,
     :descricaocurta,
     :linkevento,

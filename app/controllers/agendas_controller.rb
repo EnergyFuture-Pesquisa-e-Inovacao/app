@@ -60,6 +60,7 @@ class AgendasController < ApplicationController
         @evento=Evento.new
         @evento.indicetm=1
         @evento.name=@agenda.name
+        @evento.title=@agenda.title
         @evento.descricao=@agenda.descricao
         @evento.descricaocurta=@agenda.descricaocurta
         @evento.linkevento=@agenda.linkevento        
@@ -105,6 +106,7 @@ class AgendasController < ApplicationController
       if @agenda.update(agenda_params)
         @evento.datainicio=@agenda.datainicio
         @evento.name=@agenda.name
+        @evento.title=@agenda.title
         @evento.descricao=@agenda.descricao
         @evento.descricaocurta=@agenda.descricaocurta
         @evento.linkevento=@agenda.linkevento
@@ -164,6 +166,7 @@ class AgendasController < ApplicationController
     # Only allow a list of trusted parameters through.
     def agenda_params
       params.require(:agenda).permit(
+      :title,
       :name, 
       :descricao,
       :descricaocurta,
