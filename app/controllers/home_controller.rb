@@ -114,18 +114,16 @@ class HomeController < ApplicationController
       programasuser=Programasuser.create
       programasuser.programasetorial_id=programasetorial.id
       programasuser.user_id=current_user.id
-      counteventosparticipante=0
+      #counteventosparticipante=0
       if eventos!=[]
         eventos.each do |i, evento|
-          eventosparticipante=Eventosparticipante.create
-          eventosparticipante.user_id=current_user.id
-          eventosparticipante.idobjeto=programasetorial.id
-          eventosparticipante.eventoid=evento.id
-          eventosparticipante.tipoobjeto=evento.tipoobjeto
-          eventosparticipante.idobjeto=evento.idobjeto
-          eventosparticipante.foienviado=false
-          eventosparticipante.save
-          counteventosparticipante=counteventosparticipante+1
+          eventosuser=Eventosuser.create
+          eventosuser.user_id=current_user.id
+          eventosuser.evento_id=evento.id
+          eventosuser.tipoobjeto=evento.tipoobjeto
+          #eventosparticipante.foienviado=false
+          eventosuser.save
+          #counteventosparticipante=counteventosparticipante+1
         end  
       end
       #if counteventosparticipante=!0 e eventos.count
