@@ -112,12 +112,6 @@
           </svg>
           <p class="section-menu-item-text">Arquivos</p>
         </a>
-        <a class="section-menu-item" href="/home/programapropostas?id=<%=@programasetorial.id%>">
-          <svg class="section-menu-item-icon icon-trophy">
-            <use xlink:href="#svg-trophy"></use>
-          </svg>
-          <p class="section-menu-item-text">Propostas</p>
-        </a>
       </div>
       <div id="section-navigation-slider-controls" class="slider-controls">
         <div class="slider-control left">
@@ -145,11 +139,15 @@
         <div class="col-lg-3 col-md-6 col-xs-12 mb-3">
           <!-- EVENT PREVIEW -->
           <div class="event-preview">
-            <% if  @agenda.main_image.attached? %>
+            <%
+=begin%>
+ <% if  @agenda.main_image.attached? %>
               <figure class="event-preview-cover liquid">
                 <%= image_tag(@agenda.main_image) %>
               </figure>
-            <% end %>    
+            <% end %>     
+<%
+=end%>
             <div class="event-preview-info">
               <div class="event-preview-info-top">
               <div class="date-sticker">
@@ -174,7 +172,9 @@
                 <p class="event-preview-text"><%= evento.descricaocurta.slice! 0, 80  %></p>
               <%end%>                 
             </div>
-            <% eventouser=Eventosuser.where(evento_id:evento.id,user_id:current_user.id,tipoobjeto:"Agenda")%>
+            <%
+=begin%>
+ <% eventouser=Eventosuser.where(evento_id:evento.id,user_id:current_user.id,tipoobjeto:"Agenda")%>
             <% if !eventouser.present? %>
               <div class="event-preview-info-bottom">
                 <%if @agenda.tipoevento.eql?"Energy Future"%>
@@ -183,7 +183,9 @@
                   <p class="button white"  style="margin-top: 0px;"><%= link_to "ENTRAR NO EVENTO", "//#{evento.linkevento}"%></p>
                 <%end%> 
               </div>
-            <%end%>
+            <%end%> 
+<%
+=end%>
           </div>
         </div>
       </div>

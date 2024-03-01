@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get 'home/respostaacademy'
   get 'home/respostafeedinovacao'
   get 'home/respostaradardesafios'
+  get 'home/icons'
  
   get 'homea/index'
   get 'homea/users'

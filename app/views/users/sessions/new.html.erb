@@ -1,18 +1,8 @@
 <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" %>
 <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/inputmask.js" %>
-<!-- bootstrap 4.3.1 -->
-  <%= stylesheet_link_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/css/vendor/bootstrap.min.css" %>
-  <!-- styles -->
-  <%= stylesheet_link_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/css/styles.min.css" %>
-<!-- app -->
-
-<!-- XM_Plugins -->
+<%= stylesheet_link_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/css/vendor/bootstrap.min.css" %>
+<%= stylesheet_link_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/css/styles.min.css" %>
 <%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/vendor/xm_plugins.min.js" %>
-<!-- form.utils -->
-
-<!-- landing.tabs -->
-
-<!-- SVG icons -->
 <%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/utils/svg-loader.js" %>
 <style>
   .background-img {
@@ -34,223 +24,135 @@
   input[type=password]:focus, input[type=text]:focus, select:focus, textarea:focus {
     border-color: #804aff!important;
   }
+
+  @media (max-width: 1365px) {
+    .background-img {
+      width: 100%;
+    }
+
+    .landing {
+      padding: 0;
+    }
+
+    .mx-auto-1365 {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
 </style>
 
-<!-- LANDING -->
 <div class="d-flex full-height landing">
   <%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/landing/background-autenticacao.png", alt: "rocket", class:"background-img") %>
-  <div class="row h-100" style="padding-left: 10vw; padding-right: 10vw;">
+  <div class="row h-100 mx-auto-1365" style="padding-left: 10vw; padding-right: 10vw;">
     <div class="col-lg-8 my-auto">
       <div class="landing-info" style="position: relative">
         <div class="logo">
           <%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/Design_site_energyfuture_1.svg", alt: "Logo Energy FUture") %>
         </div>
-        <!-- LANDING INFO PRETITLE -->
         <h2 class="landing-info-pretitle">Seja Bem-vindo(a)!</h2>
-        <!-- /LANDING INFO PRETITLE -->
-
-        <!-- LANDING INFO TEXT -->
         <p class="landing-info-text">Como membro, você faz parte de uma comunidade de profissionais engajados em promover o desenvolvimento sustentável do setor de energia.  <br /> <br />Aproveite eventos, webinars e ferramentas para conectar-se com outros membros e expandir sua rede de contatos profissionais. <br /> <br />Junte-se a nós agora e contribua para o desenvolvimento do setor energético!</p>
-        <!-- /LANDING INFO TEXT -->
-
-        <!-- TAB SWITCH -->
         <div class="tab-switch">
-          <!-- TAB SWITCH BUTTON -->
           <p class="tab-switch-button login-register-form-trigger">Entrar</p>
-          <!-- /TAB SWITCH BUTTON -->
-
-          <!-- TAB SWITCH BUTTON -->
           <p class="tab-switch-button login-register-form-trigger">Cadastre-se</p>
-          <!-- /TAB SWITCH BUTTON -->
         </div>
-        <!-- /TAB SWITCH -->
       </div>
     </div>
   </div>
 </div>
-<!-- /LANDING INFO -->
 
-<!-- LANDING FORM -->
 <div class="landing-form">
-  <!-- FORM BOX -->
   <div class="form-box login-register-form-element">
-
-    <!-- FORM BOX TITLE -->
     <h2 class="form-box-title">Sua conta no Energy Future</h2>
-    <!-- /FORM BOX TITLE -->
-
-    <!-- FORM -->
     <%= form_for(:user, :url => session_path(:user), html: { class: "form" }) do |f| %>
-      <!-- FORM ROW -->
       <div class="form-row">
-        <!-- FORM ITEM -->
         <div class="form-item">
-          <!-- FORM INPUT -->
           <div class="form-input">
             <label for="email">E-mail</label>
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control",id:"login-email"  %>
           </div>
-          <!-- /FORM INPUT -->
         </div>
-        <!-- /FORM ITEM -->
       </div>
-      <!-- /FORM ROW -->
 
-      <!-- FORM ROW -->
       <div class="form-row">
-        <!-- FORM ITEM -->
         <div class="form-item">
-          <!-- FORM INPUT -->
           <div class="form-input">
             <label for="login-password">Senha</label>
             <%= f.password_field :password, autocomplete: "current-password", class:"form-control",id:"login-password" %>
           </div>
-          <!-- /FORM INPUT -->
         </div>
-        <!-- /FORM ITEM -->
       </div>
-      <!-- /FORM ROW -->
 
-      <!-- FORM ROW -->
       <div class="form-row space-between">
-        <!-- FORM ITEM -->
         <div class="form-item">
-          <!-- CHECKBOX WRAP -->
           <div class="checkbox-wrap">
             <input type="checkbox" id="login-remember" name="login_remember" checked>
-            <!-- CHECKBOX BOX -->
             <div class="checkbox-box">
-              <!-- ICON CROSS -->
-              <svg class="icon-check">
+              <svg class="icon-check" style="fill:white"  >
                 <use xlink:href="#svg-check"></use>
               </svg>
-              <!-- /ICON CROSS -->
             </div>
-            <!-- /CHECKBOX BOX -->
             <label for="login-remember">Continuar conectado</label>
           </div>
-          <!-- /CHECKBOX WRAP -->
         </div>
-        <!-- /FORM ITEM -->
 
-        <!-- FORM ITEM -->
         <div class="form-item">
-          <!-- FORM LINK -->
           <a class="form-link" href="#">Esqueci minha senha</a>
-          <!-- /FORM LINK -->
         </div>
-        <!-- /FORM ITEM -->
       </div>
-      <!-- /FORM ROW -->
 
-      <!-- FORM ROW -->
       <div class="form-row">
-        <!-- FORM ITEM -->
         <div class="form-item">
-          <!-- BUTTON -->
           <%= f.submit 'Acessar minha conta!', name:"acessar",class:"btn bg-primary btn-lg btn-block text-white"%>
-          <!-- /BUTTON -->
         </div>
-        <!-- /FORM ITEM -->
       </div>
-      <!-- /FORM ROW -->
      <%end%>
-    <!-- /FORM -->
   </div>
-  <!-- /FORM BOX -->
 
   
 <div class="form-box login-register-form-element">
-
-    <!-- FORM BOX TITLE -->
     <h2 class="form-box-title">Criar minha conta</h2>
-    <!-- /FORM BOX TITLE -->
 
-    <!-- FORM -->
     <%= form_for(:user, :url => registration_path(:user), html: { class: "form" }) do |f| %>
 
      <div class="form-row">
-        <!-- FORM ITEM -->
         <div class="form-item">
-          <!-- FORM INPUT -->
           <div class="form-input">
             <label for="register-username">Seu e-mail</label>
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control",id:"register-username"  %>
           </div>
-          <!-- /FORM INPUT -->
         </div>
-        <!-- /FORM ITEM -->
       </div>
-      <!-- /FORM ROW -->
-
-
-      <!-- FORM ROW -->
       <div class="form-row">
-        <!-- FORM ITEM -->
         <div class="form-item">
-          <!-- FORM INPUT -->
           <div class="form-input">
             <label for="register-name">Nome completo</label>
             <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control",id:"register-name"   %>
           </div>
-          <!-- /FORM INPUT -->
         </div>
-        <!-- /FORM ITEM -->
       </div>
-      <!-- /FORM ROW -->
-
-
-      <!-- FORM ROW -->
       <div class="form-row">
-        <!-- FORM ITEM -->
         <div class="form-item">
-          <!-- FORM INPUT -->
           <div class="form-input">
           <label for="register-phone">Telefone</label>
 					<%= f.text_field :phone, autocomplete: "phone", class: "mask-phone", placeholder: "(xx)xxxxx-xxxx", id: 'register-phone' %>
           </div>
-          <!-- /FORM INPUT -->
         </div>
-        <!-- /FORM ITEM -->
       </div>
-      <!-- /FORM ROW -->
-
-
-      <!-- FORM ROW -->
-      <div class="form-row">
-        <!-- FORM ITEM -->
+      <div class="form-row grid grid-half">
         <div class="form-item">
-          <!-- FORM INPUT -->
           <div class="form-input">
             <label for="register-password">Senha</label>
             <%= f.password_field :password, autocomplete: "register-password", class:"form-control" ,id:"register-password"%>
           </div>
-          <!-- /FORM INPUT -->
         </div>
-        <!-- /FORM ITEM -->
-      </div>
-      <!-- /FORM ROW -->
-
-
-      <!-- FORM ROW -->
-      <div class="form-row">
-        <!-- FORM ITEM -->
         <div class="form-item">
-          <!-- FORM INPUT -->
           <div class="form-input">
-            <label for="register-passwordc">Senha</label>
+            <label for="register-passwordc">Confirmação de Senha</label>
             <%= f.password_field :password, autocomplete: "register-passwordc", class:"form-control" ,id:"register-passwordc"%>
           </div>
-          <!-- /FORM INPUT -->
         </div>
-        <!-- /FORM ITEM -->
       </div>
-      <!-- /FORM ROW -->          
-
-     <!-- /FORM ROW -->
-
-      <!-- FORM ROW
-      <div class="form-row">
+      <!--<div class="form-row">
         <div class="form-item">
           <div class="form-input">
             <label for="register-perfil">Perfil</label>
@@ -266,52 +168,31 @@
             </select>--
           </div>
         </div>
-      </div>
-       /FORM ROW -->
+      </div>-->
 
-      <!-- FORM ROW -->
       <div class="form-row">
-        <!-- FORM ITEM -->
         <div class="form-item">
-          <!-- CHECKBOX WRAP -->
           <div class="checkbox-wrap">
             <input type="checkbox" id="register-newsletter" name="register_newsletter" checked>
-            <!-- CHECKBOX BOX -->
             <div class="checkbox-box">
-              <!-- ICON CROSS -->
-              <svg class="icon-check">
+              <svg class="icon-check" style="fill:white">
                 <use xlink:href="#svg-check"></use>
               </svg>
-              <!-- /ICON CROSS -->
             </div>
-            <!-- /CHECKBOX BOX -->
             <label for="register-newsletter">Concordo com os termos de uso e política de privacidade.</label>
           </div>
-          <!-- /CHECKBOX WRAP -->
         </div>
-        <!-- /FORM ITEM -->
       </div>
-      <!-- /FORM ROW -->
 
-      <!-- FORM ROW -->
       <div class="form-row">
-        <!-- FORM ITEM -->
-        <div class="form-item">
-          <!-- BUTTON -->
+      <div class="form-item">
           <%= f.submit 'Cadastrar!', name:"register",class:"btn bg-primary btn-lg btn-block text-white"%>
-          <!-- /BUTTON -->
         </div>
-        <!-- /FORM ITEM -->
       </div>
-      <!-- /FORM ROW -->
     <%end%>
-    <!-- /FORM -->
 
-    <!-- FORM TEXT -->
     <p class="form-text">Você receberá um e-mail para confirmar o seu cadastro e ativar sua conta. Caso tenha problemas, entre em <a href="/contato">contato conosco</a>! </p>
-    <!-- /FORM TEXT -->
   </div>
-  <!-- /FORM BOX -->
 </div>
 <%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/utils/app.js" %>
 

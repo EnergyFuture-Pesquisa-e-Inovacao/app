@@ -1,4 +1,33 @@
 <%= render "shared/header-new" %>
+  <style>
+    .badge-item-preview {
+      padding: 16px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      cursor: pointer
+    }
+
+    .badge-item-preview:hover {
+      box-shadow: 0 0 20px 0 rgb(94 92 154 / 30%);
+      transition: 0.2s box-shadow linear;
+    }
+
+    .badge-item-preview .badge-item-preview-image {
+      width: 68px;
+      height: 68px;
+      -ms-flex-negative: 0;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background-color: #efefef;
+      border: 4px solid #adafca;
+      /* font-family: 'Rajhdani'; */
+      font-family: Rajdhani,sans-serif;
+      font-weight: bold;
+      font-size: 20px;
+      color: #adafca;
+    }
+  </style>
   <div class="content-grid">
     <div class="profile-header v2">
       <figure class="profile-header-cover liquid">
@@ -112,12 +141,6 @@
             <use xlink:href="#svg-forum"></use>
           </svg>
           <p class="section-menu-item-text">Arquivos</p>
-        </a>
-        <a class="section-menu-item" href="/home/programapropostas?id=<%=@programasetorial.id%>">
-          <svg class="section-menu-item-icon icon-trophy">
-            <use xlink:href="#svg-trophy"></use>
-          </svg>
-          <p class="section-menu-item-text">Propostas</p>
         </a>
       </div>
       <div id="section-navigation-slider-controls" class="slider-controls">

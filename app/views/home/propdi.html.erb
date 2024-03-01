@@ -1,46 +1,136 @@
 <%= render "shared/header-new",title:"O hub de inovação do setor elétrico"%>
-    <!-- CONTENT GRID -->
-    <div class="content-grid">
-        <!-- SECTION BANNER -->
-        <div class="section-banner">
-            <%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/banner/groups-icon.png",class:"section-banner-icon",alt:"groups-icon") %>
-            <!-- SECTION BANNER TITLE -->
-            <p class="section-banner-title">ProPDI</p>
-            <!-- /SECTION BANNER TITLE -->
-    
-            <!-- SECTION BANNER TEXT -->
-            <p class="section-banner-text">Confira o ProPDI</p>
-            <!-- /SECTION BANNER TEXT -->
-        </div></br>
-         <!-- /SECTION BANNER -->
-           <!-- INFORMATION LINE LIST -->
-            <div class="information-line-list">
-              <!-- INFORMATION LINE -->
-             
-                <!-- INFORMATION LINE TITLE -->
-                <p class="information-line-text">O novo manual de P&D possui diversas atualizações para quem</p>
-                <p class="information-line-text">utiliza esse recurso regulado exclusivo do setor elétrico brasileiro.</p></br>
-                <p class="information-line-text">Nos novos módulos existem indicadores,relatórios, planejamento e gestão que antes não havia sido</p>
-                <p class="information-line-text">pensado, isso requer novas ferramentas,habilidades e capacidades de todos os atores.</p></br>
-                <p class="information-line-text">Aperte os botões que possui mais interesse sobre o P&DI, pode ser mais de um.</p>    </br>           
-                <!-- /INFORMATION LINE TITLE -->
 
-             </div>
-            
-            <div class="content-grid">
-            
-           
-             <p class="button secondary"><%= link_to "Histórico de projetos de P&D atualizado", "/home/respostapropdi?id=#{0}"%></p> 
-             <p class="button secondary"><%= link_to "Documentos em vigor", "/home/respostapropdi?id=#{1}"%></p> 
-             <p class="button secondary"><%= link_to "Eventos da ANEEL", "/home/respostapropdi?id=#{2}"%></p>   
-             <p class="button secondary"><%= link_to "Organograma da ANEEL", "/home/respostapropdi?id=#{3}"%></p>   
-    
-            
-           </div>
+<div class="content-grid">
+    <div class="section-banner">
+        <%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/banner/groups-icon.png",class:"section-banner-icon",alt:"groups-icon") %>
+        <p class="section-banner-title">ProPDI</p>
+        <p class="section-banner-text">Confira o ProPDI</p>
     </div>
-    <!-- /CONTENT GRID -->  
-              
- </br>
+    <div class="grid grid-12 mobile-prefer-content">
+        <div class="grid-column">
+            <div class="widget-box">
+
+                <div class="widget-box-content">
+                    <div class="switch-option">
+                        <p class="switch-option-title">Inscreva-se no feed</p>
+
+                        <p class="switch-option-text">
+                            Assinantes do nosso feed recebem 1 e-mail por semana, onde
+                            apresentamos as oportunidades abertas no mercado
+                        </p>
+
+                        <div class="form-switch active">
+                            <div class="form-switch-button"></div>
+                        </div>
+
+                        <a class="button" href="#" style="width: 350px">
+                            <svg class="button-icon spaced icon-newsfeed">
+                                <use xlink:href="#svg-newsfeed"></use>
+                            </svg>
+                            Quero receber a última atualização do feed
+                        </a>
+
+                        <p class="switch-option-meta">
+                            O e-mail da sua conta é:
+                            <span class="bold">
+                                <%=current_user.email%>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="widget-box">
+                <p class="widget-box-title">O que é o radar de desafios?</p>
+
+                <div class="widget-box-content">
+                    <div class="grid grid-8-4 mobile-prefer-content">
+                        <div class="grid-column">
+                            <b><p>Sua curadoria semanal de inovação para o setor elétrico</p></b>
+                            <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            <div class="mt-5">
+                                <div class="d-flex align-items-center">
+                                    <svg class="icon-check mr-3">
+                                        <use xlink:href="#svg-check"></use>
+                                    </svg>
+                                    <span>Curadoria realizada por jornalistas nos principais canais do setor</span>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <svg class="icon-check mr-3">
+                                        <use xlink:href="#svg-check"></use>
+                                    </svg>
+                                    <span>Ganhe tempo recebendo apenas o que é mais relevante</span>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <svg class="icon-check mr-3">
+                                        <use xlink:href="#svg-check"></use>
+                                    </svg>
+                                    <span>Conteúdo relevante setorial</span>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <svg class="icon-check mr-3">
+                                        <use xlink:href="#svg-check"></use>
+                                    </svg>
+                                    <span>Fique por dentro das tendências</span>
+                                </div>
+                            </div>
+                            <div class="mt-5">
+                              <p style="text-align: justify">O novo manual de P&D possui diversas atualizações para quem utiliza esse recurso regulado exclusivo do setor elétrico brasileiro. Nos novos módulos existem indicadores,relatórios, planejamento e gestão que antes não havia sido pensado, isso requer novas ferramentas,habilidades e capacidades de todos os atores. Aperte os botões que possui mais interesse sobre o P&DI, pode ser mais de um.</p>
+                            </div>
+                            <div class="grid grid-3-3-3-3 mt-5">
+                              <a class="button secondary full" href="/home/respostapropdi?id=0">
+                                Histórico de projetos de P&D atualizado
+                              </a>
+                              <a class="button secondary full" href="/home/respostapropdi?id=1">
+                                Documentos em vigor
+                              </a>
+                              <a class="button secondary full" href="/home/respostapropdi?id=2">
+                                Eventos da ANEEL
+                              </a>
+                              <a class="button secondary full" href="/home/respostapropdi?id=3">
+                                Organograma da ANEEL
+                              </a>
+                            </div>
+                        </div>
+                        <div class="grid-column">
+                            <div class="user-stats">
+                                <div class="user-stat big">
+                                    <div class="user-stat-title">+3000</div>
+                                    <div class="user-stat-text">Assinantes mensais</div>
+                                </div>
+                                <div class="user-stat big">
+                                    <div class="user-stat-title">XX</div>
+                                    <div class="user-stat-text">Oportunidades divulgadas</div>
+                                </div>
+                            </div>
+                            <%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/cover/31.jpg", alt: "events-icon",class:"section-banner-icon",width:"100%") %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="grid grid-12">
+        <div class="grid-column">
+            <div class="widget-box">
+                <p class="widget-box-title">Tem alguma sugestão de conteúdo para o nosso feed?</p>
+                <div class="widget-box-content">
+                    <p>Assinantes do nosso feed recebem 1 e-mail por semana, onde consolidamos....</p> <br />
+
+                    <div class="row">
+                        <div class="col-md-9 col-xs-12">
+                            <input autocomplete="off" type="text" placeholder="Insira a URL" >
+                        </div>
+                        <div class="col-md-3 col-xs-12">
+                            <a class="button secondary full" href="#">
+                                Sugerir conteúdo!
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
          
-    <%= render "shared/footer-new"%>
+<%= render "shared/footer-new"%>
  

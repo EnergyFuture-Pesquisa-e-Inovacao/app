@@ -17,6 +17,9 @@ class HomeController < ApplicationController
   def academy
   end
 
+  def icons
+  end
+
   def respostapropdi
     notify_registrationresppropdi(current_user.id,current_user.name,getresppropdi(params[:id]))
     respond_to do |format|
