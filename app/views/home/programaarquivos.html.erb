@@ -33,7 +33,18 @@
       <figure class="profile-header-cover liquid">
         <%= image_tag(@programasetorial.main_imagepg) %>
       </figure>
+      <%
+        def get_file_extension(url)
+          # Dividir a URL pelo caractere "."
+          parts = url.split(".")
 
+          # Retornar a última parte da string resultante
+          # A extensão do arquivo é a última parte
+          extension = parts.last
+
+          return extension
+        end
+      %>
       <% if current_user.empresa_id.present? %>
         <%empresa=Empresa.find(current_user.empresa_id)%>
         <%usersid=User.select(:id).where(empresa_id:current_user.empresa_id)%>
@@ -100,7 +111,7 @@
         </div>
 
         <div class="profile-header-info-actions">
-          <p class="profile-header-info-action text-tooltip-tft button secondary" data-title="Convidar participante">
+          <p class="profile-header-info-action text-tooltip-tft button secondary popup-user-invitation-trigger" data-title="Convidar participante">
             <svg class="icon-join-group">
               <use xlink:href="#svg-join-group"></use>
             </svg>
@@ -156,34 +167,45 @@
         </div>
       </div>
     </nav>
-    <div class="grid grid-4-4-4 centered">
-      <div class="badge-item-preview">
-        <div class="badge-item-preview-image d-flex align-items-center justify-content-center">PDF</div>
-        <div class="badge-item-preview-info">
-          <p class="badge-item-preview-title">Arquivo.pdf</p>
-          <p class="badge-item-preview-timestamp">15/02/2024</p>
+    <div class="grid grid-4-4-4">
+      <% @programaarquivos.each do |programaarquivo| %>
+        <a href="<%= programaarquivo.url %>" target="_blank">
+        <div class="badge-item-preview">
+          <div class="badge-item-preview-image d-flex align-items-center justify-content-center"><%= get_file_extension(programaarquivo.url).upcase %></div>
+          <div class="badge-item-preview-info">
+            <p class="badge-item-preview-title"><%= programaarquivo.name %></p>
+            <p class="badge-item-preview-timestamp"><%= programaarquivo.created_at.strftime('%d/%m/%Y %H:%M:%S') %></p>
+          </div>
+        </div>
+      <% end %>
+  </div>
+  </div>
+  <div class="popup-box small popup-user-invitation">
+    <div class="popup-close-button popup-user-invitation-trigger">
+      <svg class="popup-close-button-icon icon-cross">
+        <use xlink:href="#svg-cross"></use>
+      </svg>
+    </div>
+
+    <p class="popup-box-title">Convidar partipante</p>
+
+    <form class="form">
+      <div class="form-row">
+        <div class="form-item">
+          <div class="form-input">
+            <label for="user-name">Primeiro nome</label>
+            <input type="text" name="user-name" id="user-name" />
+          </div>
+          <div class="form-input mt-3">
+            <label for="user-mail">E-mail</label>
+            <input type="text" name="user-mail" id="user-mail" />
+          </div>
         </div>
       </div>
-      <div class="badge-item-preview">
-        <div class="badge-item-preview-image d-flex align-items-center justify-content-center">PDF</div>
-        <div class="badge-item-preview-info">
-          <p class="badge-item-preview-title">Arquivo.pdf</p>
-          <p class="badge-item-preview-timestamp">15/02/2024</p>
-        </div>
+
+      <div class="popup-box-actions medium void">
+        <button class="popup-box-action full button secondary">Convidar participante</button>
       </div>
-      <div class="badge-item-preview">
-        <div class="badge-item-preview-image d-flex align-items-center justify-content-center">PDF</div>
-        <div class="badge-item-preview-info">
-          <p class="badge-item-preview-title">Arquivo.pdf</p>
-          <p class="badge-item-preview-timestamp">15/02/2024</p>
-        </div>
-      </div>
-      <div class="badge-item-preview">
-        <div class="badge-item-preview-image d-flex align-items-center justify-content-center">PDF</div>
-        <div class="badge-item-preview-info">
-          <p class="badge-item-preview-title">Arquivo.pdf</p>
-          <p class="badge-item-preview-timestamp">15/02/2024</p>
-        </div>
-      </div>
+    </form>
   </div>
 <%= render "shared/footer-new" %>

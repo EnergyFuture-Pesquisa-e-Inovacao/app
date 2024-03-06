@@ -106,10 +106,19 @@
           <!-- SIDEBAR BOX FOOTER -->
           <div class="sidebar-box-footer">
             <!-- BUTTON -->
-            <%= form.submit 'Salve as Mudanças!', class: "button primary" %>
+            <%= form.button "Salve as Mudanças!", type: "submit", :class=> "button primary", style: "width: 150px;" %>
+            <%
+=begin%>
+ <%= form.submit 'Salve as Mudanças!', class: "button primary" %> 
+<%
+=end%>
             <!-- /BUTTON -->
             <!-- BUTTON -->
-            <p class="button white small-space">Descartar Tudo</p>
+            <%
+=begin%>
+ <p class="button white small-space">Descartar Tudo</p> 
+<%
+=end%>
             <!-- /BUTTON -->
           </div>
             <!-- WIDGET BOX CONTENT -->

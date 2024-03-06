@@ -1,4 +1,15 @@
 <%= render "shared/header-new" %>
+  <style>
+    .event-preview .event-preview-info {
+      height: auto;
+    }
+
+    .event-preview .event-preview-info .date-sticker {
+      top: 18px;
+      left: auto;
+      right: 20px;
+    }
+  </style>
   <div class="content-grid">
     <div class="profile-header v2">
       <figure class="profile-header-cover liquid">
@@ -70,7 +81,7 @@
         </div>
 
         <div class="profile-header-info-actions">
-          <p class="profile-header-info-action text-tooltip-tft button secondary" data-title="Convidar participante">
+          <p class="profile-header-info-action text-tooltip-tft button secondary popup-user-invitation-trigger" data-title="Convidar participante">
             <svg class="icon-join-group">
               <use xlink:href="#svg-join-group"></use>
             </svg>
@@ -126,7 +137,7 @@
         </div>
       </div>
     </nav>
-    <div class="row mt-5">
+    <div class="grid grid-3-3-3-3">
       <% @eventos.each do |evento| %>
         <%agenda=Agenda.where(id:evento.idobjeto)%>
         <%if agenda[0].present?%>
@@ -136,7 +147,6 @@
         <%if timeline[0].present?%>
           <%@timeline=Timeline.find(timeline[0].id)%> 
         <%end%>
-        <div class="col-lg-3 col-md-6 col-xs-12 mb-3">
           <!-- EVENT PREVIEW -->
           <div class="event-preview">
             <%
@@ -187,9 +197,37 @@
 <%
 =end%>
           </div>
-        </div>
       </div>
       <% end %>
     </div>
+  </div>
+
+  <div class="popup-box small popup-user-invitation">
+    <div class="popup-close-button popup-user-invitation-trigger">
+      <svg class="popup-close-button-icon icon-cross">
+        <use xlink:href="#svg-cross"></use>
+      </svg>
+    </div>
+
+    <p class="popup-box-title">Convidar partipante</p>
+
+    <form class="form">
+      <div class="form-row">
+        <div class="form-item">
+          <div class="form-input">
+            <label for="user-name">Primeiro nome</label>
+            <input type="text" name="user-name" id="user-name" />
+          </div>
+          <div class="form-input mt-3">
+            <label for="user-mail">E-mail</label>
+            <input type="text" name="user-mail" id="user-mail" />
+          </div>
+        </div>
+      </div>
+
+      <div class="popup-box-actions medium void">
+        <button class="popup-box-action full button secondary">Convidar participante</button>
+      </div>
+    </form>
   </div>
 <%= render "shared/footer-new" %>

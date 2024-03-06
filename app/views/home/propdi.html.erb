@@ -40,42 +40,16 @@
                 </div>
             </div>
             <div class="widget-box">
-                <p class="widget-box-title">O que é o radar de desafios?</p>
+                <%
+=begin%>
+ <p class="widget-box-title">O que é o radar de desafios?</p> 
+<%
+=end%>
 
                 <div class="widget-box-content">
-                    <div class="grid grid-8-4 mobile-prefer-content">
+                    <div class="grid grid-12 mobile-prefer-content">
                         <div class="grid-column">
-                            <b><p>Sua curadoria semanal de inovação para o setor elétrico</p></b>
-                            <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                            <div class="mt-5">
-                                <div class="d-flex align-items-center">
-                                    <svg class="icon-check mr-3">
-                                        <use xlink:href="#svg-check"></use>
-                                    </svg>
-                                    <span>Curadoria realizada por jornalistas nos principais canais do setor</span>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <svg class="icon-check mr-3">
-                                        <use xlink:href="#svg-check"></use>
-                                    </svg>
-                                    <span>Ganhe tempo recebendo apenas o que é mais relevante</span>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <svg class="icon-check mr-3">
-                                        <use xlink:href="#svg-check"></use>
-                                    </svg>
-                                    <span>Conteúdo relevante setorial</span>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <svg class="icon-check mr-3">
-                                        <use xlink:href="#svg-check"></use>
-                                    </svg>
-                                    <span>Fique por dentro das tendências</span>
-                                </div>
-                            </div>
-                            <div class="mt-5">
-                              <p style="text-align: justify">O novo manual de P&D possui diversas atualizações para quem utiliza esse recurso regulado exclusivo do setor elétrico brasileiro. Nos novos módulos existem indicadores,relatórios, planejamento e gestão que antes não havia sido pensado, isso requer novas ferramentas,habilidades e capacidades de todos os atores. Aperte os botões que possui mais interesse sobre o P&DI, pode ser mais de um.</p>
-                            </div>
+                            <p style="text-align: justify">O novo manual de P&D possui diversas atualizações para quem utiliza esse recurso regulado exclusivo do setor elétrico brasileiro. Nos novos módulos existem indicadores,relatórios, planejamento e gestão que antes não havia sido pensado, isso requer novas ferramentas,habilidades e capacidades de todos os atores. Aperte os botões que possui mais interesse sobre o P&DI, pode ser mais de um.</p>
                             <div class="grid grid-3-3-3-3 mt-5">
                               <a class="button secondary full" href="/home/respostapropdi?id=0">
                                 Histórico de projetos de P&D atualizado
@@ -90,40 +64,6 @@
                                 Organograma da ANEEL
                               </a>
                             </div>
-                        </div>
-                        <div class="grid-column">
-                            <div class="user-stats">
-                                <div class="user-stat big">
-                                    <div class="user-stat-title">+3000</div>
-                                    <div class="user-stat-text">Assinantes mensais</div>
-                                </div>
-                                <div class="user-stat big">
-                                    <div class="user-stat-title">XX</div>
-                                    <div class="user-stat-text">Oportunidades divulgadas</div>
-                                </div>
-                            </div>
-                            <%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/cover/31.jpg", alt: "events-icon",class:"section-banner-icon",width:"100%") %>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="grid grid-12">
-        <div class="grid-column">
-            <div class="widget-box">
-                <p class="widget-box-title">Tem alguma sugestão de conteúdo para o nosso feed?</p>
-                <div class="widget-box-content">
-                    <p>Assinantes do nosso feed recebem 1 e-mail por semana, onde consolidamos....</p> <br />
-
-                    <div class="row">
-                        <div class="col-md-9 col-xs-12">
-                            <input autocomplete="off" type="text" placeholder="Insira a URL" >
-                        </div>
-                        <div class="col-md-3 col-xs-12">
-                            <a class="button secondary full" href="#">
-                                Sugerir conteúdo!
-                            </a>
                         </div>
                     </div>
                 </div>

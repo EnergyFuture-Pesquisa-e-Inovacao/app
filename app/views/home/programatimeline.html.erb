@@ -86,7 +86,7 @@
           </svg>
           <p class="section-menu-item-text">Timeline</p>
         </a>
-        <a class="section-menu-item" href="/home/programainfo?id=<%=@programasetorial.id%>">
+ <a class="section-menu-item" href="/home/programainfo?id=<%=@programasetorial.id%>">
           <svg class="section-menu-item-icon icon-info">
             <use xlink:href="#svg-info"></use>
           </svg>
@@ -149,6 +149,11 @@
                 <p class="information-line-title">Site</p>
                 <p class="information-line-text"><a href="https://www.energyfuture.com.br/ciclo-esg" target="_blank">Acessar site</a></p>
               </div>
+
+              <div class="information-line">
+                <p class="information-line-title">Whatsapp</p>
+                <p class="information-line-text"><a href="https://www.energyfuture.com.br/ciclo-esg" target="_blank">Ingresse em nosso grupo do Whatsapp</a></p>
+              </div>
             </div>
           </div>
         </div>
@@ -172,23 +177,27 @@
                     <%user=User.find(programasuser.user_id)%>
                     <%empresa=Empresa.find(user.empresa_id)%>
                     <div class="user-status request-small">
-                      <a class="user-status-avatar" href="#">
+                      <div class="user-status-avatar">
                         <div class="user-avatar small no-outline">
                           <div class="user-avatar-content">
                             <div class="hexagon-image-30-32" data-src="<%= "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/avatar/15.jpg" %>"></div>
                           </div>
                         </div>
-                      </a>
+                      </div>
                       <p class="user-status-title"><span class="bold"><%=user.name%></span></p>
                       <p class="user-status-text small"><%=empresa.nomefantasia%></p>
                   
-                      <div class="action-request-list">
+                      <%
+=begin%>
+ <div class="action-request-list">
                         <div class="action-request accept">
                           <svg class="action-request-icon icon-add-friend">
                             <use xlink:href="#svg-add-friend"></use>
                           </svg>
                         </div>
-                      </div>
+                      </div> 
+<%
+=end%>
                     </div>
                   <%end%>
                 <%end%>
@@ -278,7 +287,7 @@
                       <p class="date-sticker-day"><%=thdi.strftime("%d")%></p>
                       <p class="date-sticker-month"><%=thdi.strftime("%b")%></p>
                     </div>
-                    <p class="event-preview-title popup-event-information-trigger">[Nome do Evento]</p>
+                    <p class="event-preview-title popup-event-information-trigger"><%= evento.name %></p>
                     <p class="event-preview-timestamp"><%=thi.strftime('%H:%M')%> - <%= thf.strftime('%H:%M') %></p>
                     <p class="event-preview-text"></p>
                     <p class="event-preview-timestamp">Duração: <%= preparahoras(evento.duration) %></p>
@@ -332,7 +341,9 @@
         </div>
       </div>
     </div>
-    <div class="popup-box small popup-user-invitation">
+  </div>
+
+  <div class="popup-box small popup-user-invitation">
       <div class="popup-close-button popup-user-invitation-trigger">
         <svg class="popup-close-button-icon icon-cross">
           <use xlink:href="#svg-cross"></use>
@@ -348,7 +359,7 @@
               <label for="user-name">Primeiro nome</label>
               <input type="text" name="user-name" id="user-name" />
             </div>
-            <div class="form-input">
+            <div class="form-input mt-3">
               <label for="user-mail">E-mail</label>
               <input type="text" name="user-mail" id="user-mail" />
             </div>
@@ -360,9 +371,8 @@
         </div>
       </form>
     </div>
-  </div>
-<%= render "shared/footer-new" %>
 
+<%= render "shared/footer-new" %>
 <script>
   document.getElementById('rsvp').addEventListener('change', function(e) {
     alert(this.value);

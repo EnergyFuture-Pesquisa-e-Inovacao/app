@@ -63,7 +63,12 @@
           Agenda do Hub
         </a>
       </li>
-      <li class="menu-item <%= 'active' if url_for(only_path: true).include? '/home/programasetorials' %> <%= 'active' if url_for(only_path: true).include? '/home/programatimeline' %>">
+      <li class="menu-item <%= 'active' if url_for(only_path: true).include? '/home/programasetorials' %> 
+        <%= 'active' if url_for(only_path: true).include? '/home/programatimeline' %> 
+        <%= 'active' if url_for(only_path: true).include? '/home/programainfo' %> 
+        <%= 'active' if url_for(only_path: true).include? '/home/programaparticipantes' %> 
+        <%= 'active' if url_for(only_path: true).include? '/home/programaeventos' %>
+        <%= 'active' if url_for(only_path: true).include? '/home/programaarquivos' %>">
         <a class="menu-item-link text-tooltip-tfr" href="/home/programasetorials">
           <svg class="menu-item-link-icon icon-trophy">
             <use xlink:href="#svg-trophy"></use>

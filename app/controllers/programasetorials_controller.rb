@@ -11,7 +11,7 @@ class ProgramasetorialsController < ApplicationController
   # GET /programasetorials or /programasetorials.json
   def index
     if verificauser
-      @programasetorials = Programasetorial.all
+      @programasetorials = Programasetorial.where(status:"ativo")
     else
       redirect_to '/users/sign_in'
     end   

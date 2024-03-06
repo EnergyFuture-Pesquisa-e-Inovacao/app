@@ -14,7 +14,12 @@
   <%if current_user.plano_id.present?%>
     <%plano=Plano.find(current_user.plano_id)%> 
   <%end%>
-  <div class="grid grid-3-3-3-3">
+  <%
+    @programasetorialsencerrados = Programasetorial.where(status:"inativo")
+  %>
+  <%
+=begin%>
+ <div class="grid grid-3-3-3-3">
     <div class="stats-box small stat-profile-views">
       <div class="stats-box-value-wrap">
         <p class="stats-box-value">4</p>
@@ -75,7 +80,9 @@
       <p class="stats-box-title">Assinantes</p>
       <p class="stats-box-text">Na última semana</p>
     </div>
-  </div>
+  </div> 
+<%
+=end%>
   <div class="section-header">
     <div class="section-header-info">
       <p class="section-pretitle">Visão Geral</p>
@@ -83,81 +90,166 @@
     </div>
   </div>
   <div class="grid grid-4-4-4">
-    <% @programasetorials.each do |programasetorial| %>
-    <div class="user-preview">
-      <% if  programasetorial.main_imagepg.attached? %>
-        <figure class="user-preview-cover liquid"  style="background: url(&quot;<%=programasetorial.main_imagepg%>&quot;) center center / cover no-repeat;">
-          <%= image_tag(programasetorial.main_imagepg) %>
-        </figure>
-      <% end %>
-  
-      <div class="user-preview-info">
-        <div class="user-short-description">
-          <div class="user-short-description-avatar user-avatar medium no-stats">
-            <div class="user-avatar-border">
-              <div class="hexagon-120-130" style="width: 120px; height: 130px; position: relative;"><canvas width="120" height="130" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+    <%if @programasetorials.length() == 0%>
+      <p>Não há Programas Setoriais ativos</p>
+    <%elsif%>
+      <% @programasetorials.each do |programasetorial| %>
+      <div class="user-preview">
+        <% if  programasetorial.main_imagepg.attached? %>
+          <figure class="user-preview-cover liquid"  style="background: url(&quot;<%=programasetorial.main_imagepg%>&quot;) center center / cover no-repeat;">
+            <%= image_tag(programasetorial.main_imagepg) %>
+          </figure>
+        <% elsif %>
+          <figure class="user-preview-cover liquid"  style="background: url(&quot;<%= "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/landing/background-autenticacao.png" %>&quot;) center center / cover no-repeat;">
+            <%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/landing/background-autenticacao.png") %>
+          </figure>
+        <% end %>
+    
+        <div class="user-preview-info">
+          <div class="user-short-description">
+            <div class="user-short-description-avatar user-avatar medium no-stats">
+              <div class="user-avatar-border">
+                <div class="hexagon-120-130" style="width: 120px; height: 130px; position: relative;"><canvas width="120" height="130" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+              </div>
+              <div class="user-avatar-content">
+                <div class="hexagon-image-100-110" data-src="<%= "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/avatar/24.jpg"%>" style="width: 100px; height: 110px; position: relative;"><canvas width="100" height="110" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+              </div>
             </div>
-            <div class="user-avatar-content">
-              <div class="hexagon-image-100-110" data-src="<%= "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/avatar/24.jpg"%>" style="width: 100px; height: 110px; position: relative;"><canvas width="100" height="110" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+            <p class="user-short-description-title"><%=programasetorial.name%></p>
+            <p class="user-short-description-text"><%=programasetorial.ano%></p>
+          </div>
+          <div class="user-stats">
+            <div class="user-stat">
+              <p class="user-stat-title">139</p>
+              <p class="user-stat-text">participantes</p>
+            </div>
+            <div class="user-stat">
+              <p class="user-stat-title">105</p>
+              <p class="user-stat-text">horas de reunião</p>
+            </div>
+            <div class="user-stat">
+              <p class="user-stat-title">0</p>
+              <p class="user-stat-text">propostas de inovação</p>
             </div>
           </div>
-          <p class="user-short-description-title"><%=programasetorial.name%></p>
-          <p class="user-short-description-text"><%=programasetorial.ano%></p>
-        </div>
-        <div class="user-stats">
-          <div class="user-stat">
-            <p class="user-stat-title">139</p>
-            <p class="user-stat-text">participantes</p>
+          <div class="user-preview-actions">
+            <%if (current_user.icp_id.present?)and(current_user.plano_id.present?)%>
+              <%if !(plano.name.eql?"Free") and icp.name.eql?"Empresas de Energia" %>  
+                <a class="button secondary full" href="/home/programatimeline?id=<%=programasetorial.id%>">
+                  <svg class="button-icon icon-join-group">
+                    <use xlink:href="#svg-join-group"></use>
+                  </svg>
+                  Ver o Programa
+                </a>
+              <%elsif !(plano.name.eql?"Free") and icp.name.eql?"Indústrias e Consultorias" %>  
+                <a class="button secondary full" href="/home/programatimeline?id=<%=programasetorial.id%>">
+                  <svg class="button-icon icon-join-group">
+                    <use xlink:href="#svg-join-group"></use>
+                  </svg>
+                  Ver o Programa
+                </a>
+              <%elsif plano.name.eql?"Free" %>  
+                <a class="button secondary full" href="/home/participarprogramasetorial?id=<%=programasetorial.id%>">
+                  <svg class="button-icon icon-join-group">
+                    <use xlink:href="#svg-join-group"></use>
+                  </svg>
+                  Receber Informações do Programa
+                </a>
+              <%elsif icp.name.eql?"Startups, ICTs e Inovadores" %>  
+                <a class="button secondary full" href="/home/participarprogramasetorial?id=<%=programasetorial.id%>">
+                  <svg class="button-icon icon-join-group">
+                    <use xlink:href="#svg-join-group"></use>
+                  </svg>
+                  Receber Informações do Programa
+                </a>
+              <%end%> 
+            <%end%>  
           </div>
-          <div class="user-stat">
-            <p class="user-stat-title">105</p>
-            <p class="user-stat-text">horas de reunião</p>
-          </div>
-          <div class="user-stat">
-            <p class="user-stat-title">0</p>
-            <p class="user-stat-text">propostas de inovação</p>
-          </div>
-        </div>
-        <div class="user-preview-actions">
-          <%if (current_user.icp_id.present?)and(current_user.plano_id.present?)%>
-            <%if !(plano.name.eql?"Free") and icp.name.eql?"Empresas de Energia" %>  
-              <a class="button secondary full" href="/home/programatimeline?id=<%=programasetorial.id%>">
-                <svg class="button-icon icon-join-group">
-                  <use xlink:href="#svg-join-group"></use>
-                </svg>
-                Ver o Programa
-              </a>
-            <%elsif !(plano.name.eql?"Free") and icp.name.eql?"Indústrias e Consultorias" %>  
-              <a class="button secondary full" href="/home/programatimeline?id=<%=programasetorial.id%>">
-                <svg class="button-icon icon-join-group">
-                  <use xlink:href="#svg-join-group"></use>
-                </svg>
-                Ver o Programa
-              </a>
-            <%elsif plano.name.eql?"Free" %>  
-              <a class="button secondary full" href="/home/participarprogramasetorial?id=<%=programasetorial.id%>">
-                <svg class="button-icon icon-join-group">
-                  <use xlink:href="#svg-join-group"></use>
-                </svg>
-                Receber Informações do Programa
-              </a>
-            <%elsif icp.name.eql?"Startups, ICTs e Inovadores" %>  
-              <a class="button secondary full" href="/home/participarprogramasetorial?id=<%=programasetorial.id%>">
-                <svg class="button-icon icon-join-group">
-                  <use xlink:href="#svg-join-group"></use>
-                </svg>
-                Receber Informações do Programa
-              </a>
-            <%end%> 
-          <%end%>  
         </div>
       </div>
-    </div>
-    <% end %>
+      <% end %>
+    <%end%>
   </div>
   <div class="section-header">
     <div class="section-header-info">
       <h2 class="section-title">Ciclos encerrados</h2>
+      <div class="grid grid-4-4-4">
+        <%if @programasetorialsencerrados.length() == 0%>
+          <p>Não há Programas Setoriais encerrados</p>
+        <%elsif%>
+          <% @programasetorialsencerrados.each do |programasetorial| %>
+          <div class="user-preview">
+            <% if  programasetorial.main_imagepg.attached? %>
+              <figure class="user-preview-cover liquid"  style="background: url(&quot;<%=programasetorial.main_imagepg%>&quot;) center center / cover no-repeat;">
+                <%= image_tag(programasetorial.main_imagepg) %>
+              </figure>
+            <% end %>
+        
+            <div class="user-preview-info">
+              <div class="user-short-description">
+                <div class="user-short-description-avatar user-avatar medium no-stats">
+                  <div class="user-avatar-border">
+                    <div class="hexagon-120-130" style="width: 120px; height: 130px; position: relative;"><canvas width="120" height="130" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                  </div>
+                  <div class="user-avatar-content">
+                    <div class="hexagon-image-100-110" data-src="<%= "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/avatar/24.jpg"%>" style="width: 100px; height: 110px; position: relative;"><canvas width="100" height="110" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                  </div>
+                </div>
+                <p class="user-short-description-title"><%=programasetorial.name%></p>
+                <p class="user-short-description-text"><%=programasetorial.ano%></p>
+              </div>
+              <div class="user-stats">
+                <div class="user-stat">
+                  <p class="user-stat-title">139</p>
+                  <p class="user-stat-text">participantes</p>
+                </div>
+                <div class="user-stat">
+                  <p class="user-stat-title">105</p>
+                  <p class="user-stat-text">horas de reunião</p>
+                </div>
+                <div class="user-stat">
+                  <p class="user-stat-title">0</p>
+                  <p class="user-stat-text">propostas de inovação</p>
+                </div>
+              </div>
+              <div class="user-preview-actions">
+                <%if (current_user.icp_id.present?)and(current_user.plano_id.present?)%>
+                  <%if !(plano.name.eql?"Free") and icp.name.eql?"Empresas de Energia" %>  
+                    <a class="button secondary full" href="/home/programatimeline?id=<%=programasetorial.id%>">
+                      <svg class="button-icon icon-join-group">
+                        <use xlink:href="#svg-join-group"></use>
+                      </svg>
+                      Ver o Programa
+                    </a>
+                  <%elsif !(plano.name.eql?"Free") and icp.name.eql?"Indústrias e Consultorias" %>  
+                    <a class="button secondary full" href="/home/programatimeline?id=<%=programasetorial.id%>">
+                      <svg class="button-icon icon-join-group">
+                        <use xlink:href="#svg-join-group"></use>
+                      </svg>
+                      Ver o Programa
+                    </a>
+                  <%elsif plano.name.eql?"Free" %>  
+                    <a class="button secondary full" href="/home/participarprogramasetorial?id=<%=programasetorial.id%>">
+                      <svg class="button-icon icon-join-group">
+                        <use xlink:href="#svg-join-group"></use>
+                      </svg>
+                      Receber Informações do Programa
+                    </a>
+                  <%elsif icp.name.eql?"Startups, ICTs e Inovadores" %>  
+                    <a class="button secondary full" href="/home/participarprogramasetorial?id=<%=programasetorial.id%>">
+                      <svg class="button-icon icon-join-group">
+                        <use xlink:href="#svg-join-group"></use>
+                      </svg>
+                      Receber Informações do Programa
+                    </a>
+                  <%end%> 
+                <%end%>  
+              </div>
+            </div>
+          </div>
+          <% end %>
+        <%end%>
+      </div>
     </div>
   </div>
 </div>

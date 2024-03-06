@@ -70,7 +70,7 @@
         </div>
 
         <div class="profile-header-info-actions">
-          <p class="profile-header-info-action text-tooltip-tft button secondary" data-title="Convidar participante">
+          <p class="profile-header-info-action text-tooltip-tft button secondary popup-user-invitation-trigger" data-title="Convidar participante">
             <svg class="icon-join-group">
               <use xlink:href="#svg-join-group"></use>
             </svg>
@@ -126,7 +126,7 @@
         </div>
       </div>
     </nav>
-    <div class="grid grid-4-4-4 centered">
+    <div class="grid grid-4-4-4">
       <%if @programasusers.present?%>
         <% @programasusers.each do |programasuser| %>
           <%user=User.find(programasuser.user_id)%>
@@ -260,5 +260,33 @@
           <%end%>
         <%end%>
     </div>
+  </div>
+  <div class="popup-box small popup-user-invitation">
+    <div class="popup-close-button popup-user-invitation-trigger">
+      <svg class="popup-close-button-icon icon-cross">
+        <use xlink:href="#svg-cross"></use>
+      </svg>
+    </div>
+
+    <p class="popup-box-title">Convidar partipante</p>
+
+    <form class="form">
+      <div class="form-row">
+        <div class="form-item">
+          <div class="form-input">
+            <label for="user-name">Primeiro nome</label>
+            <input type="text" name="user-name" id="user-name" />
+          </div>
+          <div class="form-input mt-3">
+            <label for="user-mail">E-mail</label>
+            <input type="text" name="user-mail" id="user-mail" />
+          </div>
+        </div>
+      </div>
+
+      <div class="popup-box-actions medium void">
+        <button class="popup-box-action full button secondary">Convidar participante</button>
+      </div>
+    </form>
   </div>
 <%= render "shared/footer-new" %>
