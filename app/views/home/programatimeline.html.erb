@@ -8,6 +8,9 @@
         <%empresa=Empresa.find(current_user.empresa_id)%>
         <%usersid=User.select(:id).where(empresa_id:current_user.empresa_id)%>
         <%@programasusers=Programasuser.where(programasetorial_id:@programasetorial.id).where("user_id IN (?)",usersid)%>
+        <%
+          @timelines=Timeline.where(idobjeto:@programasetorial.id,tipoobjeto:"Programa Setorial")
+        %>
       <%end%>
 
       <div class="profile-header-info">
@@ -209,7 +212,34 @@
       <div class="grid-column">
         <div class="widget-box no-padding">
           <div class="widget-box-status">
-
+            <%if @timelines.present?%>
+              <% @timelines.each do |timeline| %>
+                <% @arquivo = Arquivo.where(timelineid:timeline.id) %>
+                <% @evento = Evento.where(timelineid:timeline.id) %>
+                <% @texto = Texto.where(timelineid:timeline.id) %>
+                <% if @arquivo.present?%>
+                  <%
+=begin%>
+ <%= @arquivo.name %> 
+<%
+=end%>
+                <% end %>
+                <% if @evento.present?%>
+                  <%
+=begin%>
+ <%= @evento.name %> 
+<%
+=end%>
+                <% end %>
+                <% if @texto.present?%>
+                  <%
+=begin%>
+ <%= @texto.title %> 
+<%
+=end%>
+                <% end %>
+              <% end %>
+            <% end %>
             <div class="widget-box-status-content">
               <div class="user-status">
                 <a class="user-status-avatar" href="profile-timeline.html">
