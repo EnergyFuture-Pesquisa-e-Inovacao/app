@@ -1,79 +1,223 @@
 <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" %>
 <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/inputmask.js" %>
-<!-- bootstrap 4.3.1 -->
-  <%= stylesheet_link_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/css/vendor/bootstrap.min.css" %>
-  <!-- styles -->
-  
-<!-- app -->
-
-<!-- XM_Plugins -->
+<%= stylesheet_link_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/css/vendor/bootstrap.min.css" %>
+<%= stylesheet_link_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/css/styles.min.css" %>
 <%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/vendor/xm_plugins.min.js" %>
-
-<!-- form.utils -->
-
-<!-- landing.tabs -->
-
-<!-- SVG icons -->
 <%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/utils/svg-loader.js" %>
-  <style>
-    .landing {
+<style>
+  .background-img {
+      position: absolute;
+      width: 75%;
+      height: 100vh;
+      object-fit: cover;
+  }
+
+  .landing {
+    background-color: #c6baf6 !important;
+    background: none;
+     max-height: 100vh;
+     height: 100vh !important;
+     overflow-y: auto;
+     overflow-x: hidden;
+  }
+
+  input[type=password]:focus, input[type=text]:focus, select:focus, textarea:focus {
+    border-color: #804aff!important;
+  }
+
+  input[type=email] {
+    height: 54px;
+    padding: 0 18px;
+  }
+  input[type=email] {
+      background-color: #fff;
+      border: 1px solid #dedeea;
+      color: #3e3f5e;
+      transition: border-color .2s ease-in-out;
+  }
+ input[type=email] {
       width: 100%;
-      height: 100%;
-      background-image: url(<%="#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/Design_site_energyfuture_1.png"%>);
-      background-size: cover;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+  }
+ input[type=email] {
+      font-family: Rajdhani, sans-serif;
+  }
+
+  @media (max-width: 1365px) {
+    .background-img {
+      width: 100%;
     }
 
-    input[type=password]:focus, input[type=text]:focus, select:focus, textarea:focus {
-      border-color: #804aff!important;
+    .landing {
+      padding: 0;
     }
 
-  </style>
+    .mx-auto-1365 {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+</style>
 
-<!-- LANDING -->
-  <div class="landing">
-    <!-- LANDING DECORATION -->
-    <div class="landing-decoration"></div>
-    <!-- /LANDING DECORATION -->
-
-    <!-- LANDING INFO -->
-    <div class="landing-info">
-      <!-- LOGO -->
-      <div class="logo">
-        <!-- ICON LOGO VIKINGER -->
-        <%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/Design_site_energyfuture_1.svg", alt: "Energy Future Logo") %>
-        <!-- /ICON LOGO VIKINGER -->
+<div class="d-flex full-height landing">
+  <%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/landing/background-autenticacao.png", alt: "rocket", class:"background-img") %>
+  <div class="row h-100 mx-auto-1365" style="padding-left: 10vw; padding-right: 10vw;">
+    <div class="col-lg-8 my-auto">
+      <div class="landing-info" style="position: relative">
+        <div class="logo">
+          <%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/Design_site_energyfuture_1.svg", alt: "Logo Energy FUture") %>
+        </div>
+        <h2 class="landing-info-pretitle">Seja Bem-vindo(a)!</h2>
+        <p class="landing-info-text">Como membro, você faz parte de uma comunidade de profissionais engajados em promover o desenvolvimento sustentável do setor de energia.  <br /> <br />Aproveite eventos, webinars e ferramentas para conectar-se com outros membros e expandir sua rede de contatos profissionais. <br /> <br />Junte-se a nós agora e contribua para o desenvolvimento do setor energético!</p>
+        <div class="tab-switch">
+          <p class="tab-switch-button login-register-form-trigger">Entrar</p>
+          <p class="tab-switch-button login-register-form-trigger">Cadastre-se</p>
+        </div>
       </div>
-      <!-- /LOGO -->
+    </div>
+  </div>
+</div>
 
-      <!-- LANDING INFO PRETITLE -->
-      <h2 class="landing-info-pretitle">Seja Bem-vindo(a)!</h2>
-      <!-- /LANDING INFO PRETITLE -->
-
-      <!-- LANDING INFO TEXT -->
-      <p class="landing-info-text">Como membro, você faz parte de uma comunidade de profissionais engajados em promover o desenvolvimento sustentável do setor de energia.  <br /> <br />Aproveite eventos, webinars e ferramentas para conectar-se com outros membros e expandir sua rede de contatos profissionais. <br /> <br />Junte-se a nós agora e contribua para o desenvolvimento do setor energético!</p>
-      <!-- /LANDING INFO TEXT -->
-
-      <!-- TAB SWITCH -->
-      <div class="tab-switch">
-        <!-- TAB SWITCH BUTTON -->
-        <p class="tab-switch-button login-register-form-trigger">Entrar</p>
-        <!-- /TAB SWITCH BUTTON -->
-
-        <!-- TAB SWITCH BUTTON -->
-        <p class="tab-switch-button login-register-form-trigger">Cadastre-se</p>
-        <!-- /TAB SWITCH BUTTON -->
+<div class="landing-form">
+  <div class="form-box login-register-form-element">
+    <h2 class="form-box-title">Sua conta no Energy Future</h2>
+    <%= form_for(:user, :url => session_path(:user), html: { class: "form" }) do |f| %>
+      <div class="form-row">
+        <div class="form-item">
+          <div class="form-input">
+            <label for="email">E-mail</label>
+            <%
+=begin%>
+ <%= f.text_field :email, autofocus: true, autocomplete: "email", class:"form-control",id:"login-email",pattern:"[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"   %> 
+<%
+=end%>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control",id:"login-email"  %> 
+          </div>
+        </div>
       </div>
-      <!-- /TAB SWITCH -->
-    </div>
-    <!-- /LANDING INFO -->
 
-    <!-- LANDING FORM -->
-    <div class="landing-form">
-      <!-- FORM BOX -->
-      <%= render "shared/usersessions"%> 
-    </div>
-      <!-- /FORM BOX -->
-<%= render "shared/userregistrations"%> 
+      <div class="form-row">
+        <div class="form-item">
+          <div class="form-input">
+            <label for="login-password">Senha</label>
+            <%= f.password_field :password, autocomplete: "current-password", class:"form-control",id:"login-password" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row space-between">
+        <div class="form-item">
+          <div class="checkbox-wrap">
+            <input type="checkbox" id="login-remember" name="login_remember" checked>
+            <div class="checkbox-box">
+              <svg class="icon-check" style="fill:white"  >
+                <use xlink:href="#svg-check"></use>
+              </svg>
+            </div>
+            <label for="login-remember">Continuar conectado</label>
+          </div>
+        </div>
+
+        <div class="form-item">
+          <a class="form-link" href="#">Esqueci minha senha</a>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-item">
+          <%= f.submit 'Acessar minha conta!', name:"acessar",class:"btn bg-primary btn-lg btn-block text-white"%>
+        </div>
+      </div>
+     <%end%>
+  </div>
+
+  
+<div class="form-box login-register-form-element">
+    <h2 class="form-box-title">Criar minha conta</h2>
+
+    <%= form_for(:user, :url => registration_path(:user), html: { class: "form" }) do |f| %>
+
+     <div class="form-row">
+        <div class="form-item">
+          <div class="form-input">
+            <label for="register-username">Seu e-mail</label>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control",id:"register-username"  %>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-item">
+          <div class="form-input">
+            <label for="register-name">Nome completo</label>
+            <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control",id:"register-name"   %>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-item">
+          <div class="form-input">
+          <label for="register-phone">Telefone</label>
+					<%= f.text_field :phone, autocomplete: "phone", class: "mask-phone", id: 'register-phone' %>
+          </div>
+        </div>
+      </div>
+      <div class="form-row grid grid-half">
+        <div class="form-item">
+          <div class="form-input">
+            <label for="register-password">Senha</label>
+            <%= f.password_field :password, autocomplete: "register-password", class:"form-control" ,id:"register-password"%>
+          </div>
+        </div>
+        <div class="form-item">
+          <div class="form-input">
+            <label for="register-passwordc">Confirmação de Senha</label>
+            <%= f.password_field :password, autocomplete: "register-passwordc", class:"form-control" ,id:"register-passwordc"%>
+          </div>
+        </div>
+      </div>
+      <!--<div class="form-row">
+        <div class="form-item">
+          <div class="form-input">
+            <label for="register-perfil">Perfil</label>
+
+            <input type="radio" name="register_perfil" value="1">Empresas de energia</input>
+            <input type="radio" name="register_perfil" value="2">Consultoria e Indústria</input>
+            <input type="radio" name="register_perfil" value="3" checked>ICTs, Startups e universidades</input>
+           <select id="register-perfil" name="register_perfil">
+              <option value="1">Empresas de energia</option>
+              <option value="2">Consultoria e Indústria</option>
+              <option value="3">ICTs, Startups e universidades</option>
+              <option value="4">Outros</option>
+            </select>--
+          </div>
+        </div>
+      </div>-->
+
+      <div class="form-row">
+        <div class="form-item">
+          <div class="checkbox-wrap">
+            <input type="checkbox" id="register-newsletter" name="register_newsletter" checked>
+            <div class="checkbox-box">
+              <svg class="icon-check" style="fill:white">
+                <use xlink:href="#svg-check"></use>
+              </svg>
+            </div>
+            <label for="register-newsletter">Concordo com os termos de uso e política de privacidade.</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+      <div class="form-item">
+          <%= f.submit 'Cadastrar!', name:"register",class:"btn bg-primary btn-lg btn-block text-white"%>
+        </div>
+      </div>
+    <%end%>
+
+    <p class="form-text">Você receberá um e-mail para confirmar o seu cadastro e ativar sua conta. Caso tenha problemas, entre em <a href="https://www.energyfuture.com.br/contato" target="_blank">contato conosco</a>! </p>
+  </div>
 </div>
 <%= javascript_include_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/js/utils/app.js" %>
 
@@ -85,14 +229,3 @@ const im_phone = new Inputmask("(99)99999-9999")
 im_phone.mask(element_phone)
 
 </script>
-
- 
-
- 
-
-
-
-
-
-
-
