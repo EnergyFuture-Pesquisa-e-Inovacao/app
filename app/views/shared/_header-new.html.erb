@@ -13,29 +13,17 @@
   <%= stylesheet_link_tag "#{Rails.application.credentials.dig(:var, :var_url_remoto)}/css/vendor/tiny-slider.css" %>
 <body>
 
-  <!-- PAGE LOADER -->
   <div class="page-loader">
-    <!-- PAGE LOADER DECORATION -->
     <div class="page-loader-decoration">
-      <!-- ICON LOGO -->
        <%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/Logo-EF-Hub.png") %>
-      <!-- /ICON LOGO -->
     </div>
-    <!-- /PAGE LOADER DECORATION -->
 
-    <!-- PAGE LOADER INFO -->
     <div class="page-loader-info">
-      <!-- PAGE LOADER INFO TITLE -->
       <p class="page-loader-info-title">Energy Future</p>
-      <!-- /PAGE LOADER INFO TITLE -->
 
-      <!-- PAGE LOADER INFO TEXT -->
       <p class="page-loader-info-text">Carregando...</p>
-      <!-- /PAGE LOADER INFO TEXT -->
     </div>
-    <!-- /PAGE LOADER INFO -->
     
-    <!-- PAGE LOADER INDICATOR -->
     <div class="page-loader-indicator loader-bars">
       <div class="loader-bar"></div>
       <div class="loader-bar"></div>
@@ -46,14 +34,59 @@
       <div class="loader-bar"></div>
       <div class="loader-bar"></div>
     </div>
-    <!-- /PAGE LOADER INDICATOR -->
   </div>
-  <!-- /PAGE LOADER -->
 
-  <!-- NAVIGATION WIDGET -->
+  <nav id="navigation-widget-small" class="navigation-widget navigation-widget-desktop closed sidebar left hidden" data-simplebar>
+    <ul class="menu small">
+      <li class="menu-item <%= 'active' if url_for(only_path: true).include? '/home/agenda' %>">
+        <a class="menu-item-link text-tooltip-tfr" href="/home/agenda" data-title="Agenda do Hub" style="position: relative;">
+          <svg class="menu-item-link-icon icon-events-monthly">
+            <use xlink:href="#svg-events-monthly"></use>
+          </svg>          
+        </a>
+      </li>
+      <li class="menu-item <%= 'active' if url_for(only_path: true).include? '/home/programasetorials' %> <%= 'active' if url_for(only_path: true).include? '/home/programatimeline' %> <%= 'active' if url_for(only_path: true).include? '/home/programainfo' %> <%= 'active' if url_for(only_path: true).include? '/home/programaparticipantes' %> <%= 'active' if url_for(only_path: true).include? '/home/programaeventos' %> <%= 'active' if url_for(only_path: true).include? '/home/programaarquivos' %>">
+        <a class="menu-item-link text-tooltip-tfr" href="/home/programasetorials" data-title="Programas Setoriais" style="position: relative;">
+          <svg class="menu-item-link-icon icon-trophy">
+            <use xlink:href="#svg-trophy"></use>
+          </svg>
+        </a>
+      </li>
+      <li class="menu-item <%= 'active' if url_for(only_path: true).include? '/home/academy' %>">
+        <a class="menu-item-link text-tooltip-tfr" href="/home/academy" data-title="Academy" style="position: relative;">
+          <svg class="menu-item-link-icon icon-store">
+            <use xlink:href="#svg-store"></use>
+          </svg>
+        </a>
+      </li>      
+      <li class="menu-item <%= 'active' if url_for(only_path: true).include? '/home/propdi' %>">
+        <a class="menu-item-link text-tooltip-tfr" href="/home/propdi" data-title="ProPDI" style="position: relative;">
+          <svg class="menu-item-link-icon icon-events-weekly">
+            <use xlink:href="#svg-events-weekly"></use>
+          </svg>
+        </a>
+      </li>        
+      <li class="menu-item <%= 'active' if url_for(only_path: true).include? '/home/feedinovacao' %>">
+        <a class="menu-item-link text-tooltip-tfr" href="/home/feedinovacao" data-title="Feed de Inovação" style="position: relative;">
+          <svg class="menu-item-link-icon icon-badges">
+            <use xlink:href="#svg-badges"></use>
+          </svg>
+        </a>
+      </li>
+      <li class="menu-item <%= 'active' if url_for(only_path: true).include? '/home/radardesafios' %>">
+        <a class="menu-item-link text-tooltip-tfr" href="/home/radardesafios" data-title="Radar de Desafios" style="position: relative;">
+          <svg class="menu-item-link-icon icon-events-weekly">
+            <use xlink:href="#svg-events-weekly"></use>
+          </svg>
+          <div class="xm-tooltip" style="white-space: nowrap; position: absolute; z-index: 99999; right: -77px; top: 50%; margin-top: -12px; opacity: 0; visibility: hidden; transform: translate(10px, 0px); transition: all 0.3s ease-in-out 0s;"><p class="xm-tooltip-text">Radar de Desafios</p></div></a>
+        </a>
+      </li>
+
+    </ul>
+  </nav>
+
   <nav id="navigation-widget" class="navigation-widget navigation-widget-desktop sidebar left" data-simplebar>
 
-    <!-- MENU -->
     <ul class="menu">
       <li class="menu-item <%= 'active' if url_for(only_path: true).include? '/home/agenda' %>">
         <a class="menu-item-link text-tooltip-tfr" href="/home/agenda">
@@ -110,435 +143,137 @@
       </li>
 
     </ul>
-    <!-- /MENU -->
   </nav>
-  <!-- /NAVIGATION WIDGET -->
 
-  <!-- NAVIGATION WIDGET -->
   <nav id="navigation-widget-mobile" class="navigation-widget navigation-widget-mobile sidebar left hidden" data-simplebar>
-    <!-- NAVIGATION WIDGET CLOSE BUTTON -->
     <div class="navigation-widget-close-button">
-      <!-- NAVIGATION WIDGET CLOSE BUTTON ICON -->
       <svg class="navigation-widget-close-button-icon icon-back-arrow">
         <use xlink:href="#svg-back-arrow"></use>
       </svg>
-      <!-- NAVIGATION WIDGET CLOSE BUTTON ICON -->
     </div>
-    <!-- /NAVIGATION WIDGET CLOSE BUTTON -->
 
-    <!-- NAVIGATION WIDGET INFO WRAP -->
-    <div class="navigation-widget-info-wrap">
-      <!-- NAVIGATION WIDGET INFO -->
-      <div class="navigation-widget-info">
-        <!-- USER AVATAR -->
-        <a class="user-avatar small no-outline" href="profile-timeline.html">
-          <!-- USER AVATAR CONTENT -->
-          <div class="user-avatar-content">
-            <!-- HEXAGON -->
-            <div class="hexagon-image-30-32">
-            <%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/avatar/01.jpg")%>
-            </div>
-            <!-- /HEXAGON -->
-          </div>
-          <!-- /USER AVATAR CONTENT -->
-      
-          <!-- USER AVATAR PROGRESS -->
-          <div class="user-avatar-progress">
-            <!-- HEXAGON -->
-            <div class="hexagon-progress-40-44"></div>
-            <!-- /HEXAGON -->
-          </div>
-          <!-- /USER AVATAR PROGRESS -->
-      
-          <!-- USER AVATAR PROGRESS BORDER -->
-          <div class="user-avatar-progress-border">
-            <!-- HEXAGON -->
-            <div class="hexagon-border-40-44"></div>
-            <!-- /HEXAGON -->
-          </div>
-          <!-- /USER AVATAR PROGRESS BORDER -->
-      
-          <!-- USER AVATAR BADGE -->
-          <div class="user-avatar-badge">
-            <!-- USER AVATAR BADGE BORDER -->
-            <div class="user-avatar-badge-border">
-              <!-- HEXAGON -->
-              <div class="hexagon-22-24"></div>
-              <!-- /HEXAGON -->
-            </div>
-            <!-- /USER AVATAR BADGE BORDER -->
-      
-            <!-- USER AVATAR BADGE CONTENT -->
-            <div class="user-avatar-badge-content">
-              <!-- HEXAGON -->
-              <div class="hexagon-dark-16-18"></div>
-              <!-- /HEXAGON -->
-            </div>
-            <!-- /USER AVATAR BADGE CONTENT -->
-      
-            <!-- USER AVATAR BADGE TEXT -->
-            <p class="user-avatar-badge-text">24</p>
-            <!-- /USER AVATAR BADGE TEXT -->
-          </div>
-          <!-- /USER AVATAR BADGE -->
-        </a>
-        <!-- /USER AVATAR -->
-
-        <!-- NAVIGATION WIDGET INFO TITLE -->
-        <% if user_signed_in? %>
-         <p class="navigation-widget-info-title"><a href="/profile-timeline"><%=current_user.name%></a></p>
-        <%end%> 
-        <!-- /NAVIGATION WIDGET INFO TITLE -->
-
-        <!-- NAVIGATION WIDGET INFO TEXT -->
-        <p class="navigation-widget-info-text">Welcome Back!</p>
-        <!-- /NAVIGATION WIDGET INFO TEXT -->
-      </div>
-      <!-- /NAVIGATION WIDGET INFO -->
-
-      <!-- NAVIGATION WIDGET BUTTON -->
-      <p class="button small secondary full">Sair</p>
-      <!-- /NAVIGATION WIDGET BUTTON -->
-    </div>
-    <!-- /NAVIGATION WIDGET INFO WRAP -->
-
-    <!-- NAVIGATION WIDGET SECTION TITLE -->
-    <p class="navigation-widget-section-title">Sections</p>
-    <!-- /NAVIGATION WIDGET SECTION TITLE -->
-
-    <!-- MENU -->
     <ul class="menu">
-      <!-- MENU ITEM -->
-      <li class="menu-item active">
-        <!-- MENU ITEM LINK -->
-        <a class="menu-item-link" href="newsfeed.html">
-          <!-- MENU ITEM LINK ICON -->
-          <svg class="menu-item-link-icon icon-newsfeed">
-            <use xlink:href="#svg-newsfeed"></use>
+      <li class="menu-item <%= 'active' if url_for(only_path: true).include? '/home/agenda' %>">
+        <a class="menu-item-link text-tooltip-tfr" href="/home/agenda">
+          <svg class="menu-item-link-icon icon-events-monthly">
+            <use xlink:href="#svg-events-monthly"></use>
           </svg>
-          <!-- /MENU ITEM LINK ICON -->
-          Newsfeed
+          Agenda do Hub
         </a>
-        <!-- /MENU ITEM LINK -->
       </li>
-      <!-- /MENU ITEM -->
-
-      <!-- MENU ITEM -->
-      <li class="menu-item">
-        <!-- MENU ITEM LINK -->
-        <a class="menu-item-link" href="overview.html">
-          <!-- MENU ITEM LINK ICON -->
-          <svg class="menu-item-link-icon icon-overview">
-            <use xlink:href="#svg-overview"></use>
+      <li class="menu-item <%= 'active' if url_for(only_path: true).include? '/home/programasetorials' %> 
+        <%= 'active' if url_for(only_path: true).include? '/home/programatimeline' %> 
+        <%= 'active' if url_for(only_path: true).include? '/home/programainfo' %> 
+        <%= 'active' if url_for(only_path: true).include? '/home/programaparticipantes' %> 
+        <%= 'active' if url_for(only_path: true).include? '/home/programaeventos' %>
+        <%= 'active' if url_for(only_path: true).include? '/home/programaarquivos' %>">
+        <a class="menu-item-link text-tooltip-tfr" href="/home/programasetorials">
+          <svg class="menu-item-link-icon icon-trophy">
+            <use xlink:href="#svg-trophy"></use>
           </svg>
-          <!-- /MENU ITEM LINK ICON -->
-          Overview
+          Programas Setoriais
         </a>
-        <!-- /MENU ITEM LINK -->
       </li>
-      <!-- /MENU ITEM -->
-
-      <!-- MENU ITEM -->
-      <li class="menu-item">
-        <!-- MENU ITEM LINK -->
-        <a class="menu-item-link" href="groups.html">
-          <!-- MENU ITEM LINK ICON -->
-          <svg class="menu-item-link-icon icon-group">
-            <use xlink:href="#svg-group"></use>
+      <li class="menu-item <%= 'active' if url_for(only_path: true).include? '/home/academy' %>">
+        <a class="menu-item-link text-tooltip-tfr" href="/home/academy">
+          <svg class="menu-item-link-icon icon-store">
+            <use xlink:href="#svg-store"></use>
           </svg>
-          <!-- /MENU ITEM LINK ICON -->
-          Groups
+          Academy
         </a>
-        <!-- /MENU ITEM LINK -->
-      </li>
-      <!-- /MENU ITEM -->
-
-      <!-- MENU ITEM -->
-      <li class="menu-item">
-        <!-- MENU ITEM LINK -->
-        <a class="menu-item-link" href="members.html">
-          <!-- MENU ITEM LINK ICON -->
-          <svg class="menu-item-link-icon icon-members">
-            <use xlink:href="#svg-members"></use>
+      </li>      
+      <li class="menu-item <%= 'active' if url_for(only_path: true).include? '/home/propdi' %>">
+        <a class="menu-item-link text-tooltip-tfr" href="/home/propdi">
+          <svg class="menu-item-link-icon icon-events-weekly">
+            <use xlink:href="#svg-events-weekly"></use>
           </svg>
-          <!-- /MENU ITEM LINK ICON -->
-          Members
+          ProPDI
         </a>
-        <!-- /MENU ITEM LINK -->
-      </li>
-      <!-- /MENU ITEM -->
-
-      <!-- MENU ITEM -->
-      <li class="menu-item">
-        <!-- MENU ITEM LINK -->
-        <a class="menu-item-link" href="badges.html">
-          <!-- MENU ITEM LINK ICON -->
+      </li>        
+      <li class="menu-item <%= 'active' if url_for(only_path: true).include? '/home/feedinovacao' %>">
+        <a class="menu-item-link text-tooltip-tfr" href="/home/feedinovacao">
           <svg class="menu-item-link-icon icon-badges">
             <use xlink:href="#svg-badges"></use>
           </svg>
-          <!-- /MENU ITEM LINK ICON -->
-          Badges
+          Feed de Inovação
         </a>
-        <!-- /MENU ITEM LINK -->
       </li>
-      <!-- /MENU ITEM -->
-
-      <!-- MENU ITEM -->
-      <li class="menu-item">
-        <!-- MENU ITEM LINK -->
-        <a class="menu-item-link" href="quests.html">
-          <!-- MENU ITEM LINK ICON -->
-          <svg class="menu-item-link-icon icon-quests">
-            <use xlink:href="#svg-quests"></use>
+      <li class="menu-item <%= 'active' if url_for(only_path: true).include? '/home/radardesafios' %>">
+        <a class="menu-item-link text-tooltip-tfr" href="/home/radardesafios">
+          <svg class="menu-item-link-icon icon-events-weekly">
+            <use xlink:href="#svg-events-weekly"></use>
           </svg>
-          <!-- /MENU ITEM LINK ICON -->
-          Quests
+          Radar de Desafios
         </a>
-        <!-- /MENU ITEM LINK -->
       </li>
-      <!-- /MENU ITEM -->
-
-      <!-- MENU ITEM -->
-      <li class="menu-item">
-        <!-- MENU ITEM LINK -->
-        <a class="menu-item-link" href="streams.html">
-          <!-- MENU ITEM LINK ICON -->
-          <svg class="menu-item-link-icon icon-streams">
-            <use xlink:href="#svg-streams"></use>
-          </svg>
-          <!-- /MENU ITEM LINK ICON -->
-          Streams
-        </a>
-        <!-- /MENU ITEM LINK -->
-      </li>
-      <!-- /MENU ITEM -->
-
-      <!-- MENU ITEM -->
-      <li class="menu-item">
-        <!-- MENU ITEM LINK -->
-        <a class="menu-item-link" href="events.html">
-          <!-- MENU ITEM LINK ICON -->
-          <svg class="menu-item-link-icon icon-events">
-            <use xlink:href="#svg-events"></use>
-          </svg>
-          <!-- /MENU ITEM LINK ICON -->
-          Events
-        </a>
-        <!-- /MENU ITEM LINK -->
-      </li>
-      <!-- /MENU ITEM -->
-
-      <!-- MENU ITEM -->
-      <li class="menu-item">
-        <!-- MENU ITEM LINK -->
-        <a class="menu-item-link" href="forums.html">
-          <!-- MENU ITEM LINK ICON -->
-          <svg class="menu-item-link-icon icon-forums">
-            <use xlink:href="#svg-forums"></use>
-          </svg>
-          <!-- /MENU ITEM LINK ICON -->
-          Forums
-        </a>
-        <!-- /MENU ITEM LINK -->
-      </li>
-      <!-- /MENU ITEM -->
-
-      <!-- MENU ITEM -->
-      <li class="menu-item">
-        <!-- MENU ITEM LINK -->
-        <a class="menu-item-link" href="marketplace.html">
-          <!-- MENU ITEM LINK ICON -->
-          <svg class="menu-item-link-icon icon-marketplace">
-            <use xlink:href="#svg-marketplace"></use>
-          </svg>
-          <!-- /MENU ITEM LINK ICON -->
-          Marketplace
-        </a>
-        <!-- /MENU ITEM LINK -->
-      </li>
-      <!-- /MENU ITEM -->
     </ul>
-    <!-- /MENU -->
-
-    <!-- NAVIGATION WIDGET SECTION TITLE -->
-    <p class="navigation-widget-section-title">My Profile</p>
-    <!-- /NAVIGATION WIDGET SECTION TITLE -->
-
-    <!-- NAVIGATION WIDGET SECTION LINK -->
-    <a class="navigation-widget-section-link" href="/users/<%=current_user.id%>">Profile Info</a>
-    <!-- /NAVIGATION WIDGET SECTION LINK -->
-
-    <!-- NAVIGATION WIDGET SECTION LINK -->
-    <a class="navigation-widget-section-link" href="hub-profile-social.html">Social &amp; Stream</a>
-    <!-- /NAVIGATION WIDGET SECTION LINK -->
-
-    <!-- NAVIGATION WIDGET SECTION LINK -->
-    <a class="navigation-widget-section-link" href="hub-profile-notifications.html">Notifications</a>
-    <!-- /NAVIGATION WIDGET SECTION LINK -->
-
-    <!-- NAVIGATION WIDGET SECTION LINK -->
-    <a class="navigation-widget-section-link" href="hub-profile-messages.html">Messages</a>
-    <!-- /NAVIGATION WIDGET SECTION LINK -->
-
-    <!-- NAVIGATION WIDGET SECTION LINK -->
-    <a class="navigation-widget-section-link" href="hub-profile-requests.html">Friend Requests</a>
-    <!-- /NAVIGATION WIDGET SECTION LINK -->
-
-    <!-- NAVIGATION WIDGET SECTION TITLE -->
-    <p class="navigation-widget-section-title">Conta</p>
-    <!-- /NAVIGATION WIDGET SECTION TITLE -->
-
-    <!-- NAVIGATION WIDGET SECTION LINK -->
-    <a class="navigation-widget-section-link" href="/users/<%=current_user.id%>">Informações da Conta</a>
-    <!-- /NAVIGATION WIDGET SECTION LINK -->
-
-    <!-- NAVIGATION WIDGET SECTION LINK -->
-    <a class="navigation-widget-section-link" href="/users/editp/?id=<%=current_user.id%>">Mudar Password</a>
-    <!-- /NAVIGATION WIDGET SECTION LINK -->
-
-    <!-- NAVIGATION WIDGET SECTION LINK -->
-    <a class="navigation-widget-section-link" href="/home/hubaccountsettings">Configurações Gerais</a>
-    <!-- /NAVIGATION WIDGET SECTION LINK -->
-
-    <!-- NAVIGATION WIDGET SECTION TITLE -->
-    <p class="navigation-widget-section-title">Equipes</p>
-    <!-- /NAVIGATION WIDGET SECTION TITLE -->
-
-    <!-- NAVIGATION WIDGET SECTION LINK -->
-    <a class="navigation-widget-section-link" href="/home/hubgroupmanagement">Gerenciar Equipes</a>
-    <!-- /NAVIGATION WIDGET SECTION LINK -->
-
-    <!-- NAVIGATION WIDGET SECTION LINK -->
-    <a class="navigation-widget-section-link" href="/home/hubgroupinvitations">Convites</a>
-    <!-- /NAVIGATION WIDGET SECTION LINK -->
-
-    <!-- NAVIGATION WIDGET SECTION TITLE -->
-    <p class="navigation-widget-section-title">Main Links</p>
-    <!-- /NAVIGATION WIDGET SECTION TITLE -->
-
-    <!-- NAVIGATION WIDGET SECTION LINK -->
-    <a class="navigation-widget-section-link" href="#">Home</a>
-    <!-- /NAVIGATION WIDGET SECTION LINK -->
-
-    <!-- NAVIGATION WIDGET SECTION LINK -->
-    <a class="navigation-widget-section-link" href="#">Careers</a>
-    <!-- /NAVIGATION WIDGET SECTION LINK -->
-
-    <!-- NAVIGATION WIDGET SECTION LINK -->
-    <a class="navigation-widget-section-link" href="#">Faqs</a>
-    <!-- /NAVIGATION WIDGET SECTION LINK -->
-
-    <!-- NAVIGATION WIDGET SECTION LINK -->
-    <a class="navigation-widget-section-link" href="#">About Us</a>
-    <!-- /NAVIGATION WIDGET SECTION LINK -->
-
-    <!-- NAVIGATION WIDGET SECTION LINK -->
-    <a class="navigation-widget-section-link" href="#">Our Blog</a>
-    <!-- /NAVIGATION WIDGET SECTION LINK -->
-
-    <!-- NAVIGATION WIDGET SECTION LINK -->
-    <a class="navigation-widget-section-link" href="#">Contact Us</a>
-    <!-- /NAVIGATION WIDGET SECTION LINK -->
-
-    <!-- NAVIGATION WIDGET SECTION LINK -->
-    <a class="navigation-widget-section-link" href="#">Privacy Policy</a>
-    <!-- /NAVIGATION WIDGET SECTION LINK -->
   </nav>
-  <!-- /NAVIGATION WIDGET -->
 
 
-  <!-- HEADER -->
   <header class="header">
-    <!-- HEADER ACTIONS -->
     <div class="header-actions">
-      <!-- HEADER BRAND -->
       <div class="header-brand">
-        <!-- LOGO -->
         <div class="logo">
-          <!-- ICON LOGO VIKINGER -->
           <a href="/home/agenda"><%= image_tag("#{Rails.application.credentials.dig(:var, :var_url_remoto)}/img/Logo-EF-Hub.png") %></a>
-          <!-- /ICON LOGO VIKINGER -->
         </div>
-        <!-- /LOGO -->
-
+        <%
+=begin%>
+ <h1 class="header-brand-text">Energy Future</h1> 
+<%
+=end%>
       </div>
-      <!-- /HEADER BRAND -->
+      <div class="sidemenu-trigger navigation-widget-trigger active">
+        <svg class="icon-grid">
+          <use xlink:href="#svg-grid"></use>
+        </svg>
+      </div>
     </div>
-    <!-- /HEADER ACTIONS -->
 
-    <!-- HEADER ACTIONS -->
     <div class="header-actions">
-
-      <!-- MOBILEMENU TRIGGER -->
       <div class="mobilemenu-trigger navigation-widget-mobile-trigger">
-        <!-- BURGER ICON -->
         <div class="burger-icon inverted">
-          <!-- BURGER ICON BAR -->
           <div class="burger-icon-bar"></div>
-          <!-- /BURGER ICON BAR -->
 
-          <!-- BURGER ICON BAR -->
           <div class="burger-icon-bar"></div>
-          <!-- /BURGER ICON BAR -->
 
-          <!-- BURGER ICON BAR -->
           <div class="burger-icon-bar"></div>
-          <!-- /BURGER ICON BAR -->
         </div>
-        <!-- /BURGER ICON -->
       </div>
-      <!-- /MOBILEMENU TRIGGER -->
 
 
     </div>
-    <!-- /HEADER ACTIONS -->
-
-    <!-- HEADER ACTIONS -->
+    
+    <%
+=begin%>
+ <div class="header-actions search-bar"></div> 
+<%
+=end%>
+    <div class="header-actions"></div>
     <div class="header-actions">
 
-      <!-- ACTION ITEM WRAP -->
       <div class="action-item-wrap">
         <% if user_signed_in? %>
         <p style="color:#ffffff"><%=current_user.email%></p>
        <%end%> 
       </div>
-      <!-- ACTION ITEM WRAP -->
       <div class="action-item-wrap">
-        <!-- ACTION ITEM -->
         <div class="action-item dark header-settings-dropdown-trigger">
-          <!-- ACTION ITEM ICON -->
           <svg class="action-item-icon icon-profile">
             <use xlink:href="#svg-profile"></use>
           </svg>
-          <!-- /ACTION ITEM ICON -->
         </div>
-        <!-- /ACTION ITEM -->
 
-        <!-- DROPDOWN NAVIGATION -->
         <div class="dropdown-navigation header-settings-dropdown">
-          <!-- DROPDOWN NAVIGATION HEADER -->
           <div class="dropdown-navigation-header">
 
-          <!-- DROPDOWN NAVIGATION CATEGORY -->
           <p class="dropdown-navigation-category">Meu perfil</p>
-          <!-- /DROPDOWN NAVIGATION CATEGORY -->
       
-          <!-- DROPDOWN NAVIGATION LINK -->
           <a class="dropdown-navigation-link" href= "/users/<%=current_user.id%>/edit">Editar Perfil</a>
-          <!-- /DROPDOWN NAVIGATION LINK -->
       
-          <!-- DROPDOWN NAVIGATION LINK -->
           <a class="dropdown-navigation-link" href="/users/editp/?id=<%=current_user.id%>">Alterar Senha</a>
-          <!-- /DROPDOWN NAVIGATION LINK -->
 
-          <!-- DROPDOWN NAVIGATION BUTTON -->
           <%= link_to('Sair',  destroy_user_session_path, :class => "button small secondary full mt-3")%>
-          <!-- /DROPDOWN NAVIGATION BUTTON -->
         </div>
-        <!-- /DROPDOWN NAVIGATION -->
       </div>
-      <!-- /ACTION ITEM WRAP -->
     </div>
-    <!-- /HEADER ACTIONS -->
   </header>
-  <!-- /HEADER -->

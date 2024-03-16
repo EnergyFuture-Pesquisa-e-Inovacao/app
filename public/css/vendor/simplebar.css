@@ -18,7 +18,6 @@
 .simplebar-mask {
   direction: inherit;
   position: absolute;
-  overflow: hidden;
   padding: 0;
   margin: 0;
   left: 0;
@@ -54,6 +53,7 @@
   /* visibility: visible; */
   max-width: 100%; /* Not required for horizontal scroll to trigger */
   max-height: 100%; /* Needed for vertical scroll to trigger */
+  overflow: visible !important;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
